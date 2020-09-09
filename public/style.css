@@ -1,0 +1,82 @@
+:root {
+  --main-color: #d7ccc8;
+}
+
+html,
+body {
+  background-color: black;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.wrapper {
+  width: 375px !important;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main-color);
+  position: sticky;
+}
+
+.nav_content {
+  display: flex;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+}
+.content {
+  border: 2px solid red;
+}
+
+.content_title {
+  text-decoration: underline var(--main-color);
+}
+
+.builing_rooms {
+  border: 2px solid purple;
+}
+
+#room_101 {
+  border: 2px solid orange;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#content_1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid yellow;
+  width: 100%;
+}
+
+.content_left {
+  flex: 2;
+  border-right: 2px solid green;
+}
+
+.content_mid {
+  flex: 2;
+  border-right: 2px solid green;
+}
+
+.content_right {
+  flex: 0.5;
+  border: 2px solid blue;
+}
+
+.content_msg {
+  text-align: center;
+}
