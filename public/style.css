@@ -1,12 +1,22 @@
 :root {
   --main-color: #424242;
-  color: white;
 }
 
 html,
 body {
+  color: white;
   background-color: white;
   font-family: "Noto Sans KR", sans-serif;
+  margin: 0 !important;
+}
+
+.bt {
+  cursor: pointer;
+}
+
+i {
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 .wrapper {
@@ -44,6 +54,10 @@ body {
   padding: 0 0.5rem;
 }
 
+.navbar_setapp i {
+  font-size: 1rem;
+}
+
 .navbar_setapp:hover {
   color: #212121;
   font-weight: 600;
@@ -70,12 +84,22 @@ body {
   font-weight: lighter;
 }
 
+#header_right_name {
+  font-weight: 600;
+}
+
+#header_right_role {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
 .content {
   border: 2px solid red;
 }
 
 .content_title {
   text-decoration: underline var(--main-color);
+  font-weight: 550;
 }
 
 .content_name {
@@ -93,6 +117,7 @@ body {
 
 .pay_count {
   font-weight: 600;
+  color: #d60000;
 }
 
 .pay_count_l,
@@ -109,13 +134,14 @@ body {
 
 .repair_count {
   font-weight: 600;
+  color: #d60000;
 }
 
 .builing_rooms {
   border: 2px solid purple;
 }
 
-#room_101 {
+.room {
   border: 2px solid orange;
   display: flex;
   justify-content: space-between;
@@ -135,8 +161,21 @@ body {
   flex: 1;
 }
 
+.room_num {
+  font-size: 0.8rem;
+}
+
+.room_res {
+  font-weight: 600;
+}
+
 .room_mid {
   flex: 2;
+}
+
+.room_price_whether,
+.room_maintenance_cnt {
+  color: #d60000;
 }
 
 .room_right {

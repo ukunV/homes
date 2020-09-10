@@ -19,36 +19,14 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar_main">
-          <div
-            class="main_content"
-            onclick="location.href='host.html'"
-            style="cursor: pointer"
-          >
+          <div class="main_content bt" onclick="location.href='host.html'">
             홈
           </div>
-          <div
-            class="main_content"
-            onclick="location.href=''"
-            style="cursor: pointer"
-          >
-            알림
-          </div>
-          <div
-            class="main_content"
-            onclick="location.href=''"
-            style="cursor: pointer"
-          >
-            기능
-          </div>
-          <div
-            class="main_content"
-            onclick="location.href=''"
-            style="cursor: pointer"
-          >
-            설정
-          </div>
+          <div class="main_content bt" onclick="location.href=''">알림</div>
+          <div class="main_content bt" onclick="location.href=''">기능</div>
+          <div class="main_content bt" onclick="location.href=''">설정</div>
         </div>
-        <div class="navbar_setapp">
+        <div class="navbar_setapp bt">
           <i class="fas fa-cog"></i>
         </div>
       </div>
@@ -61,23 +39,21 @@
         <div class="header_right">
           <span id="header_right_name">(조정민)</span>
           <span id="header_right_role">관리인</span>
-          <i class="far fa-comment-dots"></i>
+          <i class="fas fa-bullhorn bt" onclick="location.href='msg.html'"></i>
         </div>
       </div>
 
       <div class="content">
         <div class="content_title">(에덴빌)</div>
         <div class="builing_rooms">
-          <div id="room_101">
+          <div class="room">
             <div class="room_left">
-              <span id="number">(101)호</span>
-              <span id="room_res">(허)</span>
+              <span class="room_num">(101)호</span>
+              <span class="room_res">(허)</span>
             </div>
             <div class="room_mid">
               <div class="room_payment">
-                <span class="room_payment_title">월세</span>
-                <span class="room_price">(35)</span>
-                <span class="room_price_won">만원</span>
+                <span class="room_payment_title">월세 (35)만원</span>
                 <span class="room_price_whether">(납부완료)</span>
               </div>
               <div class="room_maintenance">
@@ -85,50 +61,8 @@
                 <span class="room_maintenance_cnt">(3)</span>
               </div>
             </div>
-            <div class="room_right">
-              <i class="far fa-comment-dots"></i>
-            </div>
-          </div>
-          <div id="room_101">
-            <div class="room_left">
-              <span id="number">(102)호</span>
-              <span id="room_res">(전)</span>
-            </div>
-            <div class="room_mid">
-              <div class="room_payment">
-                <span class="room_payment_title">월세</span>
-                <span class="room_price">(45)</span>
-                <span class="room_price_won">만원</span>
-                <span class="room_price_whether">(납부완료)</span>
-              </div>
-              <div class="room_maintenance">
-                <span class="room_maintenance_title">유지/보수건</span>
-                <span class="room_maintenance_cnt">(3)</span>
-              </div>
-            </div>
-            <div class="room_right">
-              <i class="far fa-comment-dots"></i>
-            </div>
-          </div>
-          <div id="room_101">
-            <div class="room_left">
-              <span id="number">(103)호</span>
-              <span id="room_res">(진)</span>
-            </div>
-            <div class="room_mid">
-              <div class="room_payment">
-                <span class="room_payment_title">월세</span>
-                <span class="room_price">(55)</span>
-                <span class="room_price_won">만원</span>
-                <span class="room_price_whether">(미납)</span>
-              </div>
-              <div class="room_maintenance">
-                <span class="room_maintenance_title">유지/보수건</span>
-                <span class="room_maintenance_cnt">(3)</span>
-              </div>
-            </div>
-            <div class="room_right">
-              <i class="far fa-comment-dots"></i>
+            <div class="room_right bt" onclick="location.href='msg.html'">
+              <i class="fas fa-bullhorn"></i>
             </div>
           </div>
         </div>
