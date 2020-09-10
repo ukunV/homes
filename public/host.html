@@ -8,29 +8,57 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Noto Sans KR"
     />
-    <script></script>
+    <script src="module.js" defer></script>
     <script
       src="https://kit.fontawesome.com/69cc74444b.js"
       crossorigin="anonymous"
     ></script>
-    <title>홈즈</title>
+    <title>Homes</title>
   </head>
   <body>
     <div class="wrapper">
-      <div class="nav">
-        <div class="nav_content">
-          <div class="nav_home">홈</div>
-          <div class="nav_notice">알림</div>
-          <div class="nav_func">기능</div>
-          <div class="nav_set">설정</div>
+      <div class="navbar">
+        <div class="navbar_main">
+          <div
+            class="main_content"
+            onclick="location.href='host.html'"
+            style="cursor: pointer"
+          >
+            홈
+          </div>
+          <div
+            class="main_content"
+            onclick="location.href=''"
+            style="cursor: pointer"
+          >
+            알림
+          </div>
+          <div
+            class="main_content"
+            onclick="location.href=''"
+            style="cursor: pointer"
+          >
+            기능
+          </div>
+          <div
+            class="main_content"
+            onclick="location.href=''"
+            style="cursor: pointer"
+          >
+            설정
+          </div>
         </div>
-        <div class="nav_setapp">
+        <div
+          class="navbar_setapp"
+          onclick="location.href='setting.html'"
+          style="cursor: pointer"
+        >
           <i class="fas fa-cog"></i>
         </div>
       </div>
 
       <div class="header_left">
-        <span id="header_left_name">이건욱</span>
+        <span id="header_left_name">(이건욱)</span>
         <span id="header_left_role">건물주</span>
       </div>
 
@@ -39,87 +67,407 @@
 
         <div class="content_wrapper">
           <div id="content_1">
-            <div class="content_left">
-              <div class="content_name">에덴빌</div>
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
               <div class="content_mgr">
                 <span class="mgr_title">관리인</span>
-                <span class="mgr_name">조정민</span>
+                <span class="mgr_name">(조정민)</span>
               </div>
             </div>
 
             <div class="content_mid">
               <div class="content_payment">
-                <span>미납건</span>
-                <span>3</span>
-                <span>건</span>
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
               </div>
 
               <div class="content_maintenance">
-                <span>유지/보수건</span>
-                <span>3</span>
-                <span>건</span>
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
               </div>
             </div>
 
-            <div class="content_right">
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
               <div class="content_msg">
                 <i class="far fa-comment-dots"></i>
               </div>
             </div>
           </div>
           <div id="content_1">
-            <div class="content_left">
-              <div class="content_name">에덴빌</div>
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
               <div class="content_mgr">
                 <span class="mgr_title">관리인</span>
-                <span class="mgr_name">조정민</span>
+                <span class="mgr_name">(조정민)</span>
               </div>
             </div>
 
             <div class="content_mid">
               <div class="content_payment">
-                <span>미납건</span>
-                <span>3</span>
-                <span>건</span>
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
               </div>
 
               <div class="content_maintenance">
-                <span>유지/보수건</span>
-                <span>3</span>
-                <span>건</span>
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
               </div>
             </div>
 
-            <div class="content_right">
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
               <div class="content_msg">
                 <i class="far fa-comment-dots"></i>
               </div>
             </div>
           </div>
           <div id="content_1">
-            <div class="content_left">
-              <div class="content_name">에덴빌</div>
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
               <div class="content_mgr">
                 <span class="mgr_title">관리인</span>
-                <span class="mgr_name">조정민</span>
+                <span class="mgr_name">(조정민)</span>
               </div>
             </div>
 
             <div class="content_mid">
               <div class="content_payment">
-                <span>미납건</span>
-                <span>3</span>
-                <span>건</span>
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
               </div>
 
               <div class="content_maintenance">
-                <span>유지/보수건</span>
-                <span>3</span>
-                <span>건</span>
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
               </div>
             </div>
 
-            <div class="content_right">
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
+              <div class="content_msg">
+                <i class="far fa-comment-dots"></i>
+              </div>
+            </div>
+          </div>
+          <div id="content_1">
+            <div
+              class="content_left"
+              onclick="location.href='building.html'"
+              style="cursor: pointer"
+            >
+              <div class="content_name">(에덴빌)</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="mgr_name">(조정민)</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count">(3)</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count">(3)</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div
+              class="content_right"
+              style="cursor: pointer"
+              onclick="location.href='msg.html';"
+            >
               <div class="content_msg">
                 <i class="far fa-comment-dots"></i>
               </div>

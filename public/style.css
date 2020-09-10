@@ -1,29 +1,54 @@
 :root {
-  --main-color: #d7ccc8;
+  --main-color: #424242;
+  color: white;
 }
 
 html,
 body {
-  background-color: black;
+  background-color: white;
   font-family: "Noto Sans KR", sans-serif;
 }
 
 .wrapper {
   width: 375px !important;
-  background-color: white;
+  background-color: #212121;
   margin: 0 auto;
 }
 
-.nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--main-color);
   position: sticky;
+  top: 0;
 }
 
-.nav_content {
+.navbar_main {
   display: flex;
+}
+
+.main_content {
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.main_content:hover {
+  color: #212121;
+  font-weight: 600;
+  background-color: #bcbcbc;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.navbar_setapp {
+  padding: 0 0.5rem;
+}
+
+.navbar_setapp:hover {
+  color: #212121;
+  font-weight: 600;
+  background-color: #bcbcbc;
+  border-radius: 0.5rem;
 }
 
 .header {
@@ -31,12 +56,59 @@ body {
   justify-content: space-between;
   border: 2px solid black;
 }
+
+.header_left {
+  padding: 0 0.3rem;
+}
+
+#header_left_name {
+  font-weight: 600;
+}
+
+#header_left_role {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
 .content {
   border: 2px solid red;
 }
 
 .content_title {
   text-decoration: underline var(--main-color);
+}
+
+.content_name {
+  font-weight: 600;
+}
+
+.mgr_title {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+.mgr_name {
+  font-weight: 600;
+}
+
+.pay_count {
+  font-weight: 600;
+}
+
+.pay_count_l,
+.pay_count_r {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+.repair_count_l,
+.repair_count_r {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+.repair_count {
+  font-weight: 600;
 }
 
 .builing_rooms {
@@ -47,6 +119,29 @@ body {
   border: 2px solid orange;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.room_left,
+.room_mid,
+.room_right {
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+}
+
+.room_left {
+  flex: 1;
+}
+
+.room_mid {
+  flex: 2;
+}
+
+.room_right {
+  flex: 0.5;
+  text-align: center;
 }
 
 .content_wrapper {
@@ -60,6 +155,8 @@ body {
   align-items: center;
   border: 2px solid yellow;
   width: 100%;
+  padding: 0.5rem 0;
+  padding: ;
 }
 
 .content_left {
