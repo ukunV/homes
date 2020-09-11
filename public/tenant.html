@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tenent_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Noto Sans KR"
+    />
+    <script src="module.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/69cc74444b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>세입자</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar_main">
+          <div class="main_content bt" onclick="location.href='tenant.html'">
+            홈
+          </div>
+          <div class="main_content bt" onclick="location.href=''">알림</div>
+          <div class="main_content bt" onclick="location.href=''">기능</div>
+          <div class="main_content bt" onclick="location.href=''">설정</div>
+        </div>
+        <div class="navbar_setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="header">
+        <div class="header_left">
+          <span id="header_left_name">(허전진)</span>
+          <span id="header_left_role">세입자</span>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="content_title">(에덴빌 202호)</div>
+        <div class="hst_mgr">
+          <div class="hst">
+            <div class="hst_basic">
+              <span class="hst_role">건물주</span>
+              <span class="hst_name">(이건욱)</span>
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <div class="hst_info">
+              <span class="hst_phnum">(010-1234-5678)</span>
+              <span class="hst_bank">(국민은행 00000000000000)</span>
+            </div>
+          </div>
+          <div class="mgr">
+            <div class="basic">
+              <span class="mgr_role">관리인</span>
+              <span class="mgr_name">(조정민)</span>
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <div class="info">
+              <span class="mgr_phnum">(010-1234-5678)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="date">
+          <div class="cont_date">
+            <span>계약일</span>
+            <span>(2020/01/01)</span>
+          </div>
+          <div class="due_date">
+            <span>만기일</span>
+            <span>(2020/06/30)</span>
+          </div>
+          <div class="left_date">
+            <span>(500)</span>
+            <span>일 남음</span>
+          </div>
+        </div>
+
+        <div class="monthly_payment">
+          <span>월세 납부 여부</span>
+          <span>(미납)</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

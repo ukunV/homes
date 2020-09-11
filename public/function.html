@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="function_style.css" />
+    <script
+      src="https://kit.fontawesome.com/69cc74444b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>기능</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar_main">
+          <div class="main_content bt" onclick="location.href=''">홈</div>
+          <div class="main_content bt" onclick="location.href=''">알림</div>
+          <div class="main_content bt" onclick="location.href=''">기능</div>
+          <div class="main_content bt" onclick="location.href=''">설정</div>
+        </div>
+        <div class="navbar_setapp bt" onclick="location.href='setting.html'">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="push">
+        <div class="push_title">
+          <span class="push_name">푸시알림</span>
+        </div>
+        <div class="push_contents">
+          <div class="push_msg">
+            '에덴빌 202호 허전진'님께서 입금완료 하셨습니다. 계좌를 확인해주세요
+          </div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <div class="notice_title">
+          <span class="notice_name">공지 보내기</span>
+        </div>
+        <div class="notice_contents">
+          <form action="receiver_list" method="POST">
+            <div class="sel_all">
+              <input type="radio" />전체선택
+              <input type="submit" value="선택완료" />
+            </div>
+            <hr />
+            <div class="sel_receiver">
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 관리인 조정민
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 파크빌 관리인 가나다
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에파빌 관리인 기니디
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 101호 허전진
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 102호 김승준
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 201호 신창우
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 202호 허김신
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 301호 전승창
+              </div>
+              <div class="list_can">
+                <input type="radio" /> 에덴빌 302호 우신창
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

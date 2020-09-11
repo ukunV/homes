@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="host_aden_style.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Noto Sans KR"
@@ -13,7 +14,7 @@
       src="https://kit.fontawesome.com/69cc74444b.js"
       crossorigin="anonymous"
     ></script>
-    <title>Document</title>
+    <title>건물정보</title>
   </head>
   <body>
     <div class="wrapper">
@@ -47,22 +48,32 @@
         <div class="content_title">(에덴빌)</div>
         <div class="builing_rooms">
           <div class="room">
-            <div class="room_left">
-              <span class="room_num">(101)호</span>
-              <span class="room_res">(허)</span>
-            </div>
-            <div class="room_mid">
-              <div class="room_payment">
-                <span class="room_payment_title">월세 (35)만원</span>
-                <span class="room_price_whether">(납부완료)</span>
+            <div class="room_top">
+              <div class="room_left">
+                <div class="room_info">
+                  <span class="room_num">(101)호</span>
+                  <span class="room_tnt">(허전진)</span>
+                </div>
+                <div class="room_pay_bt bt">
+                  <i class="fas fa-check-circle"></i>
+                </div>
               </div>
-              <div class="room_maintenance">
-                <span class="room_maintenance_title">유지/보수건</span>
-                <span class="room_maintenance_cnt">(3)</span>
+              <div class="room_mid">
+                <div class="room_payment">
+                  <span class="room_payment_title">월세 (35)만원</span>
+                  <span class="room_price_whether">(납부완료)</span>
+                </div>
+                <div class="room_maintenance">
+                  <span class="room_maintenance_title">유지/보수건</span>
+                  <span class="room_maintenance_cnt">(3)</span>
+                </div>
+              </div>
+              <div class="room_right bt" onclick="location.href='msg.html'">
+                <i class="fas fa-bullhorn"></i>
               </div>
             </div>
-            <div class="room_right bt" onclick="location.href='msg.html'">
-              <i class="fas fa-bullhorn"></i>
+            <div class="room_bottom">
+              <span class="room_phnum">세입자 전화번호 : (010-5484-5421)</span>
             </div>
           </div>
         </div>

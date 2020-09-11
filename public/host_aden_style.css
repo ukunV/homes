@@ -1,0 +1,64 @@
+.room {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid orange;
+}
+
+.room_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.room_top,
+.room_bottom {
+  border: 2px solid blue;
+}
+
+.room_left,
+.room_mid,
+.room_right {
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+}
+
+.room_left {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.room_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.room_pay_bt {
+  padding: 0 0.2rem;
+}
+
+.room_num {
+  font-size: 0.8rem;
+}
+
+.room_tnt {
+  font-weight: 600;
+}
+
+.room_mid {
+  flex: 1.8;
+}
+
+.room_price_whether,
+.room_maintenance_cnt {
+  color: #d60000;
+}
+
+.room_right {
+  flex: 0.3;
+  text-align: center;
+}

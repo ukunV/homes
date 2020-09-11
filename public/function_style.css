@@ -1,0 +1,18 @@
+.push_contents,
+.notice_contents {
+  background-color: white;
+  color: black;
+  overflow: scroll;
+  height: 13rem;
+}
+
+.notice_name,
+.push_name {
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.sel_receiver {
+  display: flex;
+  flex-direction: column;
+}
