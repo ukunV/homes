@@ -9,7 +9,7 @@ html,
 body {
   color: var(--white-color);
   background-color: var(--white-color);
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   margin: 0 !important;
 }
 
@@ -71,7 +71,7 @@ i {
 .header {
   display: flex;
   justify-content: space-between;
-  border: 2px solid var(--black-color);
+  border: 2px solid yellow;
 }
 
 .header_left {
@@ -94,6 +94,24 @@ i {
 #header_right_role {
   font-size: 0.8rem;
   font-weight: lighter;
+}
+
+.set_menu {
+  background-color: #bcbcbc;
+  color: var(--black-color);
+  border-radius: 0.3rem;
+  width: 6rem;
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 1.6rem;
+  right: 18.3rem;
+}
+
+.set_menu.active {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .content {

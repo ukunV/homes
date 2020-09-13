@@ -3,37 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Noto Sans KR"
-    />
+    <link rel="stylesheet" href="main_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="module.js" defer></script>
-    <script
-      src="https://kit.fontawesome.com/69cc74444b.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주</title>
   </head>
   <body>
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar_main">
-          <div class="main_content bt" onclick="location.href='host.html'">
-            홈
-          </div>
+          <div class="main_content bt" onclick="location.href='host.html'">홈</div>
           <div class="main_content bt" onclick="location.href=''">알림</div>
           <div class="main_content bt" onclick="location.href=''">기능</div>
           <div class="main_content bt" onclick="location.href=''">설정</div>
         </div>
-        <div class="navbar_setapp bt" onclick="location.href='setting.html'">
+        <div class="navbar_setapp bt">
           <i class="fas fa-cog"></i>
         </div>
       </div>
 
-      <div class="header_left">
-        <span id="header_left_name">(이건욱)</span>
-        <span id="header_left_role">건물주</span>
+      <div class="header">
+        <div class="header_left">
+          <span id="header_left_name">(이건욱)</span>
+          <span id="header_left_role">건물주</span>
+        </div>
+      </div>
+
+      <div class="set_menu">
+        <div class="set_account bt">계정관리</div>
+        <div class="set_notice bt">공지사항</div>
+        <div class="set_push bt">알림설정</div>
+        <div class="set_logout bt">로그아웃</div>
       </div>
 
       <div class="content">
@@ -41,10 +42,7 @@
 
         <div class="content_wrapper">
           <div id="content_1">
-            <div
-              class="content_left bt"
-              onclick="location.href='host_aden.html'"
-            >
+            <div class="content_left bt" onclick="location.href='host_aden.html'">
               <div class="content_name">(에덴빌)</div>
               <div class="content_mgr">
                 <span class="mgr_title">관리인</span>
