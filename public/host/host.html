@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/main_style.css" />
+    <link rel="stylesheet" href="../main_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="module.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
@@ -25,8 +25,9 @@
 
       <div class="header">
         <div class="header_left">
-          <span id="header_left_name">(이건욱)</span>
-          <span id="header_left_role">건물주</span>
+          <span id="header_left_name">이건욱</span>
+          <span id="header_left_role">건물주님,</span>
+          <p id="welcome-message">안녕하세요!</p>
         </div>
       </div>
 
@@ -38,28 +39,28 @@
       </div>
 
       <div class="content">
-        <div class="content_title">건물리스트</div>
-
+        <div class="content_title">내 건물</div>
         <div class="content_wrapper">
-          <div id="content_1">
+          <!--건물 한개 시작-->
+          <div class="content-building">
             <div class="content_left bt" onclick="location.href='host_aden.html'">
-              <div class="content_name">(에덴빌)</div>
+              <div class="content_name">에덴빌</div>
               <div class="content_mgr">
                 <span class="mgr_title">관리인</span>
-                <span class="mgr_name">(조정민)</span>
+                <span class="content_name">조정민</span>
               </div>
             </div>
 
             <div class="content_mid">
               <div class="content_payment">
                 <span class="pay_count_l">미납건</span>
-                <span class="pay_count">(3)</span>
+                <span class="pay_count red-count">3</span>
                 <span class="pay_count_r">건</span>
               </div>
 
               <div class="content_maintenance">
                 <span class="repair_count_l">유지/보수건</span>
-                <span class="repair_count">(3)</span>
+                <span class="repair_count red-count">3</span>
                 <span class="repair_count_r">건</span>
               </div>
             </div>
@@ -69,6 +70,73 @@
                 <i class="fas fa-bullhorn"></i>
               </div>
             </div>
+          </div>
+          <!--건물 한개 끝-->
+          <!--건물 한개 시작-->
+          <div class="content-building">
+            <div class="content_left bt" onclick="location.href='host_aden.html'">
+              <div class="content_name">에덴빌</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="content_name">조정민</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count red-count">3</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count red-count">3</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div class="content_right bt" onclick="location.href='msg.html';">
+              <div class="content_msg">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+            </div>
+          </div>
+          <!--건물 한개 끝-->
+          <!--건물 한개 시작-->
+          <div class="content-building">
+            <div class="content_left bt" onclick="location.href='host_aden.html'">
+              <div class="content_name">에덴빌</div>
+              <div class="content_mgr">
+                <span class="mgr_title">관리인</span>
+                <span class="content_name">조정민</span>
+              </div>
+            </div>
+
+            <div class="content_mid">
+              <div class="content_payment">
+                <span class="pay_count_l">미납건</span>
+                <span class="pay_count red-count">3</span>
+                <span class="pay_count_r">건</span>
+              </div>
+
+              <div class="content_maintenance">
+                <span class="repair_count_l">유지/보수건</span>
+                <span class="repair_count red-count">3</span>
+                <span class="repair_count_r">건</span>
+              </div>
+            </div>
+
+            <div class="content_right bt" onclick="location.href='msg.html';">
+              <div class="content_msg">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+            </div>
+          </div>
+          <!--건물 한개 끝-->
+          <div class="show-more-wrapper">
+            <i class="fas fa-arrow-down"></i>
+            <div class="small-message">더 보기</div>
           </div>
         </div>
       </div>
