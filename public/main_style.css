@@ -105,7 +105,7 @@ i {
   display: none;
   position: absolute;
   top: 1.6rem;
-  right: 18.3rem;
+  right: 0;
 }
 
 .set_menu.active {
