@@ -34,7 +34,7 @@ i {
   align-items: center;
   position: sticky;
   top: 0;
-  padding: 5px 0;
+  padding: 7px 0 5px 0;
   border-bottom: 1.5px solid var(--point-color);
   color: var(--point-color);
   background: var(--white-color);
@@ -49,12 +49,15 @@ i {
   font-size: 1.2rem;
 }
 
-.navbar_setapp {
-  padding: 0 0.5rem;
+.navbar_setapp i {
+  font-size: 1.3rem;
 }
 
-.navbar_setapp i {
-  font-size: 1rem;
+#selected_menu {
+  background: var(--point-color);
+  border-radius: 8px;
+  color: var(--white-color);
+  border-bottom: 2px solid var(--point-color);
 }
 
 .header {
