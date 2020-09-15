@@ -1,0 +1,69 @@
+.room {
+  display: flex;
+  padding: 0.7rem 0.4rem;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+
+.room-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+.room-main-left,
+.room-main-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-main-left {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 0.3rem;
+}
+
+.room-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-pay-bt i {
+  color: var(--point-color);
+  font-size: 2rem;
+}
+
+.room-num {
+  font-size: 0.8rem;
+}
+
+.room-tnt {
+  font-weight: 600;
+}
+
+.room-main-right {
+  flex: 1.5;
+  padding-left: 2rem;
+}
+
+.room-maintenance {
+  padding-top: 0.3rem;
+}
+
+.room-price-whether,
+.room-maintenance-cnt {
+  background-color: var(--push-color);
+  color: var(--white-color);
+  border-radius: 0.3rem;
+}
+
+.room-bottom {
+  padding-left: 0.3rem;
+}

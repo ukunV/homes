@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../common/main_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="../common/module.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>관리인</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" onclick="location.href='mgr.html'" id="selected_menu">
+            홈
+          </div>
+          <div class="main-content bt" onclick="location.href='../common/push.html'">알림</div>
+          <div class="main-content bt" onclick="location.href=''">기능</div>
+          <div class="main-content bt" onclick="location.href=''">관리</div>
+        </div>
+        <div class="navbar-setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="header">
+        <div class="header-left">
+          <span id="header_left_name">조정민</span>
+          <span id="header_left_role">관리인님,</span>
+          <p id="welcome_message">안녕하세요!</p>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+    </div>
+
+    <div class="content"></div>
+  </body>
+</html>

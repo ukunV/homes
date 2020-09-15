@@ -1,0 +1,28 @@
+.push-contents {
+  padding-top: 1.3rem;
+}
+
+.push-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--point-color);
+  padding-right: 0.3rem;
+}
+
+.push-img {
+  flex: 1;
+  text-align: center;
+}
+
+.push-img i {
+  color: var(--push-color);
+}
+
+.push-main {
+  flex: 5;
+}
+
+.push-when {
+  font-size: 0.8rem;
+}

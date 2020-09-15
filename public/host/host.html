@@ -3,72 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/main_style.css" />
+    <link rel="stylesheet" href="../common/main_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="module.js" defer></script>
+    <script src="../module.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주</title>
   </head>
   <body>
     <div class="wrapper">
       <div class="navbar">
-        <div class="navbar_main">
-          <div class="main_content bt" onclick="location.href='host.html'">홈</div>
-          <div class="main_content bt" onclick="location.href=''">알림</div>
-          <div class="main_content bt" onclick="location.href=''">기능</div>
-          <div class="main_content bt" onclick="location.href=''">설정</div>
+        <div class="navbar-main">
+          <div class="main-content bt" onclick="location.href='host.html'" id="selected_menu">
+            홈
+          </div>
+          <div class="main-content bt" onclick="location.href='../common/push.html'">알림</div>
+          <div class="main-content bt" onclick="location.href=''">기능</div>
+          <div class="main-content bt" onclick="location.href=''">관리</div>
         </div>
-        <div class="navbar_setapp bt">
+        <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
         </div>
       </div>
 
       <div class="header">
-        <div class="header_left">
-          <span id="header_left_name">(이건욱)</span>
-          <span id="header_left_role">건물주</span>
+        <div class="header-left">
+          <span id="header_left_name">이건욱</span>
+          <span id="header_left_role">건물주님,</span>
+          <p id="welcome_message">안녕하세요!</p>
         </div>
       </div>
 
-      <div class="set_menu">
-        <div class="set_account bt">계정관리</div>
-        <div class="set_notice bt">공지사항</div>
-        <div class="set_push bt">알림설정</div>
-        <div class="set_logout bt">로그아웃</div>
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
       </div>
 
       <div class="content">
-        <div class="content_title">건물리스트</div>
-
-        <div class="content_wrapper">
-          <div id="content_1">
-            <div class="content_left bt" onclick="location.href='host_aden.html'">
-              <div class="content_name">(에덴빌)</div>
-              <div class="content_mgr">
-                <span class="mgr_title">관리인</span>
-                <span class="mgr_name">(조정민)</span>
+        <div class="content-title">내 건물</div>
+        <div class="content-wrapper">
+          <!--건물 한개 시작-->
+          <div class="content-building">
+            <div class="content-left bt" onclick="location.href='host_aden.html'">
+              <div class="content-name">에덴빌</div>
+              <div class="content-mgr">
+                <span class="mgr-title">관리인</span>
+                <span class="content-name">조정민</span>
               </div>
             </div>
 
-            <div class="content_mid">
-              <div class="content_payment">
-                <span class="pay_count_l">미납건</span>
-                <span class="pay_count">(3)</span>
-                <span class="pay_count_r">건</span>
+            <div class="content-mid">
+              <div class="content-payment">
+                <span class="pay-count-l">미납건</span>
+                <span class="pay-count red-count">3</span>
+                <span class="pay-count-r">건</span>
               </div>
 
-              <div class="content_maintenance">
-                <span class="repair_count_l">유지/보수건</span>
-                <span class="repair_count">(3)</span>
-                <span class="repair_count_r">건</span>
+              <div class="content-maintenance">
+                <span class="repair-count_l">유지/보수건</span>
+                <span class="repair-count red-count">3</span>
+                <span class="repair-count-r">건</span>
               </div>
             </div>
 
-            <div class="content_right bt" onclick="location.href='msg.html';">
-              <div class="content_msg">
+            <div class="content-right bt" onclick="location.href='msg.html';">
+              <div class="content-msg">
                 <i class="fas fa-bullhorn"></i>
               </div>
             </div>
+          </div>
+          <!--건물 한개 끝-->
+          <!--건물 한개 시작-->
+
+          <div class="show-more-wrapper bt">
+            <i class="fas fa-arrow-down"></i>
+            <div class="small-message">더 보기</div>
           </div>
         </div>
       </div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main_style.css" />
+    <link rel="stylesheet" href="push_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>알림</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" onclick="location.href='../host/host.html'">홈</div>
+          <div class="main-content bt" onclick="location.href='push.html'" id="selected_menu">
+            알림
+          </div>
+          <div class="main-content bt" onclick="location.href=''">기능</div>
+          <div class="main-content bt" onclick="location.href=''">설정</div>
+        </div>
+        <div class="navbar-setapp bt" onclick="location.href='setting.html'">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="push">
+        <div class="push-contents">
+          <div class="push-items">
+            <div class="push-img">
+              <i class="far fa-envelope"></i>
+            </div>
+            <div class="push-main">
+              <div class="push-msg">
+                '에덴빌 202호 허전진'님께서 입금완료 하셨습니다. 계좌를 확인해주세요
+              </div>
+              <div class="push-when">
+                <span class="push-date">20/09/15</span>
+                <span class="push-time">오후 7:39</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

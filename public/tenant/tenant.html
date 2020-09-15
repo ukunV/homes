@@ -3,85 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/main_style.css" />
-    <link rel="stylesheet" href="/public/tenent_style.css" />
+    <link rel="stylesheet" href="../common/main_style.css" />
+    <link rel="stylesheet" href="tenent_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="module.js" defer></script>
+    <script src="../module.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>세입자</title>
   </head>
   <body>
     <div class="wrapper">
       <div class="navbar">
-        <div class="navbar_main">
-          <div class="main_content bt" onclick="location.href='tenant.html'">홈</div>
-          <div class="main_content bt" onclick="location.href=''">알림</div>
-          <div class="main_content bt" onclick="location.href=''">기능</div>
-          <div class="main_content bt" onclick="location.href=''">설정</div>
+        <div class="navbar-main">
+          <div class="main-content bt" onclick="location.href='tenant.html'" id="selected_menu">
+            홈
+          </div>
+          <div class="main-content bt" onclick="location.href='../common/push.html'">알림</div>
+          <div class="main-content bt" onclick="location.href=''">기능</div>
         </div>
-        <div class="navbar_setapp bt">
+        <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
         </div>
       </div>
 
       <div class="header">
-        <div class="header_left">
-          <span id="header_left_name">(허전진)</span>
-          <span id="header_left_role">세입자</span>
+        <div class="header-left">
+          <span id="header_left_name">허전진</span>
+          <span id="header_left_role">세입자님,</span>
+          <p id="welcome_message">안녕하세요!</p>
         </div>
       </div>
 
-      <div class="set_menu">
-        <div class="set_account bt">계정관리</div>
-        <div class="set_notice bt">공지사항</div>
-        <div class="set_push bt">알림설정</div>
-        <div class="set_logout bt">로그아웃</div>
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
       </div>
 
       <div class="content">
-        <div class="content_title">(에덴빌 202호)</div>
-        <div class="hst_mgr">
+        <div class="content-title">에덴빌 202호</div>
+        <div class="hst-mgr">
           <div class="hst">
-            <div class="hst_basic">
-              <span class="hst_role">건물주</span>
-              <span class="hst_name">(이건욱)</span>
-              <i class="fas fa-bullhorn"></i>
+            <div class="hst-basic">
+              <span class="hst-role">건물주</span>
+              <span class="hst-name">이건욱</span>
+              <i class="fas fa-bullhorn bt"></i>
             </div>
-            <div class="hst_info">
-              <span class="hst_phnum">(010-1234-5678)</span>
-              <span class="hst_bank">(국민은행 00000000000000)</span>
+            <div class="hst-info">
+              <span class="hst-phnum">010-1234-5678</span>
+              <span class="hst-bank">국민은행 00000000000000</span>
             </div>
           </div>
           <div class="mgr">
             <div class="basic">
-              <span class="mgr_role">관리인</span>
-              <span class="mgr_name">(조정민)</span>
-              <i class="fas fa-bullhorn"></i>
+              <span class="mgr-role">관리인</span>
+              <span class="mgr-name">조정민</span>
+              <i class="fas fa-bullhorn bt"></i>
             </div>
             <div class="info">
-              <span class="mgr_phnum">(010-1234-5678)</span>
+              <span class="mgr-phnum">010-1234-5678</span>
             </div>
           </div>
         </div>
 
         <div class="date">
-          <div class="cont_date">
-            <span>계약일</span>
-            <span>(2020/01/01)</span>
+          <div class="start">
+            <span class="start-title">계약일</span>
+            <span class="start-date">2020/01/01</span>
           </div>
-          <div class="due_date">
-            <span>만기일</span>
-            <span>(2020/06/30)</span>
+          <div class="due">
+            <span class="due-title">만기일</span>
+            <span class="due-dtae">2020/06/30</span>
           </div>
-          <div class="left_date">
-            <span>(500)</span>
-            <span>일 남음</span>
+          <div class="date-count">
+            <span class="count-num">500</span>
+            <span class="count-tail">일 남음</span>
           </div>
         </div>
 
-        <div class="monthly_payment">
-          <span>월세 납부 여부</span>
-          <span>(미납)</span>
+        <div class="monthly-payment">
+          <span class="monthly-payment-title">월세 납부 여부</span>
+          <span class="monthly-payment-status">미납</span>
         </div>
       </div>
     </div>
