@@ -84,7 +84,7 @@ i {
 }
 
 #header_left_role {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 0.07rem 0.1rem;
 }
 
@@ -124,6 +124,10 @@ i {
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.4rem 0.5rem 0.7rem 0.5rem;
+}
+
+.content-left > .content-name {
+  font-size: 1.3rem;
 }
 
 .content-name {
@@ -171,6 +175,10 @@ i {
 .content-mid {
   flex: 2;
   font-size: 0.9rem;
+}
+
+.content-maintenance {
+  padding-top: 0.3rem;
 }
 
 .content-right {

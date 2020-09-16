@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../common/main_style.css" />
-    <link rel="stylesheet" href="mgr_style.css" />
+    <link rel="stylesheet" href="mgr_aden_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="../common/module.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
-    <title>관리인</title>
+    <title>관리인_건물정보</title>
   </head>
   <body>
     <div class="wrapper">
@@ -26,14 +26,6 @@
         </div>
       </div>
 
-      <div class="header">
-        <div class="header-left">
-          <span id="header_left_name">조정민</span>
-          <span id="header_left_role">관리인님,</span>
-          <p id="welcome_message">안녕하세요!</p>
-        </div>
-      </div>
-
       <div class="set-menu">
         <div class="set-account bt">계정관리</div>
         <div class="set-notice bt">공지사항</div>
@@ -42,25 +34,32 @@
       </div>
 
       <div class="content">
-        <div class="content-title">내가 관리중인 건물</div>
-        <div class="content-wrapper">
-          <div class="belongs bt" onclick="location.href='mgr_aden.html'">
-            <div class="belongs-top">
-              <div class="belongs-title">에덴빌</div>
-
-              <div class="belongs-main">
-                <span class="belongs-main-mtns">유지/보수건</span>
-                <span class="belongs-main-cnt">3</span>
+        <div class="content-title">에덴빌</div>
+        <div class="builing-rooms">
+          <div class="room">
+            <div class="room-main">
+              <div class="room-main-left">
+                <div class="room-info">
+                  <span class="room-num">101호</span>
+                  <span class="room-tnt">허전진</span>
+                </div>
+              </div>
+              <div class="room-main-right">
+                <div class="room-maintenance">
+                  <span class="room-maintenance-title">유지/보수건</span>
+                  <span class="room-maintenance-cnt">3</span>
+                </div>
               </div>
             </div>
-
-            <div class="belongs-bottom">
-              <span class="belongs-bottom-title">건물주 </span>
-              <span class="belongs-bottom-content">이건욱</span>
-              <span class="belongs-bottom-title">전화번호</span>
-              <span class="belongs-bottom-content">010-5484-5421</span>
+            <div class="room-bottom">
+              <span class="room-phnum">세입자 전화번호 : 010-5484-5421</span>
             </div>
           </div>
+        </div>
+
+        <div class="show-more-wrapper bt">
+          <i class="fas fa-arrow-down"></i>
+          <div class="small-message">더 보기</div>
         </div>
       </div>
     </div>

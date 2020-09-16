@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="main_style.css" />
-    <link rel="stylesheet" href="push_style.css" />
+    <link rel="stylesheet" href="../common/main_style.css" />
+    <link rel="stylesheet" href="../common/push_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <script src="../common/module.js"></script>
@@ -14,12 +14,15 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='../host/host.html'">홈</div>
-          <div class="main-content bt" onclick="location.href='push.html'" id="selected_menu">
+          <div class="main-content bt" onclick="location.href='tenant.html'">홈</div>
+          <div
+            class="main-content bt"
+            onclick="location.href='tenant_push.html'"
+            id="selected_menu"
+          >
             알림
           </div>
           <div class="main-content bt" onclick="location.href=''">기능</div>
-          <div class="main-content bt" onclick="location.href=''">관리</div>
         </div>
         <div class="navbar-setapp bt" onclick="location.href='setting.html'">
           <i class="fas fa-cog"></i>

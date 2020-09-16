@@ -13,57 +13,39 @@
   align-items: center;
   width: 100%;
   padding-bottom: 0.5rem;
-}
-
-.room-main-left,
-.room-main-right {
-  display: flex;
-  flex-direction: column;
+  border-bottom: 2px solid var(--point-color);
 }
 
 .room-main-left {
-  flex: 1.3;
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row;
-  padding-left: 0.3rem;
-}
-
-.room-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.room-pay-bt i {
-  color: var(--point-color);
-  font-size: 2rem;
+  padding-left: 1.3rem;
 }
 
 .room-tnt {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .room-main-right {
-  flex: 1.5;
-  padding-left: 2rem;
+  flex: 1;
 }
 
 .room-maintenance {
-  padding-top: 0.3rem;
+  font-size: 1.2rem;
 }
 
-.room-payment-whether,
 .room-maintenance-cnt {
-  font-size: 0.8rem;
   font-weight: 600;
   color: var(--white-color);
   background: var(--push-color);
   border-radius: 6px;
-  padding: 0.1rem 0.2rem;
+  padding: 0 0.2rem;
 }
 
 .room-bottom {
-  padding-left: 0.3rem;
+  padding-left: 1rem;
+  padding-top: 0.4rem;
 }
