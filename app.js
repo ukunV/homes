@@ -1,55 +1,87 @@
-const express = require('express');
-const app = express();
-const http = require('http').createServer(app);
-const path = require('path');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const static = require('serve-static');
-const expressErrorHandler = require('express-error-handler');
-const expressSession = require('express-session');
-const ejs = require('ejs');
-const fs = require('fs');
-const url = require('url');
-const cors = require('cors'); //ajax 요청시 cors 지원
-let errorHandler = require('errorhandler');
+var express = require('express');
+var app = express();
+var http = require('http').createServer(app);
+var path = require('path'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    static = require('serve-static'),
+    errorHandler = require('errorhandler'),
+    expressErrorHandler = require('express-error-handler'),
+    expressSession = require('express-session'),
+    ejs = require('ejs'),
+    fs = require('fs'),
+    url = require('url'),
+    cors = require('cors') //ajax 요청시 cors 지원
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  }),
-);
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use('/public', express.static(__dirname + '/public'));
 app.use(cookieParser());
-app.use(
-  expressSession({
+app.use(expressSession({
     secret: 'my key',
     resave: true,
-    saveUninitialized: true,
-  }),
-);
+    saveUninitialized: true
+}));
 app.use(cors());
 
-const router = express.Router();
+var router = express.Router();
 
-// 메인페이지
-const index = require('./routes/index.js');
+//메인 페이지 라우터
+var index = require('./routes/index.js');
 router.route('/').get(index);
+
+//회원가입 라우터
+var register = require('./routes/register.js');
+router.route('/register').get(register.register);
+router.route('/reg_submit').post(register.reg_submit);
+
+//로그인 라우터
+var login = require('./routes/login.js');
+router.route('/process/login').post(login);
+
+//로그아웃 라우터
+var logout = require('./routes/logout.js');
+router.route('/logout').get(logout);
+
+// 건물주페이지 라우터
+var host = require('./routes/host.js');
+router.route('/host/management').get(host.host_management);
+
+// 관리인페이지 라우터
+var manager = require('./routes/manager.js');
+router.route('/manager/management').get(manager.manager_management);
+
+// 세입자페이지 라우터
+var tenant = require('./routes/tenant.js');
+router.route('/tenant/management').get(tenant.tenant_management);
+
+// 알림페이지 라우터
+
+//FCM 처리 사용자 디바이스 토큰 관리 라우터
+var token = require('./routes/token.js');
+router.route('/token').post(token.addToken);
 
 app.use('/', router);
 
 // 404 에러 페이지 처리
-errorHandler = expressErrorHandler({
-  static: {
-    404: './public/404.html',
-  },
+var errorHandler = expressErrorHandler({
+    static: {
+        '404': './public/404.html'
+    }
 });
+
 
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);
 
-http.listen(app.get('port'), function () {
-  console.log('server started - port: ' + app.get('port'));
-});
+
+//웹서버 생성
+http.listen(app.get('port'),
+    function () {
+        console.log('server started - port: ' + app.get('port'));
+    }
+);

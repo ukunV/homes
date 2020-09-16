@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="../common/main_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/module.js" defer></script>
+    <script src="../module.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주</title>
   </head>
@@ -16,7 +16,7 @@
           <div class="main-content bt" onclick="location.href='host.html'" id="selected_menu">
             홈
           </div>
-          <div class="main-content bt" onclick="location.href='/public/common/push.html'">알림</div>
+          <div class="main-content bt" onclick="location.href='../common/push.html'">알림</div>
           <div class="main-content bt" onclick="location.href=''">기능</div>
           <div class="main-content bt" onclick="location.href=''">관리</div>
         </div>
@@ -27,7 +27,7 @@
 
       <div class="header">
         <div class="header-left">
-          <span id="header_left_name">이건욱</span>
+          <span id="header_left_name"><%=name%></span>
           <span id="header_left_role">건물주님,</span>
           <p id="welcome_message">안녕하세요!</p>
         </div>
