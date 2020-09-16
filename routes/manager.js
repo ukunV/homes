@@ -1,4 +1,3 @@
-//공종, 동, 호 선택 함수
 var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');

@@ -1,7 +1,7 @@
 const ejs = require('ejs'),
-    fs = require('fs'),
-    mysql = require('mysql'),
-    crypto = require('crypto');
+fs = require('fs'),
+mysql = require('mysql'),
+crypto = require('crypto');
 
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
@@ -10,23 +10,24 @@ var login = function (req, res) {
 
     let checkId = req.body.id,
         checkPwd = crypto.createHash('sha512').update(req.body.password).digest('base64'); //sha512-base64 암호화
-    var selectPwdSql = "select * from user where user_id = ? && password=?";
-    var setToken = 'update user set token = ? where id=?;';
-    mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
-        if (err) {
-            console.log("select page sql ERROR>>" + err);
-        } else {
-            if (row[0]) {
-                console.log('login sql - name:' + row[0].name + 'type:' + row[0].type);
-                const id = row[0].id;
-                req.session.user = {
-                    id: row[0].id,
-                    userId: checkId,
-                    userName: row[0].name,
-                    userType: row[0].type
-                };
-                console.log(req.cookies.token);
-                if (req.cookies.token && req.session.user.userType === '건물주') {
+        var selectPwdSql = "select * from user where user_id = ? && password=?";
+        var setToken = 'update user set token = ? where id=?;';
+        mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
+            if (err) {
+                console.log("select page sql ERROR>>" + err);
+            } else {
+                if (row[0]) {
+                    console.log('login sql - name:' + row[0].name + 'type:' + row[0].type);
+                    const id = row[0].id;
+                    req.session.user = {
+                        id: row[0].id,
+                        userId: checkId,
+                        userName: row[0].name,
+                        userType: row[0].type
+                    };
+                    console.log(req.cookies.token);
+
+                    if (req.cookies.token && req.session.user.userType === '건물주') {
                     //token값이 다른 사용자에게서 사용되고 있는지 확인
                     const checkTokenSql = 'select * from user where token=?';
                     mySqlClient.query(checkTokenSql, req.cookies.token, function (err, row) {

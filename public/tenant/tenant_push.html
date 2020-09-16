@@ -3,30 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../common/main_style.css" />
-    <link rel="stylesheet" href="../common/push_style.css" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="/public/common/push_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
-    <script src="../common/module.js"></script>
     <title>알림</title>
   </head>
   <body>
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='tenant.html'">홈</div>
+          <div class="main-content bt" onclick="location.href='/'">홈</div>
           <div
             class="main-content bt"
-            onclick="location.href='tenant_push.html'"
+            onclick="location.href='/tenant/push'"
             id="selected_menu"
           >
             알림
           </div>
           <div class="main-content bt" onclick="location.href=''">기능</div>
         </div>
-        <div class="navbar-setapp bt" onclick="location.href='setting.html'">
+        <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
         </div>
+      </div>
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
       </div>
 
       <div class="push">
