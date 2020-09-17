@@ -1,0 +1,21 @@
+.func-select {
+  background-color: var(--point-color);
+  border-radius: 3rem;
+  height: 18rem;
+  margin: 1rem;
+  box-shadow: 5px 5px 5px skyblue;
+}
+
+.select-title {
+  text-align: center;
+  color: var(--white-color);
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-title i {
+  font-size: 3rem;
+  padding-top: 4.5rem;
+  padding-bottom: 1rem;
+}

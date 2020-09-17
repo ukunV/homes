@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="management_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>관리-건물관리</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" onclick="location.href='/'">홈</div>
+          <div class="main-content bt" onclick="location.href='/push'">알림</div>
+          <div class="main-content bt" onclick="location.href='/public/common/function.html'">
+            기능
+          </div>
+          <div class="main-content bt" onclick="location.href=''" id="selected_menu">관리</div>
+        </div>
+        <div class="navbar-setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+
+      <div class="mgmt-list">
+        <div class="mgmt-list-item bt">
+          <span class="item-title">세입자 변경</span>
+          <i class="fas fa-angle-right"></i>
+        </div>
+        <div class="mgmt-list-item bt">
+          <span class="item-title">관리인 변경</span>
+          <i class="fas fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
