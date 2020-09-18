@@ -9,7 +9,7 @@ var push = function (req, res) {
 	if (req.session.user) {
 			fs.readFile('./public/common/push.html', 'utf8', function (error, data) {
 				res.send(ejs.render(data,{
-					name: selected_name
+					// name: selected_name
 				}));
 			});
 	} else {
