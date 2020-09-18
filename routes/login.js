@@ -44,7 +44,7 @@ var login = function (req, res) {
                                         });
                                         console.log("200 - Set Cookie Finished");
                                     }
-                                    res.redirect('/host/management/');
+                                    res.redirect('/host');
                                 }
                             });
                         } else {
@@ -52,13 +52,13 @@ var login = function (req, res) {
                                 res.writeHead(200, {
                                     'Set-Cookie': 'token=; Max-Age:0'
                                 });
-                                res.redirect('/host/management/');
+                                res.redirect('/host');
                             }
                         }
                     });
                 } else if(!req.cookies.token && req.session.user.userType==='건물주'){
-                    res.redirect('/host/management/');
-                }else if (req.cookies.token && req.session.user.userType === '관리인') {
+                    res.redirect('/host');
+                } else if (req.cookies.token && req.session.user.userType === '관리인') {
                     //token값이 다른 사용자에게서 사용되고 있는지 확인
                     const checkTokenSql = 'select * from user where token=?';
                     mySqlClient.query(checkTokenSql, req.cookies.token, function (err, row) {
@@ -75,7 +75,7 @@ var login = function (req, res) {
                                         });
                                         console.log("200 - Set Cookie Finished");
                                     }
-                                    res.redirect('/manager/management/');
+                                    res.redirect('/manager');
                                 }
                             });
                         } else {
@@ -83,13 +83,13 @@ var login = function (req, res) {
                                 res.writeHead(200, {
                                     'Set-Cookie': 'token=; Max-Age:0'
                                 });
-                                res.redirect('/manager/management/');
+                                res.redirect('/manager');
                             }
                         }
                     });
                 } else if(!req.cookies.token && req.session.user.userType==='관리인'){
-                    res.redirect('/manager/management/');
-                }else if (req.cookies.token && req.session.user.userType === '세입자') {
+                    res.redirect('/manager');
+                } else if (req.cookies.token && req.session.user.userType === '세입자') {
                     //token값이 다른 사용자에게서 사용되고 있는지 확인
                     const checkTokenSql = 'select * from user where token=?';
                     mySqlClient.query(checkTokenSql, req.cookies.token, function (err, row) {
@@ -106,7 +106,7 @@ var login = function (req, res) {
                                         });
                                         console.log("200 - Set Cookie Finished");
                                     }
-                                    res.redirect('/tenant/management/');
+                                    res.redirect('/tenant');
                                 }
                             });
                         } else {
@@ -114,12 +114,12 @@ var login = function (req, res) {
                                 res.writeHead(200, {
                                     'Set-Cookie': 'token=; Max-Age:0'
                                 });
-                                res.redirect('/tenant/management/');
+                                res.redirect('/tenant');
                             }
                         }
                     });
                 } else if(!req.cookies.token && req.session.user.userType==='세입자'){
-                    res.redirect('/tenant/management/');
+                    res.redirect('/tenant');
                 }
             } else {
                 res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');

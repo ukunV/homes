@@ -49,15 +49,15 @@ router.route('/process/logout').get(logout);
 
 // 건물주페이지 라우터
 var host = require('./routes/host.js');
-router.route('/host/management').get(host.host_management);
+router.route('/host').get(host.host);
 
 // 관리인페이지 라우터
 var manager = require('./routes/manager.js');
-router.route('/manager/management').get(manager.manager_management);
+router.route('/manager').get(manager.manager);
 
-// 세입자페이지 라우터
+// 세입자페이지 라우터s
 var tenant = require('./routes/tenant.js');
-router.route('/tenant/management').get(tenant.tenant_management);
+router.route('/tenant').get(tenant.tenant);
 
 // 건물주/관리인 알림페이지 라우터
 var push = require('./routes/push.js');
@@ -74,6 +74,22 @@ router.route('/host/aden').get(host_aden.host_aden);
 // 관리인 건물정보페이지 라우터
 var mgr_aden = require('./routes/mgr_aden.js');
 router.route('/mgr/aden').get(mgr_aden.mgr_aden);
+
+// 건물주 관리페이지 라우터
+var host_management = require('./routes/host_management.js');
+router.route('/host/management').get(host_management.host_management);
+
+// 건물주/관리인 기능페이지 라우터
+//var _function = require('./routes/function.js');
+//router.route('/function').get(_function._function);
+
+// 세입자 기능페이지 라우터
+var tenant_function = require('./routes/tenant_function.js');
+router.route('/tenant/function').get(tenant_function.tenant_function);
+
+// 건물관리페이지 라우터
+var mgmt_building = require('./routes/mgmt_building.js');
+router.route('/building_management').get(mgmt_building.mgmt_building);
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 var token = require('./routes/token.js');
