@@ -11,6 +11,8 @@ version="0.1"
 host_port=3000
 virtual_port=3000
 
+echo "## Automation docker build and run ##"
+
 # remove container
 echo "=> Remove previous container..."
 docker rm -f ${container_name}
