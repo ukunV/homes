@@ -10,7 +10,8 @@ module.exports = {
   debug: false,
   insecureAuth: true,
 };
-// 위에꺼 놔두고 밑에꺼 주석 풀어서 해 정민
+// 위에 Server용 절대 지우지말것
+// 테스트할거면 밑에서 컨픽짜서 하기바람
 
 // //FOR LOCAL TEST - 정민
 // module.exports = {
