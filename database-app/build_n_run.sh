@@ -1,8 +1,6 @@
 # Build N Run DB Container
 # 2020. 09. 18 Zini
 
-### You MUST RUN Database Container First ###
-
 docker_username="heojj97"
 db_image_name="homes-mysql"
 db_container_name="homes-database"
