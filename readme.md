@@ -17,25 +17,25 @@
 ## Start
 
 1. You need to install basic tools and Docker (If you already have all requirements, skip this step)
-```bash
-sudo apt-get update
-sudo apt-get install -y wget
-sudo wget -qO- https://get.docker.com/ | sh
-```
+    ```bash
+    sudo apt-get update
+    sudo apt-get install -y wget
+    sudo wget -qO- https://get.docker.com/ | sh
+    ```
 
 2. Clone this git and change permission of auto-script
-```bash
-git clone https://github.com/zinirun/homes-app
-chmod +x homes-app/database-app/build_n_run.sh
-chmod +x homes-app/build_n_run.sh
-```
+    ```bash
+    git clone https://github.com/zinirun/homes-app
+    chmod +x homes-app/database-app/build_n_run.sh
+    chmod +x homes-app/build_n_run.sh
+    ```
 
 3. Run database container with auto-script and **wait at least 30 seconds** (Database will be initialized)
-```bash
-./<project folder>/database-app/build_n_run.sh
-```
+    ```bash
+    ./<project folder>/database-app/build_n_run.sh
+    ```
 
 4. Run node container with auto-script
-```bash
-./<project folder>/build_n_run.sh
-```
+    ```bash
+    ./<project folder>/build_n_run.sh
+    ```
