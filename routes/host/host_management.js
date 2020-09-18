@@ -2,14 +2,13 @@ var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');
 
-const mySqlClient = mysql.createConnection(require('../config/db_config'));
+const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 
-var mgmt_building = function (req, res) {
+var host_management = function (req, res) {
 	if (req.session.user) {
-		fs.readFile('./public/host/mgmt_building.html', 'utf8', function (error, data) {
+		fs.readFile('./public/host/management.html', 'utf8', function (error, data) {
 			res.send(ejs.render(data,{
-				name: selected_name
 			}));
 		});
 	} else {
@@ -18,4 +17,4 @@ var mgmt_building = function (req, res) {
 };
 
 
-module.exports.mgmt_building = mgmt_building;
+module.exports.host_management = host_management;

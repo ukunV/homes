@@ -2,12 +2,12 @@ var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');
 
-const mySqlClient = mysql.createConnection(require('../config/db_config'));
+const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 
-var host_management = function (req, res) {
+var tenant_function = function (req, res) {
 	if (req.session.user) {
-		fs.readFile('./public/host/management.html', 'utf8', function (error, data) {
+		fs.readFile('./public/tenant/tenant_function.html', 'utf8', function (error, data) {
 			res.send(ejs.render(data,{
 			}));
 		});
@@ -17,4 +17,4 @@ var host_management = function (req, res) {
 };
 
 
-module.exports.host_management = host_management;
+module.exports.tenant_function = tenant_function;

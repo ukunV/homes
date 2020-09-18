@@ -2,12 +2,12 @@ var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');
 
-const mySqlClient = mysql.createConnection(require('../config/db_config'));
+const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 
-var tenant_push = function (req, res) {
+var push = function (req, res) {
 	if (req.session.user) {
-			fs.readFile('./public/tenant/tenant_push.html', 'utf8', function (error, data) {
+			fs.readFile('./public/common/push.html', 'utf8', function (error, data) {
 				res.send(ejs.render(data,{
 					// name: selected_name
 				}));
@@ -18,4 +18,4 @@ var tenant_push = function (req, res) {
 };
 
 
-module.exports.tenant_push = tenant_push;
+module.exports.push = push;

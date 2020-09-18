@@ -2,13 +2,14 @@ var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');
 
-const mySqlClient = mysql.createConnection(require('../config/db_config'));
+const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 
-var tenant_function = function (req, res) {
+var mgmt_building = function (req, res) {
 	if (req.session.user) {
-		fs.readFile('./public/tenant/tenant_function.html', 'utf8', function (error, data) {
+		fs.readFile('./public/host/mgmt_building.html', 'utf8', function (error, data) {
 			res.send(ejs.render(data,{
+				name: selected_name
 			}));
 		});
 	} else {
@@ -17,4 +18,4 @@ var tenant_function = function (req, res) {
 };
 
 
-module.exports.tenant_function = tenant_function;
+module.exports.mgmt_building = mgmt_building;
