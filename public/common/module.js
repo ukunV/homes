@@ -14,5 +14,5 @@ function add_floor(e) {
   let floor_list = document.getElementById('floor_list');
   floor_list.innerHTML += `<div class='cur-floor'><div class='room-floor'>${++cur_cnt}층</div><div class='room-count'><input class='room-num' type='number' min='1' max='999' step='1' /></div></div>`;
 }
-floorAddButton = document.querySelector('#add_bt');
+const floorAddButton = document.querySelector('#add_bt');
 floorAddButton.addEventListener('click', add_floor);

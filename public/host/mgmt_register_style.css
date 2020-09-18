@@ -52,7 +52,7 @@ p {
   border: white;
   background-color: var(--point-color);
   color: var(--white-color);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
 }
@@ -70,13 +70,11 @@ p {
 #floor {
   width: 100%;
   margin-top: 0.5rem;
+  margin-bottom: 5rem;
 }
 
 #floor_adj {
   margin-bottom: 0.5rem;
-}
-
-#floor_list {
 }
 
 #floor_adj button {
