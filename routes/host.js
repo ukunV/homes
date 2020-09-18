@@ -1,3 +1,4 @@
+//공종, 동, 호 선택 함수
 var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');
@@ -5,7 +6,7 @@ mysql = require('mysql');
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 
-var host = function (req, res) {
+var host_management = function (req, res) {
 	if (req.session.user) {
 		var selectd_name;
 		const findId = req.session.user.userId;
@@ -24,4 +25,4 @@ var host = function (req, res) {
 };
 
 
-module.exports.host = host;
+module.exports.host_management = host_management;
