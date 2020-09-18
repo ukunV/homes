@@ -4,8 +4,6 @@ const ejs = require('ejs'),
   crypto = require('crypto');
 
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
-const authConfig = require('../config/auth_config');
-const superPassword = authConfig.super_password;
 
 var loadRegister = function (req, res) {
   fs.readFile('./public/register.html', 'utf8', function (error, data) {
@@ -26,7 +24,7 @@ var registerSubmit = function (req, res) {
 
   let params = {
     user_id: id,
-    user_pwd: pw,
+    password: pw,
     name: name,
     tel: tel,
     type: type,
