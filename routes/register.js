@@ -31,71 +31,63 @@ var registerSubmit = function (req, res) {
   };
 
   var alertMsg = '';
-
-  if (auth == superPassword) {
-    result = checkInput(params);
-    if (result == 2) {
-      alertMsg = '연락처 입력이 잘못되었습니다.';
-      res.send(
-        '<script type="text/javascript">alert("' +
-          alertMsg +
-          '"); window.location="/register";</script>',
-      );
-    } else if (result == 3) {
-      alertMsg = '아이디는 영어/숫자 4-12자리로 입력해주세요.';
-      res.send(
-        '<script type="text/javascript">alert("' +
-          alertMsg +
-          '"); window.location="/register";</script>',
-      );
-    } else {
-      var checkIdSql = 'SELECT * FROM user WHERE user_id = ?;';
-      mySqlClient.query(checkIdSql, params.user_id, function (err, rows) {
-        if (err) {
-          console.log('Search Error>>' + err);
-          alertMsg = '회원등록 중 오류가 발생했습니다.';
+  result = checkInput(params);
+  if (result == 2) {
+    alertMsg = '연락처 입력이 잘못되었습니다.';
+    res.send(
+      '<script type="text/javascript">alert("' +
+        alertMsg +
+        '"); window.location="/register";</script>',
+    );
+  } else if (result == 3) {
+    alertMsg = '아이디는 영어/숫자 4-12자리로 입력해주세요.';
+    res.send(
+      '<script type="text/javascript">alert("' +
+        alertMsg +
+        '"); window.location="/register";</script>',
+    );
+  } else {
+    var checkIdSql = 'SELECT * FROM user WHERE user_id = ?;';
+    mySqlClient.query(checkIdSql, params.user_id, function (err, rows) {
+      if (err) {
+        console.log('Search Error>>' + err);
+        alertMsg = '회원등록 중 오류가 발생했습니다.';
+        res.send(
+          '<script type="text/javascript">alert("' +
+            alertMsg +
+            '"); window.location="/register";</script>',
+        );
+      } else {
+        if (rows.length > 0) {
+          alertMsg = '이미 사용중인 아이디입니다.';
           res.send(
             '<script type="text/javascript">alert("' +
               alertMsg +
               '"); window.location="/register";</script>',
           );
         } else {
-          if (rows.length > 0) {
-            alertMsg = '이미 사용중인 아이디입니다.';
-            res.send(
-              '<script type="text/javascript">alert("' +
-                alertMsg +
-                '"); window.location="/register";</script>',
-            );
-          } else {
-            var insertSql = 'INSERT INTO user SET ?;';
-            mySqlClient.query(insertSql, params, function (err) {
-              if (err) {
-                console.log('Insert Error>>' + err);
-                alertMsg = '회원등록 중 오류가 발생했습니다.';
-                res.send(
-                  '<script type="text/javascript">alert("' +
-                    alertMsg +
-                    '"); window.location="/register";</script>',
-                );
-              } else {
-                alertMsg = '회원가입이 완료되었습니다.';
-                res.send(
-                  '<script type="text/javascript">alert("' +
-                    alertMsg +
-                    '"); window.location="/";</script>',
-                );
-              }
-            });
-          }
+          var insertSql = 'INSERT INTO user SET ?;';
+          mySqlClient.query(insertSql, params, function (err) {
+            if (err) {
+              console.log('Insert Error>>' + err);
+              alertMsg = '회원등록 중 오류가 발생했습니다.';
+              res.send(
+                '<script type="text/javascript">alert("' +
+                  alertMsg +
+                  '"); window.location="/register";</script>',
+              );
+            } else {
+              alertMsg = '회원가입이 완료되었습니다.';
+              res.send(
+                '<script type="text/javascript">alert("' +
+                  alertMsg +
+                  '"); window.location="/";</script>',
+              );
+            }
+          });
         }
-      });
-    }
-  } else {
-    res.send(
-      '<script type="text/javascript">alert("인증코드가 일치하지 않습니다."); window.location="/register";</script>',
-    );
-    res.end();
+      }
+    });
   }
 };
 
