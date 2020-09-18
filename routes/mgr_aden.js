@@ -9,7 +9,7 @@ var mgr_aden = function (req, res) {
 	if (req.session.user) {
 			fs.readFile('./public/manager/mgr_aden.html', 'utf8', function (error, data) {
 				res.send(ejs.render(data,{
-					// name: selected_name
+					name: selected_name
 				}));
 			});
 	} else {

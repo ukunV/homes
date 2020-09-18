@@ -5,7 +5,7 @@ mysql = require('mysql');
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 
-var tenant = function (req, res) {
+var tenant_management = function (req, res) {
 	if (req.session.user) {
 		var selectd_name;
 		const findId = req.session.user.userId;
@@ -24,4 +24,4 @@ var tenant = function (req, res) {
 };
 
 
-module.exports.tenant = tenant;
+module.exports.tenant_management = tenant_management;
