@@ -1,6 +1,8 @@
 # Build N Run Container with DB Container
 # 2020. 09. 18 Zini
 
+### You MUST RUN Database Container First ###
+
 docker_username="heojj97"
 container_name="homes-server"
 image_name="homes-app"
