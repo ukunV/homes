@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE user(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, # seq넘버
 user_id VARCHAR(30) NOT NULL UNIQUE KEY,    # 유저 아이디 
-password VARCHAR(30) NOT NULL,              # 유저 패스워드
+password VARCHAR(1000) NOT NULL,              # 유저 패스워드
 name VARCHAR(20) NOT NULL,                  # 유저이름
 type VARCHAR(20) NOT NULL UNIQUE KEY,       # 유저 타입 ex) 관리자, 세입자, 건물주
 tel VARCHAR(20) NOT NULL,               # 연락처
