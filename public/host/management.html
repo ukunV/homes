@@ -16,10 +16,14 @@
         <div class="navbar-main">
           <div class="main-content bt" onclick="location.href='/'">홈</div>
           <div class="main-content bt" onclick="location.href='/push'">알림</div>
-          <div class="main-content bt" onclick="location.href=''">
-            기능
+          <div class="main-content bt" onclick="location.href=''">기능</div>
+          <div
+            class="main-content bt"
+            onclick="location.href='/host/management'"
+            id="selected_menu"
+          >
+            관리
           </div>
-          <div class="main-content bt" onclick="location.href='/host/management'" id="selected_menu">관리</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -33,13 +37,13 @@
         <div class="set-logout bt">로그아웃</div>
       </div>
 
-      <div class="mgmt-list" onclick="location.href='mgmt_register.html'">
+      <div class="mgmt-list">
         <div class="mgmt-list-item bt">
-          <span class="item-title">건물등록</span>
+          <span class="item-title" onclick="location.href='mgmt_register.html'">건물등록</span>
           <i class="fas fa-angle-right"></i>
         </div>
-        <div class="mgmt-list-item bt" onclick="location.href='/building_management'">
-          <span class="item-title">건물관리</span>
+        <div class="mgmt-list-item bt">
+          <span class="item-title" onclick="location.href='mgmt_building.html'">건물관리</span>
           <i class="fas fa-angle-right"></i>
         </div>
       </div>

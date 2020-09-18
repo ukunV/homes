@@ -12,6 +12,11 @@
 
 #go_back i {
   font-size: 2rem;
+  z-index: 1;
+}
+
+.set-menu {
+  z-index: 2;
 }
 
 #reg_title {
