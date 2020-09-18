@@ -1,7 +1,7 @@
 const { Expo } = require('expo-server-sdk');
 let expo = new Expo();
 var mysql = require('mysql');
-const mySqlClient = mysql.createConnection(require('../config/db_config'));
+const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 var token = function (req, res) {
     if(req.body.token){

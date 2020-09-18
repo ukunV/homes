@@ -2,14 +2,14 @@ var ejs = require('ejs'),
 fs = require('fs'),
 mysql = require('mysql');
 
-const mySqlClient = mysql.createConnection(require('../config/db_config'));
+const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 
-var mgr_aden = function (req, res) {
+var push = function (req, res) {
 	if (req.session.user) {
-			fs.readFile('./public/manager/mgr_aden.html', 'utf8', function (error, data) {
+			fs.readFile('./public/common/push.html', 'utf8', function (error, data) {
 				res.send(ejs.render(data,{
-					name: selected_name
+					// name: selected_name
 				}));
 			});
 	} else {
@@ -18,4 +18,4 @@ var mgr_aden = function (req, res) {
 };
 
 
-module.exports.mgr_aden = mgr_aden;
+module.exports.push = push;

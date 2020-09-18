@@ -47,7 +47,7 @@ input[type="radio"]:checked + div {
 
 .div-type-bt{
     display: inline-block;
-    width: 100px;
+    width: 80px;
     background: #ddd;
     font-size: 16px;
     font-weight: 500;
