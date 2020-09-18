@@ -5,7 +5,7 @@ mysql = require('mysql');
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 
-var manager = function (req, res) {
+var manager_management = function (req, res) {
 	if (req.session.user) {
 		var selectd_name;
 		const findId = req.session.user.userId;
@@ -24,4 +24,4 @@ var manager = function (req, res) {
 };
 
 
-module.exports.manager = manager;
+module.exports.manager_management = manager_management;
