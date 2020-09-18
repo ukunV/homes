@@ -1,0 +1,115 @@
+#go_back {
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky;
+  top: 2.74rem;
+  background-color: var(--white-color);
+  color: var(--point-color);
+  margin-bottom: 1rem;
+}
+
+#go_back i {
+  font-size: 2rem;
+}
+
+#reg_title {
+  font-size: 2rem;
+  font-weight: 600;
+  padding-left: 1.3rem;
+}
+
+.reg-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+
+p {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 0;
+}
+
+.reg-button {
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.input-content {
+  font-size: 1.2rem;
+  width: 21rem;
+  height: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+#submit_content {
+  font-size: 2rem;
+  width: 100%;
+  border: white;
+  background-color: var(--point-color);
+  color: var(--white-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#reg_details {
+  width: 100%;
+}
+
+#details_title {
+  text-align: left;
+  margin-left: 1.3rem;
+  font-size: 1.3rem;
+}
+
+#floor {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+#floor_adj {
+  margin-bottom: 0.5rem;
+}
+
+#floor_list {
+}
+
+#floor_adj button {
+  font-size: 1.1rem;
+  width: 10.3rem;
+  height: 2.3rem;
+  margin: 0 0.3rem;
+  background-color: var(--point-color);
+  border: var(--white-color);
+  color: var(--white-color);
+  border-radius: 1rem;
+}
+
+.cur-floor {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.room-floor {
+  flex: 1;
+  font-size: 1.3rem;
+  text-align: center;
+  border-right: 2px solid var(--point-color);
+}
+
+.room-count {
+  flex: 1.8;
+}
+
+.room-num {
+  width: 8rem;
+  font-size: 1.3rem;
+  text-align: center;
+}

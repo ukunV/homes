@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="mgmt_register_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>관리-건물등록</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" onclick="location.href='/'">홈</div>
+          <div class="main-content bt" onclick="location.href='/push'">알림</div>
+          <div class="main-content bt" onclick="location.href='/public/common/function.html'">
+            기능
+          </div>
+          <div class="main-content bt" onclick="location.href=''" id="selected_menu">관리</div>
+        </div>
+        <div class="navbar-setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+
+      <div id="go_back">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+
+      <div id="reg_title">건물등록하기</div>
+
+      <form class="reg-list" action="" method="GET">
+        <div class="reg-content">
+          <input class="input-content" type="text" placeholder="건물주소 입력" />
+        </div>
+        <div class="reg-content">
+          <input class="input-content" type="text" placeholder="건물이름 입력" />
+          <p>
+            건물이름이 없을 시 예시를 보고 작성해주세요. <br />
+            ex) 건물주소 : 경기도 용인시 수지구 죽전로 16-10, 301호 <br />
+            🡢 건물이름 : 16-10
+          </p>
+        </div>
+
+        <div class="reg-content">
+          <input class="input-content" type="text" placeholder="관리인ID 입력" />
+        </div>
+        <div class="reg-button">
+          <input id="submit_content" type="submit" value="등록" />
+        </div>
+
+        <div id="reg_details">
+          <div id="details_title">세대수 입력하기</div>
+        </div>
+
+        <div id="floor">
+          <div id="floor_adj">
+            <button id="add_bt" onclick="add_floor()">층 추가</button>
+            <button id="del_bt">최고층 삭제</button>
+          </div>
+          <div id="floor_list">
+            <div class="cur-floor">
+              <div class="room-floor">1층</div>
+              <div class="room-count">
+                <input class="room-num" type="number" min="1" max="999" step="1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
