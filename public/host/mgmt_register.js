@@ -4,7 +4,7 @@ const floor_list = document.getElementById('floor_list');
 let cur_cnt = 1;
 function add_floor(e) {
   e.preventDefault();
-  floor_list.innerHTML += `<div class='cur-floor' value='${++cur_cnt}'><div class='room-floor'>${cur_cnt}층</div><div class='room-count'><input class='room-num' name='${cur_cnt}floor' type='number' min='1' max='99' step='1' /></div></div>`;
+  floor_list.innerHTML += `<div class='cur-floor' value='${++cur_cnt}'><div class='room-floor'>${cur_cnt}층</div><div class='room-count'><input class='room-num' name='floor_${cur_cnt}' type='number' min='1' max='99' step='1' value='1'/> 세대</div></div>`;
 }
 const floorAddButton = document.querySelector('#add_bt');
 floorAddButton.addEventListener('click', add_floor);
