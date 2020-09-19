@@ -79,6 +79,10 @@ router.route('/mgr/aden').get(mgr_aden.mgr_aden);
 const host_management = require('./routes/host/host_management.js');
 router.route('/host/management').get(host_management.host_management);
 
+// 건물주 건물 등록 라우터
+const host_management_register = require('./routes/host/host_mgmt_register.js');
+router.route('/host/management/register').get(host_management_register.host_mgmt_register);
+
 // 건물주/관리인 기능페이지 라우터
 //const _function = require('./routes/function.js');
 //router.route('/function').get(_function._function);
