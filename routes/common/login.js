@@ -18,6 +18,7 @@ const login = function (req, res) {
       if (row[0]) {
         console.log('login sql - name:' + row[0].name + 'type:' + row[0].type);
         const id = row[0].id;
+        const userType = row[0].type;
         req.session.user = {
           id: row[0].id,
           userId: checkId,
@@ -27,7 +28,6 @@ const login = function (req, res) {
         console.log(`Token: ${req.cookies.token}`);
 
         if (req.cookies.token) {
-          const userType = req.session.user.userType;
           //token값이 다른 사용자에게서 사용되고 있는지 확인
           mySqlClient.query(checkTokenSql, req.cookies.token, function (err, row) {
             if (row[0]) {
