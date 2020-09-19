@@ -1,0 +1,96 @@
+.setting-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding: 0.5rem 0.5rem 0.7rem 1rem;
+}
+
+.setting-title {
+  flex: 1;
+}
+
+.setting-content {
+  flex: 2;
+  padding: 0.6rem 0.4rem;
+  background: #eee;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.setting-modify-bt {
+  flex: 0.5;
+  color: var(--point-color);
+}
+
+.setting-room-wrapper {
+  margin-top: 1rem;
+  font-size: 1.15rem;
+  padding: 0.5rem 0.5rem 0.7rem 1rem;
+}
+
+.setting-room-all {
+  display: flex;
+  margin-top: 1rem;
+  font-size: 1rem;
+  background: #eee;
+  padding: 0.8rem 0.5rem;
+  border-radius: 5px;
+}
+
+.setting-room-all-title {
+  flex: 1;
+}
+
+.setting-room-all-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.setting-room-all-submit {
+  color: var(--point-color);
+  align-items: center;
+}
+
+#setting_room_all_payment {
+  padding-top: 0.5rem;
+}
+
+.payment {
+  width: 8rem;
+  border-bottom: 1px solid #777;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-right: 0.3rem;
+}
+
+.setting-each-room-wrapper {
+  background: #eee;
+  padding: 0.8rem 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.room-content {
+  padding: 0.15rem;
+  font-size: 1rem;
+}
+
+.room-num {
+  font-size: 1.2rem;
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.25rem;
+}
+
+.payment.tenant {
+  margin-left: 0.5rem;
+}
+
+.room-content i {
+  color: var(--point-color);
+}

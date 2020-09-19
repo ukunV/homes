@@ -28,11 +28,12 @@ CREATE TABLE room(
 buildNum INT NOT NULL,
 roomNum VARCHAR(20) NOT NULL,
 tenantID VARCHAR(30) default NULL,
+payment_type TINYINT(1) default 0,
+payment_cash INT NOT NULL,
 payment_2020_09 TINYINT(1) default 0,
 payment_2020_10 TINYINT(1) default 0,
 payment_2020_11 TINYINT(1) default 0,
 payment_2020_12 TINYINT(1) default 0, 
-payment INT NOT NULL,
 duedate VARCHAR(20) NOT NULL,
 CONSTRAINT fk_buildNum FOREIGN KEY(buildNum) REFERENCES buildings(buildingNum),
 CONSTRAINT fk_tenantid FOREIGN KEY(tenantID) REFERENCES user(user_id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
