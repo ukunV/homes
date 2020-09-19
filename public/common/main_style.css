@@ -14,15 +14,6 @@ body {
   margin: 0 !important;
 }
 
-* {
-  outline: none;
-}
-
-input,
-button {
-  font-family: 'Noto Sans KR', sans-serif !important;
-}
-
 .bt {
   cursor: pointer;
 }
@@ -62,7 +53,7 @@ i {
   font-size: 1.3rem;
 }
 
-.selected_menu {
+#selected_menu {
   background: var(--point-color);
   border-radius: 8px;
   color: var(--white-color);
@@ -206,25 +197,4 @@ i {
 
 .small-message {
   font-size: 0.7rem;
-}
-
-#go_back {
-  height: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: sticky;
-  top: 2.74rem;
-  background-color: var(--white-color);
-  color: var(--point-color);
-  margin-bottom: 1rem;
-}
-
-#go_back i {
-  font-size: 2rem;
-  z-index: 1;
-}
-
-.bold {
-  font-weight: 600;
 }

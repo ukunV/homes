@@ -82,6 +82,7 @@ router.route('/host/management').get(host_management.host_management);
 // 건물주 건물 등록 라우터
 const host_management_register = require('./routes/host/host_mgmt_register.js');
 router.route('/host/management/register').get(host_management_register.host_mgmt_register);
+router.route('/host/management/reg_submit').post(host_management_register.reg_submit);
 
 // 건물주/관리인 기능페이지 라우터
 //const _function = require('./routes/function.js');
@@ -92,8 +93,10 @@ const tenant_function = require('./routes/tenant/tenant_function.js');
 router.route('/tenant/function').get(tenant_function.tenant_function);
 
 // 건물관리페이지 라우터
-const mgmt_building = require('./routes/manager/mgmt_building.js');
-router.route('/building_management').get(mgmt_building.mgmt_building);
+const mgmt_building = require('./routes/host/mgmt_building.js');
+router.route('/management/building').get(mgmt_building.mgmt_building);
+
+
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
