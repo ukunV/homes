@@ -48,6 +48,7 @@
       <div class="content">
         <div class="content-title">내 건물</div>
         <div class="content-wrapper">
+          <!--여기서부터 forEach 필요 (3개 -> 더보기)-->
           <% if(locals.building_name) { %>
           <!--건물 한개 시작-->
           <div class="content-building">
@@ -79,14 +80,22 @@
               </div>
             </div>
           </div>
-          <% } %>
           <!--건물 한개 끝-->
-          <!--건물 한개 시작-->
 
           <div class="show-more-wrapper bt">
             <i class="fas fa-arrow-down"></i>
             <div class="small-message">더 보기</div>
           </div>
+
+          <!--건물 없는 경우-->
+          <% } else { %>
+          <div class="empty-case">
+            <div>
+              <i class="fas fa-ban"></i>
+            </div>
+            <p>표시할 건물이 없어요</p>
+          </div>
+          <% } %>
         </div>
       </div>
     </div>

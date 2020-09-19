@@ -110,3 +110,9 @@ p.reg-msg {
   font-size: 1.3rem;
   text-align: center;
 }
+
+.check-wrapper {
+  text-align: left;
+  color: #555;
+  margin-bottom: 0.4rem;
+}

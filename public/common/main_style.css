@@ -228,3 +228,13 @@ i {
 .bold {
   font-weight: 600;
 }
+
+.empty-case {
+  font-size: 1.2rem;
+  text-align: center;
+  color: white;
+}
+
+.empty-case i {
+  font-size: 3rem;
+}

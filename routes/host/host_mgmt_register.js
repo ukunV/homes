@@ -17,11 +17,16 @@ const host_mgmt_register = function (req, res) {
 };
 
 const registerSubmit = function (req, res) {
-  const name = req.body.building_name,
+  let name = req.body.building_name,
     addr = req.body.building_addr,
     hostId = req.session.user.userId,
     managerId = req.body.managerID,
     floor_count = req.body.floor_count;
+
+  // 관리인 - 건물주 직접 관리 or 아직 없는 경우
+  if (managerId === '건물주 직접 관리') {
+    managerId = req.session.user.userId;
+  }
 
   const rooms = [];
   // 세대 (101호, 102호 ..) 배열 push

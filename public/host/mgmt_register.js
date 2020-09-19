@@ -1,5 +1,6 @@
 const floor_list = document.getElementById('floor_list');
 const floor_count = document.getElementById('floor_count_hidden');
+const isNoManager = document.getElementById('isNoManager_checkbox');
 
 // add floor on mgmt_register.html
 let cur_cnt = 1;
@@ -22,3 +23,14 @@ function delete_floor(e) {
 }
 const floorDeleteButton = document.querySelector('#del_bt');
 floorDeleteButton.addEventListener('click', delete_floor);
+
+isNoManager.addEventListener('change', (e) => {
+  const mgrId = document.querySelector(`input[name='managerID']`);
+  if (e.target.checked) {
+    mgrId.value = '건물주 직접 관리';
+    mgrId.setAttribute('disabled', 'true');
+  } else {
+    mgrId.value = '';
+    mgrId.removeAttribute('disabled');
+  }
+});
