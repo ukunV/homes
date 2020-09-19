@@ -26,7 +26,7 @@ CONSTRAINT fk_managerid FOREIGN KEY(managerID) REFERENCES user(user_id)) ENGINE=
 DROP TABLE IF EXISTS room;
 CREATE TABLE room(
 buildNum INT NOT NULL,
-roomNum VARCHAR(20) NOT NULL,
+roomNum INT NOT NULL,
 tenantID VARCHAR(30) default NULL,
 payment_type TINYINT(1) default 0,
 payment_cash INT default 0,

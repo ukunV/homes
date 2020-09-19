@@ -28,7 +28,7 @@ const registerSubmit = function (req, res) {
   for (var floor = 1; floor <= floor_count; floor++) {
     each_floor = req.body[`floor_${floor}`];
     for (var room = 1; room <= each_floor; room++) {
-      rooms.push(`${floor}0${room}`);
+      rooms.push(parseInt(`${floor}0${room}`));
     }
   }
 
@@ -61,8 +61,10 @@ const registerSubmit = function (req, res) {
           const params_rooms = [];
 
           for (roomNum in rooms) {
-            params_rooms.push([[buildNum, roomNum]]);
+            params_rooms.push([buildNum, roomNum]);
           }
+
+          console.log(params_rooms);
 
           mySqlClient.query(insertRoomSql, params_rooms, function (err, result) {
             if (err) {
