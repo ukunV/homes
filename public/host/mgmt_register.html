@@ -45,14 +45,14 @@
 
       <div id="reg_title">건물 등록</div>
 
-      <form class="reg-list" action="" method="POST">
+      <form class="reg-list" action="/host/management/reg_submit" method="POST">
         <div class="reg-content">
           <p class="reg-msg">건물의 주소를 알려주세요.</p>
-          <input class="input-content" name="building_addr" type="text" />
+          <input class="input-content" name="building_addr" type="text" required="" />
         </div>
         <div class="reg-content">
           <p class="reg-msg">건물의 이름을 알려주세요.</p>
-          <input class="input-content" name="building_name" type="text" />
+          <input class="input-content" name="building_name" type="text" required="" />
           <p>건물명이 없을시 지번을 입력하세요 (예: 19-1번지)</p>
         </div>
 
@@ -63,6 +63,7 @@
             name="managerID"
             type="text"
             placeholder="관리인의 아이디를 입력하세요!"
+            required
           />
         </div>
 
@@ -72,7 +73,7 @@
             <button id="add_bt">층 추가</button>
             <button id="del_bt">층 삭제</button>
           </div>
-          <input id="floor_count_hidden" type="hidden" name="floor_count" value="1" />
+          <input id="floor_count_hidden" type="hidden" name="floor_count" value="1" required/>
           <div id="floor_list">
             <div class="cur-floor" value="1">
               <div class="room-floor">1층</div>
