@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/public/host/mgmt_modify_building.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
-    <script src="/public/host/mgmt_building.js" defer></script>
+    <script src="/public/host/host_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>관리-건물관리</title>
   </head>
@@ -16,13 +16,13 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='/'">홈</div>
-          <div class="main-content bt" onclick="location.href='/push'">알림</div>
-          <div class="main-content bt" onclick="location.href=''">기능</div>
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt" id="nav_function">기능</div>
           <div
-            class="main-content bt"
+            class="main-content bt selected_menu"
             onclick="location.href='/host/management'"
-            id="selected_menu"
+            id="nav_management"
           >
             관리
           </div>

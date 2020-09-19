@@ -62,7 +62,7 @@ i {
   font-size: 1.3rem;
 }
 
-#selected_menu {
+.selected_menu {
   background: var(--point-color);
   border-radius: 8px;
   color: var(--white-color);

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/public/common/push_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
+    <script src="/public/host/host_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>알림</title>
   </head>
@@ -14,12 +15,16 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='/'">홈</div>
-          <div class="main-content bt" onclick="location.href='/push'" id="selected_menu">
-            알림
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt selected_menu" id="nav_push">알림</div>
+          <div class="main-content bt" id="nav_function">기능</div>
+          <div
+            class="main-content bt"
+            onclick="location.href='/host/management'"
+            id="nav_management"
+          >
+            관리
           </div>
-          <div class="main-content bt" onclick="location.href=''">기능</div>
-          <div class="main-content bt" onclick="location.href=''">관리</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>

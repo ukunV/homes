@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/public/common/main_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
+    <script src="/public/host/host_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주</title>
   </head>
@@ -13,12 +14,16 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='/'" id="selected_menu">
-            홈
+          <div class="main-content bt selected_menu" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt" id="nav_function">기능</div>
+          <div
+            class="main-content bt"
+            onclick="location.href='/host/management'"
+            id="nav_management"
+          >
+            관리
           </div>
-          <div class="main-content bt" onclick="location.href='/push'">알림</div>
-          <div class="main-content bt" onclick="location.href=''">기능</div>
-          <div class="main-content bt" onclick="location.href='/host/management'">관리</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -27,9 +32,7 @@
 
       <div class="header">
         <div class="header-left">
-          <span id="header_left_name">
-            <%=name%>
-            </span>
+          <span id="header_left_name"> <%=name%> </span>
           <span id="header_left_role">건물주님,</span>
           <p id="welcome_message">안녕하세요!</p>
         </div>

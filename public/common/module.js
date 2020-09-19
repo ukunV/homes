@@ -7,6 +7,8 @@ document.querySelector('.set-logout').addEventListener('click', () => {
   location.href = '/process/logout';
 });
 
-document.querySelector('#go_back').addEventListener('click', () => {
-  window.history.back();
-});
+if (document.querySelector('#go_back')) {
+  document.querySelector('#go_back').addEventListener('click', () => {
+    window.history.back();
+  });
+}
