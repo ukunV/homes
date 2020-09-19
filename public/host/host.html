@@ -48,6 +48,7 @@
       <div class="content">
         <div class="content-title">내 건물</div>
         <div class="content-wrapper">
+          <% if(locals.building_name) { %>
           <!--건물 한개 시작-->
           <div class="content-building">
             <div class="content-left bt" onclick="location.href='/host/aden'">
@@ -78,6 +79,7 @@
               </div>
             </div>
           </div>
+          <% } %>
           <!--건물 한개 끝-->
           <!--건물 한개 시작-->
 
