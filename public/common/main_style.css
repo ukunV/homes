@@ -207,3 +207,20 @@ i {
 .small-message {
   font-size: 0.7rem;
 }
+
+#go_back {
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky;
+  top: 2.74rem;
+  background-color: var(--white-color);
+  color: var(--point-color);
+  margin-bottom: 1rem;
+}
+
+#go_back i {
+  font-size: 2rem;
+  z-index: 1;
+}
