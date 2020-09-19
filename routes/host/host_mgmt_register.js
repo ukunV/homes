@@ -60,13 +60,11 @@ const registerSubmit = function (req, res) {
 
           const params_rooms = [];
 
-          for (roomNum in rooms) {
+          for (var roomNum of rooms) {
             params_rooms.push([buildNum, roomNum]);
           }
 
-          console.log(params_rooms);
-
-          mySqlClient.query(insertRoomSql, params_rooms, function (err, result) {
+          mySqlClient.query(insertRoomSql, [params_rooms], function (err, result) {
             if (err) {
               console.log('insert Error>>' + err);
               alertMsg = '건물등록 중 오류가 발생했습니다.';
