@@ -1,0 +1,38 @@
+#message_title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding-left: 1.3rem;
+  padding-bottom: 1rem;
+}
+
+#message {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#sel_all {
+  background-color: aliceblue;
+  font-size: 1.3rem;
+}
+
+#receiver_list {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 17.5rem;
+  margin: 1rem 0;
+}
+
+#msg_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+textarea {
+  resize: none;
+  height: 10rem;
+  width: 21rem;
+  font-size: 1.5rem;
+}
