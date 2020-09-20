@@ -55,7 +55,7 @@ const mgmt_building_modify = function (req, res) {
     // 한 건물의 모든 세대의 데이터 저장
     const room_data = [];
 
-    mySqlClient.query(buildingInfoSql, req.session.user.userId, buildingNum, function (err, row) {
+    mySqlClient.query(buildingInfoSql, [req.session.user.userId, buildingNum], function (err, row) {
       if (err) {
         console.log(err);
         // 본인 소유 건물이 아닌 경우
@@ -64,12 +64,7 @@ const mgmt_building_modify = function (req, res) {
         );
       } else {
         const building_data = {
-          buildingNum,
-          hostID,
-          building_name,
-          managerID,
-          manager_name,
-          building_addr,
+          ...row[0],
         };
 
         mySqlClient.query(roomInfoSql, buildingNum, function (err, row) {
@@ -83,11 +78,11 @@ const mgmt_building_modify = function (req, res) {
               room_data.push(element);
             });
 
-            fs.readFile('./public/host/host.html', 'utf8', function (error, data) {
+            fs.readFile('./public/host/mgmt_modify_building.html', 'utf8', function (error, data) {
               res.send(
                 ejs.render(data, {
                   ...building_data,
-                  room_data, // 세대 데이터 배열
+                  rooms: room_data, // 세대 데이터 배열
                 }),
               );
             });

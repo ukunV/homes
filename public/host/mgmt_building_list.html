@@ -53,21 +53,21 @@
 
               <div class="content-mid"><%= building.building_addr %></div>
           </div>
+        </div>
           <!--건물 한개 끝-->
           <% });} %>
           <!--건물 없는 경우-->
           <% if(!locals.building_data) { %>
-            <div class="empty-case">
-              <div>
-                <i class="fas fa-ban"></i>
-              </div>
-              <p>표시할 건물이 없어요</p>
-              <button id="mgmt_register_bt" onclick="location.href='host/management/register';">
-                내 건물 등록하기
-              </button>
+          <div class="empty-case">
+            <div>
+              <i class="fas fa-ban"></i>
             </div>
-            <% } %>
-        </div>
+            <p>표시할 건물이 없어요</p>
+            <button id="mgmt_register_bt" onclick="location.href='host/management/register';">
+              내 건물 등록하기
+            </button>
+          </div>
+          <% } %>
       </div>
     </div>
   </body>
