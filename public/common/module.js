@@ -6,9 +6,3 @@ setapp.addEventListener('click', () => menu.classList.toggle('active'));
 document.querySelector('.set-logout').addEventListener('click', () => {
   location.href = '/process/logout';
 });
-
-if (document.querySelector('#go_back')) {
-  document.querySelector('#go_back').addEventListener('click', () => {
-    window.history.back();
-  });
-}

@@ -11,8 +11,6 @@ const mgmt_building_modify_submit = function (req, res) {
     const userId = req.session.user.userId;
     const newData = req.body.newData;
 
-    console.log(whichToChange);
-
     if (whichToChange === 'building_name') {
       modify_building_name(buildingNum, userId, newData, res);
     }
@@ -24,7 +22,15 @@ const mgmt_building_modify_submit = function (req, res) {
     }
     if (whichToChange === 'payment-all') {
       const payData = [parseInt(req.body.all_payType), parseInt(req.body.all_payCash)];
-      modify_payment_all(buildingNum, userId, payData, res);
+      modify_payment_all(buildingNum, payData, res);
+    }
+    if (whichToChange === 'payment-each') {
+      const payData = [parseInt(req.body.payType), parseInt(req.body.payCash), req.body.roomNum];
+      modify_payment_each(buildingNum, payData, res);
+    }
+    if (whichToChange === 'tenant') {
+      const roomData = [req.body.tenantID, req.body.roomNum];
+      modify_tenant(buildingNum, roomData, res);
     }
   } else {
     res.send(
@@ -85,9 +91,45 @@ const modify_managerID = function (buildingNum, userId, newData, res) {
 };
 
 // 월세/전세 일괄 설정 함수
-const modify_payment_all = function (buildingNum, userId, payData, res) {
+const modify_payment_all = function (buildingNum, payData, res) {
   const updateSql = 'update room set payment_type = ?, payment_cash = ? where buildNum = ?';
   mySqlClient.query(updateSql, [...payData, buildingNum], function (err, row) {
+    if (err) {
+      console.log(err);
+      res.send(
+        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.history.back();</script>',
+      );
+    } else {
+      res.send(
+        `<script type="text/javascript">alert("성공적으로 변경하였습니다."); location.href='/host/management/modify/${buildingNum}';</script>`,
+      );
+    }
+  });
+};
+
+// 세대별 월세/전세 설정 함수
+// payData: payment_type, payment_cash,  roomNum
+const modify_payment_each = function (buildingNum, payData, res) {
+  const updateSql =
+    'update room set payment_type = ?, payment_cash = ? where roomNum = ? and buildNum = ?';
+  mySqlClient.query(updateSql, [...payData, buildingNum], function (err, row) {
+    if (err) {
+      console.log(err);
+      res.send(
+        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.history.back();</script>',
+      );
+    } else {
+      res.send(
+        `<script type="text/javascript">alert("성공적으로 변경하였습니다."); location.href='/host/management/modify/${buildingNum}';</script>`,
+      );
+    }
+  });
+};
+
+// 세대 세입자 설정 함수
+const modify_tenant = function (buildingNum, roomData, res) {
+  const updateSql = 'update room set tenantID = ? where roomNum = ? and buildNum = ?';
+  mySqlClient.query(updateSql, [...roomData, buildingNum], function (err, row) {
     if (err) {
       console.log(err);
       res.send(
