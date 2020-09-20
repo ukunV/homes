@@ -72,17 +72,18 @@
             <div class="setting-room-title">세대 관리</div>
             <div class="setting-room-all">
                 <div class="setting-room-all-title">일괄 설정</div>
-                <div class="setting-room-all-content">
+                <form class="setting-room-all-content" name="payment-all" action="/host/modify/submit/payment-all" method="POST">
+                  <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
                     <div><label>
-                        <input type="radio" name="payType" value="month" checked>월세
+                        <input type="radio" name="all_payType" value="0" checked>월세
                     </label>
                     <label>
-                        <input type="radio" name="payType" value="year">전세
+                        <input type="radio" name="all_payType" value="1">전세
                     </label></div>
                     <div id="setting_room_all_payment">
-                        <input id="all_payment" class="payment" placeholder="금액(숫자) 입력" />원</div>
-                </div>
-                <div class="setting-room-all-submit"><i class="fas fa-check"></i>
+                        <input class="payment" name="all_payCash" placeholder="금액(숫자) 입력" />원</div>
+                </form>
+                <div class="setting-room-all-submit" onclick="document.querySelector(`form[name='payment-all']`).submit()"><i class="fas fa-check"></i>
                 </div>
             </div>
         </div>
