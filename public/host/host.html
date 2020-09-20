@@ -49,27 +49,27 @@
         <div class="content-title">내 건물</div>
         <div class="content-wrapper">
           <!--여기서부터 forEach 필요 (3개 -> 더보기)-->
-          <% if(locals.building_name) { %>
-          <!--건물 한개 시작-->
+          <% if(locals.building_data) {building_data.forEach((building)=>{ %>
+          <!--건물 템플릿 시작-->
           <div class="content-building">
             <div class="content-left bt" onclick="location.href='/host/aden'">
-              <div class="content-name"><%=building_name%></div>
+              <div class="content-name"><%=building.building_name%></div>
               <div class="content-mgr">
                 <span class="mgr-title">관리인</span>
-                <span class="content-name"><%=managerName%></span>
+                <span class="content-name"><%=building.manager_name%></span>
               </div>
             </div>
 
             <div class="content-mid">
               <div class="content-payment">
                 <span class="pay-count-l">미납건</span>
-                <span class="pay-count red-count">3</span>
+                <span class="pay-count red-count">?</span>
                 <span class="pay-count-r">건</span>
               </div>
 
               <div class="content-maintenance">
                 <span class="repair-count_l">유지/보수건</span>
-                <span class="repair-count red-count">3</span>
+                <span class="repair-count red-count">?</span>
                 <span class="repair-count-r">건</span>
               </div>
             </div>
@@ -80,20 +80,24 @@
               </div>
             </div>
           </div>
-          <!--건물 한개 끝-->
-
+          <!--건물 템플릿 끝-->
+          <% }); %> <% if(building_data.length > 3){ %>
           <div class="show-more-wrapper bt">
             <i class="fas fa-arrow-down"></i>
             <div class="small-message">더 보기</div>
           </div>
+          <% }} %>
 
           <!--건물 없는 경우-->
-          <% } else { %>
+          <% if(!locals.building_data) { %>
           <div class="empty-case">
             <div>
               <i class="fas fa-ban"></i>
             </div>
             <p>표시할 건물이 없어요</p>
+            <button id="mgmt_register_bt" onclick="location.href='host/management/register';">
+              내 건물 등록하기
+            </button>
           </div>
           <% } %>
         </div>

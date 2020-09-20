@@ -20,13 +20,8 @@ const registerSubmit = function (req, res) {
   let name = req.body.building_name,
     addr = req.body.building_addr,
     hostId = req.session.user.userId,
-    managerId = req.body.managerID,
+    managerId = req.body.managerID || req.session.user.userId,
     floor_count = req.body.floor_count;
-
-  // 관리인 - 건물주 직접 관리 or 아직 없는 경우
-  if (managerId === '건물주 직접 관리') {
-    managerId = req.session.user.userId;
-  }
 
   const rooms = [];
   // 세대 (101호, 102호 ..) 배열 push
@@ -45,12 +40,29 @@ const registerSubmit = function (req, res) {
   };
   let alertMsg = '';
 
-  const checkManagerSql = 'SELECT * from user where user_id= ?;';
   const insertBuildingSql = 'INSERT INTO buildings SET ?;';
   const insertRoomSql = 'INSERT INTO room (buildNum, roomNum) VALUES ?;';
-  mySqlClient.query(checkManagerSql, params_building.managerID, function (err, row) {
-    if (row[0]) {
-      mySqlClient.query(insertBuildingSql, params_building, function (err, result) {
+  mySqlClient.query(insertBuildingSql, params_building, function (err, result) {
+    if (err) {
+      // SQL 오류나는 경우는 관리인 외래키 참조 오류밖에 없음
+      console.log('insert Error>>' + err);
+      alertMsg = '존재하지 않은 관리인입니다.';
+      res.send(
+        '<script type="text/javascript">alert("' +
+          alertMsg +
+          '"); window.location="/host/management";</script>',
+      );
+    } else {
+      // 건물ID: result.insertId
+      const buildNum = result.insertId;
+
+      const params_rooms = [];
+
+      for (var roomNum of rooms) {
+        params_rooms.push([buildNum, roomNum]);
+      }
+
+      mySqlClient.query(insertRoomSql, [params_rooms], function (err, result) {
         if (err) {
           console.log('insert Error>>' + err);
           alertMsg = '건물등록 중 오류가 발생했습니다.';
@@ -60,43 +72,14 @@ const registerSubmit = function (req, res) {
               '"); window.location="/host/management";</script>',
           );
         } else {
-          // 건물ID: result.insertId
-          const buildNum = result.insertId;
-
-          const params_rooms = [];
-
-          for (var roomNum of rooms) {
-            params_rooms.push([buildNum, roomNum]);
-          }
-
-          mySqlClient.query(insertRoomSql, [params_rooms], function (err, result) {
-            if (err) {
-              console.log('insert Error>>' + err);
-              alertMsg = '건물등록 중 오류가 발생했습니다.';
-              res.send(
-                '<script type="text/javascript">alert("' +
-                  alertMsg +
-                  '"); window.location="/host/management";</script>',
-              );
-            } else {
-              alertMsg = '건물등록이 완료되었습니다.';
-              res.send(
-                '<script type="text/javascript">alert("' +
-                  alertMsg +
-                  '"); window.location="/host";</script>',
-              );
-            }
-          });
+          alertMsg = '건물등록이 완료되었습니다.';
+          res.send(
+            '<script type="text/javascript">alert("' +
+              alertMsg +
+              '"); window.location="/host";</script>',
+          );
         }
       });
-    } else {
-      console.log('Not exist manager:' + err);
-      alertMsg = '존재하지 않는 매니저입니다.';
-      res.send(
-        '<script type="text/javascript">alert("' +
-          alertMsg +
-          '"); window.location="/host/management";</script>',
-      );
     }
   });
 };

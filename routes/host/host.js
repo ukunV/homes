@@ -7,18 +7,23 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 var host = function (req, res) {
   if (req.session.user) {
     const buildingInfoSql =
-      'select building_name, name from buildings b, user u where b.managerID=u.user_id and b.hostID=?;';
+      'select building_name, name as manager_name from buildings b, user u where b.managerID=u.user_id and b.hostID=?;';
+
     mySqlClient.query(buildingInfoSql, req.session.user.userId, function (err, row) {
       // 건물주의 건물이 한개 이상 있는 경우
       if (row[0]) {
-        selected_building = row[0].building_name;
-        selected_managerName = row[0].name;
+        // 모든 소유 건물을 데이터에 저장
+        const building_data = [];
+
+        row.forEach((element) => {
+          building_data.push(element);
+        });
+
         fs.readFile('./public/host/host.html', 'utf8', function (error, data) {
           res.send(
             ejs.render(data, {
               name: req.session.user.userName,
-              building_name: selected_building,
-              managerName: selected_managerName,
+              building_data, // 건물 이름, 관리인 이름 데이터 배열
             }),
           );
         });

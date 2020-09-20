@@ -238,3 +238,12 @@ i {
 .empty-case i {
   font-size: 3rem;
 }
+
+#mgmt_register_bt {
+  border: none;
+  padding: 0.6 1rem;
+  font-size: 1rem;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
