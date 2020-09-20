@@ -80,7 +80,7 @@ const modify_managerID = function (buildingNum, userId, newData, res) {
     if (err) {
       console.log(err);
       res.send(
-        '<script type="text/javascript">alert("관리인 아이디를 확인해주세요."); window.history.back();</script>',
+        '<script type="text/javascript">alert("올바른 관리인 아이디를 입력하세요."); window.history.back();</script>',
       );
     } else {
       res.send(
@@ -133,7 +133,7 @@ const modify_tenant = function (buildingNum, roomData, res) {
     if (err) {
       console.log(err);
       res.send(
-        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.history.back();</script>',
+        '<script type="text/javascript">alert("올바른 세입자의 아이디를 입력하세요."); window.history.back();</script>',
       );
     } else {
       res.send(
