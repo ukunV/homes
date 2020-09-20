@@ -93,8 +93,8 @@ const tenant_function = require('./routes/tenant/tenant_function.js');
 router.route('/tenant/function').get(tenant_function.tenant_function);
 
 // 건물주 - 건물 수정(건물 리스트) 라우터
-const mgmt_building = require('./routes/host/mgmt_building_list.js');
-router.route('/host/management/modify').get(mgmt_building.mgmt_building);
+const mgmt_building = require('./routes/host/mgmt_building.js');
+router.route('/host/management/modify').get(mgmt_building.mgmt_building_list);
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
