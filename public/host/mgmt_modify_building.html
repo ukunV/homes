@@ -42,23 +42,32 @@
       <div id="go_back">
         <i class="fas fa-arrow-left bt"></i>
       </div>
-      <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
       <div class="content-wrapper">
           <div class="setting-wrapper">
             <div class="setting-title">건물명</div>
-            <input class="setting-content" id="building_name" value="<%= building_name %>">
-            <div class="setting-modify-bt"><i class="fas fa-pencil-alt"></i></div>
+            <form class="setting-content" name="building_name" method="POST" action="/host/modify/submit/building_name">
+            <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
+            <input name="newData" id="building_name" value="<%= building_name %>">
+            <div class="setting-modify-bt" onclick="document.querySelector(`form[name='building_name']`).submit()"><i class="fas fa-pencil-alt"></i></div>
+          </form>
         </div>
         <div class="setting-wrapper">
             <div class="setting-title">주소</div>
-            <input class="setting-content" id="building_addr" value="<%= building_addr %>">
-            <div class="setting-modify-bt"><i class="fas fa-pencil-alt"></i></div>
+            <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/building_addr">
+            <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
+            <input name="newData" id="building_addr" value="<%= building_addr %>">
+            <div class="setting-modify-bt" onclick="document.querySelector(`form[name='building_addr']`).submit()"><i class="fas fa-pencil-alt"></i></div>
+            </form>
         </div>
         <div class="setting-wrapper">
-            <div class="setting-title">관리인</div>
-            <input class="setting-content" id="tenantID" value="<%= manager_name %>(<%= managerID %>)" placeholder="아이디를 입력하세요">
-            <div class="setting-modify-bt"><i class="fas fa-pencil-alt"></i></div>
-        </div>
+          <div class="setting-title">관리인</div>
+          <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/managerID">
+          <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
+          <input name="newData" id="building_managerID" value="<%= manager_name %>(<%= managerID %>)">
+          <div class="setting-modify-bt" onclick="document.querySelector(`form[name='managerID']`).submit()"><i class="fas fa-pencil-alt"></i></div>
+          </form>
+      </div>
+
         <div class="setting-room-wrapper">
             <div class="setting-room-title">세대 관리</div>
             <div class="setting-room-all">

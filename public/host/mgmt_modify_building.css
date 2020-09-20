@@ -12,6 +12,11 @@
 
 .setting-content {
   flex: 2;
+  display: flex;
+}
+
+.setting-content input {
+  flex: 3;
   padding: 0.6rem 0.4rem;
   background: #eee;
   border: none;
@@ -20,7 +25,8 @@
 }
 
 .setting-modify-bt {
-  flex: 0.5;
+  flex: 1;
+  padding-top: 0.5rem;
   color: var(--point-color);
 }
 
