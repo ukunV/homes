@@ -92,9 +92,10 @@ router.route('/host/management/reg_submit').post(host_management_register.reg_su
 const tenant_function = require('./routes/tenant/tenant_function.js');
 router.route('/tenant/function').get(tenant_function.tenant_function);
 
-// 건물주 - 건물 수정(건물 리스트) 라우터
+// 건물주 - 건물 수정 라우터
 const mgmt_building = require('./routes/host/mgmt_building.js');
-router.route('/host/management/modify').get(mgmt_building.mgmt_building_list);
+router.route('/host/management/modify').get(mgmt_building.mgmt_building_list); // 건물 리스트 표시
+router.route('/host/management/modify/:id').get(mgmt_building.mgmt_building_modify); // 수정할 건물 표시 (modify 화면)
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');

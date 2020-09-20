@@ -45,7 +45,7 @@
           <% if(locals.building_data) {building_data.forEach((building)=>{ %>
           <!--건물 한개 시작-->
           <!--div value: 건물 id -> 모든 구분은 이 value로-->
-          <div class="building-wrapper">
+          <div class="building-wrapper" onclick="location.href='/host/management/modify/<%= building.id %>';">
             <div class="content-building" value="1">
               <div class="content-left bt">
                 <div class="content-name"><%= building.building_name %></div>
