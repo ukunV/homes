@@ -46,7 +46,7 @@
       </div>
 
       <div class="content">
-        <div class="content-title">내 건물</div>
+        <div class="content-title">내 건물 한눈에 보기</div>
         <div class="content-wrapper">
           <!--여기서부터 forEach 필요 (3개 -> 더보기)-->
           <% if(locals.building_data) {building_data.forEach((building)=>{ %>
@@ -81,13 +81,7 @@
             </div>
           </div>
           <!--건물 템플릿 끝-->
-          <% }); %> <% if(building_data.length > 3){ %>
-          <div class="show-more-wrapper bt">
-            <i class="fas fa-arrow-down"></i>
-            <div class="small-message">더 보기</div>
-          </div>
-          <% }} %>
-
+          <% });} %>
           <!--건물 없는 경우-->
           <% if(!locals.building_data) { %>
           <div class="empty-case">

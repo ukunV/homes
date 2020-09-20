@@ -199,15 +199,6 @@ i {
   color: var(--push-color);
 }
 
-.show-more-wrapper {
-  text-align: center;
-  color: var(--white-color);
-}
-
-.small-message {
-  font-size: 0.7rem;
-}
-
 #go_back {
   height: 3rem;
   display: flex;
