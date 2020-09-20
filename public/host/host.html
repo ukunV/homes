@@ -17,13 +17,7 @@
           <div class="main-content bt selected_menu" id="nav_home">홈</div>
           <div class="main-content bt" id="nav_push">알림</div>
           <div class="main-content bt" id="nav_function">기능</div>
-          <div
-            class="main-content bt"
-            onclick="location.href='/host/management'"
-            id="nav_management"
-          >
-            관리
-          </div>
+          <div class="main-content bt" id="nav_management">관리</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -52,12 +46,13 @@
           <% if(locals.building_data) {building_data.forEach((building)=>{ %>
           <!--건물 템플릿 시작-->
           <div class="content-building">
-            <div class="content-left bt" onclick="location.href='/host/aden'">
+            <div class="content-left bt">
               <div class="content-name"><%=building.building_name%></div>
               <div class="content-mgr">
                 <span class="mgr-title">관리인</span>
                 <span class="content-name"><%=building.manager_name%></span>
               </div>
+              ~
             </div>
 
             <div class="content-mid">
@@ -74,7 +69,7 @@
               </div>
             </div>
 
-            <div class="content-right bt" onclick="location.href='msg.html';">
+            <div class="content-right bt">
               <div class="content-msg">
                 <i class="fas fa-bullhorn"></i>
               </div>
@@ -89,9 +84,7 @@
               <i class="fas fa-ban"></i>
             </div>
             <p>표시할 건물이 없어요</p>
-            <button id="mgmt_register_bt" onclick="location.href='host/management/register';">
-              내 건물 등록하기
-            </button>
+            <button id="mgmt_register_bt">내 건물 등록하기</button>
           </div>
           <% } %>
         </div>
