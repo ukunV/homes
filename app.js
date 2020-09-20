@@ -97,6 +97,12 @@ const mgmt_building = require('./routes/host/mgmt_building.js');
 router.route('/host/management/modify').get(mgmt_building.mgmt_building_list); // 건물 리스트 표시
 router.route('/host/management/modify/:id').get(mgmt_building.mgmt_building_modify); // 수정할 건물 표시 (modify 화면)
 
+// 건물주 - 건물 수정 유형별 Submit 라우터(POST)
+const mgmt_building_modify_submit = require('./routes/host/mgmt_building_modify_submit');
+router
+  .route('/host/modify/submit/:toChange')
+  .post(mgmt_building_modify_submit.mgmt_building_modify_submit);
+
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
 router.route('/token').post(token.addToken);

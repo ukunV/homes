@@ -1,6 +1,6 @@
 const ejs = require('ejs'),
-  fs = require('fs');
-mysql = require('mysql');
+  fs = require('fs'),
+  mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
