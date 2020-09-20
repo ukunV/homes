@@ -199,6 +199,10 @@ i {
   color: var(--push-color);
 }
 
+.small {
+  font-size: 0.95rem;
+}
+
 #go_back {
   height: 3rem;
   display: flex;
