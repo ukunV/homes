@@ -69,7 +69,7 @@ router.route('/push').get(push.push);
 
 // 건물주 건물정보페이지 라우터
 const host_aden = require('./routes/host/host_aden.js');
-router.route('/host/aden').get(host_aden.host_aden);
+router.route('/host/aden/:id').get(host_aden.host_aden);
 
 // 관리인 건물정보페이지 라우터
 const mgr_aden = require('./routes/manager/mgr_aden.js');

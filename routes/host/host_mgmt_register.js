@@ -17,10 +17,11 @@ const host_mgmt_register = function (req, res) {
 };
 
 const registerSubmit = function (req, res) {
-  let name = req.body.building_name,
-    addr = req.body.building_addr,
-    hostId = req.session.user.userId,
-    managerId = req.body.managerID || req.session.user.userId,
+  let building_name = req.body.building_name,
+    building_addr = req.body.building_addr,
+    hostID = req.session.user.userId,
+    bank_account = req.body.bank_account,
+    managerID = req.body.managerID || req.session.user.userId,
     floor_count = req.body.floor_count;
 
   const rooms = [];
@@ -33,11 +34,13 @@ const registerSubmit = function (req, res) {
   }
 
   const params_building = {
-    building_name: name,
-    building_addr: addr,
-    hostID: hostId,
-    managerID: managerId,
+    building_name,
+    building_addr,
+    hostID,
+    managerID,
+    bank_account,
   };
+
   let alertMsg = '';
 
   const insertBuildingSql = 'INSERT INTO buildings SET ?;';

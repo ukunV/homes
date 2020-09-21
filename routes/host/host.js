@@ -7,7 +7,7 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 var host = function (req, res) {
   if (req.session.user) {
     const buildingInfoSql =
-      'select building_name, name as manager_name from buildings b, user u where b.managerID=u.user_id and b.hostID=?;';
+      'select buildingNum, building_name, name as manager_name from buildings b, user u where b.managerID=u.user_id and b.hostID=?;';
 
     mySqlClient.query(buildingInfoSql, req.session.user.userId, function (err, row) {
       // 건물주의 건물이 한개 이상 있는 경우

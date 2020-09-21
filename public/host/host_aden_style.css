@@ -35,11 +35,6 @@
   flex-direction: column;
 }
 
-.room-pay-bt i {
-  color: var(--point-color);
-  font-size: 2rem;
-}
-
 .room-tnt {
   font-weight: 600;
   font-size: 1.2rem;
@@ -47,7 +42,7 @@
 
 .room-main-right {
   flex: 1.5;
-  padding-left: 2rem;
+  font-size: 0.9rem;
 }
 
 .room-maintenance {
