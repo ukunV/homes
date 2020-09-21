@@ -32,35 +32,57 @@
         <div class="set-logout bt">로그아웃</div>
       </div>
 
+      <div id="go_back" onclick="location.href='/host'">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+
       <div class="content">
-        <div class="content-title">에덴빌</div>
+        <div class="content-title"><%= building_name %></div>
         <div class="builing-rooms">
+          <!--시작-->
+          <% if(locals.room_data){room_data.forEach((room)=>{ %>
           <div class="room">
             <div class="room-main">
               <div class="room-main-left">
                 <div class="room-info">
-                  <span class="room-num">101호</span>
-                  <span class="room-tnt">허전진</span>
-                </div>
-                <div class="room-pay-bt bt">
-                  <i class="fas fa-check-circle"></i>
+                  <span class="room-num"><%=room.roomNum%>호</span>
                 </div>
               </div>
-              <div class="room-main-right">
+              <div class="room-main-mid">
                 <div class="room-payment">
-                  <span class="room-payment-title">월세 35만원</span>
-                  <span class="room-payment-whether">납부완료</span>
+                  <% if(room.payment_type==0){%>
+                  <span class="room-payment-title">월세 <%=room.payment_cash%>원</span>
+                  <% } %> <% if(room.payment_type==1){%>
+                  <span class="room-payment-title">전세 <%=room.payment_cash%>원</span>
+                  <% } %> <% if(room.payment_type==0){ %> <% if(room.payment_month_ok==1) { %>
+                  <span class="room-payment-whether" style="background: green">완납</span>
+                  <% } else { %>
+                  <span class="room-payment-whether">미납</span>
+                  <% }} %>
                 </div>
                 <div class="room-maintenance">
                   <span class="room-maintenance-title">유지/보수건</span>
-                  <span class="room-maintenance-cnt">3</span>
+                  <span class="room-maintenance-cnt">?</span>
+                </div>
+              </div>
+              <div class="room-main-right">
+                <div class="content-msg">
+                  <i class="fas fa-bullhorn"></i>
                 </div>
               </div>
             </div>
             <div class="room-bottom">
-              <span class="room-phnum">세입자 전화번호 : 010-5484-5421</span>
+              <% if(room.name){ %>
+              <span class="round-tag-border"><%=room.name%></span>
+              <% } if(room.name===null) { %>
+              <span class="round-tag-border">세입자 없음</span>
+              <% } %> <% if(room.tel) { %>
+              <span class="round-tag-border" style="margin-left: 0.2rem">📞<%=room.tel%></span><% }
+              %>
             </div>
           </div>
+          <% });} %>
+          <!--끝-->
         </div>
       </div>
     </div>

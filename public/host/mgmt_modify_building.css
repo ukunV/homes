@@ -28,12 +28,14 @@
   flex: 1;
   padding-top: 0.5rem;
   color: var(--point-color);
+  text-align: center;
 }
 
 .setting-room-wrapper {
   margin-top: 1rem;
   font-size: 1.15rem;
   padding: 0.5rem 0.5rem 0.7rem 1rem;
+  text-align: center;
 }
 
 .setting-room-all {

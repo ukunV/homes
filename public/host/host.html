@@ -46,7 +46,10 @@
           <% if(locals.building_data) {building_data.forEach((building)=>{ %>
           <!--건물 템플릿 시작-->
           <div class="content-building">
-            <div class="content-left bt">
+            <div
+              class="content-left bt"
+              onclick="location.href='/host/aden/<%= building.buildingNum %>'"
+            >
               <div class="content-name"><%=building.building_name%></div>
               <div class="content-mgr">
                 <span class="mgr-title">관리인</span>

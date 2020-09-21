@@ -13,6 +13,9 @@ var path = require('path'),
   url = require('url'),
   cors = require('cors'); //ajax 요청시 cors 지원
 
+// Server Timer (매달 정산일 초기화)
+const timer = require('./routes/common/timer').timer;
+
 app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 app.use(bodyParser.json());
@@ -69,7 +72,7 @@ router.route('/push').get(push.push);
 
 // 건물주 건물정보페이지 라우터
 const host_aden = require('./routes/host/host_aden.js');
-router.route('/host/aden').get(host_aden.host_aden);
+router.route('/host/aden/:id').get(host_aden.host_aden);
 
 // 관리인 건물정보페이지 라우터
 const mgr_aden = require('./routes/manager/mgr_aden.js');
