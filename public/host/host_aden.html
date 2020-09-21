@@ -78,10 +78,10 @@
               <span class="round-tag-border">세입자 없음</span>
               <% } %> <% if(room.tel) { %>
               <span class="round-tag-border" style="margin-left: 0.2rem">📞<%=room.tel%></span><% }
-              %> <% if(room.payment_type == 0) { %> <% if(room.payment_month_ok == 0) { %>
+              %> <% if(room.payment_type == 0) { %> <% if(room.payment_month_day == 0) { %>
               <span class="round-tag-border">정산일 미설정</span>
               <% } else { %>
-              <span class="round-tag-border">정산일 <%= room.payment_month_day %></span>
+              <span class="round-tag-border">정산일 <%= room.payment_month_day %>일</span>
               <% }} %>
             </div>
           </div>
