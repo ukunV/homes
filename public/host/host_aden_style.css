@@ -15,6 +15,11 @@
   padding-bottom: 0.5rem;
 }
 
+.room-num {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
 .room-main-left,
 .room-main-right {
   display: flex;
@@ -40,9 +45,13 @@
   font-size: 1.2rem;
 }
 
-.room-main-right {
-  flex: 1.5;
+.room-main-mid {
+  flex: 2;
   font-size: 0.9rem;
+}
+
+.room-main-right {
+  flex: 0.5;
 }
 
 .room-maintenance {
