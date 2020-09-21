@@ -1,0 +1,17 @@
+.content-name-repair {
+  font-size: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.content-maintenance-repair {
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.red-count-repair {
+  background-color: var(--push-color);
+  color: var(--white-color);
+  width: 2rem;
+  padding: 0 0.5rem;
+  border-radius: 5px;
+}

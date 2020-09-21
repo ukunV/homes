@@ -14,9 +14,26 @@
   text-align: center;
 }
 
+#img_thumbnail {
+  width: 100%;
+  height: 13rem;
+  border-radius: 5px;
+  border: 2px solid #cfd8dc;
+}
+
+#img_explain {
+  font-size: 1.7rem;
+  color: #b0bec5;
+  position: absolute;
+  width: 19rem;
+  margin-top: 4rem;
+  margin-left: 0.3rem;
+}
+
 img {
   width: 100%;
   height: 13rem;
+  border-radius: 5px;
 }
 
 #img_upload {
@@ -28,9 +45,10 @@ img {
 label {
   display: inline-block;
   padding: 0.3rem 1.5rem;
-  color: var(--white-color);
-  font-size: 1.3rem;
-  background-color: var(--point-color);
+  color: var(--point-color);
+  font-size: 1rem;
+  background-color: var(--white-color);
+  border: 1px solid #cfd8dc;
   border-radius: 5px;
   margin-top: 0.5rem;
 }
