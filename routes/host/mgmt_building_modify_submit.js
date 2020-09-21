@@ -36,6 +36,11 @@ const mgmt_building_modify_submit = function (req, res) {
       const roomData = [req.body.payment_month_day, req.body.roomNum];
       modify_payment_month_day_each(buildingNum, roomData, res);
     }
+    // from host_aden.js
+    if (whichToChange === 'memo') {
+      const roomData = [req.body.memo, req.body.roomNum];
+      modify_memo(req.body.buildNum, roomData, res);
+    }
   } else {
     res.send(
       '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
@@ -165,6 +170,23 @@ const modify_payment_month_day_each = function (buildingNum, roomData, res) {
     } else {
       res.send(
         `<script type="text/javascript">alert("성공적으로 변경하였습니다."); location.href='/host/management/modify/${buildingNum}';</script>`,
+      );
+    }
+  });
+};
+
+// 메모 변경 함수
+const modify_memo = function (buildingNum, roomData, res) {
+  const updateSql = 'update room set memo = ? where roomNum = ? and buildNum = ?';
+  mySqlClient.query(updateSql, [...roomData, buildingNum], function (err, row) {
+    if (err) {
+      console.log(err);
+      res.send(
+        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.history.back();</script>',
+      );
+    } else {
+      res.send(
+        `<script type="text/javascript">alert("성공적으로 변경하였습니다."); location.href='/host/aden/${buildingNum}';</script>`,
       );
     }
   });

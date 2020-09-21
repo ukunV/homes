@@ -33,6 +33,7 @@ payment_type TINYINT(1) default 0,
 payment_cash INT default 0,
 payment_month_ok INT default 0, # 월세 납부 ok
 payment_month_day INT default 0, # 월세 정산일(1~31)
+memo VARCHAR(1000) default NULL, # 건물주 메모
 CONSTRAINT fk_buildNum FOREIGN KEY(buildNum) REFERENCES buildings(buildingNum),
 CONSTRAINT fk_tenantid FOREIGN KEY(tenantID) REFERENCES user(user_id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
 
