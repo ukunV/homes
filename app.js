@@ -2,17 +2,43 @@ var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
 var path = require('path'),
-  bodyParser = require('body-parser'),
-  cookieParser = require('cookie-parser'),
-  static = require('serve-static'),
-  errorHandler = require('errorhandler'),
-  expressErrorHandler = require('express-error-handler'),
-  expressSession = require('express-session'),
-  ejs = require('ejs'),
-  fs = require('fs'),
-  url = require('url'),
+bodyParser = require('body-parser'),
+cookieParser = require('cookie-parser'),
+static = require('serve-static'),
+errorHandler = require('errorhandler'),
+expressErrorHandler = require('express-error-handler'),
+expressSession = require('express-session'),
+ejs = require('ejs'),
+fs = require('fs'),
+url = require('url'),
   cors = require('cors'); //ajax 요청시 cors 지원
+  var schedule = require('node-schedule');
+  var rule = new schedule.RecurrenceRule();
+  rule.hour = 21;
+  rule.minute = 0;
+  rule.second = 59;
+//매 시간 30분 마다 수행
 
+var j = schedule.scheduleJob(rule, function(){
+  var moment = require('moment');
+  require('moment-timezone');
+  moment.tz.setDefault("Asia/Seoul");
+  var ejs = require('ejs'),
+  fs = require('fs'),
+  mysql = require('mysql');
+  var date = moment().format('DD');
+  console.log(date);
+  const mySqlClient = mysql.createConnection(require('./config/db_config'));
+
+  const changePaymentOk = 'update room set payment_month_ok=0 where payment_month_day=? and payment_type=0;';
+  mySqlClient.query(changePaymentOk, date, function(err){
+    if(err){
+      console.log('Update Error>>' + err);
+    }else{
+      console.log('payment_month_ok 업데이트 완료');
+    }
+  });
+});
 app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 app.use(bodyParser.json());
@@ -20,7 +46,7 @@ app.use(
   bodyParser.urlencoded({
     extended: true,
   }),
-);
+  );
 app.use('/public', express.static(__dirname + '/public'));
 app.use(cookieParser());
 app.use(
@@ -29,7 +55,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
   }),
-);
+  );
 app.use(cors());
 
 var router = express.Router();
@@ -100,8 +126,8 @@ router.route('/host/management/modify/:id').get(mgmt_building.mgmt_building_modi
 // 건물주 - 건물 수정 유형별 Submit 라우터(POST)
 const mgmt_building_modify_submit = require('./routes/host/mgmt_building_modify_submit');
 router
-  .route('/host/modify/submit/:toChange')
-  .post(mgmt_building_modify_submit.mgmt_building_modify_submit);
+.route('/host/modify/submit/:toChange')
+.post(mgmt_building_modify_submit.mgmt_building_modify_submit);
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
