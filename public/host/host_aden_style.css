@@ -71,3 +71,25 @@
 .room-bottom {
   padding-left: 0.3rem;
 }
+
+.room-memo-wrapper {
+  margin-top: 0.6rem;
+  display: flex;
+}
+
+.room-memo-wrapper i {
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  color: dodgerblue;
+}
+
+.room-memo {
+  resize: none;
+  overflow: scroll;
+  width: 97%;
+  height: 5rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--point-soft-color);
+  border-radius: 4px;
+  flex: 1;
+}

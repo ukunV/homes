@@ -9,7 +9,7 @@ const host_aden = function (req, res) {
 
   if (req.session.user) {
     const roomInfoSql =
-      'select building_name, roomNum, name, tel, payment_cash, payment_type, payment_month_ok, payment_month_day from buildings b join room r on b.buildingNum = r.buildNum left outer join user u on r.tenantID=u.user_id where buildingNum = ?';
+      'select buildNum, building_name, roomNum, name, tel, payment_cash, payment_type, payment_month_ok, payment_month_day, memo from buildings b join room r on b.buildingNum = r.buildNum left outer join user u on r.tenantID=u.user_id where buildingNum = ?';
     mySqlClient.query(roomInfoSql, buildingNum, function (err, row) {
       if (row[0]) {
         const room_data = [];

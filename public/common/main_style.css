@@ -4,6 +4,7 @@
   --black-color: #212121;
   --push-color: #d60000;
   --point-color: dodgerblue;
+  --point-soft-color: rgb(195, 225, 255);
 }
 
 html,
@@ -253,8 +254,13 @@ i {
 .round-tag-border {
   font-size: 0.9rem;
   font-weight: 600;
-  background: rgb(195, 225, 255);
+  background: var(--point-soft-color);
   border: 1px solid rgb(144, 199, 255);
   border-radius: 4px;
   padding: 0 0.4rem;
+  margin: 0 0.05rem;
+}
+
+textarea {
+  font-family: 'Noto Sans KR', sans-serif;
 }
