@@ -33,6 +33,7 @@ i {
 }
 
 .wrapper {
+  width: 375px !important;
   margin: 0 auto;
 }
 
