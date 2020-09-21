@@ -33,7 +33,6 @@ i {
 }
 
 .wrapper {
-  width: 375px !important;
   margin: 0 auto;
 }
 
@@ -240,4 +239,12 @@ i {
   background: white;
   border-radius: 4px;
   margin-bottom: 1rem;
+}
+
+.round-tag {
+  font-size: 0.9rem;
+  padding: 0.1rem 0.2rem;
+  color: white;
+  background: #999;
+  border-radius: 5px;
 }

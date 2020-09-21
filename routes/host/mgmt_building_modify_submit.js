@@ -32,6 +32,10 @@ const mgmt_building_modify_submit = function (req, res) {
       const roomData = [req.body.tenantID, req.body.roomNum];
       modify_tenant(buildingNum, roomData, res);
     }
+    if (whichToChange === 'payment-month-day-each') {
+      const roomData = [req.body.payment_month_day, req.body.roomNum];
+      modify_payment_month_day_each(buildingNum, roomData, res);
+    }
   } else {
     res.send(
       '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
@@ -110,8 +114,14 @@ const modify_payment_all = function (buildingNum, payData, res) {
 // 세대별 월세/전세 설정 함수
 // payData: payment_type, payment_cash,  roomNum
 const modify_payment_each = function (buildingNum, payData, res) {
-  const updateSql =
+  let updateSql =
     'update room set payment_type = ?, payment_cash = ? where roomNum = ? and buildNum = ?';
+
+  if (payData[0] === 1) {
+    updateSql =
+      'update room set payment_type = ?, payment_cash = ?, payment_month_day = 0, payment_month_ok = 0 where roomNum = ? and buildNum = ?';
+  }
+
   mySqlClient.query(updateSql, [...payData, buildingNum], function (err, row) {
     if (err) {
       console.log(err);
@@ -134,6 +144,23 @@ const modify_tenant = function (buildingNum, roomData, res) {
       console.log(err);
       res.send(
         '<script type="text/javascript">alert("올바른 세입자의 아이디를 입력하세요."); window.history.back();</script>',
+      );
+    } else {
+      res.send(
+        `<script type="text/javascript">alert("성공적으로 변경하였습니다."); location.href='/host/management/modify/${buildingNum}';</script>`,
+      );
+    }
+  });
+};
+
+// 세대 월세 정산일 설정 함수
+const modify_payment_month_day_each = function (buildingNum, roomData, res) {
+  const updateSql = 'update room set payment_month_day = ? where roomNum = ? and buildNum = ?';
+  mySqlClient.query(updateSql, [...roomData, buildingNum], function (err, row) {
+    if (err) {
+      console.log(err);
+      res.send(
+        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.history.back();</script>',
       );
     } else {
       res.send(
