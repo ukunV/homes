@@ -74,6 +74,9 @@ router.route('/push').get(push.push);
 const host_aden = require('./routes/host/host_aden.js');
 router.route('/host/aden/:id').get(host_aden.host_aden);
 
+const host_aden_paymentok = require('./routes/host/host_aden_paymentok.js');
+router.route('/host/aden/paymentok/:id:num').get(host_aden_paymentok.changePaymentok);
+
 // 관리인 건물정보페이지 라우터
 const mgr_aden = require('./routes/manager/mgr_aden.js');
 router.route('/mgr/aden').get(mgr_aden.mgr_aden);
