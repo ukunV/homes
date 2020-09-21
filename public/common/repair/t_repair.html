@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/common/main_style.css" />
-    <link rel="stylesheet" href="/public/tenant/tenant_function_style.css" />
+    <link rel="stylesheet" href="/public/common/repair/t_repair_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
     <script src="/public/host/host_nav.js" defer></script>
+    <script src="/public/common/repair/t_repair.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
-    <title>건물주/관리인 관리</title>
+    <title>유지/보수 등록</title>
   </head>
   <body>
     <div class="wrapper">
@@ -32,12 +33,26 @@
         <div class="set-logout bt">로그아웃</div>
       </div>
 
-      <div class="func-select bt">
-        <div class="select-title"><i class="fas fa-bullhorn"></i>알림 보내기</div>
+      <div id="go_back">
+        <i class="fas fa-arrow-left bt"></i>
       </div>
 
-      <div class="func-select bt">
-        <div class="select-title"><i class="fas fa-tools"></i>유지/보수 관리</div>
+      <div id="repair_content">
+        <div id="repair_title">유지/보수 등록</div>
+
+        <form id="repair_form" action="" method="POST" enctype="multipart/form-data">
+          <div id="img_thumbnail"></div>
+          <label for="img_upload">파일 업로드</label>
+          <input id="img_upload" type="file" accept="image/*" multiple />
+          <textarea
+            name="repair_detail"
+            placeholder="유지/보수 문의내용에 대한 세부사항을 입력해주세요."
+          ></textarea>
+
+          <div class="reg-content">
+            <input id="submit_content" type="submit" value="유지/보수 등록하기" />
+          </div>
+        </form>
       </div>
     </div>
   </body>
