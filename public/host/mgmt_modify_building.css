@@ -83,9 +83,9 @@
 
 .setting-each-room-wrapper {
   background: #eee;
-  padding: 0.8rem 0.5rem;
+  padding: 0.5rem;
   border-radius: 5px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .room-content {
@@ -105,4 +105,17 @@
 
 .room-content i {
   color: var(--point-color);
+}
+
+.room-num-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.delete-tenant-check {
+  margin-left: 1.1rem;
+}
+
+.delete-tenant-check-label {
+  color: var(--push-color);
+  font-weight: 600;
 }

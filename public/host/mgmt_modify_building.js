@@ -23,3 +23,18 @@ payTypes.forEach((payType) => {
     }
   }
 });
+
+const deleteTenant = document.querySelectorAll('input.delete-tenant-check');
+
+deleteTenant.forEach((payType) => payType.addEventListener('click', deleteTenantName));
+
+function deleteTenantName(e) {
+  const roomNum = e.target.getAttribute('room-num');
+  const target = document.querySelector(`form[name='tenant_${roomNum}']>.tenant`);
+  if (e.target.checked) {
+    target.value = '세입자 없음';
+  } else {
+    const original_tid = e.target.getAttribute('original-tid');
+    target.value = original_tid;
+  }
+}
