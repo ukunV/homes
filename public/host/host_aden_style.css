@@ -100,3 +100,12 @@
   background: rgb(209, 246, 198);
   border: 1px solid rgb(101, 219, 140);
 }
+
+.top-flex {
+  display: flex;
+}
+
+#right_bt {
+  flex: 1;
+  text-align: right;
+}

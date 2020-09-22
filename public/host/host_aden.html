@@ -38,7 +38,15 @@
       </div>
 
       <div class="content">
-        <div class="content-title"><%= building_name %></div>
+        <div class="content-title top-flex">
+          <span><%= building_name %></span
+          ><span id="right_bt"
+            ><i
+              class="fas fa-cog"
+              onclick="location.href=`/host/management/modify/<%= room_data[0].buildNum %>`"
+            ></i
+          ></span>
+        </div>
         <div class="builing-rooms">
           <!--시작-->
           <% if(locals.room_data){room_data.forEach((room)=>{ %>
