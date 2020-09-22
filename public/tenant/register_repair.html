@@ -41,8 +41,18 @@
         <div id="repair_title">유지/보수 등록</div>
 
         <form id="repair_form" action="" method="POST" enctype="multipart/form-data">
+          <div id="repair_title">
+            <p id="title_msg">제목을 입력해주세요</p>
+            <input
+              id="input_content"
+              type="text"
+              name="title_content"
+              placeholder="ex) 도어락이 고장났어요!!"
+              required
+            />
+          </div>
           <div id="img_thumbnail">
-            <div id="img_explain">유지/보수가 필요한 부분의 사진을 등록해주세요.</div>
+            <div id="img_explain">유지/보수 문의에 대한 특징을 볼 수 있는 사진을 등록해주세요.</div>
           </div>
           <label for="img_upload">사진 업로드</label>
           <input id="img_upload" type="file" accept="image/*" multiple />

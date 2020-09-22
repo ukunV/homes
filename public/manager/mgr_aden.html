@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/public/manager/mgr_aden_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
+    <script src="/public/host/host_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>관리인_건물정보</title>
   </head>
@@ -14,12 +15,9 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='/'" id="selected_menu">
-            홈
-          </div>
-          <div class="main-content bt" onclick="location.href='/push'">알림</div>
-          <div class="main-content bt" onclick="location.href=''">기능</div>
-          <div class="main-content bt" onclick="location.href=''">관리</div>
+          <div class="main-content bt selected_menu" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt" id="nav_function">기능</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -37,22 +35,28 @@
         <div class="content-title">에덴빌</div>
         <div class="builing-rooms">
           <div class="room">
-            <div class="room-main">
-              <div class="room-main-left">
-                <div class="room-info">
+            <div class="room-left">
+              <div class="room-main">
+                <div class="room-main-left">
                   <span class="room-num">101호</span>
-                  <span class="room-tnt">허전진</span>
+                </div>
+                <div class="room-main-right">
+                  <div class="room-maintenance">
+                    <span class="room-maintenance-title">유지/보수건</span>
+                    <span class="room-maintenance-cnt">3</span>
+                  </div>
                 </div>
               </div>
-              <div class="room-main-right">
-                <div class="room-maintenance">
-                  <span class="room-maintenance-title">유지/보수건</span>
-                  <span class="room-maintenance-cnt">3</span>
-                </div>
+              <div class="room-main-bottom">
+                <span class="round-tag-border">허전진</span>
+                <span class="round-tag-border">📞010-1234-5678</span>
               </div>
             </div>
-            <div class="room-bottom">
-              <span class="room-phnum">세입자 전화번호 : 010-5484-5421</span>
+
+            <div class="room-right">
+              <div class="content-msg">
+                <i class="fas fa-bullhorn bt"></i>
+              </div>
             </div>
           </div>
         </div>

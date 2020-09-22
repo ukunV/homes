@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/public/manager/mgr_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
+    <script src="/public/host/host_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>관리인</title>
   </head>
@@ -14,10 +15,9 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt" onclick="location.href='/'" id="selected_menu">홈</div>
-          <div class="main-content bt" onclick="location.href='/push'">알림</div>
-          <div class="main-content bt" onclick="location.href=''">기능</div>
-          <div class="main-content bt" onclick="location.href=''">관리</div>
+          <div class="main-content bt selected_menu" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt" id="nav_function">기능</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -43,20 +43,24 @@
         <div class="content-title">내가 관리중인 건물</div>
         <div class="content-wrapper">
           <div class="belongs bt" onclick="location.href='/mgr/aden'">
-            <div class="belongs-top">
-              <div class="belongs-title">에덴빌</div>
+            <div class="belongs-left">
+              <div class="belongs-top">
+                <div class="belongs-title">에덴빌</div>
 
-              <div class="belongs-main">
-                <span class="belongs-main-mtns">유지/보수건</span>
-                <span class="belongs-main-cnt">3</span>
+                <div class="belongs-main">
+                  <span class="belongs-main-mtns">유지/보수건</span>
+                  <span class="belongs-main-cnt">3</span>
+                </div>
+              </div>
+
+              <div class="belongs-bottom">
+                <span class="belongs-bottom-title">건물주 </span>
+                <span class="round-tag-border">이건욱</span>
+                <span class="round-tag-border" id="phnum"">📞010-5484-5421</span>
               </div>
             </div>
-
-            <div class="belongs-bottom">
-              <span class="belongs-bottom-title">건물주 </span>
-              <span class="belongs-bottom-content">이건욱</span>
-              <span class="belongs-bottom-title">전화번호</span>
-              <span class="belongs-bottom-content">010-5484-5421</span>
+            <div class="belongs-right">
+              <i class="fas fa-bullhorn"></i>
             </div>
           </div>
         </div>
