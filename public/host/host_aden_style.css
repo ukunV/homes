@@ -58,14 +58,13 @@
   padding-top: 0.3rem;
 }
 
-.room-payment-whether,
-.room-maintenance-cnt {
-  font-size: 0.8rem;
+.room-boolean {
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--white-color);
   background: var(--push-color);
-  border-radius: 6px;
-  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+  padding: 0.1rem 0.3rem;
 }
 
 .room-bottom {
