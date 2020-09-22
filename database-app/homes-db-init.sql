@@ -18,7 +18,7 @@ buildingNum INT NOT NULL PRIMARY KEY auto_increment,
 building_name VARCHAR(30) NOT NULL,
 hostID VARCHAR(30) NOT NULL,
 managerID VARCHAR(30) default NULL,
-building_addr VARCHAR(50) NOT NULL,
+building_addr VARCHAR(100) NOT NULL,
 bank_account VARCHAR(50) NOT NULL, # 계좌번호 (ex. 국민 1234)
 CONSTRAINT fk_hostID FOREIGN KEY(hostID) REFERENCES user(user_id),
 CONSTRAINT fk_managerid FOREIGN KEY(managerID) REFERENCES user(user_id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
