@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
     <script src="/public/host/host_nav.js" defer></script>
+    <script src="/public/host/host_aden.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주_건물정보</title>
   </head>
@@ -95,7 +96,8 @@
               <form name="memo_<%= room.roomNum %>" action="/host/modify/submit/memo" method="POST">
                 <input type="hidden" name="buildNum" value="<%= room.buildNum %>" />
                 <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
-                <div class="room-memo-wrapper">
+                <% if(room.memo) { %>
+                <div class="room-memo-wrapper" room-num="<%= room.roomNum %>">
                   <textarea name="memo" class="room-memo" maxlength="500">
 <%= room.memo %></textarea
                   >
@@ -104,6 +106,20 @@
                     onclick="document.querySelector(`form[name='memo_<%= room.roomNum %>']`).submit();"
                   ></i>
                 </div>
+                <% } else { %>
+                <button class="round-tag-border memo-toggle" room-num="<%= room.roomNum %>">
+                  🡦 메모 추가
+                </button>
+                <div class="room-memo-wrapper" room-num="<%= room.roomNum %>" style="display: none">
+                  <textarea name="memo" class="room-memo" maxlength="500">
+<%= room.memo %></textarea
+                  >
+                  <i
+                    class="fas fa-check-circle"
+                    onclick="document.querySelector(`form[name='memo_<%= room.roomNum %>']`).submit();"
+                  ></i>
+                </div>
+                <% } %>
               </form>
             </div>
           </div>

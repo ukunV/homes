@@ -92,3 +92,9 @@
   border-radius: 4px;
   flex: 1;
 }
+
+.memo-toggle {
+  margin-top: 0.5rem;
+  background: rgb(209, 246, 198);
+  border: 1px solid rgb(136, 200, 157);
+}
