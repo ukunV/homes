@@ -1,12 +1,31 @@
 .belongs {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 0.4rem;
   background: white;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+.belongs-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.6rem;
+  padding-right: 0;
+  flex: 6;
+}
+
+.belongs-right {
+  flex: 1;
+}
+
+.belongs-right i {
+  padding: 0;
+  font-size: 1.8rem;
+  color: var(--push-color);
+  padding-right: 1rem;
 }
 
 .belongs-top {
@@ -14,32 +33,27 @@
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  border-bottom: 2px solid var(--point-color);
   padding-bottom: 0.3rem;
 }
 
 .belongs-title {
   flex: 1;
   font-size: 1.3rem;
-  padding-left: 2.3rem;
   font-weight: 600;
 }
 
 .belongs-main {
   flex: 1;
-}
-
-.belongs-main-mtns {
-  padding-right: 0.8rem;
+  padding-right: 3rem;
 }
 
 .belongs-main-cnt {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--white-color);
   background: var(--push-color);
   border-radius: 6px;
-  padding: 0.1rem 0.2rem;
+  padding: 0 0.3rem;
 }
 
 .belongs-bottom {
@@ -49,9 +63,8 @@
 
 .belongs-bottom-title {
   font-size: 0.8rem;
-  padding-left: 1.5rem;
 }
 
-.belongs-bottom-content {
-  padding-left: 0.3rem;
+#phnum {
+  margin-left: 0.5rem;
 }
