@@ -10,6 +10,10 @@
   flex: 1;
 }
 
+.setting-room-title {
+  text-align: left;
+}
+
 .setting-content {
   flex: 2;
   display: flex;
