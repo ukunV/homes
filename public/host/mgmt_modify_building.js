@@ -33,8 +33,10 @@ function deleteTenantName(e) {
   const target = document.querySelector(`form[name='tenant_${roomNum}']>.tenant`);
   if (e.target.checked) {
     target.value = '세입자 없음';
+    target.setAttribute('disabled', 'true');
   } else {
     const original_tid = e.target.getAttribute('original-tid');
+    target.removeAttribute('disabled');
     target.value = original_tid;
   }
 }

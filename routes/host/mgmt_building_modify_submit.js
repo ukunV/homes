@@ -29,10 +29,7 @@ const mgmt_building_modify_submit = function (req, res) {
       modify_payment_each(buildingNum, payData, res);
     }
     if (whichToChange === 'tenant') {
-      let tenantID = req.body.tenantID;
-      if (tenantID === '세입자 없음') {
-        tenantID = null;
-      }
+      const tenantID = req.body.tenantID || null;
       const roomData = [tenantID, req.body.roomNum];
       modify_tenant(buildingNum, roomData, res);
     }
