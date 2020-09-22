@@ -5,8 +5,9 @@ var ejs = require('ejs'),
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const changePaymentok = function (req, res) {
-  const buildNum = req.params.id;
-  const roomNum = req.params.num;
+  const buildNum = req.query.bid;
+  const roomNum = req.query.rid;
+
   const paymentokSql = 'select payment_month_ok from room where buildNum=? and roomNum=?;';
   const updatePaymentokSql = 'update room set payment_month_ok=? where buildNum=? and roomNum=?;';
   if (req.session.user) {
