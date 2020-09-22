@@ -128,4 +128,5 @@ app.use(errorHandler);
 //웹서버 생성
 http.listen(app.get('port'), function () {
   console.log('server started - port: ' + app.get('port'));
+  console.log(`db_host: ${process.env.DATABASE_HOST}`);
 });
