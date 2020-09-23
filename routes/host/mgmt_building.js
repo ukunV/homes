@@ -49,8 +49,7 @@ const mgmt_building_modify = function (req, res) {
 
     const buildingInfoSql =
       'select buildingNum, hostID, building_name, managerID, NAME AS manager_name, building_addr from buildings b, user u WHERE b.managerID = u.user_id AND hostID= ? AND buildingNum = ?;'; // hostID의 소유건물이 아닌 경우 에러 출력
-    const roomInfoSql =
-      'select buildNum, roomNum, tenantId, NAME AS tenant_name, payment_type, payment_cash, payment_month_day FROM (SELECT * FROM room WHERE buildNum = ?) AS r LEFT OUTER JOIN user u on r.tenantID = u.user_id;';
+    const roomInfoSql = `select roomID, roomNum, tenantId, NAME AS tenant_name, payment_type, payment_cash, payment_month_day, date_format(begin_date,'%Y-%m-%d') as begin_date, date_format(end_date,'%Y-%m-%d') as end_date FROM (SELECT * FROM room WHERE buildNum = ?) AS r LEFT OUTER JOIN user u on r.tenantID = u.user_id;`;
 
     // 한 건물의 모든 세대의 데이터 저장
     const room_data = [];

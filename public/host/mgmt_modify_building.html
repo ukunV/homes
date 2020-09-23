@@ -49,7 +49,7 @@
             <form class="setting-content" name="building_name" method="POST" action="/host/modify/submit/building_name">
             <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
             <input name="newData" id="building_name" value="<%= building_name %>">
-            <div class="setting-modify-bt" onclick="document.querySelector(`form[name='building_name']`).submit()"><i class="fas fa-edit"></i></div>
+            <input type="submit" class="setting-submit" value="✔️">
           </form>
         </div>
         <div class="setting-wrapper">
@@ -57,7 +57,7 @@
             <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/building_addr">
             <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
             <input name="newData" id="building_addr" value="<%= building_addr %>">
-            <div class="setting-modify-bt" onclick="document.querySelector(`form[name='building_addr']`).submit()"><i class="fas fa-edit"></i></div>
+            <input type="submit" class="setting-submit" value="✔️">
             </form>
         </div>
         <div class="setting-wrapper">
@@ -65,7 +65,7 @@
           <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/managerID">
           <input type="hidden" name="managerID" value="<%= buildingNum %>" />
           <input name="newData" id="building_managerID" value="<%= manager_name %>(<%= managerID %>)">
-          <div class="setting-modify-bt" onclick="document.querySelector(`form[name='managerID']`).submit()"><i class="fas fa-edit"></i></div>
+          <input type="submit" class="setting-submit" value="✔️">
           </form>
       </div>
 
@@ -84,7 +84,8 @@
                     <div id="setting_room_all_payment">
                         <input class="payment" name="all_payCash" placeholder="금액(숫자) 입력" />원</div>
                 </form>
-                <div class="setting-room-all-submit" onclick="document.querySelector(`form[name='payment-all']`).submit()"><i class="fas fa-edit"></i>
+                <div class="setting-room-all-submit">
+                  <input type="submit" class="setting-all-room-submit" value="✔️">
                 </div>
             </div>
             <p class='content-msg small' style='margin:0;'>일괄설정시 모든 세대가 변경되므로 주의하세요!</p>
@@ -93,31 +94,35 @@
           <% rooms.forEach(room => { %>
           <!--세대 템플릿 시작-->
             <div class="setting-each-room-wrapper">
-                <form class="room-content bold" name="tenant_<%= room.roomNum %>" action="/host/modify/submit/tenant" method="POST">
+                <form class="room-content" name="tenant_<%= room.roomNum %>" action="/host/modify/submit/tenant" method="POST">
+                  <div class="room-each-content bold">
                   <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
-                  <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
-                    <div class="room-num-wrapper"><span class="room-num"><%= room.roomNum %>호</span></div>세입자<input name="tenantID" class="payment tenant" value="<% if(room.tenant_name){ %><%= room.tenant_name %>(<%= room.tenantID %>)<% } %>" placeholder="아이디 입력">님 
-                    <label class="delete-tenant-check-label"><input class="delete-tenant-check" type="checkbox" room-num="<%= room.roomNum %>" original-tid="<%= room.tenantID %>" />삭제</label><i class="fas fa-edit" onclick="document.querySelector(`form[name='tenant_<%= room.roomNum %>']`).submit()"></i>
-                </form>
-                <form class="room-content" name="payment-each_<%= room.roomNum %>" action="/host/modify/submit/payment-each" method="POST">
-                  <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
-                  <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
-                    <div><label>
+                  <input type="hidden" name="roomID" value="<%= room.roomID %>" />
+                    <div class="room-num-wrapper"><span class="room-num"><%= room.roomNum %>호</span>
+                      <input type="submit" class="round-tag-border room-submit" value="✔️ 저장"></div>세입자<input name="tenantID" class="payment tenant tenantid" value="<%= room.tenantID %>" placeholder="아이디 입력"><% if(room.tenant_name){ %>(<%= room.tenant_name %>)
+                        <label class="delete-tenant-check-label"><input class="delete-tenant-check" type="checkbox" room-num="<%= room.roomNum %>" original-tid="<%= room.tenantID %>" />삭제</label><% } else { %> <label class="delete-tenant-check-label" style="margin-left: 4rem;"><input class="delete-tenant-check" type="checkbox" room-num="<%= room.roomNum %>" original-tid="<%= room.tenantID %>" />삭제</label> <% } %>
+
+                  </div>
+                    <div class="room-each-content"><label>
                         <input class="checkPayMonth" room-num="<%= room.roomNum %>" type="radio" name="payType" value="0" <% if(room.payment_type == 0){ %>checked<% } %>>월세
                     </label>
                     <label>
                         <input class="checkPayMonth" room-num="<%= room.roomNum %>" type="radio" name="payType" value="1" <% if(room.payment_type == 1){ %>checked<% } %>>전세
                     </label><input name="payCash" class="payment tenant" 
                     value="<%= room.payment_cash %>"
-                    placeholder="금액(숫자) 입력" />원 <i class="fas fa-edit" onclick="document.querySelector(`form[name='payment-each_<%= room.roomNum %>']`).submit()"></i></div>
-                </form>
-                <form class="room-content" name="payment-month-day-each_<%= room.roomNum %>" action="/host/modify/submit/payment-month-day-each" method="POST">
-                  <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
-                  <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
-                    <div>
+                    placeholder="금액(숫자) 입력" />원</div>
+                    <div class="room-each-content" payday-room-num="<%= room.roomNum %>">
                     <span>월세 정산일 (매월 납부일)</span>
                       <input type="number" name="payment_month_day" class="payment tenant" 
-                    value="<%= room.payment_month_day %>" min="1" max="31" step="1" style="width: 3rem;margin-left: 1.45rem;" />일 <i class="fas fa-edit" onclick="document.querySelector(`form[name='payment-month-day-each_<%= room.roomNum %>']`).submit()"></i></div>
+                    value="<%= room.payment_month_day %>" min="0" max="31" step="1" style="width: 3rem;margin-left: 1.45rem;" />일</div>
+                    <div class="room-each-content">
+                      <span>입주기간</span>
+                        <input type="date" name="begin_date" class="payment date" 
+                      value="<%= room.begin_date %>" min="1" max="31" step="1" style="margin-left: 2rem;" />부터</div>
+                      <div class="room-each-content">
+                      <input type="date" name="end_date" class="payment date" 
+                    value="<%= room.end_date %>" min="1" max="31" step="1" style="margin-left: 5.9rem;" />까지
+                    </div>
                 </form>
             </div>
             <!--세대 템플릿 끝-->

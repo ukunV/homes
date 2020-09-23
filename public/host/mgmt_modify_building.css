@@ -19,20 +19,31 @@
   display: flex;
 }
 
-.setting-content input {
+.setting-content input[name='newData'] {
   flex: 3;
   padding: 0.6rem 0.4rem;
   background: #eee;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  margin-left: 0.4rem;
 }
 
-.setting-modify-bt {
+.setting-submit {
   flex: 1;
-  padding-top: 0.5rem;
-  color: var(--point-color);
-  text-align: center;
+  margin-left: 0.4rem;
+  border-radius: 5px;
+  padding: 0.6rem 0.4rem;
+  background: var(--point-soft-color);
+  border: 1px solid rgb(144, 199, 255);
+}
+
+.setting-all-room-submit {
+  flex: 1;
+  border-radius: 5px;
+  padding: 0.6rem 0.4rem;
+  background: var(--point-soft-color);
+  border: 1px solid rgb(144, 199, 255);
 }
 
 .setting-room-wrapper {
@@ -93,10 +104,15 @@
   font-size: 1rem;
 }
 
+.room-each-content {
+  margin: 0.25rem 0;
+}
+
 .room-num {
+  flex: 1;
+  text-align: left;
   font-size: 1.2rem;
-  margin-right: 0.4rem;
-  padding: 0.1rem 0.25rem;
+  padding-left: 0.4rem;
 }
 
 .payment.tenant {
@@ -109,13 +125,29 @@
 
 .room-num-wrapper {
   margin-bottom: 0.5rem;
+  display: flex;
 }
 
 .delete-tenant-check {
-  margin-left: 1.1rem;
+  margin-left: 0.6rem;
 }
 
 .delete-tenant-check-label {
   color: var(--push-color);
   font-weight: 600;
+}
+
+.date {
+  font-size: 0.95rem;
+  width: 8.4rem;
+}
+
+.room-submit {
+  font-size: 0.95rem;
+  padding: 0.1rem 0.6rem;
+}
+
+.tenantid {
+  font-size: 0.95rem;
+  width: 5.5rem;
 }

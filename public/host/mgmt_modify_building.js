@@ -4,22 +4,24 @@ payTypes.forEach((payType) => payType.addEventListener('change', togglePayDay));
 
 function togglePayDay(e) {
   const roomNum = e.target.getAttribute('room-num');
-  const form = document.querySelector(`form[name='payment-month-day-each_${roomNum}']`);
+  const target = document.querySelector(`div[payday-room-num='${roomNum}']`);
   if (e.target.value === '0') {
-    form.style.display = 'block';
+    target.style.display = 'block';
   } else {
-    form.style.display = 'none';
+    target.style.display = 'none';
   }
 }
 
 payTypes.forEach((payType) => {
   if (payType.value === '0') {
     const roomNum = payType.getAttribute('room-num');
-    const form = document.querySelector(`form[name='payment-month-day-each_${roomNum}']`);
+    const target = document.querySelector(`div[payday-room-num='${roomNum}']`);
+    const dayTarget = document.querySelector(`div[payday-room-num='${roomNum}']>input`);
     if (payType.checked) {
-      form.style.display = 'block';
+      target.style.display = 'block';
     } else {
-      form.style.display = 'none';
+      target.style.display = 'none';
+      dayTarget.value = 0;
     }
   }
 });
@@ -30,7 +32,7 @@ deleteTenant.forEach((payType) => payType.addEventListener('click', deleteTenant
 
 function deleteTenantName(e) {
   const roomNum = e.target.getAttribute('room-num');
-  const target = document.querySelector(`form[name='tenant_${roomNum}']>.tenant`);
+  const target = document.querySelector(`form[name='tenant_${roomNum}'] input[name='tenantID']`);
   if (e.target.checked) {
     target.value = '세입자 없음';
     target.setAttribute('disabled', 'true');
