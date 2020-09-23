@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/public/tenant/tenent_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
-    <script src="/public/host/tenant_nav.js" defer></script>
+    <script src="/public/tenant/tenant_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>세입자</title>
   </head>
@@ -40,12 +40,12 @@
       </div>
 
       <div class="content">
-        <div class="content-title">에덴빌 202호</div>
+        <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
         <div class="hst-mgr">
           <div class="hst">
             <div class="hst-basic">
               <span class="hst-role">건물주</span>
-              <span class="hst-name">이건욱</span>
+              <span class="hst-name"></span>
               <i class="fas fa-bullhorn bt"></i>
             </div>
             <div class="hst-info">
@@ -56,7 +56,7 @@
           <div class="mgr">
             <div class="basic">
               <span class="mgr-role">관리인</span>
-              <span class="mgr-name">조정민</span>
+              <span class="mgr-name"></span>
               <i class="fas fa-bullhorn bt"></i>
             </div>
             <div class="info">

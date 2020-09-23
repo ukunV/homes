@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/public/common/function_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
-    <script src="/public/host/tenant_nav.js" defer></script>
+    <script src="/public/tenant/tenant_nav.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>세입자 기능</title>
   </head>
@@ -15,9 +15,9 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="navbar-main">
-          <div class="main-content bt">홈</div>
-          <div class="main-content bt">알림</div>
-          <div class="main-content bt selected_menu">기능</div>
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt selected_menu" id= "nav_function">기능</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -31,11 +31,11 @@
         <div class="set-logout bt">로그아웃</div>
       </div>
 
-      <div class="func-select bt" onclick="location.href=''">
+      <div class="func-select bt" onclick="location.href='/tenant/function/message'">
         <div class="select-title"><i class="fas fa-bullhorn"></i>알림 보내기</div>
       </div>
 
-      <div class="func-select bt" onclick="location.href=''">
+      <div class="func-select bt" onclick="location.href='/tenant/function/register_repair'">
         <div class="select-title"><i class="fas fa-tools"></i>유지/보수 등록</div>
       </div>
     </div>
