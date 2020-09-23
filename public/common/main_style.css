@@ -264,3 +264,8 @@ i {
 textarea {
   font-family: 'Noto Sans KR', sans-serif;
 }
+
+.pink-round {
+  background: rgb(243, 192, 211);
+  border-color: rgb(221, 146, 174);
+}

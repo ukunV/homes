@@ -1,11 +1,10 @@
-var express = require('express');
-var app = express();
-var http = require('http').createServer(app);
-var path = require('path'),
+const express = require('express');
+const app = express();
+const http = require('http').createServer(app);
+const path = require('path'),
   bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
   static = require('serve-static'),
-  errorHandler = require('errorhandler'),
   expressErrorHandler = require('express-error-handler'),
   expressSession = require('express-session'),
   ejs = require('ejs'),
@@ -35,7 +34,7 @@ app.use(
 );
 app.use(cors());
 
-var router = express.Router();
+const router = express.Router();
 
 //메인 페이지 라우터
 const index = require('./routes/common/index.js');
@@ -116,7 +115,7 @@ router.route('/token').post(token.addToken);
 app.use('/', router);
 
 // 404 에러 페이지 처리
-var errorHandler = expressErrorHandler({
+const errorHandler = expressErrorHandler({
   static: {
     404: './public/404.html',
   },

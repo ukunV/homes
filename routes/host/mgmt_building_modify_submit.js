@@ -29,7 +29,8 @@ const mgmt_building_modify_submit = function (req, res) {
       modify_payment_each(buildingNum, payData, res);
     }
     if (whichToChange === 'tenant') {
-      const roomData = [req.body.tenantID, req.body.roomNum];
+      const tenantID = req.body.tenantID || null;
+      const roomData = [tenantID, req.body.roomNum];
       modify_tenant(buildingNum, roomData, res);
     }
     if (whichToChange === 'payment-month-day-each') {
@@ -143,7 +144,7 @@ const modify_payment_each = function (buildingNum, payData, res) {
 
 // 세대 세입자 설정 함수
 const modify_tenant = function (buildingNum, roomData, res) {
-  const updateSql = 'update room set tenantID = ? where roomNum = ? and buildNum = ?';
+  let updateSql = 'update room set tenantID = ? where roomNum = ? and buildNum = ?';
   mySqlClient.query(updateSql, [...roomData, buildingNum], function (err, row) {
     if (err) {
       console.log(err);

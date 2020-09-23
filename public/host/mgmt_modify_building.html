@@ -96,7 +96,8 @@
                 <form class="room-content bold" name="tenant_<%= room.roomNum %>" action="/host/modify/submit/tenant" method="POST">
                   <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
                   <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
-                    <span class="room-num"><%= room.roomNum %>호</span>세입자<input name="tenantID" class="payment tenant" value="<% if(room.tenant_name){ %><%= room.tenant_name %>(<%= room.tenantID %>)<% } %>" placeholder="아이디 입력">님 <i class="fas fa-edit" onclick="document.querySelector(`form[name='tenant_<%= room.roomNum %>']`).submit()"></i>
+                    <div class="room-num-wrapper"><span class="room-num"><%= room.roomNum %>호</span></div>세입자<input name="tenantID" class="payment tenant" value="<% if(room.tenant_name){ %><%= room.tenant_name %>(<%= room.tenantID %>)<% } %>" placeholder="아이디 입력">님 
+                    <label class="delete-tenant-check-label"><input class="delete-tenant-check" type="checkbox" room-num="<%= room.roomNum %>" original-tid="<%= room.tenantID %>" />삭제</label><i class="fas fa-edit" onclick="document.querySelector(`form[name='tenant_<%= room.roomNum %>']`).submit()"></i>
                 </form>
                 <form class="room-content" name="payment-each_<%= room.roomNum %>" action="/host/modify/submit/payment-each" method="POST">
                   <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
