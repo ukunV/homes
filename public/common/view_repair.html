@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
     <script src="/public/tenant/tenant_nav.js" defer></script>
-    <script src="/public/tenant/register_repair.js" defer></script>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>유지/보수 보기</title>
   </head>
@@ -19,6 +18,9 @@
           <div class="main-content bt" id="nav_home">홈</div>
           <div class="main-content bt" id="nav_push">알림</div>
           <div class="main-content bt selected_menu" id="nav_function">기능</div>
+          <% if(userType != '세입자') { %>
+          <div class="main-content bt" id="nav_function">관리</div>
+          <% } %>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -31,45 +33,50 @@
         <div class="set-push bt">알림설정</div>
         <div class="set-logout bt">로그아웃</div>
       </div>
-
-      <div id="go_back">
+      <% if(userType === '세입자') { %>
+      <div id="go_back" onclick="location.href='/tenant/repair_list'">
         <i class="fas fa-arrow-left bt"></i>
       </div>
+      <% } else { %>
+      <div id="go_back" onclick="window.history.back()">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+      <% } %>
 
-      <div id="repair_content">
-        <div id="repair_title">유지/보수 등록</div>
-
-        <form
-          id="repair_form"
-          action="/tenant/function/repair_submit"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <input type="hidden" name="roomID" value="<%= roomID %>" />
-          <div id="repair_title">
-            <p id="title_msg">제목을 입력해주세요.</p>
-            <input
-              id="input_content"
-              type="text"
-              name="title_content"
-              placeholder="ex) 도어락이 고장났어요"
-              required
-            />
-          </div>
-          <div id="img_thumbnail">
-            <div id="img_explain">하자의 사진을 등록해주세요</div>
-          </div>
-          <label for="img_upload">사진 업로드</label>
-          <input type="file" name="img" id="img_upload" accept="image/*; capture=camera" required />
-          <textarea
-            name="repair_detail"
-            placeholder="(선택) 하자의 세부사항을 입력해주세요."
-          ></textarea>
-
-          <div class="reg-content">
-            <input id="submit_content" type="submit" value="유지/보수 등록하기" />
-          </div>
-        </form>
+      <div class="repair-wrapper">
+        <div id="repair_head">
+          <span class="title-msg"><%= repair.title %></span>
+          <p class="sub-msg"><%= repair.building_name %> <%= repair.roomNum %>호</p>
+          <p class="sub-msg">
+            <span class="round-tag-border"><%= repair.name %></span>
+            <span class="round-tag-border"><%= repair.tel %></span>
+          </p>
+        </div>
+        <img id="imagebox" src="/public/resources/repair_images/<%= repair.repairNum %>.png" />
+        <p class="repair-msg"><%= repair.content %></p>
+        <% if(userType === '세입자') { %> <% if(repair.isSolved == 0){ %>
+        <div class="reg-content">
+          <input
+            id="submit_content"
+            type="button"
+            value="유지보수가 완료되었어요"
+            onclick="location.href='/tenant/solve_repair/<%= repair.repairNum %>'"
+          />
+        </div>
+        <% } else { %>
+        <div class="reg-content">
+          <input
+            id="submit_content"
+            type="button"
+            value="해결 완료되었어요!"
+            style="background: var(--green-color)"
+          />
+        </div>
+        <% } %> <% } else { %>
+        <div class="reg-content">
+          <input id="submit_content" type="button" value="세입자에게 메시지 보내기" />
+        </div>
+        <% } %>
       </div>
     </div>
   </body>

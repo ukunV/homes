@@ -45,12 +45,13 @@
             <span class="filter-bt  bt" id="view_not_solved_bt">진행중인 건</span>
             <span class="filter-bt bt" id="view_solved_bt">완료된 건</button>
           </div>
+          
+          <div class="white-content-list" id="not-solved-list">
           <!--진행중인 건 시작-->
           <% if(repairs) { repairs.forEach(repair => { %>
-            <% if(repair.isSolved === 0) { %>
-          <div class="white-content-list" id="not-solved-list">
+            <% if(repair.isSolved == 0) { %>
               <!--Template Start-->
-              <div class="white-each-content">
+              <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
                   <div class="white-content-title-wrapper">
                       <p class="white-content-title"><%= repair.title %></p>
                   </div>
@@ -59,13 +60,15 @@
                   </div>
               </div>
               <!--Template End-->
-          </div>
           <!--진행중인 건 끝-->
-          <% } else { %>
+          <% } %>
+        </div>
+        
+        <div class="white-content-list" id="solved-list">
+          <% if(repair.isSolved == 1) { %>
           <!--완료된 건 시작-->
-          <div class="white-content-list" id="solved-list">
             <!--Template Start-->
-            <div class="white-each-content">
+            <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
                 <div class="white-content-title-wrapper">
                     <p class="white-content-title"><%= repair.title %></p>
                 </div>
@@ -74,9 +77,9 @@
                 </div>
             </div>
           <!--Template End-->
-        </div>
           <!--완료된 건 끝-->
           <% }})} %>
+        </div>
           <% if(!repairs[0]) { %>
             <div class="empty-case" style="margin-top: 3rem;color: var(--point-color);">
               <div>
