@@ -1,10 +1,8 @@
 //하자 등록 라우터
-var ejs = require('ejs'),
+const ejs = require('ejs'),
   fs = require('fs'),
   mysql = require('mysql'),
-  cors = require('cors'),
-  imgUpload = require('./img_upload').imgUpload,
-  request = require('request');
+  cors = require('cors');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
@@ -23,7 +21,7 @@ const loadAddRepair = function (req, res) {
         });
       } else {
         res.send(
-          '<script type="text/javascript">alert("입주한 건물이 없습니다. 건물주에게 세입자 등록을 요청하세요."); window.location="/";</script>',
+          '<script type="text/javascript">alert("입주한 건물이 없습니다. 건물주에게 세입자 등록을 요청하세요."); window.location="/host/function";</script>',
         );
       }
     });
@@ -62,7 +60,7 @@ const addRepair = function (req, res) {
         res.send(
           '<script type="text/javascript">alert("' +
             alertMsg +
-            '"); window.location="/tenant/function";</script>',
+            '"); window.location="/tenant/repair_list";</script>',
         );
       }
     });

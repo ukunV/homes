@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
+    <script src="/public/tenant/tenant_nav.js" defer></script>
+    <script src="/public/tenant/repair_list.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>건물주</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt selected_menu" id="nav_function">기능</div>
+        </div>
+        <div class="navbar-setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+
+      <div id="go_back" onclick="location.href='/tenant/function/'">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+
+      <div class="white-content-wrapper">
+          <div class="white-content">
+              <span class="big-title">내 유지보수 목록</span>
+              <button class="content-bt" onclick="location.href='/tenant/function/register_repair'">유지보수 신청</button>
+          </div>
+          <div class="white-content-filter">
+            <span class="filter-bt filter-selected bt" id="view_all_bt">모두 보기</span>
+            <span class="filter-bt  bt" id="view_not_solved_bt">진행중인 건</span>
+            <span class="filter-bt bt" id="view_solved_bt">완료된 건</button>
+          </div>
+          <!--진행중인 건 시작-->
+          <% if(repairs) { repairs.forEach(repair => { %>
+            <% if(repair.isSolved === 0) { %>
+          <div class="white-content-list" id="not-solved-list">
+              <!--Template Start-->
+              <div class="white-each-content">
+                  <div class="white-content-title-wrapper">
+                      <p class="white-content-title"><%= repair.title %></p>
+                  </div>
+                  <div class="white-content-state not-solved">
+                    <i class="fas fa-hourglass-half"></i>
+                  </div>
+              </div>
+              <!--Template End-->
+          </div>
+          <!--진행중인 건 끝-->
+          <% } else { %>
+          <!--완료된 건 시작-->
+          <div class="white-content-list" id="solved-list">
+            <!--Template Start-->
+            <div class="white-each-content">
+                <div class="white-content-title-wrapper">
+                    <p class="white-content-title"><%= repair.title %></p>
+                </div>
+                <div class="white-content-state solved">
+                    <i class="far fa-thumbs-up"></i>
+                </div>
+            </div>
+          <!--Template End-->
+        </div>
+          <!--완료된 건 끝-->
+          <% }})} %>
+          <% if(!repairs[0]) { %>
+            <div class="empty-case" style="margin-top: 3rem;color: var(--point-color);">
+              <div>
+                <i class="fas fa-ban"></i>
+              </div>
+              <p>등록한 유지보수가 없어요</p>
+            </div>
+            <% } %>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>
