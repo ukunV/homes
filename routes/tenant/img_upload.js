@@ -7,12 +7,13 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const baseImgDir = 'public/resources/repair_images/';
 
-function mkdir(dirPath) {
+// 이미지 폴더 없으면 생성
+const mkdir = function (dirPath) {
   const isExists = fs.existsSync(dirPath);
   if (!isExists) {
     fs.mkdirSync(dirPath, { recursive: true });
   }
-}
+};
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -29,11 +30,9 @@ const upload = multer({
       //파일 이름: 최근(last) defact id + 1
       mySqlClient.query(selectLastIdSql, function (err, row) {
         if (err) {
-          //SQL 오류
           console.log('selectLastIdSql ERROR>>' + err);
         } else if (row[0]) {
           lastId = parseInt(row[0].repairNum);
-          console.log(lastId);
           currentFileName = lastId + 1 + '.png';
           cb(null, currentFileName);
         } else {
@@ -46,7 +45,7 @@ const upload = multer({
     },
   }),
   limits: {
-    fileSize: 15 * 1024 * 1024, //img Limit: 15MB
+    fileSize: 10 * 1024 * 1024, //img Limit: 10MB
   },
 });
 
