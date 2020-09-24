@@ -108,8 +108,12 @@ router
   .route('/host/modify/submit/:toChange')
   .post(mgmt_building_modify_submit.mgmt_building_modify_submit);
 
+// 세입자 - 유지보수 리스트 라우터
+const tenant_repair_list = require('./routes/tenant/repair_list');
+router.route('/tenant/repair_list').get(tenant_repair_list.repairList);
+
 // 세입자 - 유지보수 등록 라우터
-var imgUpload = require('./routes/tenant/img_upload').imgUpload; // 이미지 업로드 모듈
+const imgUpload = require('./routes/tenant/img_upload').imgUpload; // 이미지 업로드 모듈
 const tenant_repair = require('./routes/tenant/add_repair');
 router.route('/tenant/function/register_repair').get(tenant_repair.loadAddRepair); // 하자 등록 이동
 router
