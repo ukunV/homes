@@ -108,6 +108,14 @@ router
   .route('/host/modify/submit/:toChange')
   .post(mgmt_building_modify_submit.mgmt_building_modify_submit);
 
+// 세입자 - 유지보수 등록 라우터
+var imgUpload = require('./routes/tenant/img_upload').imgUpload; // 이미지 업로드 모듈
+const tenant_repair = require('./routes/tenant/add_repair');
+router.route('/tenant/function/register_repair').get(tenant_repair.loadAddRepair); // 하자 등록 이동
+router
+  .route('/tenant/function/repair_submit')
+  .post(imgUpload.single('img'), tenant_repair.addRepair); // 하자 등록
+
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
 router.route('/token').post(token.addToken);
