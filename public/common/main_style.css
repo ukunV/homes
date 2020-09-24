@@ -19,6 +19,10 @@ body {
   outline: none;
 }
 
+.set-menu {
+  z-index: 2;
+}
+
 input,
 button {
   font-family: 'Noto Sans KR', sans-serif !important;
