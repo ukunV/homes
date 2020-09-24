@@ -1,90 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
-    <link rel="stylesheet" href="/public/tenant/tenent_style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/common/module.js" defer></script>
-    <script src="/public/tenant/tenant_nav.js" defer></script>
-    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
-    <title>세입자</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/public/common/main_style.css" />
+  <link rel="stylesheet" href="/public/tenant/tenent_style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+  <script src="/public/common/module.js" defer></script>
+  <script src="/public/tenant/tenant_nav.js" defer></script>
+  <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+  <title>세입자</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="navbar">
+      <div class="navbar-main">
+        <div class="main-content bt selected_menu" id="nav_home">홈</div>
+        <div class="main-content bt" id="nav_push">알림</div>
+        <div class="main-content bt" id="nav_function">기능</div>
+      </div>
+      <div class="navbar-setapp bt">
+        <i class="fas fa-cog"></i>
+      </div>
+    </div>
+
+    <div class="header">
+      <div class="header-left">
+        <span id="header_left_name"><%=name%></span>
+        <span id="header_left_role">세입자님,</span>
+        <p id="welcome_message">안녕하세요!</p>
+      </div>
+    </div>
+
+    <div class="set-menu">
+      <div class="set-account bt">계정관리</div>
+      <div class="set-notice bt">공지사항</div>
+      <div class="set-push bt">알림설정</div>
+      <div class="set-logout bt">로그아웃</div>
+    </div>
+    <% if(roomNum!='none'){ %>
+    <div class="content">
+      <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
+      <div class="hst-mgr">
+        <div class="hst">
+          <div class="hst-basic">
+            <span class="hst-role">건물주</span>
+            <span class="hst-name"><%=hostName%></span>
+            <i class="fas fa-bullhorn bt"></i>
+          </div>
+          <div class="hst-info">
+            <span class="hst-phnum"><%=hostTel%></span>
+            <span class="hst-bank"><%=bank_account%></span>
+          </div>
         </div>
-        <div class="navbar-setapp bt">
-          <i class="fas fa-cog"></i>
+        <div class="mgr">
+          <div class="basic">
+            <span class="mgr-role">관리인</span>
+            <span class="mgr-name"><%=managerName%></span>
+            <i class="fas fa-bullhorn bt"></i>
+          </div>
+          <div class="info">
+            <span class="mgr-phnum"><%=managerTel%></span>
+          </div>
         </div>
       </div>
 
-      <div class="header">
-        <div class="header-left">
-          <span id="header_left_name"><%=name%></span>
-          <span id="header_left_role">세입자님,</span>
-          <p id="welcome_message">안녕하세요!</p>
+      <div class="date">
+        <div class="start">
+          <span class="start-title">계약일</span>
+          <span class="start-date"><%=begin_date%></span>
+        </div>
+        <div class="due">
+          <span class="due-title">만기일</span>
+          <span class="due-dtae"><%=end_date%></span>
         </div>
       </div>
 
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
+      <div class="monthly-payment">
+        <% if(payment_type==0){%>
+        <span class="monthly-payment-title">월세 정산일 <%=payment_month_day%>일 <%=payment_cash%>원</span>
+        <% } %>
+        <% if(payment_type==1){%>
+        <span class="monthly-payment-title">전세 세입자</span>
+        <% } %>
+
+        <% if(payment_type==0){ %> <% if(payment_month_ok==1) { %>
+        <span class="monthly-payment-status" style="background-color: green">완납</span>
+        <% } else { %>
+        <span class="monthly-payment-status">미납</span>
+        <% }} %>
       </div>
-
-      <div class="content">
-        <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
-        <div class="hst-mgr">
-          <div class="hst">
-            <div class="hst-basic">
-              <span class="hst-role">건물주</span>
-              <span class="hst-name"></span>
-              <i class="fas fa-bullhorn bt"></i>
+    </div>
+    <% } %>
+    <% if(roomNum=='none'){ %>
+    <div class="content">
+      <div class="content-title">
+        <div class="content-wrapper">
+          <div class="empty-case">
+            <div>
+              <i class="fas fa-ban"></i>
             </div>
-            <div class="hst-info">
-              <span class="hst-phnum">010-1234-5678</span>
-              <span class="hst-bank">국민은행 00000000000000</span>
-            </div>
+            <p>표시할 방이 없어요</p>
           </div>
-          <div class="mgr">
-            <div class="basic">
-              <span class="mgr-role">관리인</span>
-              <span class="mgr-name"></span>
-              <i class="fas fa-bullhorn bt"></i>
-            </div>
-            <div class="info">
-              <span class="mgr-phnum">010-1234-5678</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="date">
-          <div class="start">
-            <span class="start-title">계약일</span>
-            <span class="start-date">2020/01/01</span>
-          </div>
-          <div class="due">
-            <span class="due-title">만기일</span>
-            <span class="due-dtae">2020/06/30</span>
-          </div>
-          <div class="date-count">
-            <span class="count-num">500</span>
-            <span class="count-tail">일 남음</span>
-          </div>
-        </div>
-
-        <div class="monthly-payment">
-          <span class="monthly-payment-title">월세 납부 여부</span>
-          <span class="monthly-payment-status">미납</span>
+          <% } %>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
