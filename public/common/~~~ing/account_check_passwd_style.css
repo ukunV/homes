@@ -1,0 +1,38 @@
+.check-passwd-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding-left: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.check-passwd-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.check-passwd-input {
+  margin: 0 5rem;
+  border: none;
+  border-bottom: 1px solid #888;
+  font-size: 1.2rem;
+}
+
+label {
+  padding: 0.3rem 1.5rem;
+  color: var(--point-color);
+  font-size: 1rem;
+  background-color: var(--white-color);
+  border: 1px solid #cfd8dc;
+  border-radius: 5px;
+  margin: 1rem 7rem;
+}
+
+#check-passwd-button {
+  display: none;
+}
