@@ -120,6 +120,14 @@ router
   .route('/tenant/function/repair_submit')
   .post(imgUpload.single('img'), tenant_repair.addRepair); // 하자 등록
 
+// 세입자 - 유지보수 완료 라우터
+const solveRepair = require('./routes/tenant/solve_repair');
+router.route('/tenant/solve_repair/:id').get(solveRepair.solveRepair);
+
+// 공통 - 유지보수 상세보기 라우터
+const view_repair = require('./routes/common/view_repair');
+router.route('/view_repair/:id').get(view_repair.loadRepair);
+
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
 router.route('/token').post(token.addToken);
