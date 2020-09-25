@@ -9,17 +9,24 @@ const repairList = function (req, res) {
   if (req.session.user) {
     const getRepairsSql =
       'SELECT re.repairNum, re.title, re.isSolved FROM repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND user_id = ?';
-    const repairs = [];
+    const unsolved_repairs = [];
+    const solved_repairs = [];
     mySqlClient.query(getRepairsSql, req.session.user.userId, function (err, row) {
       if (row) {
         row.forEach((element) => {
-          repairs.push(element);
+          console.log(element.isSolved);
+          if (element.isSolved === 0) {
+            unsolved_repairs.push(element);
+          } else {
+            solved_repairs.push(element);
+          }
         });
 
         fs.readFile('./public/tenant/repair_list.html', 'utf8', function (error, data) {
           res.send(
             ejs.render(data, {
-              repairs,
+              unsolved_repairs,
+              solved_repairs,
             }),
           );
         });

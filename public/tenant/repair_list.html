@@ -48,8 +48,7 @@
           
           <div class="white-content-list" id="not-solved-list">
           <!--진행중인 건 시작-->
-          <% if(repairs) { repairs.forEach(repair => { %>
-            <% if(repair.isSolved == 0) { %>
+          <% if(unsolved_repairs) { unsolved_repairs.forEach(repair => { %>
               <!--Template Start-->
               <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
                   <div class="white-content-title-wrapper">
@@ -61,12 +60,12 @@
               </div>
               <!--Template End-->
           <!--진행중인 건 끝-->
-          <% } %>
+          <% })} %>
         </div>
-        
-        <div class="white-content-list" id="solved-list">
-          <% if(repair.isSolved == 1) { %>
+
           <!--완료된 건 시작-->
+        <div class="white-content-list" id="solved-list">
+            <% if(solved_repairs) { solved_repairs.forEach(repair => { %>
             <!--Template Start-->
             <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
                 <div class="white-content-title-wrapper">
@@ -78,9 +77,9 @@
             </div>
           <!--Template End-->
           <!--완료된 건 끝-->
-          <% }})} %>
+          <% })} %>
         </div>
-          <% if(!repairs[0]) { %>
+          <% if(!unsolved_repairs && !solved_repairs) { %>
             <div class="empty-case" style="margin-top: 3rem;color: var(--point-color);">
               <div>
                 <i class="fas fa-ban"></i>
