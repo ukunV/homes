@@ -4,9 +4,9 @@ const ejs = require('ejs'),
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 const host_getRepairsSql =
-  'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND hostID = ?';
+  'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND hostID = ? order by repairNum desc';
 const mgr_getRepairsSql =
-  'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND managerID = ?';
+  'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND managerID = ? order by repairNum desc';
 
 const loadRepairList = function (req, res) {
   if (req.session.user) {

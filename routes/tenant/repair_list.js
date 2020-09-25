@@ -8,7 +8,7 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 const repairList = function (req, res) {
   if (req.session.user) {
     const getRepairsSql =
-      'SELECT re.repairNum, re.title, re.isSolved FROM repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND user_id = ?';
+      'SELECT re.repairNum, re.title, re.isSolved FROM repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND user_id = ? order by repairNum desc';
     const unsolved_repairs = [];
     const solved_repairs = [];
     mySqlClient.query(getRepairsSql, req.session.user.userId, function (err, row) {

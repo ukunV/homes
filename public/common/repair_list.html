@@ -48,7 +48,7 @@
           </div>
           <div class="white-content-filter">
             <span class="filter-bt filter-selected bt" id="view_all_bt">모두 보기</span>
-            <span class="filter-bt  bt" id="view_not_solved_bt">진행중인 건</span>
+            <span class="filter-bt bt" id="view_not_solved_bt">진행중인 건</span>
             <span class="filter-bt bt" id="view_solved_bt">완료된 건</button>
           </div>
           
@@ -58,6 +58,7 @@
               <!--Template Start-->
               <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
                   <div class="white-content-title-wrapper">
+                      <p class="white-content-subtitle"><%= repair.building_name %> <%= repair.roomNum %>호</p>
                       <p class="white-content-title"><%= repair.title %></p>
                   </div>
                   <div class="white-content-state not-solved">
@@ -75,7 +76,7 @@
             <!--Template Start-->
             <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
                 <div class="white-content-title-wrapper">
-                  <p class="white-content-subtitle">에덴빌 101호</p>
+                  <p class="white-content-subtitle"><%= repair.building_name %> <%= repair.roomNum %>호</p>
                     <p class="white-content-title"><%= repair.title %></p>
                 </div>
                 <div class="white-content-state solved">
