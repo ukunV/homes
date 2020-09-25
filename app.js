@@ -90,8 +90,12 @@ router.route('/host/management/register').get(host_management_register.host_mgmt
 router.route('/host/management/reg_submit').post(host_management_register.reg_submit);
 
 // 건물주/관리인 기능페이지 라우터
-//const _function = require('./routes/function.js');
-//router.route('/function').get(_function._function);
+const loadFunction = require('./routes/common/loadFunction');
+router.route('/function').get(loadFunction.loadFunction);
+
+// 건물주/관리인 유지보수 라우터
+const repairs = require('./routes/common/repairs');
+router.route('/repair_list').get(repairs.loadRepairList);
 
 // 세입자 기능페이지 라우터
 const tenant_function = require('./routes/tenant/tenant_function.js');

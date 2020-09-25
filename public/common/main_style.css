@@ -328,12 +328,24 @@ textarea {
   flex: 1;
 }
 
-.white-each-content p {
+.white-content-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+  color: var(--main-color);
+}
+
+.white-content-title {
   margin: 0;
   font-size: 1.15rem;
   border-bottom: 2px solid #ccc;
   padding: 0 0 0.25rem 0.4rem;
   margin-right: 0.2rem;
+}
+
+.white-content-state {
+  display: grid;
+  align-items: center;
 }
 
 .white-content-state i {

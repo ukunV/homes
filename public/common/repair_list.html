@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
+    <% if(userType === '건물주'){ %>
+    <script src="/public/host/host_nav.js" defer></script>
+    <% } else { %>
+    <script src="/public/manager/mgr_nav.js" defer></script>
+    <% } %>
+    <script src="/public/tenant/repair_list.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>건물주</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt selected_menu" id="nav_function">기능</div>
+          <% if(userType === '건물주'){ %>
+            <div class="main-content bt" id="nav_management">관리</div>
+          <% } %>
+          <div class="navbar-setapp bt">
+            <i class="fas fa-cog"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+
+      <div id="go_back" onclick="location.href='/function/'">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+
+      <div class="white-content-wrapper">
+          <div class="white-content">
+              <span class="big-title">유지보수 목록</span>
+          </div>
+          <div class="white-content-filter">
+            <span class="filter-bt filter-selected bt" id="view_all_bt">모두 보기</span>
+            <span class="filter-bt  bt" id="view_not_solved_bt">진행중인 건</span>
+            <span class="filter-bt bt" id="view_solved_bt">완료된 건</button>
+          </div>
+          
+          <div class="white-content-list" id="not-solved-list">
+          <!--진행중인 건 시작-->
+          <% if(unsolved_repairs) { unsolved_repairs.forEach(repair => { %>
+              <!--Template Start-->
+              <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
+                  <div class="white-content-title-wrapper">
+                      <p class="white-content-title"><%= repair.title %></p>
+                  </div>
+                  <div class="white-content-state not-solved">
+                    <i class="fas fa-hourglass-half"></i>
+                  </div>
+              </div>
+              <!--Template End-->
+          <!--진행중인 건 끝-->
+          <% })} %>
+        </div>
+
+          <!--완료된 건 시작-->
+        <div class="white-content-list" id="solved-list">
+            <% if(solved_repairs) { solved_repairs.forEach(repair => { %>
+            <!--Template Start-->
+            <div class="white-each-content" onclick="location.href='/view_repair/<%= repair.repairNum %>'">
+                <div class="white-content-title-wrapper">
+                  <p class="white-content-subtitle">에덴빌 101호</p>
+                    <p class="white-content-title"><%= repair.title %></p>
+                </div>
+                <div class="white-content-state solved">
+                    <i class="far fa-thumbs-up"></i>
+                </div>
+            </div>
+          <!--Template End-->
+          <!--완료된 건 끝-->
+          <% })} %>
+        </div>
+          <% if(!unsolved_repairs && !solved_repairs) { %>
+            <div class="empty-case" style="margin-top: 3rem;color: var(--point-color);">
+              <div>
+                <i class="fas fa-ban"></i>
+              </div>
+              <p>등록한 유지보수가 없어요</p>
+            </div>
+            <% } %>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>

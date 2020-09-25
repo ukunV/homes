@@ -2,11 +2,9 @@ const ejs = require('ejs'),
   fs = require('fs'),
   mysql = require('mysql');
 
-const mySqlClient = mysql.createConnection(require('../../config/db_config'));
-
-const tenant_function = function (req, res) {
+const loadFunction = function (req, res) {
   if (req.session.user) {
-    fs.readFile('./public/tenant/tenant_function.html', 'utf8', function (error, data) {
+    fs.readFile('./public/common/function.html', 'utf8', function (error, data) {
       res.send(ejs.render(data, {}));
     });
   } else {
@@ -16,4 +14,4 @@ const tenant_function = function (req, res) {
   }
 };
 
-module.exports.tenant_function = tenant_function;
+module.exports.loadFunction = loadFunction;
