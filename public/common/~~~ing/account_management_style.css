@@ -20,14 +20,9 @@
 }
 
 .tag-explain {
-  padding-left: 0.3rem;
-  background-color: white;
-  border-top: 1px solid dodgerblue;
-  height: 2rem;
-}
-
-.end {
-  border-bottom: 1px solid dodgerblue;
+  padding: 0.4rem 1rem;
+  margin-top: 0.8rem;
+  height: 1.8rem;
 }
 
 .list-content {
@@ -35,10 +30,15 @@
 }
 
 .info-account {
-  padding-left: 0.3rem;
-  background-color: aliceblue;
-  border-top: 1px solid dodgerblue;
-  height: 2rem;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.8rem;
+  background-color: #eee;
+  border-radius: 5px;
+  height: 1.8rem;
+}
+
+#show_form {
+  font-size: 1rem;
 }
 
 #change_passwd_form {
