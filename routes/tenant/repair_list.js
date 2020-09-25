@@ -14,7 +14,6 @@ const repairList = function (req, res) {
     mySqlClient.query(getRepairsSql, req.session.user.userId, function (err, row) {
       if (row) {
         row.forEach((element) => {
-          console.log(element.isSolved);
           if (element.isSolved === 0) {
             unsolved_repairs.push(element);
           } else {

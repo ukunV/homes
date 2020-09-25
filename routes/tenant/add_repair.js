@@ -21,7 +21,7 @@ const loadAddRepair = function (req, res) {
         });
       } else {
         res.send(
-          '<script type="text/javascript">alert("입주한 건물이 없습니다. 건물주에게 세입자 등록을 요청하세요."); window.location="/host/function";</script>',
+          '<script type="text/javascript">alert("입주한 건물이 없습니다. 건물주에게 세입자 등록을 요청하세요."); window.location="/tenant/repair_list";</script>',
         );
       }
     });

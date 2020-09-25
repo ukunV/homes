@@ -1,27 +1,7 @@
-.hst {
-  padding-bottom: 0.8rem;
-}
-
-.hst_info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.hst-phnum {
-  border-bottom: 1px solid var(--point-color);
-  margin-right: 1rem;
-}
-
-.hst-bank,
-.mgr-phnum {
-  border-bottom: 1px solid var(--point-color);
-}
-
 .hst-mgr,
 .date,
 .monthly-payment {
-  padding: 0.7rem 0.4rem;
+  padding: 1rem 0.6rem;
   background: white;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -32,9 +12,17 @@
   font-size: 1.3rem;
 }
 
+.mgr {
+  padding-top: 0.8rem;
+}
+
+.hst-info {
+  padding-top: 0.4rem;
+}
+
 .hst-role,
 .mgr-role {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .hst-name,
@@ -71,6 +59,14 @@
 .monthly-payment-status {
   background-color: var(--push-color);
   color: var(--white-color);
-  padding: 0.2rem;
+  padding: 0.05rem 0.3rem;
   border-radius: 0.3rem;
+  font-size: 0.9rem;
+  margin-left: 0.25rem;
+}
+
+.address {
+  font-size: 0.9rem;
+  color: var(--white-color);
+  margin: 0 0 0.7rem 0.5rem;
 }
