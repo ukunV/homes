@@ -50,7 +50,7 @@ i {
   align-items: center;
   position: sticky;
   top: 0;
-  padding: 7px 0 5px 0;
+  padding: 1rem 0 0.5rem 0.5rem;
   border-bottom: 1.5px solid var(--point-color);
   color: var(--point-color);
   background: var(--white-color);
@@ -71,7 +71,7 @@ i {
 
 .selected_menu {
   background: var(--point-color);
-  border-radius: 8px;
+  border-radius: 7px;
   color: var(--white-color);
   border-bottom: 2px solid var(--point-color);
 }
@@ -112,19 +112,25 @@ i {
 .set-menu {
   background-color: var(--point-color);
   color: var(--white-color);
+  flex-direction: column;
+  text-align: center;
   border-radius: 0.3rem;
-  width: 6rem;
+  padding: 0.3rem 0.7rem;
+  height: 0;
   text-align: center;
   display: none;
   position: absolute;
   top: 2.3rem;
-  right: 0;
+  right: 0.5rem;
 }
 
 .set-menu.active {
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  height: auto;
+}
+
+.set-menu > div {
+  padding: 0.1rem 0;
 }
 
 .content {
