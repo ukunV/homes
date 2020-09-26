@@ -47,7 +47,7 @@ button {
 
 input[type='checkbox'],
 input[type='radiobox'] {
-  -webkit-appearance: default;
+  -webkit-appearance: auto;
 }
 
 .set-menu {
