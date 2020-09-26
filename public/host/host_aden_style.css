@@ -89,6 +89,7 @@
 }
 
 .memo-toggle {
+  width: 4.5rem;
   margin-top: 0.5rem;
   background: rgb(209, 246, 198);
   border: 1px solid rgb(101, 219, 140);
