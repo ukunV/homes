@@ -78,7 +78,7 @@ router.route('/host/change/paymentok/').get(host_aden_paymentok.changePaymentok)
 
 // 관리인 건물정보페이지 라우터
 const mgr_aden = require('./routes/manager/mgr_aden.js');
-router.route('/mgr/aden').get(mgr_aden.mgr_aden);
+router.route('/mgr/aden/:id').get(mgr_aden.mgr_aden);
 
 // 건물주 관리페이지 라우터
 const host_management = require('./routes/host/host_management.js');

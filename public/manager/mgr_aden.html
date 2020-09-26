@@ -1,71 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
-    <link rel="stylesheet" href="/public/manager/mgr_aden_style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/common/module.js" defer></script>
-    <script src="/public/host/host_nav.js" defer></script>
-    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
-    <title>관리인_건물정보</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
-        </div>
-        <div class="navbar-setapp bt">
-          <i class="fas fa-cog"></i>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/public/common/main_style.css" />
+  <link rel="stylesheet" href="/public/manager/mgr_aden_style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+  <script src="/public/common/module.js" defer></script>
+  <script src="/public/host/host_nav.js" defer></script>
+  <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+  <title>관리인_건물정보</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="navbar">
+      <div class="navbar-main">
+        <div class="main-content bt selected_menu" id="nav_home">홈</div>
+        <div class="main-content bt" id="nav_push">알림</div>
+        <div class="main-content bt" id="nav_function">기능</div>
       </div>
-
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
+      <div class="navbar-setapp bt">
+        <i class="fas fa-cog"></i>
       </div>
+    </div>
 
-      <div class="content">
-        <div class="content-title">에덴빌</div>
-        <div class="builing-rooms">
-          <div class="room">
-            <div class="room-left">
-              <div class="room-main">
-                <div class="room-main-left">
-                  <span class="room-num">101호</span>
-                </div>
-                <div class="room-main-right">
-                  <div class="room-maintenance">
-                    <span class="room-maintenance-title">유지/보수건</span>
-                    <span class="room-maintenance-cnt">3</span>
-                  </div>
-                </div>
+    <div class="set-menu">
+      <div class="set-account bt">계정관리</div>
+      <div class="set-notice bt">공지사항</div>
+      <div class="set-push bt">알림설정</div>
+      <div class="set-logout bt">로그아웃</div>
+    </div>
+
+    <div class="content">
+      <div class="content-title"></div>
+      <% if(locals.room_data){room_data.forEach((room)=>{ %>
+      <div class="builing-rooms">
+        <div class="room">
+          <div class="room-left">
+            <div class="room-main">
+              <div class="room-main-left">
+                <span class="room-num"><%=room.roomNum%>호</span>
               </div>
-              <div class="room-main-bottom">
-                <span class="round-tag-border">허전진</span>
-                <span class="round-tag-border">📞010-1234-5678</span>
+              <div class="room-main-right">
+                <div class="room-maintenance">
+                  <span class="room-maintenance-title">유지/보수건</span>
+                  <span class="room-maintenance-cnt"><%=room.Unsolved%></span>
+                </div>
               </div>
             </div>
+            <% if(room.name!==null){ %>
+            <div class="room-main-bottom">
+              <span class="round-tag-border"><%=room.name%></span>
+              <span class="round-tag-border">📞<%=room.tel%></span>
+            </div>
+            <% } %>
+            <% if(room.name===null){ %>
+            <div class="room-main-bottom">
+              <span class="round-tag-border">세입자 없음</span>
+            </div>
+            <% } %>
+          </div>
 
-            <div class="room-right">
-              <div class="content-msg">
-                <i class="fas fa-bullhorn bt"></i>
-              </div>
+          <div class="room-right">
+            <div class="content-msg">
+              <i class="fas fa-bullhorn bt"></i>
             </div>
           </div>
         </div>
-
-        <div class="show-more-wrapper bt">
-          <i class="fas fa-arrow-down"></i>
-          <div class="small-message">더 보기</div>
-        </div>
       </div>
+      <% });} %>
     </div>
-  </body>
+  </div>
+</body>
 </html>
