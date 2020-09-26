@@ -1,13 +1,13 @@
 .push-contents {
-  padding-top: 1.3rem;
+  padding-top: 1rem;
 }
 
 .push-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--point-color);
-  padding-right: 0.3rem;
+  border-bottom: 1px solid var(--point-color);
+  padding: 0.3rem;
 }
 
 .push-img {
@@ -20,9 +20,11 @@
 }
 
 .push-main {
-  flex: 5;
+  flex: 6;
 }
 
 .push-when {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: right;
 }

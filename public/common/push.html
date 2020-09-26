@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="/public/common/push_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
+    <% if(userType === '건물주') { %>
     <script src="/public/host/host_nav.js" defer></script>
+    <% } %> <% if(userType === '관리인') { %>
+    <script src="/public/manager/mgr_nav.js" defer></script>
+    <% } %> <% if(userType === '세입자') { %>
+    <script src="/public/tenant/tenant_nav.js" defer></script>
+    <% } %>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>알림</title>
   </head>
@@ -18,13 +24,9 @@
           <div class="main-content bt" id="nav_home">홈</div>
           <div class="main-content bt selected_menu" id="nav_push">알림</div>
           <div class="main-content bt" id="nav_function">기능</div>
-          <div
-            class="main-content bt"
-            onclick="location.href='/host/management'"
-            id="nav_management"
-          >
-            관리
-          </div>
+          <% if(userType === '건물주') { %>
+          <div class="main-content bt" id="nav_management">관리</div>
+          <% } %>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -40,20 +42,21 @@
 
       <div class="push">
         <div class="push-contents">
+          <!--Push Template Start-->
           <div class="push-items">
             <div class="push-img">
-              <i class="far fa-envelope"></i>
+              <i class="fab fa-telegram-plane"></i>
             </div>
             <div class="push-main">
               <div class="push-msg">
                 '에덴빌 202호 허전진'님께서 입금완료 하셨습니다. 계좌를 확인해주세요
               </div>
               <div class="push-when">
-                <span class="push-date">20/09/15</span>
-                <span class="push-time">오후 7:39</span>
+                <span class="push-date">20/09/15 15:00</span>
               </div>
             </div>
           </div>
+          <!--Push Template End-->
         </div>
       </div>
     </div>

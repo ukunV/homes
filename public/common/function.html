@@ -38,9 +38,15 @@
         <div class="set-logout bt">로그아웃</div>
       </div>
 
+      <% if(userType === '건물주'){ %>
       <div class="func-select bt" onclick="location.href='/host/function/message'">
         <div class="select-title"><i class="fas fa-bullhorn"></i>알림 보내기</div>
       </div>
+      <% } if(userType === '관리인') { %>
+      <div class="func-select bt" onclick="location.href='/manager/function/message'">
+        <div class="select-title"><i class="fas fa-bullhorn"></i>알림 보내기</div>
+      </div>
+      <% } %>
 
       <div class="func-select bt" onclick="location.href='/repair_list'">
         <div class="select-title"><i class="fas fa-tools"></i>유지/보수 관리</div>
