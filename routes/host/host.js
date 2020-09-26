@@ -1,10 +1,10 @@
-var ejs = require('ejs'),
+const ejs = require('ejs'),
   fs = require('fs'),
   mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
-var host = function (req, res) {
+const host = function (req, res) {
   if (req.session.user) {
     const buildingInfoSql =
       'select buildingNum, count(payment_month_ok) as nonPayment, building_name, name as manager_name from buildings b join user u on b.managerID=u.user_id join room r on r.buildNum=b.buildingNum where b.hostID=? and r.payment_month_ok=0 and r.payment_type=0 group by b.buildingNum;';

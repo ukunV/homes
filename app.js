@@ -132,6 +132,11 @@ router.route('/tenant/solve_repair/:id').get(solveRepair.solveRepair);
 const view_repair = require('./routes/common/view_repair');
 router.route('/view_repair/:id').get(view_repair.loadRepair);
 
+// 푸시(알림 보내기) 라우터 - 진행중
+const send_push = require('./routes/common/send_push');
+router.route('/tenant/function/message').get(send_push.loadSendList_tenant); // 세입자 알림보내기
+router.route('/host/function/message').get(send_push.loadSendList_host); // 건물주 알림보내기
+
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');
 router.route('/token').post(token.addToken);
