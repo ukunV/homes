@@ -29,7 +29,8 @@ p,
 table,
 hr,
 input[type='button'],
-ul {
+ul,
+div {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -42,6 +43,11 @@ input,
 button {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
+}
+
+input[type='checkbox'],
+input[type='radiobox'] {
+  -webkit-appearance: default;
 }
 
 .set-menu {
