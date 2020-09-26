@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="/public/common/account_management_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
+    <script src="/public/host/host_nav.js" defer></script>
+    <script src="/public/common/account_management.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>개인정보 관리</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt" id="nav_function">기능</div>
+          <div class="main-content bt" id="nav_management">관리</div>
+        </div>
+        <div class="navbar-setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+
+      <div id="go_back">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+
+      <div class="account-management-title">개인정보 관리</div>
+
+      <form class="account-management-form" method="POST" action="">
+        <div class="account-management-box">
+          <div class="list-tag">
+            <div class="tag-explain">ID</div>
+            <div class="tag-explain">직책</div>
+            <div class="tag-explain">이름</div>
+            <div class="tag-explain">전화번호</div>
+            <div class="tag-explain">비밀번호</div>
+          </div>
+          <div class="list-content">
+            <div class="info-account">acd123</div>
+            <div class="info-account">건물주</div>
+            <div class="info-account">이건욱</div>
+            <div class="info-account">
+              <input id="current_phnum" type="text" value="010-1234-5678" disabled="true" />
+              <button id="change_phnum">변경</button>
+            </div>
+            <div class="info-account">
+              <input id="change_passwd" type="text" />
+              <button id="show_input">비밀번호 변경</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div id="change_passwd_box">
+          <div class="passwd-tag">
+            <div class="passwd-explain">현재 비밀번호 입력</div>
+            <div class="passwd-explain">새 비밀번호 입력</div>
+            <div class="passwd-explain">새 비밀번호 재입력</div>
+          </div>
+          <div class="passwd-content">
+            <div class="info-account">
+              <input id="current_passwd" type="password" />
+            </div>
+            <div class="info-account">
+              <input id="first_passwd" type="password" />
+            </div>
+            <div class="info-account">
+              <input id="second_passwd" type="password" />
+            </div>
+          </div>
+        </div> -->
+
+        <div class="submit-box">
+          <label for="submit_changes">확 인</label>
+          <input type="submit" id="submit_changes" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

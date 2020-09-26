@@ -37,15 +37,25 @@
   height: 1.8rem;
 }
 
-#show_form {
+#current_phnum {
+  width: 8rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#change_phnum {
   font-size: 1rem;
 }
 
-#change_passwd_form {
-  visibility: hidden;
+#change_passwd {
+  display: none;
 }
 
-.form-top {
+#show_input {
+  font-size: 1rem;
+}
+/* 
+#change_passwd_box {
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -53,13 +63,21 @@
   width: 95%;
   margin-left: 0.5rem;
   margin-top: 0.8rem;
+  display: none;
 }
 
-.form-tag {
+.passwd-tag {
   flex: 1;
 }
 
-.form-content {
+.passwd-explain {
+  padding: 0.4rem 1rem;
+  margin-top: 1rem;
+  height: 1.8rem;
+  font-size: 1rem;
+}
+
+.passwd-content {
   flex: 1;
 }
 
@@ -68,13 +86,15 @@
 #second_passwd {
   width: 10rem;
 }
+*/
 
-.form-bottom {
-  margin-top: 1rem;
-  text-align: center;
+.submit-box {
+  margin-top: 2rem;
+  margin-left: 5.8rem;
 }
+
 label {
-  padding: 0.3rem 1.5rem;
+  padding: 0.3rem 5rem;
   color: var(--point-color);
   font-size: 1rem;
   background-color: var(--white-color);
@@ -82,6 +102,6 @@ label {
   border-radius: 5px;
 }
 
-#change_passwd_submit {
+#submit_changes {
   display: none;
 }
