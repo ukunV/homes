@@ -1,77 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
-    <link rel="stylesheet" href="/public/manager/mgr_style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/common/module.js" defer></script>
-    <script src="/public/host/host_nav.js" defer></script>
-    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
-    <title>관리인</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
-        </div>
-        <div class="navbar-setapp bt">
-          <i class="fas fa-cog"></i>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/public/common/main_style.css" />
+  <link rel="stylesheet" href="/public/manager/mgr_style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+  <script src="/public/common/module.js" defer></script>
+  <script src="/public/manager/mgr_nav.js" defer></script>
+  <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+  <title>관리인</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="navbar">
+      <div class="navbar-main">
+        <div class="main-content bt selected_menu" id="nav_home">홈</div>
+        <div class="main-content bt" id="nav_push">알림</div>
+        <div class="main-content bt" id="nav_function">기능</div>
       </div>
-
-      <div class="header">
-        <div class="header-left">
-          <span id="header_left_name"><%=name%></span>
-          <span id="header_left_role">관리인님,</span>
-          <p id="welcome_message">안녕하세요!</p>
-        </div>
+      <div class="navbar-setapp bt">
+        <i class="fas fa-cog"></i>
       </div>
+    </div>
 
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
+    <div class="header">
+      <div class="header-left">
+        <span id="header_left_name"><%=name%></span>
+        <span id="header_left_role">관리인님,</span>
+        <p id="welcome_message">안녕하세요!</p>
       </div>
+    </div>
 
-      <div class="content">
-        <div class="content-title">내가 관리중인 건물</div>
-        <div class="content-wrapper">
+    <div class="set-menu">
+      <div class="set-account bt">계정관리</div>
+      <div class="set-notice bt">공지사항</div>
+      <div class="set-push bt">알림설정</div>
+      <div class="set-logout bt">로그아웃</div>
+    </div>
 
-          <div class="belongs bt">
-            <div class="belongs-top">
-              <div class="belongs-top-left">
-                <div class="belongs-details">
-                  <span class="belongs-title">에덴빌</span>
-                  <div class="belongs-maintenance">
-                    <span class="maintenance-title">유지/보수건</span>
-                    <span class="maintenance-count">3</span>
-                 </div>
-                </div>
-                <div class="belongs-phnum">
-                  <span class="belongs-bottom-title">건물주 </span>
-                  <span class="round-tag-border">이건욱</span>
-                  <span class="round-tag-border" id="phnum"">📞010-5484-5421</span>
+    <div class="content">
+      <div class="content-title">내가 관리중인 건물</div>
+      <div class="content-wrapper">
+        <!-- 관리 건물 하나 이상 -->
+        <% if(locals.manager_data){manager_data.forEach((manager)=> { %>
+        <div class="belongs bt" onclick="location.href='/mgr/aden/<%=manager.buildingNum%>'">
+          <div class="belongs-top">
+            <div class="belongs-top-left">
+              <div class="belongs-details">
+                <span class="belongs-title"><%=manager.building_name%></span>
+                <div class="belongs-maintenance">
+                  <span class="maintenance-title">유지/보수건</span>
+                  <span class="maintenance-count"><%=manager.Unsolved%></span>
                 </div>
               </div>
-              <div class="belongs-top-right">
-                <i class="fas fa-bullhorn"></i>
+              <div class="belongs-phnum">
+                <span class="belongs-bottom-title">건물주 </span>
+                <span class="round-tag-border"><%=manager.hostName%></span>
+                <span class="round-tag-border" id="phnum">📞<%=manager.hostTel%></span>
               </div>
             </div>
-            <div class="belongs-bottom">
-              <span class="round-tag-border">
-                경기도 용인시 수지구 죽전로 144번길 16-10, 301호
-              </span>
+            <div class="belongs-top-right">
+              <i class="fas fa-bullhorn"></i>
             </div>
           </div>
-
+          <div class="belongs-bottom">
+            <span class="round-tag-border">
+              <%=manager.building_addr%>
+            </span>
+          </div>
+        </div>
+        <% });} %>
+        <!-- 관리 건물 하나 이상 끝-->
+        <!-- 관리 건물 없을 경우-->
+        <% if(!locals.manager_data){ %>
+        <div class="content">
+          <div class="content-title">
+            <div class="content-wrapper">
+              <div class="empty-case" style="padding-top: 1rem">
+                <div>
+                  <i class="fas fa-ban"></i>
+                </div>
+                <p>관리 중인 건물이 없어요</p>
+                <p>건물주에게 등록을 요청하세요!</p>
+              </div>
+              <% } %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>

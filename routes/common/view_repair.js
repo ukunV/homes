@@ -11,7 +11,6 @@ const loadRepair = function (req, res) {
       'SELECT re.repairNum, re.title, re.content, re.isSolved, u.name, u.tel, b.building_name, ro.roomNum FROM repair re, room ro, user u, buildings b WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND b.buildingNum = ro.buildNum AND re.repairNum = ?';
     mySqlClient.query(getRepairSql, req.params.id, function (err, row) {
       if (row) {
-        console.log(row[0]);
         fs.readFile('./public/common/view_repair.html', 'utf8', function (error, data) {
           res.send(
             ejs.render(data, {
