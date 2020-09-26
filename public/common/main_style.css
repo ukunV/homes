@@ -2,7 +2,7 @@
   --main-color: #424242;
   --white-color: white;
   --black-color: #212121;
-  --push-color: #d60000;
+  --push-color: #e9004e;
   --pink-color: rgb(255, 93, 120);
   --green-color: rgb(16, 175, 16);
   --point-color: dodgerblue;
@@ -163,7 +163,6 @@ i {
 
 .red-count {
   font-size: 0.8rem;
-  font-weight: 600;
   color: var(--white-color);
   background: var(--push-color);
   border-radius: 6px;
@@ -178,7 +177,6 @@ i {
 .content-building {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 0.7rem 0.4rem;
   background: white;
   border-radius: 5px;

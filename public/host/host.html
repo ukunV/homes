@@ -59,15 +59,17 @@
 
             <div class="content-mid">
               <div class="content-payment">
-                <span class="pay-count-l">미납건</span>
+                <% if(building.nonPayment > 0) { %>
+                <span class="pay-count-l">월세미납</span>
                 <span class="pay-count red-count"><%=building.nonPayment%></span>
-                <span class="pay-count-r">건</span>
+                <% } %>
               </div>
 
               <div class="content-maintenance">
-                <span class="repair-count-l">유지/보수건</span>
+                <% if(building.Unsolved > 0) { %>
+                <span class="repair-count-l">유지/보수</span>
                 <span class="repair-count red-count"><%=building.Unsolved%></span>
-                <span class="repair-count-r">건</span>
+                <% } %>
               </div>
             </div>
 

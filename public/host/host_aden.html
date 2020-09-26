@@ -79,8 +79,9 @@
                   <% }} %>
                 </div>
                 <div class="room-maintenance">
-                  <span class="room-maintenance-title">유지/보수건</span>
-                  <span class="room-boolean"><%=room.Unsolved%></span>
+                  <% if(room.Unsolved>0) { %>
+                  <span class="room-maintenance-title">유지/보수</span>
+                  <span class="room-boolean"><%=room.Unsolved%></span> <% } %>
                 </div>
               </div>
               <div class="room-main-right">
@@ -116,7 +117,7 @@
                 </div>
                 <% } else { %>
                 <button class="round-tag-border memo-toggle" room-num="<%= room.roomNum %>">
-                  🡦 메모 추가
+                  메모 추가
                 </button>
                 <div class="room-memo-wrapper" room-num="<%= room.roomNum %>" style="display: none">
                   <textarea name="memo" class="room-memo" maxlength="500">

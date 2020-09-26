@@ -8,7 +8,6 @@
 .belongs-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .belongs-top-left {
@@ -18,7 +17,6 @@
 .belongs-details {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .belongs-title {

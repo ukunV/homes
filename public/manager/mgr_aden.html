@@ -47,8 +47,9 @@
                 </div>
                 <div class="room-main-right">
                   <div class="room-maintenance">
-                    <span class="room-maintenance-title">유지/보수건</span>
-                    <span class="room-maintenance-cnt"><%=room.Unsolved%></span>
+                    <% if(room.Unsolved>0) { %>
+                    <span class="room-maintenance-title">유지/보수</span>
+                    <span class="room-maintenance-cnt"><%=room.Unsolved%></span><% } %>
                   </div>
                 </div>
               </div>

@@ -9,9 +9,9 @@ function memoToggle(e) {
 
   if (target.style.display != 'none') {
     target.style.display = 'none';
-    e.target.innerHTML = '🡦 메모 추가';
+    e.target.innerHTML = '메모 추가';
   } else {
     target.style.display = 'flex';
-    e.target.innerHTML = '🡤 메모 접기';
+    e.target.innerHTML = '메모 접기';
   }
 }
