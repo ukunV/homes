@@ -39,15 +39,11 @@ div {
   user-select: none;
 }
 
-input,
-button {
+input[type='button'],
+button,
+textarea {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
-}
-
-input[type='checkbox'],
-input[type='radiobox'] {
-  -webkit-appearance: auto;
 }
 
 .set-menu {
