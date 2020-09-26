@@ -5,11 +5,9 @@ const ejs = require('ejs'),
 const loadFunction = function (req, res) {
   if (req.session.user) {
     fs.readFile('./public/common/function.html', 'utf8', function (error, data) {
-      res.send(
-        ejs.render(data, {
-          userType: req.session.user.userType,
-        }),
-      );
+      res.send(ejs.render(data, {
+        userType = req.session.user.userType,
+      }));
     });
   } else {
     res.send(
