@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="/public/common/function_style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
+    <% if(userType === '건물주'){ %>
     <script src="/public/host/host_nav.js" defer></script>
+    <% } if(userType === '관리인') { %>
+    <script src="/public/manager/mgr_nav.js" defer></script>
+    <% } %>
     <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주/관리인 기능</title>
   </head>
@@ -18,7 +22,9 @@
           <div class="main-content bt" id="nav_home">홈</div>
           <div class="main-content bt" id="nav_push">알림</div>
           <div class="main-content bt selected_menu" id="nav_function">기능</div>
+          <% if(userType === '건물주'){ %>
           <div class="main-content bt" id="nav_management">관리</div>
+          <% } %>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>

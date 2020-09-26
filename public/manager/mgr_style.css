@@ -3,7 +3,6 @@
   padding: 0.6rem 0;
   border-radius: 5px;
   margin-bottom: 10px;
-
 }
 
 .belongs-top {
@@ -13,7 +12,7 @@
 }
 
 .belongs-top-left {
-  flex: 4;
+  flex: 8;
 }
 
 .belongs-details {
@@ -23,13 +22,14 @@
 }
 
 .belongs-title {
-  font-size: 1.5rem;
-  margin-left: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding-left: 0.7rem;
 }
 
 .belongs-maintenance {
   margin-right: 1.6rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .maintenance-count {
@@ -37,11 +37,11 @@
   color: var(--white-color);
   border-radius: 5px;
   padding: 0 0.2rem;
+  font-size: 0.9rem;
 }
 
 .belongs-phnum {
-  margin-left: 1rem;
-  margin-top: 0.3rem;
+  padding: 0.3rem 0.6rem 0;
 }
 
 #phnum {
@@ -50,14 +50,19 @@
 
 .belongs-top-right {
   flex: 1;
+  padding-right: 0.3rem;
 }
 
 .belongs-top-right i {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: var(--push-color);
 }
 
 .belongs-bottom {
   margin-top: 0.6rem;
   margin-left: 0.5rem;
+}
+
+.belongs-addr {
+  font-size: 0.9rem;
 }

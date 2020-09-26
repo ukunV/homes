@@ -399,3 +399,7 @@ textarea {
   width: 15rem;
   padding: 0.4rem;
 }
+
+.fa-telegram-plane {
+  color: var(--point-color) !important;
+}
