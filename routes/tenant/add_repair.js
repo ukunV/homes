@@ -10,7 +10,7 @@ const loadAddRepair = function (req, res) {
   if (req.session.user) {
     const roomIDSql = 'select roomID from room where tenantID=?';
     mySqlClient.query(roomIDSql, req.session.user.userId, function (err, row) {
-      if (row[0]) {
+      if (row) {
         const selectroomID = row[0].roomID;
         fs.readFile('./public/tenant/register_repair.html', 'utf8', function (error, data) {
           res.send(

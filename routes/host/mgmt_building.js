@@ -62,9 +62,12 @@ const mgmt_building_modify = function (req, res) {
           '<script type="text/javascript">alert("잘못된 데이터베이스 접근입니다."); window.location="/";</script>',
         );
       } else {
-        const building_data = {
-          ...row[0],
-        };
+        let building_data = [];
+        if (row) {
+          building_data = {
+            ...row[0],
+          };
+        }
 
         mySqlClient.query(roomInfoSql, buildingNum, function (err, row) {
           if (err) {
