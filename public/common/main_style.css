@@ -69,7 +69,7 @@ i {
 }
 
 .wrapper {
-  width: 375px !important;
+  width: 375px;
   margin: 0 auto;
 }
 
