@@ -40,6 +40,7 @@ div {
 }
 
 input[type='button'],
+input[type='submit'],
 button,
 textarea {
   -webkit-appearance: none;
