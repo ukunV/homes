@@ -66,7 +66,10 @@
             </div>
 
             <div class="room-right">
-              <div class="content-msg">
+              <div
+                class="content-msg"
+                onclick="location.href='/message?user_id=<%= room.tenantID %>'"
+              >
                 <i class="fab fa-telegram-plane"></i>
               </div>
             </div>

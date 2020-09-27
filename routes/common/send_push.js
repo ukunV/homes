@@ -4,6 +4,60 @@ const ejs = require('ejs'),
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
+// 개별 알림 보내기 라우터
+// userID
+const loadSendList_each = function (req, res) {
+  if (req.session.user) {
+    if (req.query.user_id) {
+      const loadReceiverSql = 'SELECT user_id, name, type from user where user_id=?';
+      mySqlClient.query(loadReceiverSql, req.query.user_id, function (err, row) {
+        if (row) {
+          fs.readFile('./public/common/each_message.html', 'utf8', function (error, data) {
+            res.send(
+              ejs.render(data, {
+                userType: req.session.user.userType,
+                receiver: row[0],
+              }),
+            );
+          });
+        } else {
+          res.send(
+            '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',
+          );
+        }
+      });
+    } else if (req.query.buildingNum) {
+      const loadReceiverSql =
+        'SELECT tenantID, `name`, roomNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND buildingNum = ?;';
+      const receivers = [];
+
+      mySqlClient.query(loadReceiverSql, req.query.buildingNum, function (err, row) {
+        if (row) {
+          row.forEach((element) => {
+            receivers.push(element);
+          });
+          fs.readFile('./public/common/each_message.html', 'utf8', function (error, data) {
+            res.send(
+              ejs.render(data, {
+                userType: req.session.user.userType,
+                receivers,
+              }),
+            );
+          });
+        } else {
+          res.send(
+            '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',
+          );
+        }
+      });
+    }
+  } else {
+    res.send(
+      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
+    );
+  }
+};
+
 const loadSendList_host = function (req, res) {
   if (req.session.user) {
     const loadReceiverSql =
@@ -121,3 +175,4 @@ const loadSendList_tenant = function (req, res) {
 module.exports.loadSendList_host = loadSendList_host;
 module.exports.loadSendList_tenant = loadSendList_tenant;
 module.exports.loadSendList_mgr = loadSendList_mgr;
+module.exports.loadSendList_each = loadSendList_each;

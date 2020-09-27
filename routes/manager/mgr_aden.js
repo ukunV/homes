@@ -8,7 +8,7 @@ var mgr_aden = function (req, res) {
   if (req.session.user) {
     const buildingNum = req.params.id;
     const roomInfo =
-      'select building_name, ro.roomNum, u.name, u.tel, count(repairNum) as Unsolved  from room ro left join user u on ro.tenantID=u.user_id join repair re on re.roomID=ro.roomID join buildings on buildingNum=buildNum where buildNum=? and re.isSolved=0 group by ro.roomNum UNION select building_name, roomNum, name, tel, 0 as Unsolved from room left join user on tenantID=user_id join buildings on buildingNum=buildNum where buildNum=? and roomId not in (select roomid from repair where isSolved=0);';
+      'select tenantID, building_name, ro.roomNum, u.name, u.tel, count(repairNum) as Unsolved  from room ro left join user u on ro.tenantID=u.user_id join repair re on re.roomID=ro.roomID join buildings on buildingNum=buildNum where buildNum=? and re.isSolved=0 group by ro.roomNum UNION select tenantID, building_name, roomNum, name, tel, 0 as Unsolved from room left join user on tenantID=user_id join buildings on buildingNum=buildNum where buildNum=? and roomId not in (select roomid from repair where isSolved=0);';
     mySqlClient.query(roomInfo, [buildingNum, buildingNum], function (err, row) {
       if (row) {
         const room_data = [];

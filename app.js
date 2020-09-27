@@ -134,6 +134,7 @@ router.route('/view_repair/:id').get(view_repair.loadRepair);
 
 // 푸시(알림 보내기) 라우터 - 진행중
 const send_push = require('./routes/common/send_push');
+router.route('/message/').get(send_push.loadSendList_each); // 개별 알림보내기(user_id, buildingNum)
 router.route('/tenant/function/message').get(send_push.loadSendList_tenant); // 세입자 알림보내기
 router.route('/host/function/message').get(send_push.loadSendList_host); // 건물주 알림보내기
 router.route('/manager/function/message').get(send_push.loadSendList_mgr); // 관리인 알림보내기

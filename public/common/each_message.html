@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="/public/tenant/tenant_message_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
+    <script src="/public/common/module.js" defer></script>
+    <% if(userType === '건물주') { %>
+    <script src="/public/host/host_nav.js" defer></script>
+    <% } %> <% if(userType === '관리인') { %>
+    <script src="/public/manager/mgr_nav.js" defer></script>
+    <% } %> <% if(userType === '세입자') { %>
+    <script src="/public/tenant/tenant_nav.js" defer></script>
+    <% } %>
+    <script src="/public/common/each_message.js" defer></script>
+    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
+    <title>알림 보내기(건물 전체에게)</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="navbar-main">
+          <div class="main-content bt" id="nav_home">홈</div>
+          <div class="main-content bt" id="nav_push">알림</div>
+          <div class="main-content bt selected_menu" id="nav_function">기능</div>
+          <% if(userType === '건물주') { %>
+          <div class="main-content bt" id="nav_management">관리</div>
+          <% } %>
+        </div>
+        <div class="navbar-setapp bt">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+
+      <div class="set-menu">
+        <div class="set-account bt">계정관리</div>
+        <div class="set-notice bt">공지사항</div>
+        <div class="set-push bt">알림설정</div>
+        <div class="set-logout bt">로그아웃</div>
+      </div>
+
+      <div id="go_back" onclick="location.href='/'">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
+
+      <div id="message_title">알림 보내기</div>
+      <form id="message" action="" method="POST">
+        <div class="list-title">수신자 목록</div>
+        <label>
+          <div id="sel_receiver">
+            <div id="sel_all"><input id="sel_all_radio" type="checkbox" /> 전체선택</div>
+          </div></label
+        >
+        <div id="receiver_list">
+          <!-- by user_id-->
+          <% if(locals.receiver) { %> <% if(receiver){ %>
+          <label build-num="<%= receiver.buildNum %>" class="receiver-label">
+            <div class="receiver">
+              <input
+                name="user_id"
+                type="checkbox"
+                class="receiver-radio"
+                value="<%= receiver.user_id %>"
+                required
+              /><span class="round-tag-border"><%=receiver.type %></span> <%=receiver.name%>님
+            </div></label
+          >
+          <% } else { %> 메시지를 보낼 수 없는 수신자입니다. <% }} %>
+          <!-- by buildingNum -->
+          <% if(locals.receivers) { %> <% if(receivers){ receivers.forEach(receiver=>{%>
+          <label build-num="<%= receiver.buildNum %>" class="receiver-label">
+            <div class="receiver">
+              <input
+                name="user_id"
+                type="checkbox"
+                class="receiver-radio"
+                value="<%= receiver.user_id %>"
+                required
+              /><span class="round-tag-border"><%=receiver.roomNum %>호</span> <%=receiver.name%>님
+            </div></label
+          >
+          <% });} else { %> 메시지를 보낼 수 없는 수신자입니다. <% }} %>
+        </div>
+        <div id="msg_content">
+          <textarea name="content" required></textarea>
+          <div class="bt" id="submit"><i class="far fa-paper-plane"></i></div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

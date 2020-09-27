@@ -47,7 +47,10 @@
             <div class="hst-basic">
               <span class="hst-role">임대인</span>
               <span class="hst-name"><%=hostName%></span>
-              <i class="fas fa-bullhorn bt"></i>
+              <i
+                class="fab fa-telegram-plane"
+                onclick="location.href='/message?user_id=<%= hostID %>'"
+              ></i>
             </div>
             <div class="hst-info">
               <span class="round-tag-border"><%=hostTel%></span>
@@ -58,7 +61,10 @@
             <div class="basic">
               <span class="mgr-role">관리인</span>
               <span class="mgr-name"><%=managerName%></span>
-              <i class="fas fa-bullhorn bt"></i>
+              <i
+                class="fab fa-telegram-plane"
+                onclick="location.href='/message?user_id=<%= managerID %>'"
+              ></i>
             </div>
             <div class="info">
               <span class="round-tag-border"><%=managerTel%></span>

@@ -53,8 +53,10 @@
                 >
                   <span class="belongs-title"><%=manager.building_name%></span>
                   <div class="belongs-maintenance">
-                    <span class="maintenance-title">유지/보수건</span>
+                    <% if (manager.Unsolved > 0) { %>
+                    <span class="maintenance-title">유지/보수</span>
                     <span class="maintenance-count"><%=manager.Unsolved%></span>
+                    <% } %>
                   </div>
                 </div>
                 <div class="belongs-phnum">
@@ -66,7 +68,10 @@
                   <span class="belongs-addr"> <%=manager.building_addr%> </span>
                 </div>
               </div>
-              <div class="belongs-top-right">
+              <div
+                class="belongs-top-right"
+                onclick="location.href='/message?buildingNum=<%= manager.buildingNum %>'"
+              >
                 <i class="fab fa-telegram-plane"></i>
               </div>
             </div>
