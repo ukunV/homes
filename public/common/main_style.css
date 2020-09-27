@@ -76,8 +76,10 @@ i {
   align-items: center;
   position: sticky;
   top: 0;
-  padding: 1rem 0 0.5rem 0.5rem;
-  border-bottom: 1.5px solid var(--point-color);
+  /* padding: 1rem 0 0.5rem 0.5rem; */
+  padding-top: 10px;
+  height: 50px;
+  border-bottom: 1px solid var(--point-color);
   color: var(--point-color);
   background: var(--white-color);
 }
@@ -246,7 +248,7 @@ i {
   flex-direction: column;
   justify-content: center;
   position: sticky;
-  top: 2.74rem;
+  top: 61px;
   background-color: var(--white-color);
   color: var(--point-color);
 }
