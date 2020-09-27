@@ -59,6 +59,7 @@ receiver VARCHAR(30) NOT NULL,
 sendDate datetime default CURRENT_TIMESTAMP,
 msgType TINYINT(1) default 0, # 0:기본메시지, 1:유지보수
 content VARCHAR(5000) NOT NULL, #메시지내용
+isRead TINYINT(1) default 0, # 0:ㅗ안읽음, 1:읽음
 CONSTRAINT fk_sender FOREIGN KEY(sender) REFERENCES user(user_id),
 CONSTRAINT fk_receiver FOREIGN KEY(receiver) REFERENCES user(user_id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
 

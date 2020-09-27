@@ -4,6 +4,33 @@ const ejs = require('ejs'),
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
+// 메시지 읽음 처리 라우터
+const readPush = function (req, res) {
+  if (req.session.user) {
+    const msgID = req.params.id;
+    let updateReadPushSql = 'update messages set isRead=1 where msgID=?';
+
+    if (msgID === 'all') {
+      updateReadPushSql = `update messages set isRead=1 where receiver='${req.session.user.userId}'`;
+    }
+
+    mySqlClient.query(updateReadPushSql, msgID, function (err, result) {
+      if (err) {
+        console.log('insert Error>>' + err);
+        res.send(
+          '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.location="/push";</script>',
+        );
+      } else {
+        res.send('<script type="text/javascript">location.href="/push";</script>');
+      }
+    });
+  } else {
+    res.send(
+      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
+    );
+  }
+};
+
 // POST: 알림 전송 라우터 (+Firebase)
 const sendPush = function (req, res) {
   if (req.session.user) {
@@ -31,16 +58,12 @@ const sendPush = function (req, res) {
       mySqlClient.query(sendMessageSql, [params_msg], function (err, result) {
         if (err) {
           console.log('insert Error>>' + err);
-          const alertMsg = '전송 중 오류가 발생했습니다.';
           res.send(
-            '<script type="text/javascript">alert("' +
-              alertMsg +
-              '"); window.location="/";</script>',
+            '<script type="text/javascript">alert("전송 중 오류가 발생했습니다."); window.location="/";</script>',
           );
         } else {
-          const alertMsg = '알림을 보냈어요!';
           res.send(
-            '<script type="text/javascript">alert("' + alertMsg + '"); location.href="/";</script>',
+            '<script type="text/javascript">alert("알림을 보냈어요!"); location.href="/";</script>',
           );
         }
       });
@@ -229,3 +252,4 @@ module.exports.loadSendList_tenant = loadSendList_tenant;
 module.exports.loadSendList_mgr = loadSendList_mgr;
 module.exports.loadSendList_each = loadSendList_each;
 module.exports.sendPush = sendPush;
+module.exports.readPush = readPush;

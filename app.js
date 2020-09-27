@@ -140,6 +140,8 @@ router.route('/host/function/message').get(send_push.loadSendList_host); // 건�
 router.route('/manager/function/message').get(send_push.loadSendList_mgr); // 관리인 알림보내기
 // POST - 알림 전송 라우터
 router.route('/submit_message/').post(send_push.sendPush);
+// 알림 읽음 처리 라우터
+router.route('/message/read/:id').get(send_push.readPush);
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 const token = require('./routes/common/token.js');

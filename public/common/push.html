@@ -42,9 +42,14 @@
 
       <div class="push">
         <div class="push-contents">
+          <div class="push-all-func">
+            <span class="round-tag-border" onclick="location.href='/message/read/all'"
+              >모두 읽음 처리</span
+            >
+          </div>
           <% if(messages){ messages.forEach(msg => { %>
           <!--Push Template Start-->
-          <div class="push-items">
+          <div class="push-items" isread="<%=msg.isRead%>">
             <div class="push-img">
               <% if(msg.msgType === 0) { %>
               <i class="fab fa-telegram-plane"></i>
@@ -54,11 +59,25 @@
             </div>
             <div class="push-main">
               <div class="push-msg">
-                <% if(msg.sender_building_name) { %> <%= msg.sender_building_name %> <% } %> <%
-                if(msg.sender_roomNum) { %> <%= msg.sender_roomNum %>호 <% } %> <%= msg.sender_type
-                %> <%= msg.sender_name %>님께서 메시지를 보냈어요.
-                <p class="push-msg-content"><%= msg.content %></p>
+                <div class="push-info">
+                  <% if(msg.sender_building_name) { %> <%= msg.sender_building_name %> <% } %> <%
+                  if(msg.sender_roomNum) { %> <%= msg.sender_roomNum %>호 <% } %> <%=
+                  msg.sender_type %> <%= msg.sender_name %>님이 메시지를 보냈어요.
+                </div>
+                <div class="push-func">
+                  <span
+                    class="func-msg isReadBt"
+                    onclick="location.href='/message/read/<%= msg.msgID %>'"
+                    >읽음</span
+                  >
+                  <span
+                    class="func-msg"
+                    onclick="location.href='/message?user_id=<%= msg.sender %>'"
+                    >답장</span
+                  >
+                </div>
               </div>
+              <p class="push-msg-content"><%= msg.content %></p>
               <div class="push-when">
                 <span class="push-date"><%= msg.date %></span>
               </div>
@@ -81,5 +100,17 @@
         </div>
       </div>
     </div>
+    <script>
+      const messages = document.querySelectorAll('.push-items');
+      function loadMsgRead() {
+        messages.forEach((msg) => {
+          if (msg.getAttribute('isread') === '1') {
+            msg.classList.add('read');
+            msg.querySelector('.isReadBt').style.display = 'none';
+          }
+        });
+      }
+      window.addEventListener('load', loadMsgRead);
+    </script>
   </body>
 </html>
