@@ -49,7 +49,7 @@
             <form class="setting-content" name="building_name" method="POST" action="/host/modify/submit/building_name">
             <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
             <input name="newData" id="building_name" value="<%= building_name %>">
-            <input type="submit" class="setting-submit" value="✔️">
+            <input type="submit" class="setting-submit" value="저장">
           </form>
         </div>
         <div class="setting-wrapper">
@@ -57,7 +57,7 @@
             <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/building_addr">
             <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
             <input name="newData" id="building_addr" value="<%= building_addr %>">
-            <input type="submit" class="setting-submit" value="✔️">
+            <input type="submit" class="setting-submit" value="저장">
             </form>
         </div>
         <div class="setting-wrapper">
@@ -65,7 +65,7 @@
           <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/managerID">
           <input type="hidden" name="managerID" value="<%= buildingNum %>" />
           <input name="newData" id="building_managerID" value="<%= manager_name %>(<%= managerID %>)">
-          <input type="submit" class="setting-submit" value="✔️">
+          <input type="submit" class="setting-submit" value="저장">
           </form>
       </div>
 
@@ -85,7 +85,7 @@
                         <input class="payment" name="all_payCash" placeholder="금액(숫자) 입력" />원</div>
                 </form>
                 <div class="setting-room-all-submit">
-                  <input type="submit" class="setting-all-room-submit" value="✔️">
+                  <input type="submit" class="setting-all-room-submit" value="저장">
                 </div>
             </div>
             <p class='content-msg small' style='margin:0;'>일괄설정시 모든 세대가 변경되므로 주의하세요!</p>
@@ -99,7 +99,7 @@
                   <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
                   <input type="hidden" name="roomID" value="<%= room.roomID %>" />
                     <div class="room-num-wrapper"><span class="room-num"><%= room.roomNum %>호</span>
-                      <input type="submit" class="round-tag-border room-submit" value="✔️ 저장"></div>세입자<input name="tenantID" class="payment tenant tenantid" value="<%= room.tenantID %>" placeholder="아이디 입력"><% if(room.tenant_name){ %>(<%= room.tenant_name %>)
+                      <input type="submit" class="round-tag-border room-submit" value="저장"></div>세입자<input name="tenantID" class="payment tenant tenantid" value="<%= room.tenantID %>" placeholder="아이디 입력"><% if(room.tenant_name){ %>(<%= room.tenant_name %>)
                         <label class="delete-tenant-check-label"><input class="delete-tenant-check" type="checkbox" room-num="<%= room.roomNum %>" original-tid="<%= room.tenantID %>" />삭제</label><% } else { %> <label class="delete-tenant-check-label" style="margin-left: 4rem;"><input class="delete-tenant-check" type="checkbox" room-num="<%= room.roomNum %>" original-tid="<%= room.tenantID %>" />삭제</label> <% } %>
 
                   </div>
