@@ -53,12 +53,12 @@ CONSTRAINT fk_repairroom FOREIGN KEY(roomID) REFERENCES room(roomID)) ENGINE=Inn
 
 DROP TABLE IF EXISTS messages;
 CREATE TABLE messages(
-msgID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+msgID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 sender VARCHAR(30) NOT NULL,
 receiver VARCHAR(30) NOT NULL,
 sendDate datetime default CURRENT_TIMESTAMP,
-msgType TINYINT(1) default 0,
-content VARCHAR(5000) default NULL, #메시지내용
+msgType TINYINT(1) default 0, # 0:기본메시지, 1:유지보수
+content VARCHAR(5000) NOT NULL, #메시지내용
 CONSTRAINT fk_sender FOREIGN KEY(sender) REFERENCES user(user_id),
 CONSTRAINT fk_receiver FOREIGN KEY(receiver) REFERENCES user(user_id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
 

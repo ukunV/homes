@@ -28,3 +28,11 @@
   color: #999;
   text-align: right;
 }
+
+.push-msg-content {
+  background: #eee;
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  margin: 0.3rem;
+}

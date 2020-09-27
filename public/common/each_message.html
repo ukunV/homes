@@ -46,7 +46,7 @@
       </div>
 
       <div id="message_title">알림 보내기</div>
-      <form id="message" action="" method="POST">
+      <form id="message" action="/submit_message" method="POST">
         <div class="list-title">수신자 목록</div>
         <label>
           <div id="sel_receiver">
@@ -76,8 +76,7 @@
                 name="user_id"
                 type="checkbox"
                 class="receiver-radio"
-                value="<%= receiver.user_id %>"
-                required
+                value="<%= receiver.tenantID %>"
               /><span class="round-tag-border"><%=receiver.roomNum %>호</span> <%=receiver.name%>님
             </div></label
           >
@@ -85,7 +84,7 @@
         </div>
         <div id="msg_content">
           <textarea name="content" required></textarea>
-          <div class="bt" id="submit"><i class="far fa-paper-plane"></i></div>
+          <button class="bt" id="submit"><i class="far fa-paper-plane"></i></button>
         </div>
       </form>
     </div>

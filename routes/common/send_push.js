@@ -4,8 +4,60 @@ const ejs = require('ejs'),
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
+// POST: 알림 전송 라우터 (+Firebase)
+const sendPush = function (req, res) {
+  if (req.session.user) {
+    const receivers = req.body.user_id; // 1명~여러명
+    const sender = req.session.user.userId;
+    const content = req.body.content;
+    // msgType: 0 (기본 메시지, default로 설정되어 있음)
+
+    const sendMessageSql = 'insert into messages (receiver, sender, content) VALUES ?';
+    const params_msg = [];
+
+    if (receivers && sender && content) {
+      if (Array.isArray(receivers)) {
+        // 다수인 경우
+        for (var receiver of receivers) {
+          params_msg.push([receiver, sender, content]);
+        }
+      } else {
+        // 한명인 경우
+        params_msg.push([receivers, sender, content]);
+      }
+
+      console.log(params_msg);
+
+      mySqlClient.query(sendMessageSql, [params_msg], function (err, result) {
+        if (err) {
+          console.log('insert Error>>' + err);
+          const alertMsg = '전송 중 오류가 발생했습니다.';
+          res.send(
+            '<script type="text/javascript">alert("' +
+              alertMsg +
+              '"); window.location="/";</script>',
+          );
+        } else {
+          const alertMsg = '알림을 보냈어요!';
+          res.send(
+            '<script type="text/javascript">alert("' + alertMsg + '"); location.href="/";</script>',
+          );
+        }
+      });
+    } else {
+      res.send(
+        '<script type="text/javascript">alert("수신자 또는 내용을 다시 확인하세요."); window.history.back();</script>',
+      );
+    }
+  } else {
+    res.send(
+      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
+    );
+  }
+};
+
 // 개별 알림 보내기 라우터
-// userID
+// Query: userID, buildingNum
 const loadSendList_each = function (req, res) {
   if (req.session.user) {
     if (req.query.user_id) {
@@ -176,3 +228,4 @@ module.exports.loadSendList_host = loadSendList_host;
 module.exports.loadSendList_tenant = loadSendList_tenant;
 module.exports.loadSendList_mgr = loadSendList_mgr;
 module.exports.loadSendList_each = loadSendList_each;
+module.exports.sendPush = sendPush;
