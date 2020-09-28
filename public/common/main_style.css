@@ -46,6 +46,17 @@ div {
   user-select: none;
 }
 
+input,
+button {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+input[type='checkbox'],
+input[type='radiobox'] {
+  -webkit-appearance: default;
+}
+
 .set-menu {
   z-index: 2;
 }
