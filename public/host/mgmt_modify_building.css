@@ -9,7 +9,6 @@
 .setting-title {
   flex: 1;
   font-weight: 700;
-  width: 4rem;
 }
 
 .setting-room-title {
@@ -29,6 +28,7 @@
   border: none;
   border-radius: 5px;
   font-size: 0.9rem;
+  width: 100%;
 }
 
 .setting-submit {
