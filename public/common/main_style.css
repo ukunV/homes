@@ -57,16 +57,11 @@ div {
 input,
 button {
   -webkit-appearance: none;
-  -webkit-border-radius: 0;
 }
 
 input[type='checkbox'],
-input[type='radiobox'] {
-  -webkit-appearance: auto;
-}
-
-.set-menu {
-  z-index: 2;
+input[type='radio'] {
+  -webkit-appearance: auto !important;
 }
 
 input,
@@ -109,13 +104,13 @@ i {
 
 .navbar-item {
   color: var(--gray-color);
-  font-size: 1.15em;
-  padding: 0.25rem 0.4rem;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.45rem;
 }
 
 .navbar-item.selected {
   color: var(--blue-color);
-  text-shadow: 1px 0.5px 0.5px var(--soft-blue-color);
+  font-weight: 700;
 }
 
 .main-content {
@@ -161,18 +156,21 @@ i {
 }
 
 .set-menu {
-  background-color: var(--point-color);
-  color: var(--white-color);
+  background-color: white;
+  font-weight: 600;
+  color: var(--blue-color);
   flex-direction: column;
   text-align: center;
   border-radius: 0.3rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.4rem 0.75rem;
   height: 0;
   text-align: center;
   display: none;
   position: absolute;
-  top: 3rem;
+  top: 52px;
   right: 0.5rem;
+  z-index: 999;
+  box-shadow: 0 0 4px 3px var(--soft-gray-color);
 }
 
 .set-menu.active {
