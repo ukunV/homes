@@ -273,9 +273,11 @@ i {
   flex-direction: column;
   justify-content: center;
   position: sticky;
-  top: 53px;
+  top: 54px;
+  margin-left: 0.3rem;
   background-color: var(--white-color);
   color: var(--point-color);
+  z-index: 2;
 }
 
 #go_back i {
