@@ -33,6 +33,12 @@ body {
 
 span,
 p,
+div {
+  letter-spacing: -0.35px;
+}
+
+span,
+p,
 table,
 hr,
 input[type='button'],
@@ -130,7 +136,7 @@ i {
 }
 
 #header_left_name {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.35rem;
 }
 
@@ -139,7 +145,7 @@ i {
 }
 
 #header_right_name {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 #header_left_role {
@@ -185,7 +191,7 @@ i {
 
 .content-title {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--blue-color);
   padding: 0.4rem 0.5rem 1rem 0.5rem;
 }
@@ -197,7 +203,7 @@ i {
 
 .content-name {
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .mgr-title {
@@ -207,7 +213,7 @@ i {
 .red-count {
   font-size: 0.8rem;
   color: var(--push-color);
-  font-weight: 700;
+  font-weight: 800;
   border-radius: 4px;
   padding: 0 0.1rem;
 }
@@ -286,7 +292,7 @@ i {
 }
 
 .bold {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .content-empty {
@@ -331,7 +337,7 @@ i {
 
 .round-tag-border {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 800;
   background: var(--soft-blue-color);
   border-radius: 4px;
   padding: 0.05rem 0.4rem;
@@ -355,7 +361,7 @@ textarea {
 .big-title {
   flex: 1;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .content-bt {
@@ -450,7 +456,7 @@ textarea {
 }
 
 #repair_head {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .sub-msg {
