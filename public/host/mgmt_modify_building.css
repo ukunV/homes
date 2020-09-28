@@ -8,12 +8,12 @@
 
 .setting-title {
   flex: 1;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .setting-room-title {
   text-align: left;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1rem;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .setting-submit {
-  font-weight: 800;
+  font-weight: 700;
   margin-left: 0.4rem;
   padding: 0.6rem 0.4rem;
   background: var(--point-soft-color);
@@ -58,7 +58,7 @@
 
 .setting-room-all-title {
   flex: 1;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .setting-room-all-content {
@@ -144,7 +144,7 @@
 
 .delete-tenant-check-label {
   color: var(--push-color);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .date {

@@ -138,7 +138,7 @@ i {
 }
 
 #header_left_name {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.35rem;
 }
 
@@ -147,7 +147,7 @@ i {
 }
 
 #header_right_name {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 #header_left_role {
@@ -193,7 +193,7 @@ i {
 
 .content-title {
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--blue-color);
   padding: 0.4rem 0.5rem 1rem 0.5rem;
 }
@@ -205,7 +205,7 @@ i {
 
 .content-name {
   font-size: 0.9rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .mgr-title {
@@ -215,7 +215,7 @@ i {
 .red-count {
   font-size: 0.8rem;
   color: var(--push-color);
-  font-weight: 800;
+  font-weight: 700;
   border-radius: 4px;
   padding: 0 0.1rem;
 }
@@ -294,7 +294,7 @@ i {
 }
 
 .bold {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .content-empty {
@@ -339,7 +339,7 @@ i {
 
 .round-tag-border {
   font-size: 0.8rem;
-  font-weight: 800;
+  font-weight: 700;
   background: var(--soft-blue-color);
   border-radius: 4px;
   padding: 0.05rem 0.4rem;
@@ -363,7 +363,7 @@ textarea {
 .big-title {
   flex: 1;
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .content-bt {
@@ -458,7 +458,7 @@ textarea {
 }
 
 #repair_head {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .sub-msg {
