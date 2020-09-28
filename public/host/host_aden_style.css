@@ -5,6 +5,7 @@
   border-radius: 5px;
   margin-bottom: 10px;
   flex-direction: column;
+  box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
 }
 
 .room-main {
@@ -15,8 +16,8 @@
 }
 
 .room-num {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .room-main-left,
@@ -44,7 +45,7 @@
 
 .room-main-mid {
   flex: 2;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .room-main-right {
@@ -53,14 +54,6 @@
 
 .room-maintenance {
   padding-top: 0.3rem;
-}
-
-.room-boolean {
-  font-size: 0.85rem;
-  color: var(--white-color);
-  background: var(--push-color);
-  border-radius: 5px;
-  padding: 0.1rem 0.3rem;
 }
 
 .room-bottom {
@@ -89,10 +82,10 @@
 }
 
 .memo-toggle {
-  width: 4.7rem;
+  width: 4.3rem;
   margin-top: 0.5rem;
-  background: rgb(209, 246, 198);
-  border: 1px solid rgb(101, 219, 140);
+  background: var(--soft-green-color);
+  border: none;
 }
 
 .top-flex {

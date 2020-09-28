@@ -22,11 +22,9 @@ var tenant = function (req, res) {
           );
         });
       } else {
-        const roomNum = 'none';
         fs.readFile('./public/tenant/tenant.html', 'utf8', function (error, data) {
           res.send(
             ejs.render(data, {
-              roomNum: roomNum,
               name: req.session.user.userName,
             }),
           );

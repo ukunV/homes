@@ -4,8 +4,8 @@
 }
 
 #reg_title {
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   padding-left: 1.3rem;
 }
 
@@ -15,19 +15,20 @@
   justify-content: space-around;
   text-align: center;
   align-items: center;
+  margin: 1rem;
 }
 
 p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: gray;
   margin-bottom: 0;
 }
 
 p.reg-msg {
-  color: #666;
-  font-weight: 600;
+  color: var(--gray-color);
+  font-weight: 700;
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.6rem 0 0.8rem 0.3rem;
 }
 
@@ -38,7 +39,7 @@ p.reg-msg {
 
 .input-content {
   outline: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   width: 21rem;
   padding: 0.5rem;
   border: none;
@@ -47,12 +48,13 @@ p.reg-msg {
 
 #submit_content {
   margin-top: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   padding: 0.3rem 1.5rem;
   border: none;
   border-radius: 5px;
   background-color: var(--point-color);
   color: var(--white-color);
+  box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
 }
 
 #floor_adj {
@@ -60,8 +62,8 @@ p.reg-msg {
 }
 
 #floor_adj button {
-  font-size: 1.1rem;
-  width: 10.5rem;
+  font-size: 0.9rem;
+  width: 9rem;
   padding: 0.4rem;
   border: var(--white-color);
   color: var(--white-color);
@@ -85,25 +87,25 @@ p.reg-msg {
   border-radius: 13px;
   display: flex;
   align-items: center;
-  padding: 0.4rem;
-  margin: 0.5rem;
+  padding: 0.3rem;
+  margin: 0.5rem 0.9rem;
 }
 
 .room-floor {
   flex: 1;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .room-count {
   flex: 1;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .room-num {
-  width: 4rem;
+  width: 3rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 

@@ -158,6 +158,7 @@ const loadSendList_host = function (req, res) {
         fs.readFile('./public/common/host_mgr_message.html', 'utf8', function (error, data) {
           res.send(
             ejs.render(data, {
+              userType: req.session.user.userType,
               buildings,
               receivers,
             }),
@@ -201,6 +202,7 @@ const loadSendList_mgr = function (req, res) {
         fs.readFile('./public/common/host_mgr_message.html', 'utf8', function (error, data) {
           res.send(
             ejs.render(data, {
+              userType: req.session.user.userType,
               buildings,
               receivers,
             }),

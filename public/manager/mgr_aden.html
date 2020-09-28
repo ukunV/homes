@@ -13,11 +13,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
+      <div class="top-navbar-wrapper">
+        <div class="navbar-left-items">
+          <div class="navbar-item bt selected" id="nav_home">홈</div>
+          <div class="navbar-item bt" id="nav_push">알림</div>
+          <div class="navbar-item bt" id="nav_function">기능</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -49,7 +49,7 @@
                   <div class="room-maintenance">
                     <% if(room.Unsolved>0) { %>
                     <span class="room-maintenance-title">유지/보수</span>
-                    <span class="room-maintenance-cnt"><%=room.Unsolved%></span><% } %>
+                    <span class="red-count"><%=room.Unsolved%></span><% } %>
                   </div>
                 </div>
               </div>

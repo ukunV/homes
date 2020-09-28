@@ -5,11 +5,17 @@
   background: white;
   border-radius: 5px;
   margin-bottom: 10px;
+  box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
+}
+
+.monthly-payment {
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .hst-mgr i {
   color: var(--push-color);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .mgr {
@@ -34,6 +40,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .start {
@@ -61,12 +69,16 @@
   color: var(--white-color);
   padding: 0.05rem 0.3rem;
   border-radius: 0.3rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-left: 0.25rem;
 }
 
 .address {
-  font-size: 0.9rem;
-  color: var(--white-color);
+  font-size: 0.85rem;
   margin: 0 0 0.7rem 0.5rem;
+}
+
+.address_line {
+  border-bottom: 1px solid var(--soft-gray-color);
+  padding: 0 0.15rem;
 }

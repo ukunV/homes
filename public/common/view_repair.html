@@ -13,13 +13,13 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt selected_menu" id="nav_function">기능</div>
-          <% if(userType != '세입자') { %>
-          <div class="main-content bt" id="nav_function">관리</div>
+      <div class="top-navbar-wrapper">
+        <div class="navbar-left-items">
+          <div class="navbar-item bt" id="nav_home">홈</div>
+          <div class="navbar-item bt" id="nav_push">알림</div>
+          <div class="navbar-item bt selected" id="nav_function">기능</div>
+          <% if(userType === '건물주') { %>
+          <div class="navbar-item bt" id="nav_management">관리</div>
           <% } %>
         </div>
         <div class="navbar-setapp bt">
@@ -68,7 +68,7 @@
           <input
             id="submit_content"
             type="button"
-            value="해결 완료되었어요!"
+            value="해결 완료된 건이에요"
             style="background: var(--green-color)"
           />
         </div>

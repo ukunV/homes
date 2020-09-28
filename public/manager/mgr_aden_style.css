@@ -5,6 +5,7 @@
   background: white;
   border-radius: 5px;
   margin-bottom: 10px;
+  box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
 }
 
 .room-left {
@@ -38,16 +39,9 @@
 }
 
 .room-maintenance {
-  font-size: 1rem;
-  padding-left: 1rem;
-}
-
-.room-maintenance-cnt {
-  color: var(--white-color);
-  background: var(--push-color);
-  border-radius: 6px;
-  padding: 0 0.2rem;
+  padding-top: 0.1rem;
   font-size: 0.9rem;
+  padding-left: 1rem;
 }
 
 .room-main-bottom {
@@ -55,5 +49,5 @@
 }
 
 .content-msg i {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }

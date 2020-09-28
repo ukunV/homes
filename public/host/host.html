@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="/public/common/main_style.css" />
+    <link rel="stylesheet" href="/public/common/ziniCSS.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
     <script src="/public/common/module.js" defer></script>
     <script src="/public/host/host_nav.js" defer></script>
@@ -12,12 +13,12 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
-          <div class="main-content bt" id="nav_management">관리</div>
+      <div class="top-navbar-wrapper">
+        <div class="navbar-left-items">
+          <div class="navbar-item bt selected" id="nav_home">홈</div>
+          <div class="navbar-item bt" id="nav_push">알림</div>
+          <div class="navbar-item bt" id="nav_function">기능</div>
+          <div class="navbar-item bt" id="nav_management">관리</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -43,7 +44,7 @@
         <div class="content-title">내 건물 한눈에 보기</div>
         <div class="content-wrapper">
           <!--여기서부터 forEach 필요 (3개 -> 더보기)-->
-          <% if(locals.building_data) {building_data.forEach((building)=>{ %>
+          <% if(building_data.length>0) {building_data.forEach((building)=>{ %>
           <!--건물 템플릿 시작-->
           <div class="content-building">
             <div
@@ -83,15 +84,17 @@
             </div>
           </div>
           <!--건물 템플릿 끝-->
-          <% });} %>
-          <!--건물 없는 경우-->
-          <% if(!locals.building_data) { %>
+          <% });} else { %>
           <div class="empty-case">
             <div>
               <i class="fas fa-ban"></i>
             </div>
             <p>표시할 건물이 없어요</p>
-            <button id="mgmt_register_bt">내 건물 등록하기</button>
+            <p>
+              <button id="mgmt_register_bt" onclick="location.href='/host/management/register'">
+                내 건물 등록하기
+              </button>
+            </p>
           </div>
           <% } %>
         </div>

@@ -13,11 +13,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
+      <div class="top-navbar-wrapper">
+        <div class="navbar-left-items">
+          <div class="navbar-item bt selected" id="nav_home">홈</div>
+          <div class="navbar-item bt" id="nav_push">알림</div>
+          <div class="navbar-item bt" id="nav_function">기능</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -38,10 +38,10 @@
         <div class="set-push bt">알림설정</div>
         <div class="set-logout bt">로그아웃</div>
       </div>
-      <% if(roomNum!='none'){ %>
+      <% if(locals.roomNum){ %>
       <div class="content">
         <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
-        <div class="address"><%=building_addr%></div>
+        <div class="address"><span class="address_line"><%=building_addr%></span></div>
         <div class="hst-mgr">
           <div class="hst">
             <div class="hst-basic">
@@ -85,34 +85,32 @@
           <% } %>
         </div>
 
+        <% if(payment_type==0){%>
         <div class="monthly-payment">
-          <% if(payment_type==0){%>
           <span class="monthly-payment-title"
-            >월세 정산일 <%=payment_month_day%>일/<%=payment_cash%>원</span
+            >월세 정산일 <%=payment_month_day%>일 / <%=payment_cash%>원</span
           >
           <% } %> <% if(payment_type==1){%>
           <span class="monthly-payment-title">전세 세입자</span>
           <% } %> <% if(payment_type==0){ %> <% if(payment_month_ok==1) { %>
-          <span class="monthly-payment-status" style="background-color: green">완납</span>
+          <span class="monthly-payment-status" style="background-color: var(--green-color)"
+            >완납</span
+          >
           <% } else { %>
           <span class="monthly-payment-status">미납</span>
           <% }} %>
         </div>
-      </div>
-      <% } %> <% if(roomNum=='none'){ %>
-      <div class="content">
-        <div class="content-title">
-          <div class="content-wrapper">
-            <div class="empty-case" style="padding-top: 1rem">
-              <div>
-                <i class="fas fa-ban"></i>
-              </div>
-              <p>표시할 방이 없어요</p>
-              <p>임대인에게 세입자 등록을 요청하세요!</p>
+        <% } %><% if(!locals.roomNum){ %>
+        <div class="content-empty">
+          <div class="empty-case">
+            <div>
+              <i class="fas fa-ban"></i>
             </div>
-            <% } %>
+            <p>표시할 방이 없어요</p>
+            <p>임대인에게 세입자 등록을 요청하세요!</p>
           </div>
         </div>
+        <% } %>
       </div>
     </div>
   </body>

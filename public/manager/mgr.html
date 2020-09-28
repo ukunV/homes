@@ -13,11 +13,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="navbar">
-        <div class="navbar-main">
-          <div class="main-content bt selected_menu" id="nav_home">홈</div>
-          <div class="main-content bt" id="nav_push">알림</div>
-          <div class="main-content bt" id="nav_function">기능</div>
+      <div class="top-navbar-wrapper">
+        <div class="navbar-left-items">
+          <div class="navbar-item bt selected" id="nav_home">홈</div>
+          <div class="navbar-item bt" id="nav_push">알림</div>
+          <div class="navbar-item bt" id="nav_function">기능</div>
         </div>
         <div class="navbar-setapp bt">
           <i class="fas fa-cog"></i>
@@ -40,10 +40,10 @@
       </div>
 
       <div class="content">
-        <div class="content-title">내가 관리중인 건물</div>
+        <div class="content-title">내가 관리하는 건물</div>
         <div class="content-wrapper">
           <!-- 관리 건물 하나 이상 -->
-          <% if(locals.manager_data){manager_data.forEach((manager)=> { %>
+          <% if(manager_data.length>0){manager_data.forEach((manager)=> { %>
           <div class="belongs">
             <div class="belongs-top">
               <div class="belongs-top-left">
@@ -55,7 +55,7 @@
                   <div class="belongs-maintenance">
                     <% if (manager.Unsolved > 0) { %>
                     <span class="maintenance-title">유지/보수</span>
-                    <span class="maintenance-count"><%=manager.Unsolved%></span>
+                    <span class="red-count mgr-count"><%=manager.Unsolved%></span>
                     <% } %>
                   </div>
                 </div>
@@ -76,25 +76,19 @@
               </div>
             </div>
           </div>
-          <% });} %>
+          <% }); %>
           <!-- 관리 건물 하나 이상 끝-->
           <!-- 관리 건물 없을 경우-->
-          <% if(!locals.manager_data){ %>
-          <div class="content">
-            <div class="content-title">
-              <div class="content-wrapper">
-                <div class="empty-case" style="padding-top: 1rem">
-                  <div>
-                    <i class="fas fa-ban"></i>
-                  </div>
-                  <p>관리 중인 건물이 없어요</p>
-                  <p>건물주에게 등록을 요청하세요!</p>
-                </div>
-                <% } %>
-              </div>
-            </div>
-          </div>
         </div>
+        <% } else { %>
+        <div class="empty-case">
+          <div>
+            <i class="fas fa-ban"></i>
+          </div>
+          <p>표시할 방이 없어요</p>
+          <p>임대인에게 세입자 등록을 요청하세요!</p>
+        </div>
+        <% } %>
       </div>
     </div>
   </body>
