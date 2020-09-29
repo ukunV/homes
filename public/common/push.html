@@ -84,16 +84,22 @@
             </div>
           </div>
           <!--Push Template End-->
-          <% });} else { %>
+          <% }); if(messages.length===0){ %>
           <div class="push-items">
             <div class="push-img">
               <i class="fas fa-times"></i>
             </div>
             <div class="push-main">
               <div class="push-msg">수신한 알림이 없어요.</div>
-              <div class="push-when">
-                <span class="push-date">20/09/15 15:00</span>
-              </div>
+            </div>
+          </div>
+          <% } } else { %>
+          <div class="push-items">
+            <div class="push-img">
+              <i class="fas fa-times"></i>
+            </div>
+            <div class="push-main">
+              <div class="push-msg">수신한 알림이 없어요.</div>
             </div>
           </div>
           <% } %>

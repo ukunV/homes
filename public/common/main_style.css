@@ -44,6 +44,8 @@ p,
 table,
 hr,
 input[type='button'],
+input[type='submit'],
+button,
 ul,
 div {
   -webkit-touch-callout: none;
@@ -54,14 +56,15 @@ div {
   user-select: none;
 }
 
-input,
+input[type='button'],
+input[type='submit'],
 button {
   -webkit-appearance: none;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
-  -webkit-appearance: auto !important;
+a {
+  text-decoration: none;
+  color: black;
 }
 
 input,

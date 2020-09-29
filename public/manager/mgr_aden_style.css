@@ -25,6 +25,7 @@
 .room-main {
   display: flex;
   padding-bottom: 0.6rem;
+  align-items: center;
 }
 
 .room-main-left {

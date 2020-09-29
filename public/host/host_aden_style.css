@@ -11,7 +11,6 @@
 .room-main {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   padding-bottom: 0.5rem;
 }
 
@@ -82,7 +81,7 @@
 }
 
 .memo-toggle {
-  width: 4.3rem;
+  width: fit-content;
   margin-top: 0.5rem;
   background: var(--soft-green-color);
   border: none;
