@@ -358,7 +358,7 @@ textarea {
 
 .white-content {
   display: flex;
-  padding-left: 1.3rem;
+  padding: 0 1.3rem;
 }
 
 .big-title {
