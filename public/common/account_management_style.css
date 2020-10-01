@@ -54,39 +54,6 @@
 #show_input {
   font-size: 1rem;
 }
-/* 
-#change_passwd_box {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  font-size: 1.2rem;
-  width: 95%;
-  margin-left: 0.5rem;
-  margin-top: 0.8rem;
-  display: none;
-}
-
-.passwd-tag {
-  flex: 1;
-}
-
-.passwd-explain {
-  padding: 0.4rem 1rem;
-  margin-top: 1rem;
-  height: 1.8rem;
-  font-size: 1rem;
-}
-
-.passwd-content {
-  flex: 1;
-}
-
-#current_passwd,
-#first_passwd,
-#second_passwd {
-  width: 10rem;
-}
-*/
 
 .submit-box {
   margin-top: 2rem;
