@@ -53,6 +53,11 @@ router.route('/process/login').post(login);
 const logout = require('./routes/common/logout.js');
 router.route('/process/logout').get(logout);
 
+// 계정관리-본인인증 라우터
+const account_check_passwd = require('./routes/common/account_check_passwd.js');
+router.route('/check/password').get(account_check_passwd.checkPassword);
+router.route('/check/password_submit').post(account_check_passwd.password_submit);
+
 // 건물주페이지 라우터
 const host = require('./routes/host/host.js');
 router.route('/host').get(host.host);
