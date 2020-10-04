@@ -1,8 +1,8 @@
 # It uses Yarn, Forever
 # Bind to build_n_run.sh in current directory
 
-FROM node:10
-RUN npm install -g yarn; npm install forever -g;
+FROM node:12
+RUN npm install -g yarn; yarn global add forever;
 COPY package.json /src/package.json
 RUN  cd /src; yarn install;
 COPY . /src
