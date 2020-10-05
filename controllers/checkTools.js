@@ -72,6 +72,7 @@ const saveLogs = (req, _, next) => {
 const checkAccessibleBuilding = (checkingNum, req, isRepair = 0) => {
   const userId = req.session.user.userId;
   const userType = req.session.user.userType;
+
   let checkSql;
 
   if (userType === '건물주') {

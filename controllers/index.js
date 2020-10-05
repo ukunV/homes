@@ -83,7 +83,7 @@ router
 
 // (관리인) 건물정보
 const mgr_aden = require('./manager/mgr_aden.js');
-router.route('/manager/aden/:id').get(checkLogin, checkHost, mgr_aden.mgr_aden);
+router.route('/manager/aden/:id').get(checkLogin, checkManager, mgr_aden.mgr_aden);
 
 // (건물주) 관리
 const host_management = require('./host/host_management.js');

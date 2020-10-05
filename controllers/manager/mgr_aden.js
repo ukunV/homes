@@ -15,6 +15,8 @@ const mgr_aden = async function (req, res) {
       return false;
     });
 
+  console.log(checkAccessible);
+
   if (checkAccessible === false) {
     res.send(
       `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
