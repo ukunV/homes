@@ -1,12 +1,29 @@
 const mysql = require('mysql');
+const checkAccessibleBuilding = require('../checkTools').checkAccessibleBuilding;
+const permissionBanMsg = '잘못된 접근입니다.';
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
-const mgmt_building_modify_submit = function (req, res) {
+const mgmt_building_modify_submit = async function (req, res) {
   const whichToChange = req.params.toChange;
   const buildingNum = req.body.buildingNum;
   const userId = req.session.user.userId;
   const newData = req.body.newData;
+
+  const checkAccessible = await checkAccessibleBuilding(buildingNum, req)
+    .then((value) => {
+      return true;
+    })
+    .catch((err) => {
+      return false;
+    });
+
+  if (checkAccessible === false) {
+    res.send(
+      `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
+    );
+    return;
+  }
 
   if (whichToChange === 'building_name') {
     modify_building_name(buildingNum, userId, newData, res);

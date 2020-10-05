@@ -1,3 +1,7 @@
+const mysql = require('mysql');
+
+const mySqlClient = mysql.createConnection(require('../config/db_config'));
+
 // 로그인 필요없는 라우터  *메인페이지는 안에서 유저타입 검사
 // /process/login, /register, /token
 // 로그인 체크 미들웨어
@@ -57,12 +61,6 @@ const checkTenant = (req, res, next) => {
   }
 };
 
-// 건물주 본인건물 체크 미들웨어
-
-// 관리인 본인건물 체크 미들웨어
-
-// 세입자 본인건물 체크 미들웨어
-
 // 로그 저장 미들웨어
 const saveLogs = (req, _, next) => {
   const ip_address = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -70,4 +68,48 @@ const saveLogs = (req, _, next) => {
   next();
 };
 
-module.exports = { checkLogin, checkHost, checkHostOrManager, checkManager, checkTenant, saveLogs };
+// 건물 권한체크 함수
+const checkAccessibleBuilding = (checkingNum, req, isRepair = 0) => {
+  const userId = req.session.user.userId;
+  const userType = req.session.user.userType;
+  let checkSql;
+
+  if (userType === '건물주') {
+    checkSql =
+      'SELECT buildingNum FROM buildings b, user u WHERE b.hostID = u.user_id AND buildingNum = ? AND user_id = ?;';
+  } else if (userType === '관리인') {
+    checkSql =
+      'SELECT buildingNum FROM buildings b, user u WHERE b.managerID = u.user_id AND buildingNum = ? AND user_id = ?;';
+  } else if (userType === '세입자') {
+    if (isRepair === 1) {
+      checkSql =
+        'SELECT repairNum FROM buildings b, room ro, user u, repair re WHERE b.buildingNum = ro.buildNum AND ro.tenantID = u.user_id AND re.roomID = ro.roomID AND repairNum = ? AND user_id= ?';
+    } else {
+      checkSql =
+        'SELECT buildingNum FROM buildings b, room r, user u WHERE b.buildingNum = r.buildNum AND r.tenantID = u.user_id AND buildingNum = ? AND user_id=?;';
+    }
+  }
+
+  return new Promise((resolve, reject) => {
+    mySqlClient.query(checkSql, [checkingNum, userId], (err, row) => {
+      if (err) {
+        reject('Database Error');
+      } else {
+        if (row.length === 0) {
+          reject('No Accessible Data Error');
+        }
+        resolve('Success');
+      }
+    });
+  });
+};
+
+module.exports = {
+  checkLogin,
+  checkHost,
+  checkHostOrManager,
+  checkManager,
+  checkTenant,
+  saveLogs,
+  checkAccessibleBuilding,
+};

@@ -1,13 +1,30 @@
 const mysql = require('mysql');
+const checkAccessibleBuilding = require('../checkTools').checkAccessibleBuilding;
+const permissionBanMsg = '잘못된 접근입니다.';
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const paymentOkMsg = '완납 처리되었습니다.';
 const paymentNotOkMsg = '미납 처리되었습니다.';
 
-const changePaymentok = function (req, res) {
+const changePaymentok = async function (req, res) {
   const buildNum = req.query.bid;
   const roomNum = req.query.rid;
+
+  const checkAccessible = await checkAccessibleBuilding(buildNum, req)
+    .then((value) => {
+      return true;
+    })
+    .catch((err) => {
+      return false;
+    });
+
+  if (checkAccessible === false) {
+    res.send(
+      `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
+    );
+    return;
+  }
 
   const paymentokSql = 'select payment_month_ok from room where buildNum=? and roomNum=?;';
   const updatePaymentokSql = 'update room set payment_month_ok=? where buildNum=? and roomNum=?;';

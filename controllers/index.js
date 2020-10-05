@@ -2,12 +2,12 @@ const { Router } = require('express');
 const router = Router();
 
 // Import middlewares
-const checkLogin = require('./middleware').checkLogin;
-const checkHost = require('./middleware').checkHost;
-const checkHostOrManager = require('./middleware').checkHostOrManager;
-const checkManager = require('./middleware').checkManager;
-const checkTenant = require('./middleware').checkTenant;
-const saveLogs = require('./middleware').saveLogs;
+const checkLogin = require('./checkTools').checkLogin;
+const checkHost = require('./checkTools').checkHost;
+const checkHostOrManager = require('./checkTools').checkHostOrManager;
+const checkManager = require('./checkTools').checkManager;
+const checkTenant = require('./checkTools').checkTenant;
+const saveLogs = require('./checkTools').saveLogs;
 
 // 메인 페이지
 const main = require('./common/main.js');
