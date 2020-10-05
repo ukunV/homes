@@ -1,35 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/common/module.js" defer></script>
-    <script src="/public/tenant/tenant_nav.js" defer></script>
+    <%- include("../partials/header") %>
     <script src="/public/tenant/repair_list.js" defer></script>
-    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주</title>
   </head>
   <body>
     <div class="wrapper">
-      <div class="top-navbar-wrapper">
-        <div class="navbar-left-items">
-          <div class="navbar-item bt" id="nav_home">홈</div>
-          <div class="navbar-item bt" id="nav_push">알림</div>
-          <div class="navbar-item bt selected" id="nav_function">기능</div>
-        </div>
-        <div class="navbar-setapp bt">
-          <i class="fas fa-cog"></i>
-        </div>
-      </div>
-
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
-      </div>
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%- include
+      ("../partials/set-menu") %>
 
       <div id="go_back" onclick="location.href='/tenant/function/'">
         <i class="fas fa-arrow-left bt"></i>

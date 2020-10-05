@@ -1,45 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/tenant/tenant_message_style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/common/module.js" defer></script>
-    <% if(userType === '건물주') { %>
-    <script src="/public/host/host_nav.js" defer></script>
-    <% } %> <% if(userType === '관리인') { %>
-    <script src="/public/manager/mgr_nav.js" defer></script>
-    <% } %> <% if(userType === '세입자') { %>
-    <script src="/public/tenant/tenant_nav.js" defer></script>
-    <% } %>
     <script src="/public/common/each_message.js" defer></script>
-    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>알림 보내기(건물 전체에게)</title>
   </head>
   <body>
     <div class="wrapper">
-      <div class="top-navbar-wrapper">
-        <div class="navbar-left-items">
-          <div class="navbar-item bt" id="nav_home">홈</div>
-          <div class="navbar-item bt" id="nav_push">알림</div>
-          <div class="navbar-item bt selected" id="nav_function">기능</div>
-          <% if(userType === '건물주') { %>
-          <div class="navbar-item bt" id="nav_management">관리</div>
-          <% } %>
-        </div>
-        <div class="navbar-setapp bt">
-          <i class="fas fa-cog"></i>
-        </div>
-      </div>
-
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
-      </div>
+      <% if(userType === '건물주') { %> <%- include ("../partials/navbar", {type: 'host',
+      sel:'nav_function'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
+      ("../partials/navbar", {type: 'manager', sel:'nav_function'}) %> <% } %> <% if(userType ===
+      '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%
+      } %> <%- include ("../partials/set-menu") %>
 
       <div id="go_back" onclick="location.href='/'">
         <i class="fas fa-arrow-left bt"></i>

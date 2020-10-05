@@ -1,0 +1,34 @@
+<div class="top-navbar-wrapper">
+  <div class="navbar-left-items">
+    <div class="navbar-item bt" id="nav_home">홈</div>
+    <div class="navbar-item bt" id="nav_push">알림</div>
+    <div class="navbar-item bt" id="nav_function">기능</div>
+    <% if(type === 'host') { %>
+    <div class="navbar-item bt" id="nav_management">관리</div>
+    <% } %>
+  </div>
+  <div class="navbar-setapp bt">
+    <i class="fas fa-cog"></i>
+  </div>
+</div>
+
+<script>
+    const navHome = document.querySelector('#nav_home');
+    const navPush = document.querySelector('#nav_push');
+    const navFunction = document.querySelector('#nav_function');
+    const navManagement = document.querySelector('#nav_management');
+
+    document.getElementById('<%=sel%>').classList.add('selected');
+
+    <% if(type === 'host') { %> navHome.addEventListener('click', () => (location.href = '/'));
+  navPush.addEventListener('click', () => (location.href = '/push'));
+  navFunction.addEventListener('click', () => (location.href = '/function'));
+  navManagement.addEventListener('click', () => (location.href = '/host/management')); <% } %>
+  <% if(type === 'manager') { %>navHome.addEventListener('click', () => (location.href = '/manager'));
+  navPush.addEventListener('click', () => (location.href = '/push'));
+  navFunction.addEventListener('click', () => (location.href = '/function'));<% } %>
+  <% if(type === 'tenant') { %>navHome.addEventListener('click', () => (location.href = '/tenant'));
+  navPush.addEventListener('click', () => (location.href = '/push'));
+  navFunction.addEventListener('click', () => (location.href = '/tenant/function'));
+  <% } %>
+</script>

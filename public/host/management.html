@@ -1,29 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="/public/common/main_style.css" />
+    <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/host/management_style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans KR" />
-    <script src="/public/common/module.js" defer></script>
-    <script src="/public/host/host_nav.js" defer></script>
-    <script src="https://kit.fontawesome.com/69cc74444b.js" crossorigin="anonymous"></script>
     <title>건물주 관리</title>
   </head>
   <body>
     <div class="wrapper">
-      <div class="top-navbar-wrapper">
-        <div class="navbar-left-items">
-          <div class="navbar-item bt" id="nav_home">홈</div>
-          <div class="navbar-item bt" id="nav_push">알림</div>
-          <div class="navbar-item bt" id="nav_function">기능</div>
-          <div class="navbar-item bt selected" id="nav_management">관리</div>
-        </div>
-        <div class="navbar-setapp bt">
-          <i class="fas fa-cog"></i>
-        </div>
-      </div>
+      <%- include ("../partials/navbar", {type: 'host', sel:'nav_management'}) %> <%- include
+      ("../partials/set-menu") %>
 
       <div class="set-menu">
         <div class="set-account bt">계정관리</div>
