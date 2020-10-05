@@ -6,7 +6,7 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const mgmt_building_modify_submit = async function (req, res) {
   const whichToChange = req.params.toChange;
-  const buildingNum = req.body.buildingNum;
+  const buildingNum = req.body.buildingNum || req.body.buildNum;
   const userId = req.session.user.userId;
   const newData = req.body.newData;
 
@@ -161,4 +161,6 @@ const modify_memo = function (buildingNum, roomData, res) {
   });
 };
 
-module.exports.mgmt_building_modify_submit = mgmt_building_modify_submit;
+module.exports = {
+  mgmt_building_modify_submit,
+};
