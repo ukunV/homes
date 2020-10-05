@@ -1,8 +1,7 @@
-//이미지 업로드
-var fs = require('fs'),
+const fs = require('fs'),
   multer = require('multer'),
   mysql = require('mysql');
-//하자 ID select 위한 연결 클라이언트 생성
+
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const baseImgDir = 'public/resources/repair_images/';

@@ -1,51 +1,43 @@
-const ejs = require('ejs'),
-  fs = require('fs'),
-  mysql = require('mysql');
+const mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const mgmt_building_modify_submit = function (req, res) {
-  if (req.session.user) {
-    const whichToChange = req.params.toChange;
-    const buildingNum = req.body.buildingNum;
-    const userId = req.session.user.userId;
-    const newData = req.body.newData;
+  const whichToChange = req.params.toChange;
+  const buildingNum = req.body.buildingNum;
+  const userId = req.session.user.userId;
+  const newData = req.body.newData;
 
-    if (whichToChange === 'building_name') {
-      modify_building_name(buildingNum, userId, newData, res);
-    }
-    if (whichToChange === 'building_addr') {
-      modify_building_addr(buildingNum, userId, newData, res);
-    }
-    if (whichToChange === 'managerID') {
-      modify_managerID(buildingNum, userId, newData, res);
-    }
-    if (whichToChange === 'payment-all') {
-      const payData = [parseInt(req.body.all_payType), parseInt(req.body.all_payCash)];
-      modify_payment_all(buildingNum, payData, res);
-    }
-    // 세대별 전체 변경
-    if (whichToChange === 'tenant') {
-      const roomID = req.body.roomID;
-      const newData = [
-        req.body.payType,
-        req.body.payCash,
-        req.body.tenantID || null,
-        req.body.payment_month_day,
-        req.body.begin_date || null,
-        req.body.end_date || null,
-      ];
-      modify_tenant(buildingNum, roomID, newData, res);
-    }
-    // from host_aden.js
-    if (whichToChange === 'memo') {
-      const roomData = [req.body.memo, req.body.roomNum];
-      modify_memo(req.body.buildNum, roomData, res);
-    }
-  } else {
-    res.send(
-      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
-    );
+  if (whichToChange === 'building_name') {
+    modify_building_name(buildingNum, userId, newData, res);
+  }
+  if (whichToChange === 'building_addr') {
+    modify_building_addr(buildingNum, userId, newData, res);
+  }
+  if (whichToChange === 'managerID') {
+    modify_managerID(buildingNum, userId, newData, res);
+  }
+  if (whichToChange === 'payment-all') {
+    const payData = [parseInt(req.body.all_payType), parseInt(req.body.all_payCash)];
+    modify_payment_all(buildingNum, payData, res);
+  }
+  // 세대별 전체 변경
+  if (whichToChange === 'tenant') {
+    const roomID = req.body.roomID;
+    const newData = [
+      req.body.payType,
+      req.body.payCash,
+      req.body.tenantID || null,
+      req.body.payment_month_day,
+      req.body.begin_date || null,
+      req.body.end_date || null,
+    ];
+    modify_tenant(buildingNum, roomID, newData, res);
+  }
+  // from host_aden.js
+  if (whichToChange === 'memo') {
+    const roomData = [req.body.memo, req.body.roomNum];
+    modify_memo(req.body.buildNum, roomData, res);
   }
 };
 

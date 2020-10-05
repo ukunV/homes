@@ -1,12 +1,11 @@
-const ejs = require('ejs'),
-  fs = require('fs'),
-  mysql = require('mysql'),
-  crypto = require('crypto');
+const mysql = require('mysql');
+const crypto = require('crypto');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 const selectPwdSql = 'select * from user where user_id = ? && password=?';
 const checkTokenSql = 'select * from user where token=?';
 const setTokenSql = 'update user set token = ? where id=?;';
+const loginErrMsg = `<script type="text/javascript">alert("아이디 또는 비밀번호를 다시 확인해주세요."); window.history.back();</script>`;
 
 const login = function (req, res) {
   const checkId = req.body.id;
@@ -77,9 +76,7 @@ const login = function (req, res) {
           }
         }
       } else {
-        res.send(
-          '<script type="text/javascript">alert("아이디 또는 비밀번호를 다시 확인해주세요."); window.location="/";</script>',
-        );
+        res.send(loginErrMsg);
       }
     }
   });

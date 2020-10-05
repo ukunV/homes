@@ -1,13 +1,13 @@
-var schedule = require('node-schedule');
-var rule = new schedule.RecurrenceRule();
+const schedule = require('node-schedule');
+const rule = new schedule.RecurrenceRule();
 rule.hour = 23;
 rule.minute = 59;
 rule.second = 59;
 
-var moment = require('moment');
+const moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault('Asia/Seoul');
-var date = moment().format('DD');
+const date = moment().format('DD');
 
 const mysql = require('mysql');
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
@@ -26,4 +26,4 @@ const setPaymentOk = function () {
 
 const timer = schedule.scheduleJob(rule, setPaymentOk);
 
-module.exports.timer = timer;
+module.exports = timer;

@@ -1,19 +1,9 @@
-const ejs = require('ejs'),
-  fs = require('fs'),
-  mysql = require('mysql');
+const mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const host_mgmt_register = function (req, res) {
-  if (req.session.user) {
-    fs.readFile('./public/host/mgmt_register.html', 'utf8', function (error, data) {
-      res.send(ejs.render(data, {}));
-    });
-  } else {
-    res.send(
-      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
-    );
-  }
+  res.render('host/mgmt_register.html', {});
 };
 
 const registerSubmit = function (req, res) {
@@ -87,5 +77,4 @@ const registerSubmit = function (req, res) {
   });
 };
 
-module.exports.host_mgmt_register = host_mgmt_register;
-module.exports.reg_submit = registerSubmit;
+module.exports = { host_mgmt_register, registerSubmit };
