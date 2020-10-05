@@ -1,13 +1,14 @@
 const { Router } = require('express');
 const router = Router();
 
-// Import middlewares
+// import middlewares
 const checkLogin = require('./checkTools').checkLogin;
 const checkHost = require('./checkTools').checkHost;
 const checkHostOrManager = require('./checkTools').checkHostOrManager;
 const checkManager = require('./checkTools').checkManager;
 const checkTenant = require('./checkTools').checkTenant;
-const saveLogs = require('./checkTools').saveLogs;
+// 1차 배포 후 에러 수집기 만들기
+const saveErrorLogs = require('./checkTools').saveErrorLogs;
 
 // 메인 페이지
 const main = require('./common/main.js');

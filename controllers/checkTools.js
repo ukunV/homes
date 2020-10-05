@@ -61,8 +61,8 @@ const checkTenant = (req, res, next) => {
   }
 };
 
-// 로그 저장 미들웨어
-const saveLogs = (req, _, next) => {
+// 에러 로그 저장 미들웨어
+const saveErrorLogs = (req, _, next) => {
   const ip_address = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log(`IP Address: ${ip_address}`);
   next();
@@ -111,6 +111,6 @@ module.exports = {
   checkHostOrManager,
   checkManager,
   checkTenant,
-  saveLogs,
+  saveErrorLogs,
   checkAccessibleBuilding,
 };
