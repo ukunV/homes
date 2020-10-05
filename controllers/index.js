@@ -27,7 +27,7 @@ router.route('/process/login').post(login);
 const logout = require('./user/logout.js');
 router.route('/process/logout').get(checkLogin, logout);
 
-// (공통) 본인인증
+// (공통) 계정관리 - 본인인증
 const account_check_passwd = require('./user/account_check_passwd.js');
 router.route('/check/password').get(checkLogin, account_check_passwd.checkPassword);
 router.route('/check/password_submit').post(checkLogin, account_check_passwd.postPassword);

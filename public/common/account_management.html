@@ -14,41 +14,41 @@
       '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %> <% } %>
       <%- include ("../partials/set-menu") %>
 
-      <div id="go_back">
+      <div id="go_back" onclick="location.href='check/password'">
         <i class="fas fa-arrow-left bt"></i>
       </div>
 
-      <div class="account-management-title">개인정보 관리</div>
-
-      <form class="account-management-form" method="POST" action="">
-        <div class="account-management-box">
-          <div class="list-tag">
-            <div class="tag-explain">ID</div>
-            <div class="tag-explain">직책</div>
-            <div class="tag-explain">이름</div>
-            <div class="tag-explain">전화번호</div>
-            <div class="tag-explain">비밀번호</div>
-          </div>
-          <div class="list-content">
-            <div class="info-account">acd123</div>
-            <div class="info-account">건물주</div>
-            <div class="info-account">이건욱</div>
-            <div class="info-account">
-              <input id="current_phnum" type="text" value="010-1234-5678" disabled="true" />
-              <button id="change_phnum">변경</button>
-            </div>
-            <div class="info-account">
-              <input id="change_passwd" type="text" />
-              <button id="show_input">비밀번호 변경</button>
-            </div>
-          </div>
+      <div class="modify-content">
+        <div class="account-title">내 계정 관리</div>
+        <div class="info-wrapper">
+          <div class="info-title">아이디</div>
+          <div class="info-value">a1234</div>
         </div>
-
-        <div class="submit-box">
-          <label for="submit_changes">확 인</label>
-          <input type="submit" id="submit_changes" />
+        <div class="info-wrapper">
+          <div class="info-title">회원유형</div>
+          <div class="info-value">건물주</div>
         </div>
-      </form>
+        <div class="info-wrapper">
+          <div class="info-title">이름</div>
+          <div class="info-value">허전진</div>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-title">전화번호</div>
+          <form class="info-value change-form">
+            <input name="tel" class="original-value" value="01012341234" disabled />
+            <button class="modify-bt round-tag-border submit-bt" mod-target="tel">변경</button>
+            <button class="modify-bt round-tag-border view-submit" mod="tel">수정</button>
+          </form>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-title">비밀번호</div>
+          <form class="info-value change-form">
+            <input name="password" class="original-value" value="" disabled />
+            <button class="modify-bt round-tag-border submit-bt" mod-target="password">변경</button>
+            <button class="modify-bt round-tag-border view-submit" mod="password">수정</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

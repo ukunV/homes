@@ -1,17 +1,21 @@
-const current_phnum = document.querySelector('#current_phnum');
-const change_phnum = document.querySelector('#change_phnum');
+const modifyBts = document.querySelectorAll('.view-submit');
 
-change_phnum.addEventListener('click', (e) => {
+const viewSubmit = (e) => {
   e.preventDefault();
-  current_phnum.removeAttribute('disabled');
-  current_phnum.removeAttribute('value');
-});
+  const modify_target = e.target.getAttribute('mod');
+  const viewSubmitTarget = document.querySelector(`button[mod-target='${modify_target}']`);
+  const inputTarget = document.querySelector(`input[name='${modify_target}']`);
+  if (viewSubmitTarget.style.display === 'none' || viewSubmitTarget.style.display === '') {
+    viewSubmitTarget.style.display = 'block';
+    e.target.classList.add('cancel');
+    e.target.innerHTML = '취소';
+    inputTarget.removeAttribute('disabled');
+  } else {
+    viewSubmitTarget.style.display = 'none';
+    e.target.classList.remove('cancel');
+    e.target.innerHTML = '수정';
+    inputTarget.setAttribute('disabled');
+  }
+};
 
-const show_input = document.querySelector('#show_input');
-const change_passwd = document.querySelector('#change_passwd');
-
-show_input.addEventListener('click', (e) => {
-  e.preventDefault();
-  show_input.style.display = 'none';
-  change_passwd.style.display = 'block';
-});
+modifyBts.forEach((bt) => bt.addEventListener('click', viewSubmit));

@@ -5,9 +5,6 @@ const expressSession = require('express-session');
 const cors = require('cors');
 const logger = require('morgan');
 
-// Server Timer (매달 정산일 초기화)
-const timer = require('./controllers/common/timer').timer;
-
 class App {
   constructor() {
     this.app = express();
