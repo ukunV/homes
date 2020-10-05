@@ -27,6 +27,15 @@ router.route('/process/login').post(login);
 const logout = require('./user/logout.js');
 router.route('/process/logout').get(checkLogin, logout);
 
+// (공통) 본인인증
+const account_check_passwd = require('./user/account_check_passwd.js');
+router.route('/check/password').get(checkLogin, account_check_passwd.checkPassword);
+router.route('/check/password_submit').post(checkLogin, account_check_passwd.postPassword);
+
+// (공통) 계정관리
+const account_management = require('./user/account_management');
+router.route('/account/management').get(checkLogin, account_management.loadAccount);
+
 // (건물주/관리인) 기능페이지
 const getFunction = require('./common/function');
 router.route('/function').get(checkLogin, checkHostOrManager, getFunction);
