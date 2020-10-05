@@ -22,28 +22,28 @@
         <div class="account-title">내 계정 관리</div>
         <div class="info-wrapper">
           <div class="info-title">아이디</div>
-          <div class="info-value">a1234</div>
+          <div class="info-value"><%=user_id%></div>
         </div>
         <div class="info-wrapper">
           <div class="info-title">회원유형</div>
-          <div class="info-value">건물주</div>
+          <div class="info-value"><%=type%></div>
         </div>
         <div class="info-wrapper">
           <div class="info-title">이름</div>
-          <div class="info-value">허전진</div>
+          <div class="info-value"><%=name%></div>
         </div>
         <div class="info-wrapper">
           <div class="info-title">전화번호</div>
-          <form class="info-value change-form">
-            <input name="tel" class="original-value" value="01012341234" disabled />
+          <form class="info-value change-form" action="/account/tel_submit" method="POST">
+            <input type="text" name="tel" class="original-value" value="<%=tel%>" disabled />
             <button class="modify-bt round-tag-border submit-bt" mod-target="tel">변경</button>
             <button class="modify-bt round-tag-border view-submit" mod="tel">수정</button>
           </form>
         </div>
         <div class="info-wrapper">
           <div class="info-title">비밀번호</div>
-          <form class="info-value change-form">
-            <input name="password" class="original-value" value="" disabled />
+          <form class="info-value change-form" action="/account/password_submit" method="POST">
+            <input type="text" name="password" class="original-value" value="" disabled />
             <button class="modify-bt round-tag-border submit-bt" mod-target="password">변경</button>
             <button class="modify-bt round-tag-border view-submit" mod="password">수정</button>
           </form>
