@@ -14,7 +14,7 @@ const viewSubmit = (e) => {
     viewSubmitTarget.style.display = 'none';
     e.target.classList.remove('cancel');
     e.target.innerHTML = '수정';
-    inputTarget.setAttribute('disabled');
+    inputTarget.setAttribute('disabled', true);
   }
 };
 
