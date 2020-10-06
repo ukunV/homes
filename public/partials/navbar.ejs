@@ -1,8 +1,9 @@
 <div class="top-navbar-wrapper">
   <div class="navbar-left-items">
     <div class="navbar-item bt" id="nav_home">홈</div>
-    <div class="navbar-item bt" id="nav_push">알림
-    <span class="navbar-pushcount" id="nav_pushcount"><%=pushCount%></span></div>
+    <div class="navbar-item bt" id="nav_push">
+      알림 <span class="navbar-pushcount" id="nav_pushcount"></span>
+    </div>
     <div class="navbar-item bt" id="nav_function">기능</div>
     <% if(type === 'host') { %>
     <div class="navbar-item bt" id="nav_management">관리</div>
@@ -14,6 +15,15 @@
 </div>
 
 <script>
+  const pushCountTarget = document.querySelector('#nav_pushcount');
+
+  const loadPushCount = () => {
+    const pushCount = document.cookie.split(';')[2].split('=')[1];
+    pushCountTarget.innerHTML = pushCount;
+  }
+
+  document.addEventListener('load', loadPushCount());
+
     const navHome = document.querySelector('#nav_home');
     const navPush = document.querySelector('#nav_push');
     const navFunction = document.querySelector('#nav_function');

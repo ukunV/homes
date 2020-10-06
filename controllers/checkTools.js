@@ -8,18 +8,18 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 const checkLogin = (req, res, next) => {
   if (req.session.user) {
     const pushCountSql = 'select count(msgID) as count from messages where receiver=?;';
-    mySqlClient.query(pushCountSql, req.session.user.userId, function(err, row){
-      if (err){
+    mySqlClient.query(pushCountSql, req.session.user.userId, function (err, row) {
+      if (err) {
         next();
       } else {
-        res.cookie('pushCount', row[0].count, {overwrite: true});
+        res.cookie('pushCount', row[0].count);
         next();
       }
     });
   } else {
     res.send(
       '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
-      );
+    );
   }
 };
 
@@ -32,7 +32,7 @@ const checkHostOrManager = (req, res, next) => {
   } else {
     res.send(
       `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
-      );
+    );
   }
 };
 
@@ -43,7 +43,7 @@ const checkHost = (req, res, next) => {
   } else {
     res.send(
       `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
-      );
+    );
   }
 };
 
@@ -54,7 +54,7 @@ const checkManager = (req, res, next) => {
   } else {
     res.send(
       `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
-      );
+    );
   }
 };
 
@@ -65,7 +65,7 @@ const checkTenant = (req, res, next) => {
   } else {
     res.send(
       `<script type="text/javascript">alert("${permissionBanMsg}"); window.location="/";</script>`,
-      );
+    );
   }
 };
 
@@ -85,17 +85,17 @@ const checkAccessibleBuilding = (checkingNum, req, isRepair = 0) => {
 
   if (userType === '건물주') {
     checkSql =
-    'SELECT buildingNum FROM buildings b, user u WHERE b.hostID = u.user_id AND buildingNum = ? AND user_id = ?;';
+      'SELECT buildingNum FROM buildings b, user u WHERE b.hostID = u.user_id AND buildingNum = ? AND user_id = ?;';
   } else if (userType === '관리인') {
     checkSql =
-    'SELECT buildingNum FROM buildings b, user u WHERE b.managerID = u.user_id AND buildingNum = ? AND user_id = ?;';
+      'SELECT buildingNum FROM buildings b, user u WHERE b.managerID = u.user_id AND buildingNum = ? AND user_id = ?;';
   } else if (userType === '세입자') {
     if (isRepair === 1) {
       checkSql =
-      'SELECT repairNum FROM buildings b, room ro, user u, repair re WHERE b.buildingNum = ro.buildNum AND ro.tenantID = u.user_id AND re.roomID = ro.roomID AND repairNum = ? AND user_id= ?';
+        'SELECT repairNum FROM buildings b, room ro, user u, repair re WHERE b.buildingNum = ro.buildNum AND ro.tenantID = u.user_id AND re.roomID = ro.roomID AND repairNum = ? AND user_id= ?';
     } else {
       checkSql =
-      'SELECT buildingNum FROM buildings b, room r, user u WHERE b.buildingNum = r.buildNum AND r.tenantID = u.user_id AND buildingNum = ? AND user_id=?;';
+        'SELECT buildingNum FROM buildings b, room r, user u WHERE b.buildingNum = r.buildNum AND r.tenantID = u.user_id AND buildingNum = ? AND user_id=?;';
     }
   }
 
