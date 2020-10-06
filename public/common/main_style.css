@@ -185,7 +185,8 @@ i {
   text-align: center;
   display: none;
   position: absolute;
-  top: 52px;
+  float: right;
+  top: 4rem;
   right: 0.5rem;
   z-index: 999;
   box-shadow: 0 0 4px 3px var(--soft-gray-color);
