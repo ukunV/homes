@@ -24,7 +24,6 @@ const host = function (req, res) {
       res.render('host/host.html', {
         name: req.session.user.userName,
         building_data, // 건물 이름, 관리인 이름 데이터 배열
-        pushCount: req.cookies.pushCount,
 
       });
     }
@@ -32,7 +31,6 @@ const host = function (req, res) {
     else {
       res.render('host/host.html', {
         name: req.session.user.userName,
-        pushCount: req.cookies.pushCount,
       });
     }
   });

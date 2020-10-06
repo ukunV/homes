@@ -7,7 +7,7 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 // 로그인 체크 미들웨어
 const checkLogin = (req, res, next) => {
   if (req.session.user) {
-    const pushCountSql = 'select count(msgID) as count from messages where receiver=?;';
+    const pushCountSql = 'select count(msgID) as count from messages where receiver=? and isRead=0;';
     mySqlClient.query(pushCountSql, req.session.user.userId, function (err, row) {
       if (err) {
         next();

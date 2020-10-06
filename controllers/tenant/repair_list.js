@@ -20,7 +20,6 @@ const repairList = function (req, res) {
       res.render('tenant/repair_list.html', {
         unsolved_repairs,
         solved_repairs,
-        pushCount: req.cookies.pushCount,
       });
     } else {
       res.send(

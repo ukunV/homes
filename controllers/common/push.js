@@ -16,8 +16,6 @@ const push = function (req, res) {
       res.render('common/push.html', {
         userType: req.session.user.userType,
         messages,
-        pushCount: req.cookies.pushCount,
-
       });
     } else {
       console.log(err);

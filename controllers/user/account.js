@@ -6,7 +6,6 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 const checkPassword = function (req, res) {
   res.render('common/account_check_passwd.html', {
     userType: req.session.user.userType,
-    pushCount: req.cookies.pushCount,
   });
 };
 
@@ -32,7 +31,6 @@ const loadAccount = function (req, res) {
     res.render('common/account_management.html', {
       userType: req.session.user.userType,
       ...row[0],
-      pushCount: req.cookies.pushCount,
     });
   });
 };

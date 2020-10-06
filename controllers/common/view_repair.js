@@ -10,7 +10,6 @@ const loadRepair = function (req, res) {
       res.render('common/view_repair.html', {
         userType: req.session.user.userType,
         repair: row[0],
-        pushCount: req.cookies.pushCount,
       });
     } else {
       res.send(

@@ -4,7 +4,6 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const host_mgmt_register = function (req, res) {
   res.render('host/mgmt_register.html', {
-    pushCount: req.cookies.pushCount,
   });
 };
 

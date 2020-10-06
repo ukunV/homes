@@ -36,7 +36,6 @@ const host_aden = async function (req, res) {
       res.render('host/host_aden.html', {
         room_data,
         building_name,
-        pushCount: req.cookies.pushCount,
       });
     }
   });

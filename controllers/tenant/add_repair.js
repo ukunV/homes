@@ -9,7 +9,6 @@ const loadAddRepair = function (req, res) {
       const selectroomID = row[0].roomID;
       res.render('tenant/register_repair.html', {
         roomID: selectroomID,
-        pushCount: req.cookies.pushCount,
       });
     } else {
       res.send(

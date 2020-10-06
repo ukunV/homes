@@ -33,8 +33,6 @@ const loadRepairList = function (req, res) {
         userType: req.session.user.userType,
         unsolved_repairs,
         solved_repairs,
-        pushCount: req.cookies.pushCount,
-
       });
     } else {
       res.send(
