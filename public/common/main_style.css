@@ -118,6 +118,8 @@ i {
   border-radius: 50%;
   width: 0.9rem;
   height: 0.9rem;
+  top: inherit;
+  left: inherit;
   margin-top: -0.175rem;
   text-align: center;
   font-size: 0.65rem;
