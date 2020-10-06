@@ -7,16 +7,15 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %> <%- include
-      ("../partials/set-menu") %>
-
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %>
+      <div class="header">
+        <div class="header-left">
+          <span id="header_left_name"> <%=name%> </span>
+          <span id="header_left_role">세입자님,</span>
+          <p id="welcome_message">안녕하세요!</p>
+        </div>
       </div>
-      <% if(locals.roomNum){ %>
+      <%- include ("../partials/set-menu") %> <% if(locals.roomNum){ %>
       <div class="content">
         <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
         <div class="address"><span class="address_line"><%=building_addr%></span></div>

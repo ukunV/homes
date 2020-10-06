@@ -7,8 +7,17 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'manager', sel:'nav_home'}) %> <%- include
-      ("../partials/set-menu") %>
+      <%- include ("../partials/navbar", {type: 'manager', sel:'nav_home'}) %>
+
+      <div class="header">
+        <div class="header-left">
+          <span id="header_left_name"> <%=name%> </span>
+          <span id="header_left_role">관리인님,</span>
+          <p id="welcome_message">안녕하세요!</p>
+        </div>
+      </div>
+
+      <%- include ("../partials/set-menu") %>
 
       <div class="content">
         <div class="content-title">내가 관리하는 건물</div>
