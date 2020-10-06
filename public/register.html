@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <%- include("./partials/header") %>
     <title>Homes 회원가입</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/login_style.css" />
-    <link rel="stylesheet" type="text/css" href="css/register_style.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/register_style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
   <body>
-    <div class="div-view">
+    <div class="wrapper view-main">
+      <div id="go_back" onclick="location.href='/'">
+        <i class="fas fa-arrow-left bt"></i>
+      </div>
       <div class="div-login-box">
-        <div class="div-wrapper-backward">
-          <input type="button" id="backward-bt" value="＜" onclick="location.href = '/';" />
-        </div>
         <div class="div-title">회원가입</div>
         <div class="div-login-form">
           <form class="form-reg" method="post">

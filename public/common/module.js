@@ -1,11 +1,16 @@
 const setapp = document.querySelector('.navbar-setapp');
 const menu = document.querySelector('.set-menu');
+const setAccount = document.querySelector('.set-account');
 
-setapp.addEventListener('click', () => menu.classList.toggle('active'));
+if (setapp) {
+  setapp.addEventListener('click', () => menu.classList.toggle('active'));
+}
 
-document.querySelector('.set-account').addEventListener('click', () => {
-	location.href = '/check/password';
-});
-document.querySelector('.set-logout').addEventListener('click', () => {
-	location.href = '/process/logout';
-});
+if (setAccount) {
+  setAccount.addEventListener('click', () => {
+    location.href = '/check/password';
+  });
+  document.querySelector('.set-logout').addEventListener('click', () => {
+    location.href = '/process/logout';
+  });
+}

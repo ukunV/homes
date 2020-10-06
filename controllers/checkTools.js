@@ -4,10 +4,11 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 // 로그인 필요없는 라우터  *메인페이지는 안에서 유저타입 검사
 // /process/login, /register, /token
-// 로그인 체크 미들웨어
-const checkLogin = (req, res, next) => {
+// 로그인/푸시 체크 미들웨어
+const checkLoginAndPush = (req, res, next) => {
   if (req.session.user) {
-    const pushCountSql = 'select count(msgID) as count from messages where receiver=? and isRead=0;';
+    const pushCountSql =
+      'select count(msgID) as count from messages where receiver=? and isRead=0;';
     mySqlClient.query(pushCountSql, req.session.user.userId, function (err, row) {
       if (err) {
         next();
@@ -114,7 +115,7 @@ const checkAccessibleBuilding = (checkingNum, req, isRepair = 0) => {
 };
 
 module.exports = {
-  checkLogin,
+  checkLoginAndPush,
   checkHost,
   checkHostOrManager,
   checkManager,

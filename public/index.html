@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>홈즈</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/login_style.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/login_style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="/manifest.json" />
+    <%- include("./partials/header") %>
+    <title>Homes</title>
   </head>
 
   <body onload="document.getElementById('login_id').focus()">
-    <div class="div-view">
+    <div class="wrapper view-main">
       <div class="div-login-box">
-        <div class="div-title">Homes</div>
+        <div class="homes-info">내 집과 소통하는 새로운 방법</div>
+        <img src="/public/resources/img/homes-logo.png" />
+        <div class="div-title">homes<span class="blue-font">.</span></div>
         <div class="div-login-form">
           <form class="form-login" method="post" action="/process/login">
             <div class="div-login-left-input">
@@ -37,7 +32,7 @@
             </div>
           </form>
           <div class="div-join-bt">
-            <span class="login-bt" onclick="location.href = '/register'">회원가입</span>
+            <span class="login-bt" onclick="location.href = '/register'">Homes 회원가입</span>
           </div>
         </div>
       </div>
