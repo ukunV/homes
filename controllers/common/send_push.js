@@ -75,6 +75,8 @@ const loadSendList_each = function (req, res) {
         res.render('common/each_message.html', {
           userType: req.session.user.userType,
           receiver: row[0],
+          pushCount: req.cookies.pushCount,
+
         });
       } else {
         res.send(
@@ -95,6 +97,8 @@ const loadSendList_each = function (req, res) {
         res.render('common/each_message.html', {
           userType: req.session.user.userType,
           receivers,
+          pushCount: req.cookies.pushCount,
+
         });
       } else {
         res.send(
@@ -131,6 +135,8 @@ const loadSendList_host = function (req, res) {
           userType: req.session.user.userType,
           buildings,
           receivers,
+          pushCount: req.cookies.pushCount,
+
         });
       } else {
         res.send(
@@ -171,6 +177,8 @@ const loadSendList_mgr = function (req, res) {
           userType: req.session.user.userType,
           buildings,
           receivers,
+          pushCount: req.cookies.pushCount,
+
         });
       } else {
         res.send(
@@ -199,6 +207,8 @@ const loadSendList_tenant = function (req, res) {
 
         res.render('tenant/tenant_message.html', {
           receivers,
+          pushCount: req.cookies.pushCount,
+
         });
       }
     });

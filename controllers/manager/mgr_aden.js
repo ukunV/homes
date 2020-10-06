@@ -36,6 +36,7 @@ const mgr_aden = async function (req, res) {
       res.render('manager/mgr_aden.html', {
         room_data,
         building_name,
+        pushCount: req.cookies.pushCount,
       });
     }
   });

@@ -19,10 +19,12 @@ const manager = function (req, res) {
       res.render('manager/mgr.html', {
         name: req.session.user.userName,
         manager_data,
+        pushCount: req.cookies.pushCount,
       });
     } else {
       res.render('manager/mgr.html', {
         name: req.session.user.userName,
+        pushCount: req.cookies.pushCount,
       });
     }
   });

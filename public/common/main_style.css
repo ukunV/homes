@@ -111,6 +111,15 @@ i {
   padding: 0.25rem 0.45rem;
 }
 
+.navbar-pushcount {
+  background-color: red;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.02rem 0.2rem 0.05rem 0.2em;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+
 .navbar-item.selected {
   color: var(--blue-color);
   font-weight: 700;

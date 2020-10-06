@@ -1,12 +1,12 @@
 const ejs = require('ejs'),
-  fs = require('fs'),
-  mysql = require('mysql');
+fs = require('fs'),
+mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 const host_getRepairsSql =
-  'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND hostID = ? order by repairNum desc';
+'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND hostID = ? order by repairNum desc';
 const mgr_getRepairsSql =
-  'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND managerID = ? order by repairNum desc';
+'SELECT re.repairNum, re.title, re.isSolved, b.building_name, ro.roomNum FROM buildings b, repair re, room ro, user u WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND ro.buildNum = b.buildingNum AND managerID = ? order by repairNum desc';
 
 const loadRepairList = function (req, res) {
   let executeSql;
@@ -33,11 +33,13 @@ const loadRepairList = function (req, res) {
         userType: req.session.user.userType,
         unsolved_repairs,
         solved_repairs,
+        pushCount: req.cookies.pushCount,
+
       });
     } else {
       res.send(
         '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.location="/function";</script>',
-      );
+        );
     }
   });
 };

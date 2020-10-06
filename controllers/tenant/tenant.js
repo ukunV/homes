@@ -13,10 +13,12 @@ const tenant = function (req, res) {
       res.render('tenant/tenant.html', {
         name: req.session.user.userName,
         ...tenant_data,
+        pushCount: req.cookies.pushCount,
       });
     } else {
       res.render('tenant/tenant.html', {
         name: req.session.user.userName,
+        pushCount: req.cookies.pushCount,
       });
     }
   });

@@ -21,11 +21,14 @@ const mgmt_building_list = function (req, res) {
 
       res.render('host/mgmt_building_list.html', {
         building_data, // 건물 이름, 관리인 이름 데이터 배열
+        pushCount: req.cookies.pushCount,
       });
     }
     // 건물주의 건물이 없는 경우
     else {
-      res.render('host/mgmt_building_list.html', {});
+      res.render('host/mgmt_building_list.html', {
+        pushCount: req.cookies.pushCount,
+      });
     }
   });
 };
@@ -83,6 +86,7 @@ const mgmt_building_modify = async function (req, res) {
           res.render('host/mgmt_modify_building.html', {
             ...building_data,
             rooms: room_data, // 세대 데이터 배열
+            pushCount: req.cookies.pushCount,
           });
         }
       });
