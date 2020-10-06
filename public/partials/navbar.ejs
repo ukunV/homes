@@ -18,7 +18,10 @@
   const pushCountTarget = document.querySelector('#nav_pushcount');
 
   const loadPushCount = () => {
-    const pushCount = document.cookie.split(';')[2].split('=')[1];
+    const pushCount = parseInt(document.cookie.split(';')[2].split('=')[1]) || 0;
+    if (pushCount === 0){
+      pushCountTarget.style.display = 'none';
+    }
     pushCountTarget.innerHTML = pushCount;
   }
 
