@@ -1,6 +1,9 @@
 const fs = require('fs');
 
+const key = fs.readFileSync('config/secure/key.pem');
+const cert = fs.readFileSync('config/secure/cert.pem');
+
 module.exports.options = {
-  key: fs.readFileSync('config/secure/private.pem'),
-  cert: fs.readFileSync('config/secure/public.pem'),
+  key,
+  cert,
 };
