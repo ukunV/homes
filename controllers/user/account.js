@@ -42,7 +42,7 @@ const postChangeTel = function (req, res) {
     if(err){
       res.send('<script type="text/javascript">alert("잘못된 DB 접근입니다"); window.history.back();</script>');
     } else {
-      res.send('<script type="text/javascript">alert("성공적으로 변경하였습니다."); window.location="/";</script>')
+      res.send('<script type="text/javascript">alert("성공적으로 변경하였습니다."); window.location="/account/management";</script>')
     }
   });
 };
@@ -56,7 +56,7 @@ const postChangePw = function (req, res) {
       if(err){
         res.send('<script type="text/javascript">alert("잘못된 DB 접근입니다"); window.history.back();</script>');
       } else {
-        res.send('<script type="text/javascript">alert("성공적으로 변경하였습니다."); window.location="/";</script>')
+        res.send('<script type="text/javascript">alert("비밀번호를 성공적으로 변경하였습니다.\\n다시 로그인해주세요:)"); window.location="/process/logout";</script>')
       }
     });
   } else {

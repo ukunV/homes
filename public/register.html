@@ -41,8 +41,20 @@
                 placeholder="비밀번호"
                 required
                 autocomplete="off"
+                onchange="isSame()"
+              />
+            </div><div class="div-wrapper-input">
+              <input
+                type="password"
+                name="confirmpw"
+                id="checkpw"
+                placeholder="비밀번호확인"
+                required
+                autocomplete="off"
+                onchange="isSame()"
               />
             </div>
+            <span id="same"></span>
             <div class="div-wrapper-input">
               <input id="reg_name" name="name" placeholder="성명" required autocomplete="off" />
             </div>
@@ -63,5 +75,18 @@
         </div>
       </div>
     </div>
+    <script>
+      function isSame(){
+      if(document.getElementById('reg_pw').value !='' && document.getElementById('checkpw').value!=''){
+        if(document.getElementById('reg_pw').value == document.getElementById('checkpw').value){
+          document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
+          document.getElementById('same').style.color='limegreen';
+        } else{
+          document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
+          document.getElementById('same').style.color='red';
+        }
+      }
+    }
+    </script>
   </body>
 </html>

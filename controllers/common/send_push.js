@@ -197,7 +197,6 @@ const loadSendList_tenant = function (req, res) {
         row.forEach((element) => {
           receivers.push(element);
         });
-
         res.render('tenant/tenant_message.html', {
           receivers,
         });
