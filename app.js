@@ -17,6 +17,16 @@ class App {
   }
 
   setMiddleWare() {
+    // HTTP -> HTTPS Redirection
+    this.app.use((req, res, next) => {
+      if (req.secure) {
+        next();
+      } else {
+        const to = `https://${req.hostname}${req.url}`;
+        console.log(to);
+        res.redirect(to);
+      }
+    });
     this.app.use(logger('dev'));
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
