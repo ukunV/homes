@@ -8,7 +8,7 @@ container_name="homes-server"
 image_name="homes-app"
 db_container_name="homes-database"
 version="0.1"
-host_port=3000
+host_port=80
 virtual_port=3000
 
 echo "## Automation docker build and run ##"
