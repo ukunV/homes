@@ -39,6 +39,8 @@ class App {
 
   setStatic() {
     this.app.use('/public', express.static(__dirname + '/public'));
+    // PKI KEY (DSV)
+    this.app.use('/.well-known', express.static(__dirname + '/.well-known'));
   }
 
   setLocals() {
