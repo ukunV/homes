@@ -41,7 +41,7 @@ const initRecognition = () => {
     voiceTemp.textContent = transcript;
 
     if (e.results[0].isFinal) {
-      textareaTarget.textContent += transcript + ' ';
+      textareaTarget.textContent += voiceTemp.textContent + ' ';
       voiceTemp.textContent = '';
     }
 
