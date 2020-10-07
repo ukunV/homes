@@ -4,6 +4,7 @@
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/tenant/tenant_message_style.css" />
     <script src="/public/common/host_mgr_message.js" defer></script>
+    <script src="/public/common/voice_tool.js" defer></script>
     <title>알림 보내기(건물주, 관리인)</title>
   </head>
   <body>
@@ -54,6 +55,9 @@
             </div></label
           >
           <% });} %>
+        </div>
+        <div class="voice-section">
+          <button id="voice_bt"><i class="fas fa-microphone"></i> 음성인식으로 입력하기</button>
         </div>
         <div id="msg_content">
           <textarea name="content" required></textarea>

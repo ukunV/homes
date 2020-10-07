@@ -1,32 +1,46 @@
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const voiceBt = document.querySelector('#voice_bt');
+const textareaTarget = document.querySelector('textarea[name="content"]');
+let recognition;
+let recognitionInited = false;
+let recognitionStarted = false;
 
-const recognition = new SpeechRecognition();
-recognition.interimResults = true;
-recognition.lang = 'ko-KR'; //en-US
+const startRecognition = (e) => {
+  e.preventDefault();
+  if (recognitionStarted) recognitionStarted = false;
+  else recognitionStarted = true;
 
-let p = document.createElement('p');
-const words = document.querySelector('.words');
-words.appendChild(p);
-
-recognition.addEventListener('result', (e) => {
-  const transcript = [...e.results]
-    .map((result) => result[0])
-    .map((result) => result.transcript)
-    .join('');
-
-  if (transcript.includes('날씨')) {
-    window.open(
-      'https://www.google.com/search?q=%EB%82%A0%EC%94%A8&oq=%EB%82%A0%EC%94%A8&aqs=chrome..69i57j35i39l2j0j69i61j69i65j69i61l2.1234j0j7&sourceid=chrome&ie=UTF-8',
-    );
+  if (recognitionStarted) {
+    initRecognition();
+    voiceBt.innerHTML = '음성인식 중... 종료하기';
+  } else {
+    recognition.stop();
+    recognitionStarted = false;
+    voiceBt.innerHTML = '<i class="fas fa-microphone"></i> 음성인식 다시 시작하기';
   }
+};
 
-  p.textContent = transcript;
+const initRecognition = () => {
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  if (e.results[0].isFinal) {
-    p = document.createElement('p');
-    words.appendChild(p);
-  }
-});
-recognition.addEventListener('end', recognition.start);
+  recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  recognition.lang = 'ko-KR';
+  recognition.addEventListener('result', (e) => {
+    const transcript = [...e.results]
+      .map((result) => result[0])
+      .map((result) => result.transcript)
+      .join('');
 
-recognition.start();
+    if (e.results[0].isFinal) {
+      textareaTarget.textContent += transcript + ' ';
+    }
+  });
+  recognition.addEventListener('end', () => {
+    if (recognitionStarted) recognition.start();
+  });
+
+  recognitionInited = true;
+  recognition.start();
+};
+
+voiceBt.addEventListener('click', startRecognition);

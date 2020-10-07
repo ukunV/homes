@@ -85,3 +85,23 @@ textarea {
   font-weight: 700;
   padding: 0.3rem 1rem;
 }
+
+.voice-section {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+#voice_bt {
+  border: none;
+  border-radius: 7px;
+  background-color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--push-color);
+  padding: 0.3rem 0.7rem 0.3rem 0.4rem;
+  box-shadow: 0 0 3px 2px var(--soft-gray-color);
+}
+
+#voice_bt i {
+  font-size: 0.85rem;
+}
