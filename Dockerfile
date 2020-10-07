@@ -6,7 +6,7 @@ RUN npm install -g yarn; yarn global add forever;
 COPY package.json /src/package.json
 RUN  cd /src; yarn install;
 COPY . /src
-EXPOSE 3000
+EXPOSE 3000 80 443
 WORKDIR /src
 
 CMD yarn start
