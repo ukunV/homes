@@ -81,9 +81,11 @@
         if(document.getElementById('reg_pw').value == document.getElementById('checkpw').value){
           document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
           document.getElementById('same').style.color='limegreen';
+          document.getElementById('reg_submit_bt').disabled = false;
         } else{
           document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
           document.getElementById('same').style.color='red';
+          document.getElementById('reg_submit_bt').disabled = true;
         }
       }
     }
