@@ -1,5 +1,7 @@
 const voiceBt = document.querySelector('#voice_bt');
 const textareaTarget = document.querySelector('textarea[name="content"]');
+const voiceTemp = document.querySelector('#voice_temp');
+
 let recognition;
 let recognitionInited = false;
 let recognitionStarted = false;
@@ -12,10 +14,11 @@ const startRecognition = (e) => {
   if (recognitionStarted) {
     initRecognition();
     voiceBt.innerHTML = '음성인식 중... 종료하기';
+    voiceTemp.style.display = 'block';
   } else {
     recognition.stop();
-    recognitionStarted = false;
     voiceBt.innerHTML = '<i class="fas fa-microphone"></i> 음성인식 다시 시작하기';
+    voiceTemp.style.display = 'none';
   }
 };
 
@@ -31,8 +34,17 @@ const initRecognition = () => {
       .map((result) => result.transcript)
       .join('');
 
+    voiceTemp.textContent = transcript;
+
     if (e.results[0].isFinal) {
       textareaTarget.textContent += transcript + ' ';
+      voiceTemp.textContent = '';
+    }
+
+    if (voiceTemp.textContent === '') {
+      voiceTemp.style.display = 'none';
+    } else {
+      voiceTemp.style.display = 'block';
     }
   });
   recognition.addEventListener('end', () => {

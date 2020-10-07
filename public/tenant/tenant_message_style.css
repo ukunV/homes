@@ -105,3 +105,11 @@ textarea {
 #voice_bt i {
   font-size: 0.85rem;
 }
+
+#voice_temp {
+  display: none;
+  color: var(--gray-color);
+  margin: 0 5.3rem;
+  padding: 0.2rem;
+  border-bottom: 1px solid var(--soft-gray-color);
+}
