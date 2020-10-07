@@ -189,10 +189,10 @@ const loadSendList_mgr = function (req, res) {
 const loadSendList_tenant = function (req, res) {
   if (req.session.user) {
     const loadReceiverSql =
-      'SELECT tenantID, roomID, roomNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND buildNum = (SELECT buildNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND u.user_id=?);';
+      'SELECT tenantID, roomID, roomNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND tenantID!=? AND buildNum = any(SELECT buildNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND u.user_id=?);';
     const receivers = [];
 
-    mySqlClient.query(loadReceiverSql, req.session.user.userId, function (err, row) {
+    mySqlClient.query(loadReceiverSql, [req.session.user.userId, req.session.user.userId], function (err, row) {
       if (row) {
         row.forEach((element) => {
           receivers.push(element);
