@@ -55,7 +55,12 @@
           </div>
           <% } %> <% } else { %>
           <div class="reg-content">
-            <input id="submit_content" type="button" value="세입자에게 메시지 보내기" />
+            <input
+              id="submit_content"
+              type="button"
+              value="세입자에게 메시지 보내기"
+              onclick="location.href='/message?user_id=<%= repair.tenantID %>'"
+            />
           </div>
           <% } %>
         </div>
