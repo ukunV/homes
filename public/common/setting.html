@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/header") %>
+    <link rel="stylesheet" href="/public/common/function_style.css" />
+    <title>Homes | 설정</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <% if(userType === '건물주') { %> <%- include ("../partials/navbar", {type: 'host',
+      sel:'nav_setting'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
+      ("../partials/navbar", {type: 'manager', sel:'nav_setting'}) %> <% } %> <% if(userType ===
+      '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_setting'}) %> <% }
+      %>
+      <div class="func-select bt" onclick="location.href='/check/password'">
+        <div class="select-title"><i class="far fa-user-circle"></i>내 계정 설정</div>
+      </div>
+
+      <div class="func-select bt" onclick="location.href='/manager/function/message'">
+        <div class="select-title"><i class="far fa-bell"></i>알림 설정</div>
+      </div>
+
+      <div class="func-select bt" onclick="location.href='/process/logout'">
+        <div class="select-title"><i class="fas fa-sign-out-alt"></i>로그아웃</div>
+      </div>
+    </div>
+  </body>
+</html>

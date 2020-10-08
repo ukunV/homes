@@ -1,19 +1,20 @@
 <div class="top-navbar-wrapper">
   <div class="navbar-left-items">
     <span class="navbar-pushcount" id="nav_pushcount"></span>
-    <div class="navbar-item bt" id="nav_home">홈</div>
-    <div class="navbar-item bt" id="nav_push">알림</div>
-    <div class="navbar-item bt" id="nav_function">기능</div>
+    <div class="navbar-item bt nav-menu" id="nav_home">홈</div>
+    <div class="navbar-item bt nav-menu" id="nav_push">알림</div>
+    <div class="navbar-item bt nav-menu" id="nav_function">기능</div>
     <% if(type === 'host') { %>
-    <div class="navbar-item bt" id="nav_management">관리</div>
+    <div class="navbar-item bt nav-menu" id="nav_management">관리</div>
     <% } %>
   </div>
-  <div class="navbar-setapp bt">
-    <i class="fas fa-cog"></i>
-  </div>
+  <i class="navbar-setapp bt fas fa-cog" id="nav_setting"></i>
 </div>
 
 <script>
+  const setappBt = document.querySelector('.navbar-setapp');
+  setappBt.addEventListener('click', ()=>location.href='/setting');
+
   const pushCountTarget = document.querySelector('#nav_pushcount');
 
   function getCookie(name) {
@@ -37,6 +38,7 @@
     const navPush = document.querySelector('#nav_push');
     const navFunction = document.querySelector('#nav_function');
     const navManagement = document.querySelector('#nav_management');
+    const navSetting = document.querySelector('#nav_setting');
 
     document.getElementById('<%=sel%>').classList.add('selected');
 

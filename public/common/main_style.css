@@ -126,20 +126,20 @@ i {
   font-size: 0.625rem;
 }
 
-.navbar-item.selected {
-  color: var(--blue-color);
-  font-weight: 700;
-}
-
 .main-content {
   color: var(--gray-color);
   font-size: 1.25em;
   padding: 0.25rem 0.4rem;
 }
 
-.navbar-setapp i {
-  color: var(--blue-color);
+.navbar-setapp {
+  color: var(--gray-color);
   font-size: 1.3rem;
+}
+
+.top-navbar-wrapper .selected {
+  color: var(--blue-color);
+  font-weight: 700;
 }
 
 .header {
@@ -174,31 +174,7 @@ i {
 }
 
 .set-menu {
-  background-color: white;
-  font-weight: 600;
-  color: var(--blue-color);
-  flex-direction: column;
-  text-align: center;
-  border-radius: 0.3rem;
-  padding: 0.4rem 0.75rem;
-  height: 0;
-  text-align: center;
   display: none;
-  position: absolute;
-  float: right;
-  top: 4rem;
-  right: 0.5rem;
-  z-index: 999;
-  box-shadow: 0 0 4px 3px var(--soft-gray-color);
-}
-
-.set-menu.active {
-  display: flex;
-  height: auto;
-}
-
-.set-menu > div {
-  padding: 0.1rem 0;
 }
 
 .content {

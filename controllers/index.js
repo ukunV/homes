@@ -35,6 +35,10 @@ router.route('/account/management').get(checkLoginAndPush, account.loadAccount);
 router.route('/account/tel_submit').post(checkLoginAndPush, account.postChangeTel);
 router.route('/account/password_submit').post(checkLoginAndPush, account.postChangePw);
 
+// (공통) 설정
+const setting = require('./common/setting');
+router.route('/setting').get(checkLoginAndPush, setting);
+
 // (건물주/관리인) 기능페이지
 const getFunction = require('./common/function');
 router.route('/function').get(checkLoginAndPush, checkHostOrManager, getFunction);
