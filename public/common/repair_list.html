@@ -11,7 +11,11 @@
       sel:'nav_function'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
       ("../partials/navbar", {type: 'manager', sel:'nav_function'}) %> <% } %> <% if(userType ===
       '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%
-      } %> <%- include ("../partials/set-menu") %>
+      } %>
+
+      
+      <div class="view-main-contents">
+
 
       <div id="go_back" onclick="location.href='/function/'">
         <i class="fas fa-arrow-left bt"></i>
@@ -72,6 +76,7 @@
             <% } %>
       </div>
       </div>
+    </div>
     </div>
   </body>
 </html>

@@ -7,57 +7,58 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'manager', sel:'nav_home'}) %> <%- include
-      ("../partials/set-menu") %>
+      <%- include ("../partials/navbar", {type: 'manager', sel:'nav_home'}) %>
 
-      <div id="go_back" onclick="location.href='/manager/'">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/manager/'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
 
-      <div class="content">
-        <div class="content-title"><%=building_name%></div>
-        <% if(locals.room_data){room_data.forEach((room)=>{ %>
-        <div class="builing-rooms">
-          <div class="room">
-            <div class="room-left">
-              <div class="room-main">
-                <div class="room-main-left">
-                  <span class="room-num"><%=room.roomNum%>호</span>
-                </div>
-                <div class="room-main-right">
-                  <div class="room-maintenance" <% if(room.Unsolved>
-                    0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(room.Unsolved>0) {
-                    %>
-                    <span class="room-maintenance-title">유지보수</span>
-                    <span class="red-count"><%=room.Unsolved%></span><% } %>
+        <div class="content">
+          <div class="content-title"><%=building_name%></div>
+          <% if(locals.room_data){room_data.forEach((room)=>{ %>
+          <div class="builing-rooms">
+            <div class="room">
+              <div class="room-left">
+                <div class="room-main">
+                  <div class="room-main-left">
+                    <span class="room-num"><%=room.roomNum%>호</span>
+                  </div>
+                  <div class="room-main-right">
+                    <div class="room-maintenance" <% if(room.Unsolved>
+                      0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(room.Unsolved>0)
+                      { %>
+                      <span class="room-maintenance-title">유지보수</span>
+                      <span class="red-count"><%=room.Unsolved%></span><% } %>
+                    </div>
                   </div>
                 </div>
+                <% if(room.name){ %>
+                <div class="room-main-bottom">
+                  <span class="round-tag-border"><%=room.name%></span>
+                  <span class="round-tag-border">📞 <%=room.tel%></span>
+                </div>
+                <% } %> <% if(room.name===null){ %>
+                <div class="room-main-bottom">
+                  <span class="round-tag-border">세입자 없음</span>
+                </div>
+                <% } %>
               </div>
-              <% if(room.name){ %>
-              <div class="room-main-bottom">
-                <span class="round-tag-border"><%=room.name%></span>
-                <span class="round-tag-border">📞 <%=room.tel%></span>
-              </div>
-              <% } %> <% if(room.name===null){ %>
-              <div class="room-main-bottom">
-                <span class="round-tag-border">세입자 없음</span>
-              </div>
-              <% } %>
-            </div>
 
-            <div class="room-right">
-              <% if(room.name) { %>
-              <div
-                class="content-msg"
-                onclick="location.href='/message?user_id=<%= room.tenantID %>'"
-              >
-                <i class="fab fa-telegram-plane"></i>
+              <div class="room-right">
+                <% if(room.name) { %>
+                <div
+                  class="content-msg"
+                  onclick="location.href='/message?user_id=<%= room.tenantID %>'"
+                >
+                  <i class="fab fa-telegram-plane"></i>
+                </div>
+                <% } %>
               </div>
-              <% } %>
             </div>
           </div>
+          <% });} %>
         </div>
-        <% });} %>
       </div>
     </div>
   </body>

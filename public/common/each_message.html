@@ -12,61 +12,64 @@
       <% if(userType === '건물주') { %> <%- include ("../partials/navbar", {type: 'host',
       sel:'nav_function'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
       ("../partials/navbar", {type: 'manager', sel:'nav_function'}) %> <% } %> <% if(userType ===
-      '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%
-      } %> <%- include ("../partials/set-menu") %>
+      '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %><% }
+      %>
 
-      <div id="go_back" onclick="location.href='/'">
-        <i class="fas fa-arrow-left bt"></i>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
+
+        <div id="message_title">알림 보내기</div>
+        <form id="message" action="/submit_message" method="POST">
+          <div class="list-title">수신자 목록</div>
+          <label>
+            <div id="sel_receiver">
+              <div id="sel_all"><input id="sel_all_radio" type="checkbox" /> 전체선택</div>
+            </div></label
+          >
+          <div id="receiver_list">
+            <!-- by user_id-->
+            <% if(locals.receiver) { %> <% if(receiver){ %>
+            <label build-num="<%= receiver.buildNum %>" class="receiver-label">
+              <div class="receiver">
+                <input
+                  name="user_id"
+                  type="checkbox"
+                  class="receiver-radio"
+                  value="<%= receiver.user_id %>"
+                  required
+                /><span class="round-tag-border"><%=receiver.type %></span> <%=receiver.name%>님
+              </div></label
+            >
+            <% } else { %> 메시지를 보낼 수 없는 수신자입니다. <% }} %>
+            <!-- by buildingNum -->
+            <% if(locals.receivers) { %> <% if(receivers){ receivers.forEach(receiver=>{%>
+            <label build-num="<%= receiver.buildNum %>" class="receiver-label">
+              <div class="receiver">
+                <input
+                  name="user_id"
+                  type="checkbox"
+                  class="receiver-radio"
+                  value="<%= receiver.tenantID %>"
+                /><span class="round-tag-border"><%=receiver.roomNum %>호</span>
+                <%=receiver.name%>님
+              </div></label
+            >
+            <% });} else { %> 메시지를 보낼 수 없는 수신자입니다. <% }} %>
+          </div>
+          <div class="voice-section">
+            <button id="voice_bt"><i class="fas fa-microphone"></i> 음성인식으로 입력하기</button>
+            <div id="voice_temp"></div>
+          </div>
+          <div id="msg_content">
+            <textarea name="content" required></textarea>
+            <button class="bt" id="submit">
+              <i class="fab fa-telegram-plane" style="color: white !important"></i>
+            </button>
+          </div>
+        </form>
       </div>
-
-      <div id="message_title">알림 보내기</div>
-      <form id="message" action="/submit_message" method="POST">
-        <div class="list-title">수신자 목록</div>
-        <label>
-          <div id="sel_receiver">
-            <div id="sel_all"><input id="sel_all_radio" type="checkbox" /> 전체선택</div>
-          </div></label
-        >
-        <div id="receiver_list">
-          <!-- by user_id-->
-          <% if(locals.receiver) { %> <% if(receiver){ %>
-          <label build-num="<%= receiver.buildNum %>" class="receiver-label">
-            <div class="receiver">
-              <input
-                name="user_id"
-                type="checkbox"
-                class="receiver-radio"
-                value="<%= receiver.user_id %>"
-                required
-              /><span class="round-tag-border"><%=receiver.type %></span> <%=receiver.name%>님
-            </div></label
-          >
-          <% } else { %> 메시지를 보낼 수 없는 수신자입니다. <% }} %>
-          <!-- by buildingNum -->
-          <% if(locals.receivers) { %> <% if(receivers){ receivers.forEach(receiver=>{%>
-          <label build-num="<%= receiver.buildNum %>" class="receiver-label">
-            <div class="receiver">
-              <input
-                name="user_id"
-                type="checkbox"
-                class="receiver-radio"
-                value="<%= receiver.tenantID %>"
-              /><span class="round-tag-border"><%=receiver.roomNum %>호</span> <%=receiver.name%>님
-            </div></label
-          >
-          <% });} else { %> 메시지를 보낼 수 없는 수신자입니다. <% }} %>
-        </div>
-        <div class="voice-section">
-          <button id="voice_bt"><i class="fas fa-microphone"></i> 음성인식으로 입력하기</button>
-          <div id="voice_temp"></div>
-        </div>
-        <div id="msg_content">
-          <textarea name="content" required></textarea>
-          <button class="bt" id="submit">
-            <i class="fab fa-telegram-plane" style="color: white !important"></i>
-          </button>
-        </div>
-      </form>
     </div>
   </body>
 </html>

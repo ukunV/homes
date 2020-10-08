@@ -13,60 +13,62 @@
       sel:'nav_function'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
       ("../partials/navbar", {type: 'manager', sel:'nav_function'}) %> <% } %> <% if(userType ===
       '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%
-      } %> <%- include ("../partials/set-menu") %>
+      } %>
 
-      <div id="go_back" onclick="location.href='/function'">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/function'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
 
-      <div id="message_title">알림 보내기</div>
-      <form id="message" action="/submit_message" method="POST">
-        <div class="list-title">건물 목록</div>
-        <div id="building_list">
-          <% if(buildings){ %> <% buildings.forEach((building)=>{ %>
+        <div id="message_title">알림 보내기</div>
+        <form id="message" action="/submit_message" method="POST">
+          <div class="list-title">건물 목록</div>
+          <div id="building_list">
+            <% if(buildings){ %> <% buildings.forEach((building)=>{ %>
+            <label>
+              <div class="receiver">
+                <input
+                  name="buildings"
+                  type="checkbox"
+                  class="receiver-radio"
+                  build-num="<%= building.buildNum %>"
+                /><%= building.building_name %>
+              </div></label
+            >
+            <% });} %>
+          </div>
+          <div class="list-title">수신자 목록</div>
           <label>
-            <div class="receiver">
-              <input
-                name="buildings"
-                type="checkbox"
-                class="receiver-radio"
-                build-num="<%= building.buildNum %>"
-              /><%= building.building_name %>
+            <div id="sel_receiver">
+              <div id="sel_all"><input id="sel_all_radio" type="checkbox" /> 전체선택</div>
             </div></label
           >
-          <% });} %>
-        </div>
-        <div class="list-title">수신자 목록</div>
-        <label>
-          <div id="sel_receiver">
-            <div id="sel_all"><input id="sel_all_radio" type="checkbox" /> 전체선택</div>
-          </div></label
-        >
-        <div id="receiver_list">
-          <% if(receivers){ %> <% receivers.forEach((receiver)=>{ %>
-          <label build-num="<%= receiver.buildNum %>" class="receiver-label">
-            <div class="receiver">
-              <input
-                name="user_id"
-                type="checkbox"
-                class="receiver-radio"
-                value="<%= receiver.tenantID %>"
-              /><%=receiver.building_name %> <%= receiver.roomNum %>호 <%=receiver.tenant_name%>님
-            </div></label
-          >
-          <% });} %>
-        </div>
-        <div class="voice-section">
-          <button id="voice_bt"><i class="fas fa-microphone"></i> 음성인식으로 입력하기</button>
-          <div id="voice_temp"></div>
-        </div>
-        <div id="msg_content">
-          <textarea name="content" required></textarea>
-          <button class="bt" id="submit">
-            <i class="fab fa-telegram-plane" style="color: white !important"></i>
-          </button>
-        </div>
-      </form>
+          <div id="receiver_list">
+            <% if(receivers){ %> <% receivers.forEach((receiver)=>{ %>
+            <label build-num="<%= receiver.buildNum %>" class="receiver-label">
+              <div class="receiver">
+                <input
+                  name="user_id"
+                  type="checkbox"
+                  class="receiver-radio"
+                  value="<%= receiver.tenantID %>"
+                /><%=receiver.building_name %> <%= receiver.roomNum %>호 <%=receiver.tenant_name%>님
+              </div></label
+            >
+            <% });} %>
+          </div>
+          <div class="voice-section">
+            <button id="voice_bt"><i class="fas fa-microphone"></i> 음성인식으로 입력하기</button>
+            <div id="voice_temp"></div>
+          </div>
+          <div id="msg_content">
+            <textarea name="content" required></textarea>
+            <button class="bt" id="submit">
+              <i class="fab fa-telegram-plane" style="color: white !important"></i>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>

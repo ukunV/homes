@@ -12,41 +12,43 @@
       sel:'nav_home'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
       ("../partials/navbar", {type: 'manager', sel:'nav_home'}) %> <% } %> <% if(userType ===
       '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %> <% } %>
-      <%- include ("../partials/set-menu") %>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/check/password'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
 
-      <div id="go_back" onclick="location.href='/check/password'">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
-
-      <div class="modify-content">
-        <div class="account-title">내 계정 관리</div>
-        <div class="info-wrapper">
-          <div class="info-title">아이디</div>
-          <div class="info-value"><%=user_id%></div>
-        </div>
-        <div class="info-wrapper">
-          <div class="info-title">회원유형</div>
-          <div class="info-value"><%=type%></div>
-        </div>
-        <div class="info-wrapper">
-          <div class="info-title">이름</div>
-          <div class="info-value"><%=name%></div>
-        </div>
-        <div class="info-wrapper">
-          <div class="info-title">전화번호</div>
-          <form class="info-value change-form" action="/account/tel_submit" method="POST">
-            <input type="text" name="tel" class="original-value" value="<%=tel%>" disabled />
-            <button class="modify-bt round-tag-border submit-bt" mod-target="tel">변경</button>
-            <button class="modify-bt round-tag-border view-submit" mod="tel">수정</button>
-          </form>
-        </div>
-        <div class="info-wrapper">
-          <div class="info-title">비밀번호</div>
-          <form class="info-value change-form" action="/account/password_submit" method="POST">
-            <input type="text" name="password" class="original-value" value="" disabled />
-            <button class="modify-bt round-tag-border submit-bt" mod-target="password">변경</button>
-            <button class="modify-bt round-tag-border view-submit" mod="password">수정</button>
-          </form>
+        <div class="modify-content">
+          <div class="account-title">내 계정 관리</div>
+          <div class="info-wrapper">
+            <div class="info-title">아이디</div>
+            <div class="info-value"><%=user_id%></div>
+          </div>
+          <div class="info-wrapper">
+            <div class="info-title">회원유형</div>
+            <div class="info-value"><%=type%></div>
+          </div>
+          <div class="info-wrapper">
+            <div class="info-title">이름</div>
+            <div class="info-value"><%=name%></div>
+          </div>
+          <div class="info-wrapper">
+            <div class="info-title">전화번호</div>
+            <form class="info-value change-form" action="/account/tel_submit" method="POST">
+              <input type="text" name="tel" class="original-value" value="<%=tel%>" disabled />
+              <button class="modify-bt round-tag-border submit-bt" mod-target="tel">변경</button>
+              <button class="modify-bt round-tag-border view-submit" mod="tel">수정</button>
+            </form>
+          </div>
+          <div class="info-wrapper">
+            <div class="info-title">비밀번호</div>
+            <form class="info-value change-form" action="/account/password_submit" method="POST">
+              <input type="text" name="password" class="original-value" value="" disabled />
+              <button class="modify-bt round-tag-border submit-bt" mod-target="password">
+                변경
+              </button>
+              <button class="modify-bt round-tag-border view-submit" mod="password">수정</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

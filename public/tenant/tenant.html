@@ -15,79 +15,82 @@
           <p id="welcome_message">안녕하세요!</p>
         </div>
       </div>
-      <%- include ("../partials/set-menu") %> <% if(locals.roomNum){ %>
-      <div class="content">
-        <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
-        <div class="address"><span class="address_line"><%=building_addr%></span></div>
-        <div class="hst-mgr">
-          <div class="hst">
-            <div class="hst-basic">
-              <span class="hst-role">임대인</span>
-              <span class="hst-name"><%=hostName%></span>
-              <i
-                class="fab fa-telegram-plane"
-                onclick="location.href='/message?user_id=<%= hostID %>'"
-              ></i>
-            </div>
-            <div class="hst-info">
-              <span class="round-tag-border">📞 <%=hostTel%></span>
-              <span class="round-tag-border"><%=bank_account%></span>
-            </div>
-          </div>
-          <div class="mgr">
-            <div class="basic">
-              <span class="mgr-role">관리인</span>
-              <span class="mgr-name"><%=managerName%></span>
-              <i
-                class="fab fa-telegram-plane"
-                onclick="location.href='/message?user_id=<%= managerID %>'"
-              ></i>
-            </div>
-            <div class="info">
-              <span class="round-tag-border">📞 <%=managerTel%></span>
-            </div>
-          </div>
-        </div>
 
-        <div class="date">
-          <% if(!begin_date) { %> 계약/만기일이 설정되지 않았습니다. <% } else { %>
-          <div class="start">
-            <span class="start-title">계약일</span>
-            <span class="start-date"><%=begin_date%></span>
+      <div class="view-main-contents">
+        <% if(locals.roomNum){ %>
+        <div class="content">
+          <div class="content-title"><%=building_name%> <%=roomNum%>호</div>
+          <div class="address"><span class="address_line"><%=building_addr%></span></div>
+          <div class="hst-mgr">
+            <div class="hst">
+              <div class="hst-basic">
+                <span class="hst-role">임대인</span>
+                <span class="hst-name"><%=hostName%></span>
+                <i
+                  class="fab fa-telegram-plane"
+                  onclick="location.href='/message?user_id=<%= hostID %>'"
+                ></i>
+              </div>
+              <div class="hst-info">
+                <span class="round-tag-border">📞 <%=hostTel%></span>
+                <span class="round-tag-border"><%=bank_account%></span>
+              </div>
+            </div>
+            <div class="mgr">
+              <div class="basic">
+                <span class="mgr-role">관리인</span>
+                <span class="mgr-name"><%=managerName%></span>
+                <i
+                  class="fab fa-telegram-plane"
+                  onclick="location.href='/message?user_id=<%= managerID %>'"
+                ></i>
+              </div>
+              <div class="info">
+                <span class="round-tag-border">📞 <%=managerTel%></span>
+              </div>
+            </div>
           </div>
-          <div class="due">
-            <span class="due-title">만기일</span>
-            <span class="due-date"><%=end_date%></span>
+
+          <div class="date">
+            <% if(!begin_date) { %> 계약/만기일이 설정되지 않았습니다. <% } else { %>
+            <div class="start">
+              <span class="start-title">계약일</span>
+              <span class="start-date"><%=begin_date%></span>
+            </div>
+            <div class="due">
+              <span class="due-title">만기일</span>
+              <span class="due-date"><%=end_date%></span>
+            </div>
+            <% } %>
+          </div>
+
+          <% if(payment_type==0){%>
+          <div class="monthly-payment">
+            <span class="monthly-payment-title"
+              >월세 정산일 <%=payment_month_day%>일 / <%=payment_cash%>원</span
+            >
+            <% } %> <% if(payment_type==1){%>
+            <span class="monthly-payment-title">전세 세입자</span>
+            <% } %> <% if(payment_type==0){ %> <% if(payment_month_ok==1) { %>
+            <span class="monthly-payment-status" style="background-color: var(--green-color)"
+              >완납</span
+            >
+            <% } else { %>
+            <span class="monthly-payment-status">미납</span>
+            <% }} %>
+          </div>
+          <% } %><% if(!locals.roomNum){ %>
+          <div class="content-empty">
+            <div class="empty-case">
+              <div>
+                <i class="fas fa-ban"></i>
+              </div>
+              <p>표시할 방이 없어요</p>
+              <p>임대인에게 세입자 등록을 요청하세요!</p>
+            </div>
           </div>
           <% } %>
         </div>
-
-        <% if(payment_type==0){%>
-        <div class="monthly-payment">
-          <span class="monthly-payment-title"
-            >월세 정산일 <%=payment_month_day%>일 / <%=payment_cash%>원</span
-          >
-          <% } %> <% if(payment_type==1){%>
-          <span class="monthly-payment-title">전세 세입자</span>
-          <% } %> <% if(payment_type==0){ %> <% if(payment_month_ok==1) { %>
-          <span class="monthly-payment-status" style="background-color: var(--green-color)"
-            >완납</span
-          >
-          <% } else { %>
-          <span class="monthly-payment-status">미납</span>
-          <% }} %>
-        </div>
-        <% } %><% if(!locals.roomNum){ %>
-        <div class="content-empty">
-          <div class="empty-case">
-            <div>
-              <i class="fas fa-ban"></i>
-            </div>
-            <p>표시할 방이 없어요</p>
-            <p>임대인에게 세입자 등록을 요청하세요!</p>
-          </div>
-        </div>
-        <% } %>
       </div>
     </div>
   </body>

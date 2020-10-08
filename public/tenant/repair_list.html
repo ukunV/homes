@@ -7,8 +7,9 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%- include
-      ("../partials/set-menu") %>
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %>
+      
+      <div class="view-main-contents">
 
       <div id="go_back" onclick="location.href='/tenant/function/'">
         <i class="fas fa-arrow-left bt"></i>
@@ -68,6 +69,6 @@
             <% } %>
       </div>
       </div>
-    </div>
+    </div></div>
   </body>
 </html>

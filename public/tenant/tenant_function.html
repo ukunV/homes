@@ -7,15 +7,16 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%- include
-      ("../partials/set-menu") %>
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %>
 
-      <div class="func-select bt" onclick="location.href='/tenant/function/message'">
-        <div class="select-title"><i class="fab fa-telegram-plane"></i>알림 보내기</div>
-      </div>
+      <div class="view-main-contents">
+        <div class="func-select bt" onclick="location.href='/tenant/function/message'">
+          <div class="select-title"><i class="fab fa-telegram-plane"></i>알림 보내기</div>
+        </div>
 
-      <div class="func-select bt" onclick="location.href='/tenant/repair_list'">
-        <div class="select-title"><i class="fas fa-tools"></i>유지/보수 관리</div>
+        <div class="func-select bt" onclick="location.href='/tenant/repair_list'">
+          <div class="select-title"><i class="fas fa-tools"></i>유지/보수 관리</div>
+        </div>
       </div>
     </div>
   </body>

@@ -8,115 +8,125 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'host', sel:'nav_home'}) %> <%- include
-      ("../partials/set-menu") %>
+      <%- include ("../partials/navbar", {type: 'host', sel:'nav_home'}) %>
 
-      <div id="go_back" onclick="location.href='/host'">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
-
-      <div class="content">
-        <div class="content-title top-flex">
-          <span><%= building_name %></span
-          ><span id="right_bt"
-            ><i
-              class="fas fa-cog"
-              onclick="location.href=`/host/management/modify/<%= room_data[0].buildNum %>`"
-            ></i
-          ></span>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/host'">
+          <i class="fas fa-arrow-left bt"></i>
         </div>
-        <div class="builing-rooms">
-          <!--시작-->
-          <% if(locals.room_data){room_data.forEach((room)=>{ %>
-          <div class="room">
-            <div class="room-main">
-              <div class="room-main-left">
-                <div class="room-info">
-                  <span class="room-num"><%=room.roomNum%>호</span>
-                </div>
-              </div>
-              <div class="room-main-mid">
-                <div class="room-payment">
-                  <% if(room.payment_type==0){%>
-                  <span class="room-payment-title">월세 <%=room.payment_cash%>원</span>
-                  <% } %> <% if(room.payment_type==1){%>
-                  <span class="room-payment-title">전세 <%=room.payment_cash%>원</span>
-                  <% } %> <% if(room.payment_type==0){ %> <% if(room.payment_month_ok==1) { %>
-                  <span
-                    class="room-boolean"
-                    style="background: var(--green-color)"
-                    onclick="location.href='/host/change/paymentok?bid=<%=room.buildNum%>&rid=<%=room.roomNum%>';"
-                    >완납</span
-                  >
-                  <% } else { %>
-                  <span
-                    class="room-boolean"
-                    onclick="location.href='/host/change/paymentok?bid=<%=room.buildNum%>&rid=<%=room.roomNum%>';"
-                    >미납</span
-                  >
-                  <% }} %>
-                </div>
-                <div class="room-maintenance" <% if(room.Unsolved>
-                  0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(room.Unsolved>0) { %>
-                  <span class="room-maintenance-title">유지보수</span>
-                  <span class="room-boolean"><%=room.Unsolved%></span> <% } %>
-                </div>
-              </div>
-              <div class="room-main-right">
-                <% if(room.name) { %>
-                <div
-                  class="content-msg"
-                  onclick="location.href='/message?user_id=<%= room.tenantID %>'"
-                >
-                  <i class="fab fa-telegram-plane"></i>
-                </div>
-                <% } %>
-              </div>
-            </div>
-            <div class="room-bottom">
-              <% if(room.name){ %>
-              <span class="round-tag-border"><%=room.name%></span>
-              <% } if(room.name===null) { %>
-              <span class="round-tag-border">세입자 없음</span>
-              <% } %> <% if(room.tel) { %>
-              <span class="round-tag-border">📞 <%=room.tel%></span><% } %> <% if(room.payment_type
-              == 0) { %> <% if(room.payment_month_day == 0) { %>
-              <span class="round-tag-border">정산일 미설정</span>
-              <% } else { %>
-              <span class="round-tag-border">정산일 <%= room.payment_month_day %>일</span>
-              <% }} %>
-              <form name="memo_<%= room.roomNum %>" action="/host/modify/submit/memo" method="POST">
-                <input type="hidden" name="buildNum" value="<%= room.buildNum %>" />
-                <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
-                <% if(room.memo) { %>
-                <div class="room-memo-wrapper" room-num="<%= room.roomNum %>">
-                  <textarea name="memo" class="room-memo" maxlength="500">
-<%= room.memo %></textarea
-                  >
-                  <i
-                    class="fas fa-check-circle"
-                    onclick="document.querySelector(`form[name='memo_<%= room.roomNum %>']`).submit();"
-                  ></i>
-                </div>
-                <% } else { %>
-                <button class="round-tag-border memo-toggle" room-num="<%= room.roomNum %>">
-                  메모 추가
-                </button>
-                <div class="room-memo-wrapper" room-num="<%= room.roomNum %>" style="display: none">
-                  <textarea name="memo" class="room-memo" maxlength="500">
-<%= room.memo %></textarea
-                  >
-                  <i
-                    class="fas fa-check-circle"
-                    onclick="document.querySelector(`form[name='memo_<%= room.roomNum %>']`).submit();"
-                  ></i>
-                </div>
-                <% } %>
-              </form>
-            </div>
+
+        <div class="content">
+          <div class="content-title top-flex">
+            <span><%= building_name %></span
+            ><span id="right_bt"
+              ><i
+                class="fas fa-cog"
+                onclick="location.href=`/host/management/modify/<%= room_data[0].buildNum %>`"
+              ></i
+            ></span>
           </div>
-          <% });} %>
-          <!--끝-->
+          <div class="builing-rooms">
+            <!--시작-->
+            <% if(locals.room_data){room_data.forEach((room)=>{ %>
+            <div class="room">
+              <div class="room-main">
+                <div class="room-main-left">
+                  <div class="room-info">
+                    <span class="room-num"><%=room.roomNum%>호</span>
+                  </div>
+                </div>
+                <div class="room-main-mid">
+                  <div class="room-payment">
+                    <% if(room.payment_type==0){%>
+                    <span class="room-payment-title">월세 <%=room.payment_cash%>원</span>
+                    <% } %> <% if(room.payment_type==1){%>
+                    <span class="room-payment-title">전세 <%=room.payment_cash%>원</span>
+                    <% } %> <% if(room.payment_type==0){ %> <% if(room.payment_month_ok==1) { %>
+                    <span
+                      class="room-boolean"
+                      style="background: var(--green-color)"
+                      onclick="location.href='/host/change/paymentok?bid=<%=room.buildNum%>&rid=<%=room.roomNum%>';"
+                      >완납</span
+                    >
+                    <% } else { %>
+                    <span
+                      class="room-boolean"
+                      onclick="location.href='/host/change/paymentok?bid=<%=room.buildNum%>&rid=<%=room.roomNum%>';"
+                      >미납</span
+                    >
+                    <% }} %>
+                  </div>
+                  <div class="room-maintenance" <% if(room.Unsolved>
+                    0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(room.Unsolved>0) {
+                    %>
+                    <span class="room-maintenance-title">유지보수</span>
+                    <span class="room-boolean"><%=room.Unsolved%></span> <% } %>
+                  </div>
+                </div>
+                <div class="room-main-right">
+                  <% if(room.name) { %>
+                  <div
+                    class="content-msg"
+                    onclick="location.href='/message?user_id=<%= room.tenantID %>'"
+                  >
+                    <i class="fab fa-telegram-plane"></i>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="room-bottom">
+                <% if(room.name){ %>
+                <span class="round-tag-border"><%=room.name%></span>
+                <% } if(room.name===null) { %>
+                <span class="round-tag-border">세입자 없음</span>
+                <% } %> <% if(room.tel) { %>
+                <span class="round-tag-border">📞 <%=room.tel%></span><% } %> <%
+                if(room.payment_type == 0) { %> <% if(room.payment_month_day == 0) { %>
+                <span class="round-tag-border">정산일 미설정</span>
+                <% } else { %>
+                <span class="round-tag-border">정산일 <%= room.payment_month_day %>일</span>
+                <% }} %>
+                <form
+                  name="memo_<%= room.roomNum %>"
+                  action="/host/modify/submit/memo"
+                  method="POST"
+                >
+                  <input type="hidden" name="buildNum" value="<%= room.buildNum %>" />
+                  <input type="hidden" name="roomNum" value="<%= room.roomNum %>" />
+                  <% if(room.memo) { %>
+                  <div class="room-memo-wrapper" room-num="<%= room.roomNum %>">
+                    <textarea name="memo" class="room-memo" maxlength="500">
+<%= room.memo %></textarea
+                    >
+                    <i
+                      class="fas fa-check-circle"
+                      onclick="document.querySelector(`form[name='memo_<%= room.roomNum %>']`).submit();"
+                    ></i>
+                  </div>
+                  <% } else { %>
+                  <button class="round-tag-border memo-toggle" room-num="<%= room.roomNum %>">
+                    메모 추가
+                  </button>
+                  <div
+                    class="room-memo-wrapper"
+                    room-num="<%= room.roomNum %>"
+                    style="display: none"
+                  >
+                    <textarea name="memo" class="room-memo" maxlength="500">
+<%= room.memo %></textarea
+                    >
+                    <i
+                      class="fas fa-check-circle"
+                      onclick="document.querySelector(`form[name='memo_<%= room.roomNum %>']`).submit();"
+                    ></i>
+                  </div>
+                  <% } %>
+                </form>
+              </div>
+            </div>
+            <% });} %>
+            <!--끝-->
+          </div>
         </div>
       </div>
     </div>

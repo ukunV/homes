@@ -8,81 +8,74 @@
     <div class="wrapper">
       <%- include ("../partials/navbar", {type: 'host', sel:'nav_home'}) %>
 
-      <div class="header">
-        <div class="header-left">
-          <span id="header_left_name"> <%=name%> </span>
-          <span id="header_left_role">건물주님,</span>
-          <p id="welcome_message">안녕하세요!</p>
+      <div class="view-main-contents">
+        <div class="header">
+          <div class="header-left">
+            <span id="header_left_name"> <%=name%> </span>
+            <span id="header_left_role">건물주님,</span>
+            <p id="welcome_message">안녕하세요!</p>
+          </div>
         </div>
-      </div>
 
-      <%- include ("../partials/set-menu") %>
-
-      <div class="set-menu">
-        <div class="set-account bt">계정관리</div>
-        <div class="set-notice bt">공지사항</div>
-        <div class="set-push bt">알림설정</div>
-        <div class="set-logout bt">로그아웃</div>
-      </div>
-
-      <div class="content">
-        <div class="content-title">내 건물 한눈에 보기</div>
-        <div class="content-wrapper">
-          <!--여기서부터 forEach 필요 (3개 -> 더보기)-->
-          <% if(building_data.length>0) {building_data.forEach((building)=>{ %>
-          <!--건물 템플릿 시작-->
-          <div class="content-building">
-            <div
-              class="content-left bt"
-              onclick="location.href='/host/aden/<%= building.buildingNum %>'"
-            >
-              <div class="content-name"><%=building.building_name%></div>
-              <div class="content-mgr">
-                <span class="mgr-title">관리인</span>
-                <span class="content-name"><%=building.manager_name%></span>
-              </div>
-            </div>
-
-            <div class="content-mid">
-              <div class="content-payment">
-                <% if(building.nonPayment > 0) { %>
-                <span class="pay-count-l">월세미납</span>
-                <span class="pay-count red-count"><%=building.nonPayment%></span>
-                <% } %>
-              </div>
-
-              <div class="room-maintenance" <% if(building.Unsolved>
-                0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(building.Unsolved > 0)
-                { %>
-                <span class="repair-count-l">유지보수</span>
-                <span class="repair-count red-count"><%=building.Unsolved%></span>
-                <% } %>
-              </div>
-            </div>
-
-            <div class="content-right bt">
+        <div class="content">
+          <div class="content-title">내 건물 한눈에 보기</div>
+          <div class="content-wrapper">
+            <!--여기서부터 forEach 필요 (3개 -> 더보기)-->
+            <% if(building_data.length>0) {building_data.forEach((building)=>{ %>
+            <!--건물 템플릿 시작-->
+            <div class="content-building">
               <div
-                class="content-msg"
-                onclick="location.href='/message?buildingNum=<%= building.buildingNum %>'"
+                class="content-left bt"
+                onclick="location.href='/host/aden/<%= building.buildingNum %>'"
               >
-                <i class="fab fa-telegram-plane"></i>
+                <div class="content-name"><%=building.building_name%></div>
+                <div class="content-mgr">
+                  <span class="mgr-title">관리인</span>
+                  <span class="content-name"><%=building.manager_name%></span>
+                </div>
+              </div>
+
+              <div class="content-mid">
+                <div class="content-payment">
+                  <% if(building.nonPayment > 0) { %>
+                  <span class="pay-count-l">월세미납</span>
+                  <span class="pay-count red-count"><%=building.nonPayment%></span>
+                  <% } %>
+                </div>
+
+                <div class="room-maintenance" <% if(building.Unsolved>
+                  0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(building.Unsolved >
+                  0) { %>
+                  <span class="repair-count-l">유지보수</span>
+                  <span class="repair-count red-count"><%=building.Unsolved%></span>
+                  <% } %>
+                </div>
+              </div>
+
+              <div class="content-right bt">
+                <div
+                  class="content-msg"
+                  onclick="location.href='/message?buildingNum=<%= building.buildingNum %>'"
+                >
+                  <i class="fab fa-telegram-plane"></i>
+                </div>
               </div>
             </div>
-          </div>
-          <!--건물 템플릿 끝-->
-          <% });} else { %>
-          <div class="empty-case">
-            <div>
-              <i class="fas fa-ban"></i>
+            <!--건물 템플릿 끝-->
+            <% });} else { %>
+            <div class="empty-case">
+              <div>
+                <i class="fas fa-ban"></i>
+              </div>
+              <p>표시할 건물이 없어요</p>
+              <p>
+                <button id="mgmt_register_bt" onclick="location.href='/host/management/register'">
+                  내 건물 등록하기
+                </button>
+              </p>
             </div>
-            <p>표시할 건물이 없어요</p>
-            <p>
-              <button id="mgmt_register_bt" onclick="location.href='/host/management/register'">
-                내 건물 등록하기
-              </button>
-            </p>
+            <% } %>
           </div>
-          <% } %>
         </div>
       </div>
     </div>

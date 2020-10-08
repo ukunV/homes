@@ -10,7 +10,9 @@
   <body>
     <div class="wrapper">
       <%- include ("../partials/navbar", {type: 'host', sel:'nav_management'}) %>
-      <%- include ("../partials/set-menu") %>
+      
+      <div class="view-main-contents">
+
 
       <div id="go_back" onclick="location.href='/host/management/modify'">
         <i class="fas fa-arrow-left bt"></i>
@@ -99,6 +101,6 @@
             <!--세대 템플릿 끝-->
             <% }); %>
         </div>
-      </div>
+      </div></div>
   </body>
 </html>

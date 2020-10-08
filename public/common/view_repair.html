@@ -11,50 +11,54 @@
       sel:'nav_function'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
       ("../partials/navbar", {type: 'manager', sel:'nav_function'}) %> <% } %> <% if(userType ===
       '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_function'}) %> <%
-      } %> <%- include ("../partials/set-menu") %> <% if(userType === '세입자') { %>
-      <div id="go_back" onclick="location.href='/tenant/repair_list'">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
-      <% } else { %>
-      <div id="go_back" onclick="window.history.back()">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
-      <% } %>
+      } %>
 
-      <div class="repair-wrapper">
-        <div id="repair_head">
-          <span class="title-msg"><%= repair.title %></span>
-          <p class="sub-msg"><%= repair.building_name %> <%= repair.roomNum %>호</p>
-          <p class="sub-msg">
-            <span class="round-tag-border"><%= repair.name %></span>
-            <span class="round-tag-border">📞 <%= repair.tel %></span>
-          </p>
-        </div>
-        <img id="imagebox" src="/public/resources/repair_images/<%= repair.repairNum %>.png" />
-        <p class="repair-msg"><%= repair.content %></p>
-        <% if(userType === '세입자') { %> <% if(repair.isSolved == 0){ %>
-        <div class="reg-content">
-          <input
-            id="submit_content"
-            type="button"
-            value="유지보수가 완료되었어요"
-            onclick="location.href='/tenant/solve_repair/<%= repair.repairNum %>'"
-          />
+      <div class="view-main-contents">
+        <% if(userType === '세입자') { %>
+        <div id="go_back" onclick="location.href='/tenant/repair_list'">
+          <i class="fas fa-arrow-left bt"></i>
         </div>
         <% } else { %>
-        <div class="reg-content">
-          <input
-            id="submit_content"
-            type="button"
-            value="해결 완료된 건이에요"
-            style="background: var(--green-color)"
-          />
-        </div>
-        <% } %> <% } else { %>
-        <div class="reg-content">
-          <input id="submit_content" type="button" value="세입자에게 메시지 보내기" />
+        <div id="go_back" onclick="window.history.back()">
+          <i class="fas fa-arrow-left bt"></i>
         </div>
         <% } %>
+
+        <div class="repair-wrapper">
+          <div id="repair_head">
+            <span class="title-msg"><%= repair.title %></span>
+            <p class="sub-msg"><%= repair.building_name %> <%= repair.roomNum %>호</p>
+            <p class="sub-msg">
+              <span class="round-tag-border"><%= repair.name %></span>
+              <span class="round-tag-border">📞 <%= repair.tel %></span>
+            </p>
+          </div>
+          <img id="imagebox" src="/public/resources/repair_images/<%= repair.repairNum %>.png" />
+          <p class="repair-msg"><%= repair.content %></p>
+          <% if(userType === '세입자') { %> <% if(repair.isSolved == 0){ %>
+          <div class="reg-content">
+            <input
+              id="submit_content"
+              type="button"
+              value="유지보수가 완료되었어요"
+              onclick="location.href='/tenant/solve_repair/<%= repair.repairNum %>'"
+            />
+          </div>
+          <% } else { %>
+          <div class="reg-content">
+            <input
+              id="submit_content"
+              type="button"
+              value="해결 완료된 건이에요"
+              style="background: var(--green-color)"
+            />
+          </div>
+          <% } %> <% } else { %>
+          <div class="reg-content">
+            <input id="submit_content" type="button" value="세입자에게 메시지 보내기" />
+          </div>
+          <% } %>
+        </div>
       </div>
     </div>
   </body>

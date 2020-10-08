@@ -12,16 +12,19 @@
       ("../partials/navbar", {type: 'manager', sel:'nav_setting'}) %> <% } %> <% if(userType ===
       '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_setting'}) %> <% }
       %>
-      <div class="func-select bt" onclick="location.href='/check/password'">
-        <div class="select-title"><i class="far fa-user-circle"></i>내 계정 설정</div>
-      </div>
 
-      <div class="func-select bt" onclick="location.href='/manager/function/message'">
-        <div class="select-title"><i class="far fa-bell"></i>알림 설정</div>
-      </div>
+      <div class="view-main-contents">
+        <div class="func-select bt" onclick="location.href='/check/password'">
+          <div class="select-title"><i class="far fa-user-circle"></i>내 계정 설정</div>
+        </div>
 
-      <div class="func-select bt" onclick="location.href='/process/logout'">
-        <div class="select-title"><i class="fas fa-sign-out-alt"></i>로그아웃</div>
+        <div class="func-select bt" onclick="location.href='/manager/function/message'">
+          <div class="select-title"><i class="far fa-bell"></i>알림 설정</div>
+        </div>
+
+        <div class="func-select bt" onclick="location.href='/process/logout'">
+          <div class="select-title"><i class="fas fa-sign-out-alt"></i>로그아웃</div>
+        </div>
       </div>
     </div>
   </body>

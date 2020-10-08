@@ -8,77 +8,78 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include ("../partials/navbar", {type: 'host', sel:'nav_management'}) %> <%- include
-      ("../partials/set-menu") %>
+      <%- include ("../partials/navbar", {type: 'host', sel:'nav_management'}) %>
 
-      <div id="go_back" onclick="location.href='/host/management';">
-        <i class="fas fa-arrow-left bt"></i>
-      </div>
-
-      <div id="reg_title">건물 등록</div>
-
-      <form class="reg-list" action="/host/management/reg_submit" method="POST">
-        <div class="reg-content">
-          <p class="reg-msg">건물의 주소를 알려주세요.</p>
-          <input class="input-content" name="building_addr" type="text" required />
-        </div>
-        <div class="reg-content">
-          <p class="reg-msg">건물의 이름을 알려주세요.</p>
-          <input class="input-content" name="building_name" type="text" required />
-          <p>건물명이 없을시 지번을 입력하세요 (예: 19-1번지)</p>
-        </div>
-        <div class="reg-content">
-          <p class="reg-msg">세입자가 참고할 계좌번호를 알려주세요.</p>
-          <input class="input-content" name="bank_account" type="text" required />
-          <p>예) 국민 123-456789-123</p>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/host/management';">
+          <i class="fas fa-arrow-left bt"></i>
         </div>
 
-        <div class="reg-content">
-          <p class="reg-msg">관리인이 있나요?</p>
-          <div class="check-wrapper">
-            <label>
-              <input type="checkbox" id="isNoManager_checkbox" /> 건물주가 관리해요 / 아직 없어요
-            </label>
+        <div id="reg_title">건물 등록</div>
+
+        <form class="reg-list" action="/host/management/reg_submit" method="POST">
+          <div class="reg-content">
+            <p class="reg-msg">건물의 주소를 알려주세요.</p>
+            <input class="input-content" name="building_addr" type="text" required />
           </div>
-          <input
-            class="input-content"
-            name="managerID"
-            type="text"
-            placeholder="관리인의 아이디를 입력하세요!"
-            required
-          />
-        </div>
-
-        <div class="reg-content">
-          <p class="reg-msg">세대 수 설정만 남았어요!</p>
-          <div id="floor_adj">
-            <button id="add_bt">층 추가</button>
-            <button id="del_bt">층 삭제</button>
+          <div class="reg-content">
+            <p class="reg-msg">건물의 이름을 알려주세요.</p>
+            <input class="input-content" name="building_name" type="text" required />
+            <p>건물명이 없을시 지번을 입력하세요 (예: 19-1번지)</p>
           </div>
-          <input id="floor_count_hidden" type="hidden" name="floor_count" value="1" required />
-          <div id="floor_list">
-            <div class="cur-floor" value="1">
-              <div class="room-floor">1층</div>
-              <div class="room-count">
-                <input
-                  class="room-num"
-                  name="floor_1"
-                  type="number"
-                  min="1"
-                  max="99"
-                  step="1"
-                  value="1"
-                />
-                세대
+          <div class="reg-content">
+            <p class="reg-msg">세입자가 참고할 계좌번호를 알려주세요.</p>
+            <input class="input-content" name="bank_account" type="text" required />
+            <p>예) 국민 123-456789-123</p>
+          </div>
+
+          <div class="reg-content">
+            <p class="reg-msg">관리인이 있나요?</p>
+            <div class="check-wrapper">
+              <label>
+                <input type="checkbox" id="isNoManager_checkbox" /> 건물주가 관리해요 / 아직 없어요
+              </label>
+            </div>
+            <input
+              class="input-content"
+              name="managerID"
+              type="text"
+              placeholder="관리인의 아이디를 입력하세요!"
+              required
+            />
+          </div>
+
+          <div class="reg-content">
+            <p class="reg-msg">세대 수 설정만 남았어요!</p>
+            <div id="floor_adj">
+              <button id="add_bt">층 추가</button>
+              <button id="del_bt">층 삭제</button>
+            </div>
+            <input id="floor_count_hidden" type="hidden" name="floor_count" value="1" required />
+            <div id="floor_list">
+              <div class="cur-floor" value="1">
+                <div class="room-floor">1층</div>
+                <div class="room-count">
+                  <input
+                    class="room-num"
+                    name="floor_1"
+                    type="number"
+                    min="1"
+                    max="99"
+                    step="1"
+                    value="1"
+                  />
+                  세대
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="reg-content">
-          <input id="submit_content" type="submit" value="건물 등록하기" />
-        </div>
-      </form>
+          <div class="reg-content">
+            <input id="submit_content" type="submit" value="건물 등록하기" />
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
