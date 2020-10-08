@@ -61,7 +61,7 @@ const postRegister = function (req, res) {
               );
             } else {
               res.send(
-                `<script type="text/javascript">alert("${alertMsgSuccess}"); window.history.back();</script>`,
+                `<script type="text/javascript">alert("${alertMsgSuccess}"); location.href='/';</script>`,
               );
             }
           });

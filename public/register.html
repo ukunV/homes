@@ -76,25 +76,31 @@
       </div>
     </div>
     <script>
+      const id = document.getElementById('reg_id');
       const password = document.getElementById('reg_pw');
       const passwordAgain = document.getElementById('checkpw');
       const passwordMsg = document.getElementById('msg_pw');
+      const name = document.getElementById('reg_name');
+      const tel = document.getElementById('reg_tel');
       const submitBt = document.getElementById('reg_submit_bt');
+      let pwRight;
 
-      password.addEventListener('change', isPasswordSame);
-      password.addEventListener('change', isPasswordValid);
-      passwordAgain.addEventListener('change', isPasswordSame);
+      id.addEventListener('keyup', infoRight);
+      name.addEventListener('keyup', infoRight);
+      password.addEventListener('keyup', isPasswordSame);
+      password.addEventListener('keyup', isPasswordValid);
+      passwordAgain.addEventListener('keyup', isPasswordSame);
+      tel.addEventListener('keyup', infoRight);
+      submitBt.style.backgroundColor = '#bbb';
 
       function isPasswordValid() {
         if (password.value.length < 6) {
           passwordMsg.innerHTML = '비밀번호는 6자 이상으로 입력하세요.';
           passwordMsg.style.color = 'var(--push-color)';
           passwordAgain.disabled = true;
-          submitBt.disabled = true;
         } else {
           passwordMsg.innerHTML = '';
           passwordAgain.disabled = false;
-          submitBt.disabled = false;
         }
       }
 
@@ -103,12 +109,24 @@
           if (password.value == passwordAgain.value) {
             passwordMsg.innerHTML = '비밀번호가 일치합니다!';
             passwordMsg.style.color = 'var(--green-color)';
-            submitBt.disabled = false;
+            pwRight = true;
+            infoRight();
           } else {
             passwordMsg.innerHTML = '비밀번호가 일치하지 않습니다.';
             passwordMsg.style.color = 'var(--push-color)';
-            submitBt.disabled = true;
+            pwRight = false;
+            infoRight();
           }
+        }
+      }
+
+      function infoRight() {
+        if(id.value != '' && pwRight == true && name.value != '' && tel.value != ''){
+          submitBt.disabled = false;
+          submitBt.style.backgroundColor = 'var(--blue-color)';
+        } else {
+          submitBt.disabled = true;
+          submitBt.style.backgroundColor = '#bbb';
         }
       }
     </script>
