@@ -519,7 +519,7 @@ textarea {
 
 .form-login {
   display: flex;
-  padding-left: 43px;
+  padding-left: 30px;
 }
 
 .form-login #login_id,
@@ -656,4 +656,8 @@ textarea {
   font-weight: 600;
   color: dodgerblue;
   padding-bottom: 1rem;
+}
+
+#login_body {
+  text-align: center;
 }

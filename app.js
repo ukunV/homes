@@ -23,7 +23,6 @@ class App {
         next();
       } else {
         const to = `https://${req.hostname}${req.url}`;
-        console.log(to);
         res.redirect(to);
       }
     });
@@ -54,7 +53,6 @@ class App {
   }
 
   setLocals() {
-    // 템플릿 변수
     this.app.use((req, res, next) => {
       this.app.locals.isLogin = true;
       next();
