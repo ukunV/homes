@@ -83,6 +83,7 @@
       const name = document.getElementById('reg_name');
       const tel = document.getElementById('reg_tel');
       const submitBt = document.getElementById('reg_submit_bt');
+      const typeRadiobox = document.querySelectorAll('input[type="radio"]');
       let pwRight;
 
       id.addEventListener('keyup', infoRight);
@@ -91,6 +92,8 @@
       password.addEventListener('keyup', isPasswordValid);
       passwordAgain.addEventListener('keyup', isPasswordSame);
       tel.addEventListener('keyup', infoRight);
+      typeRadiobox.forEach((b) => b.addEventListener('click', infoRight));
+
       submitBt.style.backgroundColor = '#bbb';
 
       function isPasswordValid() {
@@ -121,12 +124,27 @@
       }
 
       function infoRight() {
-        if(id.value != '' && pwRight == true && name.value != '' && tel.value != ''){
+        if (
+          checkRadiobox() &&
+          id.value != '' &&
+          pwRight == true &&
+          name.value != '' &&
+          tel.value != ''
+        ) {
           submitBt.disabled = false;
           submitBt.style.backgroundColor = 'var(--blue-color)';
         } else {
           submitBt.disabled = true;
           submitBt.style.backgroundColor = '#bbb';
+        }
+      }
+
+      function checkRadiobox() {
+        const checkedRadiobox = document.querySelectorAll('input[type="radio"]:checked');
+        if (checkedRadiobox.length > 0) {
+          return true;
+        } else {
+          return false;
         }
       }
     </script>
