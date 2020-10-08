@@ -33,20 +33,58 @@
           </div>
           <div class="info-wrapper">
             <div class="info-title">전화번호</div>
-            <form class="info-value change-form" action="/account/tel_submit" method="POST">
-              <input type="text" name="tel" class="original-value" value="<%=tel%>" disabled />
+            <form
+              class="info-value change-form flex-form"
+              action="/account/tel_submit"
+              method="POST"
+            >
+              <input
+                type="text"
+                name="tel"
+                class="original-value"
+                value="<%=tel%>"
+                disabled
+                required
+              />
               <button class="modify-bt round-tag-border submit-bt" mod-target="tel">변경</button>
               <button class="modify-bt round-tag-border view-submit" mod="tel">수정</button>
             </form>
           </div>
           <div class="info-wrapper">
             <div class="info-title">비밀번호</div>
-            <form class="info-value change-form" action="/account/password_submit" method="POST">
-              <input type="text" name="password" class="original-value" value="" disabled />
-              <button class="modify-bt round-tag-border submit-bt" mod-target="password">
-                변경
-              </button>
-              <button class="modify-bt round-tag-border view-submit" mod="password">수정</button>
+            <form
+              id="password_form"
+              class="info-value change-form"
+              action="/account/password_submit"
+              method="POST"
+            >
+              <div class="flex-form">
+                <input
+                  type="text"
+                  name="password"
+                  class="original-value password-value"
+                  value=""
+                  id="password_text"
+                  placeholder="비밀번호"
+                  required
+                  disabled
+                />
+                <button class="modify-bt round-tag-border submit-bt" mod-target="password">
+                  변경
+                </button>
+                <button class="modify-bt round-tag-border view-submit" mod="password">수정</button>
+              </div>
+              <div class="password-again-wrapper flex-form">
+                <input
+                  type="text"
+                  id="password_again"
+                  class="original-value password-value"
+                  value=""
+                  placeholder="비밀번호 확인"
+                  required
+                />
+                <p id="password_msg"></p>
+              </div>
             </form>
           </div>
         </div>
