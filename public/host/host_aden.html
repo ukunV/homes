@@ -56,19 +56,21 @@
                   >
                   <% }} %>
                 </div>
-                <div class="room-maintenance">
-                  <% if(room.Unsolved>0) { %>
+                <div class="room-maintenance" <% if(room.Unsolved>
+                  0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(room.Unsolved>0) { %>
                   <span class="room-maintenance-title">유지보수</span>
                   <span class="room-boolean"><%=room.Unsolved%></span> <% } %>
                 </div>
               </div>
               <div class="room-main-right">
+                <% if(room.name) { %>
                 <div
                   class="content-msg"
                   onclick="location.href='/message?user_id=<%= room.tenantID %>'"
                 >
                   <i class="fab fa-telegram-plane"></i>
                 </div>
+                <% } %>
               </div>
             </div>
             <div class="room-bottom">

@@ -25,14 +25,15 @@
                   <span class="room-num"><%=room.roomNum%>호</span>
                 </div>
                 <div class="room-main-right">
-                  <div class="room-maintenance">
-                    <% if(room.Unsolved>0) { %>
+                  <div class="room-maintenance" <% if(room.Unsolved>
+                    0) { %>onclick="location.href='/repair_list'" <% } %>> <% if(room.Unsolved>0) {
+                    %>
                     <span class="room-maintenance-title">유지보수</span>
                     <span class="red-count"><%=room.Unsolved%></span><% } %>
                   </div>
                 </div>
               </div>
-              <% if(room.name!==null){ %>
+              <% if(room.name){ %>
               <div class="room-main-bottom">
                 <span class="round-tag-border"><%=room.name%></span>
                 <span class="round-tag-border">📞 <%=room.tel%></span>
@@ -45,12 +46,14 @@
             </div>
 
             <div class="room-right">
+              <% if(room.name) { %>
               <div
                 class="content-msg"
                 onclick="location.href='/message?user_id=<%= room.tenantID %>'"
               >
                 <i class="fab fa-telegram-plane"></i>
               </div>
+              <% } %>
             </div>
           </div>
         </div>

@@ -65,6 +65,43 @@ const sendPush = function (req, res) {
   }
 };
 
+const sendPush_repair = function (req, _, next) {
+  const roomId = req.body.roomID;
+  const title = req.body.title_content;
+
+  const getPeopleSql =
+    'SELECT hostID, managerID, tenantID FROM room r, buildings b WHERE r.buildNum=b.buildingNum AND roomID = ?;';
+
+  const sendMessageSql = 'insert into messages (receiver, sender, content, msgType) VALUES ?;';
+
+  const params = [];
+
+  mySqlClient.query(getPeopleSql, roomId, (err, row) => {
+    if (row) {
+      const host = row[0].hostID;
+      const manager = row[0].managerID;
+      const tenant = row[0].tenantID;
+
+      if (host === manager) {
+        params.push([host, tenant, title, 1]);
+      } else {
+        params.push([host, tenant, title, 1]);
+        params.push([manager, tenant, title, 1]);
+      }
+
+      mySqlClient.query(sendMessageSql, [params], (err, row) => {
+        if (err) {
+          console.log(err);
+        }
+        next();
+      });
+    } else {
+      console.log(err);
+      next();
+    }
+  });
+};
+
 // 개별 알림 보내기 라우터
 // Query: userID, buildingNum
 const loadSendList_each = function (req, res) {
@@ -75,7 +112,6 @@ const loadSendList_each = function (req, res) {
         res.render('common/each_message.html', {
           userType: req.session.user.userType,
           receiver: row[0],
-
         });
       } else {
         res.send(
@@ -107,106 +143,91 @@ const loadSendList_each = function (req, res) {
 };
 
 const loadSendList_host = function (req, res) {
-  if (req.session.user) {
-    const loadReceiverSql =
-      'SELECT buildNum, building_name, roomID, tenantID, roomNum, name AS tenant_name FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND hostID = ?;';
+  const loadReceiverSql =
+    'SELECT buildNum, building_name, roomID, tenantID, roomNum, name AS tenant_name FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND hostID = ?;';
 
-    const buildings_set = new Set();
-    const buildings = [];
-    const receivers = [];
+  const buildings_set = new Set();
+  const buildings = [];
+  const receivers = [];
 
-    mySqlClient.query(loadReceiverSql, req.session.user.userId, function (err, row) {
-      if (row) {
-        row.forEach((element) => {
-          if (!buildings_set.has(element.buildNum)) {
-            buildings_set.add(element.buildNum);
-            buildings.push({
-              buildNum: element.buildNum,
-              building_name: element.building_name,
-            });
-          }
-          receivers.push(element);
-        });
+  mySqlClient.query(loadReceiverSql, req.session.user.userId, function (err, row) {
+    if (row) {
+      row.forEach((element) => {
+        if (!buildings_set.has(element.buildNum)) {
+          buildings_set.add(element.buildNum);
+          buildings.push({
+            buildNum: element.buildNum,
+            building_name: element.building_name,
+          });
+        }
+        receivers.push(element);
+      });
 
-        res.render('common/host_mgr_message.html', {
-          userType: req.session.user.userType,
-          buildings,
-          receivers,
-        });
-      } else {
-        res.send(
-          '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',
-        );
-      }
-    });
-  } else {
-    res.send(
-      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
-    );
-  }
+      res.render('common/host_mgr_message.html', {
+        userType: req.session.user.userType,
+        buildings,
+        receivers,
+      });
+    } else {
+      res.send(
+        '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',
+      );
+    }
+  });
 };
 
 const loadSendList_mgr = function (req, res) {
-  if (req.session.user) {
-    const loadReceiverSql =
-      'SELECT buildNum, building_name, roomID, tenantID, roomNum, name AS tenant_name FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND managerID = ?;';
+  const loadReceiverSql =
+    'SELECT buildNum, building_name, roomID, tenantID, roomNum, name AS tenant_name FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND managerID = ?;';
 
-    const buildings_set = new Set();
-    const buildings = [];
-    const receivers = [];
+  const buildings_set = new Set();
+  const buildings = [];
+  const receivers = [];
 
-    mySqlClient.query(loadReceiverSql, req.session.user.userId, function (err, row) {
-      if (row) {
-        row.forEach((element) => {
-          if (!buildings_set.has(element.buildNum)) {
-            buildings_set.add(element.buildNum);
-            buildings.push({
-              buildNum: element.buildNum,
-              building_name: element.building_name,
-            });
-          }
-          receivers.push(element);
-        });
+  mySqlClient.query(loadReceiverSql, req.session.user.userId, function (err, row) {
+    if (row) {
+      row.forEach((element) => {
+        if (!buildings_set.has(element.buildNum)) {
+          buildings_set.add(element.buildNum);
+          buildings.push({
+            buildNum: element.buildNum,
+            building_name: element.building_name,
+          });
+        }
+        receivers.push(element);
+      });
 
-        res.render('common/host_mgr_message.html', {
-          userType: req.session.user.userType,
-          buildings,
-          receivers,
-        });
-      } else {
-        res.send(
-          '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',
-        );
-      }
-    });
-  } else {
-    res.send(
-      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
-    );
-  }
+      res.render('common/host_mgr_message.html', {
+        userType: req.session.user.userType,
+        buildings,
+        receivers,
+      });
+    } else {
+      res.send(
+        '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',
+      );
+    }
+  });
 };
 
 const loadSendList_tenant = function (req, res) {
-  if (req.session.user) {
-    const loadReceiverSql =
-      'SELECT tenantID, roomID, roomNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND tenantID!=? AND buildNum = any(SELECT buildNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND u.user_id=?);';
-    const receivers = [];
+  const loadReceiverSql =
+    'SELECT tenantID, roomID, roomNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND tenantID!=? AND buildNum = any(SELECT buildNum FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND u.user_id=?);';
+  const receivers = [];
 
-    mySqlClient.query(loadReceiverSql, [req.session.user.userId, req.session.user.userId], function (err, row) {
-      if (row) {
-        row.forEach((element) => {
-          receivers.push(element);
-        });
-        res.render('tenant/tenant_message.html', {
-          receivers,
-        });
-      }
-    });
-  } else {
-    res.send(
-      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
-    );
-  }
+  mySqlClient.query(loadReceiverSql, [req.session.user.userId, req.session.user.userId], function (
+    err,
+    row,
+  ) {
+    if (row) {
+      row.forEach((element) => {
+        receivers.push(element);
+      });
+      res.render('tenant/tenant_message.html', {
+        receivers,
+      });
+    }
+  });
 };
 
 module.exports = {
@@ -216,4 +237,5 @@ module.exports = {
   loadSendList_tenant,
   sendPush,
   readPush,
+  sendPush_repair,
 };

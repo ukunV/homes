@@ -27,13 +27,15 @@
           <div class="belongs">
             <div class="belongs-top">
               <div class="belongs-top-left">
-                <div
-                  class="belongs-details"
-                  onclick="location.href='/manager/aden/<%=manager.buildingNum%>'"
-                >
-                  <span class="belongs-title"><%=manager.building_name%></span>
-                  <div class="belongs-maintenance">
-                    <% if (manager.Unsolved > 0) { %>
+                <div class="belongs-details">
+                  <span
+                    class="belongs-title"
+                    onclick="location.href='/manager/aden/<%=manager.buildingNum%>'"
+                    ><%=manager.building_name%></span
+                  >
+                  <div class="belongs-maintenance" <% if(manager.Unsolved>
+                    0) { %>onclick="location.href='/repair_list'" <% } %>> <% if (manager.Unsolved >
+                    0) { %>
                     <span class="maintenance-title">유지보수</span>
                     <span class="red-count mgr-count"><%=manager.Unsolved%></span>
                     <% } %>

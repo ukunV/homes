@@ -146,7 +146,13 @@ router
   .get(checkLoginAndPush, checkTenant, tenant_repair.loadAddRepair); // 하자 등록 이동
 router
   .route('/tenant/function/repair_submit')
-  .post(checkLoginAndPush, checkTenant, imgUpload.single('img'), tenant_repair.addRepair); // 하자 등록
+  .post(
+    checkLoginAndPush,
+    checkTenant,
+    imgUpload.single('img'),
+    send_push.sendPush_repair,
+    tenant_repair.addRepair,
+  ); // 하자 등록
 
 // (세입자) 유지보수 완료
 const solveRepair = require('./tenant/solve_repair');

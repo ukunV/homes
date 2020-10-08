@@ -32,6 +32,7 @@
             </div>
             <div class="push-main">
               <div class="push-msg">
+                <% if(msg.msgType === 0) { %>
                 <div class="push-info">
                   <% if(msg.sender_building_name) { %> <%= msg.sender_building_name %> <% } %> <%
                   if(msg.sender_roomNum) { %> <%= msg.sender_roomNum %>호 <% } %> <%=
@@ -49,6 +50,21 @@
                     >답장</span
                   >
                 </div>
+                <% } else if(msg.msgType === 1) { %>
+                <div class="push-info">
+                  <% if(msg.sender_building_name) { %> <%= msg.sender_building_name %> <% } %> <%
+                  if(msg.sender_roomNum) { %> <%= msg.sender_roomNum %>호 <% } %> <%=
+                  msg.sender_name %>님이 유지보수를 신청했어요.
+                </div>
+                <div class="push-func">
+                  <span
+                    class="func-msg isReadBt"
+                    onclick="location.href='/message/read/<%= msg.msgID %>'"
+                    >읽음</span
+                  >
+                  <span class="func-msg" onclick="location.href='/repair_list'">보기</span>
+                </div>
+                <% } %>
               </div>
               <p class="push-msg-content"><%= msg.content %></p>
               <div class="push-when">
