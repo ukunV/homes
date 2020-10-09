@@ -1,0 +1,54 @@
+#wrap {
+  width: 100% !important;
+  height: 270px !important;
+  border: 1px solid var(--soft-gray-color);
+}
+
+#post_bt {
+  margin-left: 0.2rem;
+  padding: 0.1rem 0.4rem;
+  background-color: var(--blue-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+}
+
+.addr-wrapper {
+  display: none;
+  margin: 0.7rem auto;
+  align-items: center;
+}
+
+.addr-left {
+  flex: 3;
+}
+
+.addr-left input {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  margin-top: 0.1rem;
+}
+
+.addr-right {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+}
+
+#addr_confirm {
+  padding: 0.2rem 0.4rem;
+  background-color: var(--blue-color);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+input[name='building_addr'] {
+  display: none;
+}

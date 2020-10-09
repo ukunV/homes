@@ -3,6 +3,7 @@
   <head>
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/host/mgmt_register_style.css" />
+    <link rel="stylesheet" href="/public/host/postcode.css" />
     <script src="/public/host/mgmt_register.js" defer></script>
     <title>관리-건물등록</title>
   </head>
@@ -19,8 +20,31 @@
 
         <form class="reg-list" action="/host/management/reg_submit" method="POST">
           <div class="reg-content">
-            <p class="reg-msg">건물의 주소를 알려주세요.</p>
-            <input class="input-content" name="building_addr" type="text" required />
+            <p class="reg-msg">
+              건물의 주소를 알려주세요.
+              <button id="post_bt">주소 검색</button>
+            </p>
+            <div class="addr-wrapper">
+              <div class="addr-left">
+                <input type="text" id="address" placeholder="주소" readonly /><br />
+                <input type="text" id="detailAddress" placeholder="상세주소 (선택 입력)" />
+              </div>
+              <div class="addr-right">
+                <button id="addr_confirm">완료</button>
+              </div>
+            </div>
+
+            <div id="wrap" style="display: none; margin: 5px 0; position: relative">
+              <img
+                src="//t1.daumcdn.net/postcode/resource/images/close.png"
+                id="btnFoldWrap"
+                style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1"
+                onclick="foldDaumPostcode()"
+                alt="접기 버튼"
+              />
+            </div>
+
+            <input class="input-content" name="building_addr" type="text" required readonly />
           </div>
           <div class="reg-content">
             <p class="reg-msg">건물의 이름을 알려주세요.</p>
@@ -81,5 +105,64 @@
         </form>
       </div>
     </div>
+
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+      const addrWrap = document.querySelector('.addr-wrapper');
+      const postConfirmBt = document.querySelector('#addr_confirm');
+      const postTarget = document.querySelector('input[name="building_addr"]');
+      const postSearchBt = document.querySelector('#post_bt');
+
+      postSearchBt.addEventListener('click', execDaumPostcode);
+
+      postConfirmBt.addEventListener('click', (e) => {
+        e.preventDefault();
+        const addr1 = document.querySelector('#address').value;
+        const addr2 = document.querySelector('#detailAddress').value;
+        postTarget.value = `${addr1} ${addr2}`;
+        postTarget.style.display = 'block';
+        addrWrap.style.display = 'none';
+      });
+
+      const element_wrap = document.getElementById('wrap');
+
+      function foldDaumPostcode() {
+        element_wrap.style.display = 'none';
+        addrWrap.style.display = 'none';
+      }
+
+      function execDaumPostcode(e) {
+        e.preventDefault();
+        // 현재 scroll 위치를 저장해놓는다.
+        const currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+        new daum.Postcode({
+          oncomplete: function (data) {
+            let addr = '';
+
+            if (data.userSelectedType === 'R') {
+              addr = data.roadAddress;
+            } else {
+              addr = data.jibunAddress;
+            }
+
+            addrWrap.style.display = 'flex';
+            document.getElementById('address').value = addr;
+            document.getElementById('detailAddress').focus();
+
+            element_wrap.style.display = 'none';
+
+            document.body.scrollTop = currentScroll;
+          },
+          onresize: function (size) {
+            element_wrap.style.height = size.height + 'px';
+          },
+          width: '100%',
+          height: '100%',
+        }).embed(element_wrap);
+
+        // iframe을 넣은 element를 보이게 한다.
+        element_wrap.style.display = 'block';
+      }
+    </script>
   </body>
 </html>
