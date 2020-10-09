@@ -10,7 +10,10 @@ const alertMsgUsing = '이미 사용중인 아이디입니다.';
 const alertMsgSuccess = '회원가입을 완료했습니다.';
 
 const getRegister = function (req, res) {
-  res.render('register.html', {});
+  res.render('register.html', {
+    inputId: '',
+    right: 3,
+  });
 };
 
 const postRegister = function (req, res) {
@@ -70,7 +73,24 @@ const postRegister = function (req, res) {
     });
   }
 };
-
+const checkId = function(req, res) {
+  const user_id = req.body.id;
+  const checkIdSql = 'select id from user where user_id = ?;';
+  mySqlClient.query(checkIdSql, user_id, function(err, row){
+    console.log(row);
+    if(row.length>0){
+      res.render('register.html', {
+        inputId: user_id,
+        right: 0
+      });
+    } else {
+      res.render('register.html', {
+        inputId: user_id,
+        right: 1,
+      });
+    }
+  });
+}
 //회원가입 체크 라우터
 function checkInput(params) {
   let result;
@@ -95,4 +115,5 @@ function checkInput(params) {
 module.exports = {
   getRegister,
   postRegister,
+  checkId,
 };

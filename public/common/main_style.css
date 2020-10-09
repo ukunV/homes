@@ -633,7 +633,21 @@ textarea {
   color: white;
   border: none;
 }
-
+#reg_id {
+  position: relative;
+  left: 40px;
+}
+#reg_submit_dupBt {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  width: auto;
+  right: 35px;
+  padding: 0.2rem 0.45rem;
+  background: dodgerblue;
+  color: white;
+  border-radius: 0.5rem;
+}
 .view-main {
   text-align: center;
   padding-top: 2rem;
