@@ -7,7 +7,11 @@ const checkTokenSql = 'select * from user where token=?';
 const setTokenSql = 'update user set token = ? where id=?;';
 const loginErrMsg = `<script type="text/javascript">alert("아이디 또는 비밀번호를 다시 확인해주세요."); window.history.back();</script>`;
 
-const login = function (req, res) {
+const getLogin = function (req, res) {
+  res.render('login.html', {});
+};
+
+const postLogin = function (req, res) {
   const checkId = req.body.id;
   const checkPwd = crypto.createHash('sha512').update(req.body.password).digest('base64'); // Crypto Encryption
   mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
@@ -94,4 +98,4 @@ function tokenUpdate(setTokenSql, token, id) {
   });
 }
 
-module.exports = login;
+module.exports = { postLogin, getLogin };

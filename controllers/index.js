@@ -21,7 +21,8 @@ router.route('/register').post(register.postRegister);
 
 // 로그인
 const login = require('./user/login.js');
-router.route('/process/login').post(login);
+router.route('/process/login').get(login.getLogin);
+router.route('/process/login').post(login.postLogin);
 
 // 로그아웃
 const logout = require('./user/logout.js');

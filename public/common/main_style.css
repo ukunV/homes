@@ -87,7 +87,7 @@ i {
 }
 
 .wrapper > .view-main-contents {
-  -webkit-animation: transformView 0.4s ease-out both;
+  -webkit-animation: transformView 0.25s ease-out both;
   animation: transformView 0.25s ease-out both;
 }
 
@@ -569,9 +569,8 @@ textarea {
   text-align: center;
 }
 
-.homes-info {
-  text-align: center;
-  font-size: 1.4rem;
+.homes-img-logo {
+  padding-bottom: 0.5rem;
 }
 
 .blue-font {
@@ -638,15 +637,36 @@ textarea {
 .view-main {
   text-align: center;
   padding-top: 2rem;
+  -webkit-animation: transformMainView 0.4s ease-out both;
+  animation: transformMainView 0.4s ease-out both;
+}
+
+@-webkit-keyframes transformMainView {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    transform: translateY(40px);
+  }
 }
 
 .homes-info {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: dodgerblue;
-  padding-bottom: 1rem;
+  color: var(--blue-color);
+  padding-bottom: 1.5rem;
 }
 
 #login_body {
   text-align: center;
+}
+
+.reg-go-back {
+  position: absolute;
+  top: 2rem;
+  text-align: left;
+  padding-left: 2.4rem;
+}
+
+.reg-go-back i {
+  color: var(--blue-color);
 }

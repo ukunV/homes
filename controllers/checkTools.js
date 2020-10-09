@@ -19,7 +19,7 @@ const checkLoginAndPush = (req, res, next) => {
     });
   } else {
     res.send(
-      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>',
+      '<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/process/login";</script>',
     );
   }
 };

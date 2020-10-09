@@ -1,0 +1,88 @@
+.div-homes-info {
+  color: var(--blue-color);
+  font-size: 2.1rem;
+  font-weight: 700;
+  padding-top: 70px;
+  height: 150px;
+}
+
+.div-homes-info div {
+  padding-top: 15px;
+}
+
+.div-flow-1 {
+  -webkit-animation: flowFromLeft 0.7s ease-out both;
+  animation: flowFromLeft 0.7s ease-out both;
+}
+
+.div-flow-2 {
+  -webkit-animation: flowFromRight 0.7s ease-out both;
+  animation: flowFromRight 0.7s ease-out both;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.div-flow-3 {
+  -webkit-animation: flowFromLeft 0.7s ease-out both;
+  animation: flowFromLeft 0.7s ease-out both;
+  -webkit-animation-delay: 1.4s;
+  animation-delay: 1.4s;
+}
+
+.div-flow-wrapper {
+  -webkit-animation: flowDisappear 0.7s ease-out both;
+  animation: flowDisappear 0.7s ease-out both;
+  -webkit-animation-delay: 2.8s;
+  animation-delay: 2.8s;
+}
+
+.after-info {
+  opacity: 0;
+  -webkit-animation: flowAfter 0.7s ease-out both;
+  animation: flowAfter 0.7s ease-out both;
+  -webkit-animation-delay: 3.45s;
+  animation-delay: 3.45s;
+  transform: translateY(-240px);
+}
+
+@-webkit-keyframes flowFromLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+@-webkit-keyframes flowFromRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+}
+
+@-webkit-keyframes flowDisappear {
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(-150px);
+    transform: translateY(-150px);
+  }
+}
+
+@-webkit-keyframes flowAfter {
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(-180px);
+    transform: translateY(-180px);
+  }
+}
+
+.big-start-bt {
+  background: var(--blue-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
