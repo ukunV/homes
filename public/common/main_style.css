@@ -624,10 +624,7 @@ textarea {
 .div-wrapper-submit {
   margin-top: 20px;
 }
-#reg_id {
-  position: relative;
-  left: 40px;
-}
+
 #reg_submit_bt {
   font-size: 18px;
   font-weight: 500;
@@ -635,18 +632,6 @@ textarea {
   background: dodgerblue;
   color: white;
   border: none;
-}
-
-#reg_submit_dupBt {
-  position: relative;
-  font-size: 15px;
-  font-weight: 500;
-  width: auto;
-  right: 35px;
-  padding: 0.2rem 0.45rem;
-  background: dodgerblue;
-  color: white;
-  border-radius: 0.5rem;
 }
 
 .view-main {
@@ -673,7 +658,6 @@ textarea {
 
 #login_body {
   text-align: center;
-<<<<<<< Updated upstream
 }
 
 .reg-go-back {
@@ -686,6 +670,3 @@ textarea {
 .reg-go-back i {
   color: var(--blue-color);
 }
-=======
-}
->>>>>>> Stashed changes
