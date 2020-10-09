@@ -7,6 +7,7 @@
 
   <body>
     <div class="wrapper view-main">
+<<<<<<< Updated upstream
       <div class="reg-go-back">
         <i class="fas fa-arrow-left bt" onclick="location.href='/process/login'"></i>
       </div>
@@ -70,6 +71,82 @@
               <input id="reg_submit_bt" type="submit" value="회원가입" />
             </div>
           </form>
+=======
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
+        <div class="div-login-box">
+          <div class="div-title">회원가입</div>
+          <div class="div-login-form">
+            <form class="form-reg" name="frm1" method="post">
+              <div class="div-wrapper-input">
+                <label
+                  ><input type="radio" name="type" value="건물주" />
+                  <div class="div-type-bt">건물주</div>
+                </label>
+
+                <label
+                  ><input type="radio" name="type" value="관리인" />
+                  <div class="div-type-bt">관리인</div>
+                </label>
+
+                <label
+                  ><input type="radio" name="type" value="세입자" />
+                  <div class="div-type-bt">세입자</div>
+                </label>
+              </div>
+              <div class="div-wrapper-input">
+                <input id="reg_id" name="id" placeholder="아이디" value="<%=inputId%>" autocomplete="off" required />
+                <input id="reg_submit_dupBt" type="submit" value="중복확인" onclick='btn_click("duplicate");'>
+                <% if(locals.right===0){ %>
+                <span id="msg_id" style="color: var(--push-color)">이미 사용 중인 아이디입니다.</span>
+                <% } %>
+                <% if(locals.right===1){ %>
+                  <span id="msg_id" style="color: var(--green-color)">사용할 수 있는 아이디입니다.</span>
+                <% } %>
+              </div>
+              <% if(locals.right != 1) { %>
+              <% } %>
+              <% if(locals.right === 1) { %>
+              <div class="div-wrapper-input">
+                <input
+                  type="password"
+                  name="pw"
+                  id="reg_pw"
+                  placeholder="비밀번호"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="div-wrapper-input">
+                <input
+                  type="password"
+                  id="checkpw"
+                  placeholder="비밀번호 확인"
+                  disabled=true
+                  autocomplete="off"
+                />
+              </div>
+              <span id="msg_pw"></span>
+              <div class="div-wrapper-input">
+                <input id="reg_name" name="name" placeholder="성명" autocomplete="off" />
+              </div>
+              <div class="div-wrapper-input">
+                <input
+                  id="reg_tel"
+                  type="tel"
+                  name="tel"
+                  placeholder="휴대폰 번호(- 없이 입력)"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="div-wrapper-submit">
+                <input id="reg_submit_bt" type="submit" value="회원가입" onclick='btn_click("register");'/>
+              </div>
+              <% } %>
+            </form>
+          </div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
@@ -93,6 +170,14 @@
       typeRadiobox.forEach((b) => b.addEventListener('click', infoRight));
 
       submitBt.style.backgroundColor = '#bbb';
+
+      function btn_click(str){
+        if(str === "duplicate"){
+          frm1.action = "/register/checkId";
+        } else if(str === "register"){
+          frm1.action = "/register";
+        }
+      }
 
       function isPasswordValid() {
         if (password.value.length < 6) {
@@ -145,6 +230,7 @@
           return false;
         }
       }
+
     </script>
   </body>
 </html>

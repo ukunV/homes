@@ -18,7 +18,7 @@ router.route('/').get(main);
 const register = require('./user/register.js');
 router.route('/register').get(register.getRegister);
 router.route('/register').post(register.postRegister);
-
+router.route('/register/checkId').post(register.checkId);
 // 로그인
 const login = require('./user/login.js');
 router.route('/process/login').get(login.getLogin);
