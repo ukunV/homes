@@ -8,7 +8,7 @@ module.exports = {
   dateStrings: true,
   typeCast: true,
   charset: 'utf8mb4',
-  timezone: 'Asia/Seoul',
+  timezone: '+09:00', //Asia/Seoul
   debug: false,
   insecureAuth: true,
 };
