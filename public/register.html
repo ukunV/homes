@@ -31,15 +31,19 @@
                       </label>
                     </div>
                     <div class="div-wrapper-input">
-                      <input id="reg_id" name="id" placeholder="아이디" value="<%=inputId%>" autocomplete="off" required />
-                      <input id="reg_submit_dupBt" type="submit" value="중복확인" onclick='btn_click("duplicate");'>
                       <% if(locals.right===0){ %>
-                      <span id="msg_id" style="color: var(--push-color)">이미 사용 중인 아이디입니다.</span>
-                      <% } %>
-                      <% if(locals.right===1){ %>
+                        <input id="reg_id" name="id" placeholder="아이디" value="<%=inputId%>" autocomplete="off" required />
+                        <input id="reg_submit_dupBt" type="submit" value="중복확인" onclick='btn_click("duplicate");'>
+                        <span id="msg_id" style="color: var(--push-color)">이미 사용 중인 아이디입니다.</span>
+                      <% } else if(locals.right===1){ %>
+                        <input id="reg_id" name="id" placeholder="아이디" readonly value="<%=inputId%>" autocomplete="off" required />
+                        <input id="reg_submit_dupBt" type="submit" disabled=true value="중복확인" onclick='btn_click("duplicate");'>
                         <span id="msg_id" style="color: var(--green-color)">사용할 수 있는 아이디입니다.</span>
+                      <% } else { %>
+                        <input id="reg_id" name="id" placeholder="아이디" value="<%=inputId%>" autocomplete="off" required />
+                        <input id="reg_submit_dupBt" type="submit" value="중복확인" onclick='btn_click("duplicate");'>
                       <% } %>
-                    </div>
+                      </div>
                     <% if(locals.right != 1) { %>
                     <% } %>
                     <% if(locals.right === 1) { %>
