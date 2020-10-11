@@ -5,8 +5,9 @@ module.exports = {
   user: 'root',
   password: 'homesdb-5177',
   database: 'homes-db',
-  dateStrings: 'date',
-  charset: 'utf8',
+  dateStrings: true,
+  typeCast: true,
+  charset: 'utf8mb4',
   timezone: 'Asia/Seoul',
   debug: false,
   insecureAuth: true,
@@ -28,15 +29,15 @@ module.exports = {
 //  insecureAuth: true
 // };
 
-// //FOR LOCAL TEST - 전진
-// module.exports = {
-//   connectionLimit: 30,
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'wjswls1',
-//   database: 'homes-db',
-//   dateStrings: 'date',
-//   charset: 'utf8',
-//   debug: false,
-//   insecureAuth: true,
-// };
+//FOR LOCAL TEST - 전진
+module.exports = {
+  connectionLimit: 30,
+  host: 'localhost',
+  user: 'root',
+  password: 'wjswls1',
+  database: 'homes-db',
+  dateStrings: 'date',
+  charset: 'utf8',
+  debug: false,
+  insecureAuth: true,
+};
