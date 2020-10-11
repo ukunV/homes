@@ -29,15 +29,15 @@ module.exports = {
 //  insecureAuth: true
 // };
 
-//FOR LOCAL TEST - 전진
-module.exports = {
-  connectionLimit: 30,
-  host: 'localhost',
-  user: 'root',
-  password: 'wjswls1',
-  database: 'homes-db',
-  dateStrings: 'date',
-  charset: 'utf8',
-  debug: false,
-  insecureAuth: true,
-};
+// //FOR LOCAL TEST - 전진
+// module.exports = {
+//   connectionLimit: 30,
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'wjswls1',
+//   database: 'homes-db',
+//   dateStrings: 'date',
+//   charset: 'utf8',
+//   debug: false,
+//   insecureAuth: true,
+// };
