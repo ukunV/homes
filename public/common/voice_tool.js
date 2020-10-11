@@ -60,3 +60,8 @@ const initRecognition = () => {
 };
 
 voiceBt.addEventListener('click', startRecognition);
+
+// IOS: 음성인식 X
+if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+  voiceBt.style.display = 'none';
+}
