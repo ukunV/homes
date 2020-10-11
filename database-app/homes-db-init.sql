@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `homes-db`;
 USE `homes-db`;
+SET GLOBAL time_zone = 'Asia/Seoul';
 
 DROP TABLE IF EXISTS user;
 CREATE TABLE user(

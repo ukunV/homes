@@ -6,7 +6,7 @@ module.exports = {
   password: 'homesdb-5177',
   database: 'homes-db',
   dateStrings: 'date',
-  charset: 'utf8',
+  charset: 'utf8mb4',
   debug: false,
   insecureAuth: true,
 };

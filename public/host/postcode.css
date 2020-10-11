@@ -27,6 +27,7 @@
 
 .addr-left input {
   width: 100%;
+  box-sizing: border-box;
   font-size: 0.9rem;
   padding: 0.2rem 0.3rem;
   border-radius: 3px;
