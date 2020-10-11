@@ -5,7 +5,8 @@ const ejs = require('ejs'),
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const host = function (req, res) {
-  const buildingInfoSql = 'select b.buildingNum, if(payment_month_ok=0,count(payment_month_ok),0) as nonPayment, b.building_name, v.Unsolved as Unsolved, name as manager_name from buildings b join user u on b.managerID=u.user_id join room r on r.buildNum=b.buildingNum join (select buildingNum, COUNT(repairNum) as UnSolved from buildings b join room ro on buildingNum=buildNum join repair re on re.roomID=ro.roomID where b.hostID=? and re.isSolved=0 group by buildingNum UNION select buildingNum, 0 as UnSolved from buildings where buildingNum not in ( select buildNum from room ro join repair re on ro.roomID=re.roomID where re.isSolved=0)) v on b.buildingNum=v.buildingNum where b.hostID=?  and r.payment_type=0 group by buildingNum, building_name, Unsolved, manager_name;';
+  const buildingInfoSql =
+    'select b.buildingNum, count(payment_month_ok) as nonPayment, b.building_name, v.Unsolved as Unsolved, name as manager_name from buildings b join user u on b.managerID=u.user_id join room r on r.buildNum=b.buildingNum join (select buildingNum, COUNT(repairNum) as UnSolved from buildings b join room ro on buildingNum=buildNum join repair re on re.roomID=ro.roomID where b.hostID=? and re.isSolved=0 group by buildingNum UNION select buildingNum, 0 as UnSolved from buildings where buildingNum not in ( select buildNum from room ro join repair re on ro.roomID=re.roomID where re.isSolved=0)) v on b.buildingNum=v.buildingNum where b.hostID=? and r.payment_month_ok=0 and r.payment_type=0 group by buildingNum, building_name, Unsolved, manager_name;';
 
   mySqlClient.query(buildingInfoSql, [req.session.user.userId, req.session.user.userId], function (
     err,
