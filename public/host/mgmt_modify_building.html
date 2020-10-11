@@ -4,6 +4,7 @@
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/host/management_style.css" />
     <link rel="stylesheet" href="/public/host/mgmt_modify_building.css" />
+    <link rel="stylesheet" href="/public/host/postcode.css" />
     <script src="/public/host/mgmt_modify_building.js" defer></script>
     <title>관리-건물관리</title>
   </head>
@@ -27,13 +28,34 @@
           </form>
         </div>
         <div class="setting-wrapper">
-            <div class="setting-title">주소</div>
+            <div class="setting-title">주소<button id="post_bt">검색</button></div>
             <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/building_addr">
             <input type="hidden" name="buildingNum" value="<%= buildingNum %>" />
-            <input name="newData" id="building_addr" value="<%= building_addr %>">
+            <input name="newData" id="building_addr" value="<%= building_addr %>" readonly />
             <input type="submit" class="setting-submit" value="저장">
             </form>
         </div>
+        <!-- POSTCODE -->
+        <div class="addr-wrapper">
+          <div class="addr-left">
+            <input type="text" id="address" placeholder="주소" readonly /><br />
+            <input type="text" id="detailAddress" placeholder="상세주소 (선택 입력)" />
+          </div>
+          <div class="addr-right">
+            <button id="addr_confirm">입력</button>
+          </div>
+        </div>
+
+        <div id="wrap" style="display: none; margin: 5px 0; position: relative">
+          <img
+            src="//t1.daumcdn.net/postcode/resource/images/close.png"
+            id="btnFoldWrap"
+            style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1"
+            onclick="foldDaumPostcode()"
+            alt="접기 버튼"
+          />
+        </div>
+        <!-- POSTCODE END -->
         <div class="setting-wrapper">
           <div class="setting-title">관리인</div>
           <form class="setting-content" name="building_addr" method="POST" action="/host/modify/submit/managerID">
@@ -102,5 +124,64 @@
             <% }); %>
         </div>
       </div></div>
+
+      <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+      const addrWrap = document.querySelector('.addr-wrapper');
+      const postConfirmBt = document.querySelector('#addr_confirm');
+      const postTarget = document.querySelector('input#building_addr');
+      const postSearchBt = document.querySelector('#post_bt');
+
+      postSearchBt.addEventListener('click', execDaumPostcode);
+
+      postConfirmBt.addEventListener('click', (e) => {
+        e.preventDefault();
+        const addr1 = document.querySelector('#address').value;
+        const addr2 = document.querySelector('#detailAddress').value;
+        postTarget.value = `${addr1} ${addr2}`;
+        postTarget.style.display = 'block';
+        addrWrap.style.display = 'none';
+      });
+
+      const element_wrap = document.getElementById('wrap');
+
+      function foldDaumPostcode() {
+        element_wrap.style.display = 'none';
+        addrWrap.style.display = 'none';
+      }
+
+      function execDaumPostcode(e) {
+        e.preventDefault();
+        // 현재 scroll 위치를 저장해놓는다.
+        const currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+        new daum.Postcode({
+          oncomplete: function (data) {
+            let addr = '';
+
+            if (data.userSelectedType === 'R') {
+              addr = data.roadAddress;
+            } else {
+              addr = data.jibunAddress;
+            }
+
+            addrWrap.style.display = 'flex';
+            document.getElementById('address').value = addr;
+            document.getElementById('detailAddress').focus();
+
+            element_wrap.style.display = 'none';
+
+            document.body.scrollTop = currentScroll;
+          },
+          onresize: function (size) {
+            element_wrap.style.height = size.height + 'px';
+          },
+          width: '100%',
+          height: '100%',
+        }).embed(element_wrap);
+
+        // iframe을 넣은 element를 보이게 한다.
+        element_wrap.style.display = 'block';
+      }
+    </script>
   </body>
 </html>
