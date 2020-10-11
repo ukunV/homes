@@ -7,6 +7,7 @@ module.exports = {
   database: 'homes-db',
   dateStrings: 'date',
   charset: 'utf8',
+  timezone: 'Asia/Seoul',
   debug: false,
   insecureAuth: true,
 };
