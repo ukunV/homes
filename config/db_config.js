@@ -5,10 +5,8 @@ module.exports = {
   user: 'root',
   password: 'homesdb-5177',
   database: 'homes-db',
-  dateStrings: true,
-  typeCast: true,
+  dateStrings: 'date',
   charset: 'utf8mb4',
-  timezone: '+09:00', //Asia/Seoul
   debug: false,
   insecureAuth: true,
 };
