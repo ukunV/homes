@@ -8,9 +8,9 @@
   <body>
     <div class="wrapper">
         <% if(userType === '건물주') { %> <%- include ("../partials/navbar", {type: 'host',
-      sel:'nav_home'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
-      ("../partials/navbar", {type: 'manager', sel:'nav_home'}) %> <% } %> <% if(userType ===
-      '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %> <% } %>
+      sel:'nav_setting'}) %> <% } %> <% if(userType === '관리인') { %> <%- include
+      ("../partials/navbar", {type: 'manager', sel:'nav_setting'}) %> <% } %> <% if(userType ===
+      '세입자') { %> <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_setting'}) %> <% } %>
       <div class="view-main-contents">
 
       <div id="go_back" onclick="location.href='/setting'">
