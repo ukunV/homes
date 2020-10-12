@@ -4,7 +4,7 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const loadRepair = function (req, res) {
   const getRepairSql =
-    'SELECT re.repairNum, re.title, re.content, re.isSolved, u.name, u.tel, b.building_name, ro.roomNum, tenantID FROM repair re, room ro, user u, buildings b WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND b.buildingNum = ro.buildNum AND re.repairNum = ?';
+    `SELECT re.repairNum, re.title, re.content, re.isSolved, u.name, mask(u.tel, '###-####-####') as tel, b.building_name, ro.roomNum, tenantID FROM repair re, room ro, user u, buildings b WHERE re.roomID = ro.roomID AND ro.tenantID = u.user_id AND b.buildingNum = ro.buildNum AND re.repairNum = ?`;
   mySqlClient.query(getRepairSql, req.params.id, function (err, row) {
     if (row) {
       res.render('common/view_repair.html', {
