@@ -53,16 +53,22 @@ const sendPushOfMessage = (receivers, message) => {
 
 // 유지보수 등록 to 건물주/관리인
 const sendPushOfRepair = (roomId) => {
-  const getTokenSql = 'SELECT token FROM user u WHERE u.user_id IN (?);';
+  const getTokenSql =
+    'SELECT u.token AS host_token, v.token AS mgr_token from user u join buildings b on u.user_id=b.hostID join room r on b.buildingNum = r.buildNum join (select * from user) v on v.user_id=b.managerID WHERE r.roomID = ?;';
   const tokens = [];
 
-  mySqlClient.query(getTokenSql, [receivers], (err, rows) => {
+  mySqlClient.query(getTokenSql, roomId, (err, rows) => {
     if (err) {
       console.error(err);
     } else {
       if (rows.length > 0) {
         console.dir(rows);
-        rows.forEach((r) => tokens.push(r.token));
+        if (rows[0].host_token === rows[0].mgr_token) {
+          tokens.push(rows[0].host_token);
+        } else {
+          tokens.push(rows[0].host_token);
+          tokens.push(rows[0].mgr_token);
+        }
         handlePushTokens(message, tokens);
       }
     }
@@ -97,7 +103,7 @@ const handlePushTokens = (message, savedPushTokens) => {
     notifications.push({
       to: pushToken,
       sound: 'default',
-      title: 'Bluecheck',
+      title: 'Homes',
       body: message,
       data: {
         message,
