@@ -79,9 +79,8 @@
                 <span class="round-tag-border"><%=room.name%></span>
                 <% } if(room.name===null) { %>
                 <span class="round-tag-border">세입자 없음</span>
-                <% } %> <% if(room.tel !== '000-0000-0000') { %>
-                <span class="round-tag-border">📞 <%=room.tel%></span><% } else if(room.tel==='000-0000-0000') { %>
-                  <% } %> <%
+                <% } %> <% if(room.tel) { %>
+                <span class="round-tag-border">📞 <%=room.tel%></span><% } %> <%
                 if(room.payment_type == 0) { %> <% if(room.payment_month_day == 0) { %>
                 <span class="round-tag-border">정산일 미설정</span>
                 <% } else { %>
