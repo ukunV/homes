@@ -3,6 +3,7 @@
   <head>
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/tenant/register_repair_style.css" />
+    <script src="/public/common/phoneFormatter.js" defer></script>
     <title>유지/보수 보기</title>
   </head>
   <body>
@@ -30,7 +31,7 @@
             <p class="sub-msg"><%= repair.building_name %> <%= repair.roomNum %>호</p>
             <p class="sub-msg">
               <span class="round-tag-border"><%= repair.name %></span>
-              <span class="round-tag-border">📞 <%= repair.tel %></span>
+              <span class="round-tag-border">📞 <span id="phone_num"><%= repair.tel %></span></span>
             </p>
           </div>
           <img id="imagebox" src="/public/resources/repair_images/<%= repair.repairNum %>.png" />
