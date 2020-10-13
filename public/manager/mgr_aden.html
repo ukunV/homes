@@ -3,6 +3,7 @@
   <head>
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/manager/mgr_aden_style.css" />
+    <script src="/public/common/phoneFormatter.js" defer></script>
     <title>관리인_건물정보</title>
   </head>
   <body>
@@ -36,7 +37,7 @@
                 <% if(room.name){ %>
                 <div class="room-main-bottom">
                   <span class="round-tag-border"><%=room.name%></span>
-                  <span class="round-tag-border">📞 <%=room.tel%></span>
+                  <span class="round-tag-border">📞 <span id="phone_num"><%=room.tel%></span></span>
                 </div>
                 <% } %> <% if(room.name===null){ %>
                 <div class="room-main-bottom">

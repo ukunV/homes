@@ -4,6 +4,7 @@
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/host/host_aden_style.css" />
     <script src="/public/host/host_aden.js" defer></script>
+    <script src="/public/common/phoneFormatter.js" defer></script>
     <title>건물주_건물정보</title>
   </head>
   <body>
@@ -80,8 +81,8 @@
                 <% } if(room.name===null) { %>
                 <span class="round-tag-border">세입자 없음</span>
                 <% } %> <% if(room.tel) { %>
-                <span class="round-tag-border">📞 <%=room.tel%></span><% } %> <%
-                if(room.payment_type == 0) { %> <% if(room.payment_month_day == 0) { %>
+                <span class="round-tag-border">📞 <span id="phone_num"><%=room.tel%></span></span
+                ><% } %> <% if(room.payment_type == 0) { %> <% if(room.payment_month_day == 0) { %>
                 <span class="round-tag-border">정산일 미설정</span>
                 <% } else { %>
                 <span class="round-tag-border">정산일 <%= room.payment_month_day %>일</span>
@@ -131,4 +132,5 @@
       </div>
     </div>
   </body>
+  <script></script>
 </html>

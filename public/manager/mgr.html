@@ -3,6 +3,7 @@
   <head>
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/manager/mgr_style.css" />
+    <script src="/public/common/phoneFormatter.js" defer></script>
     <title>관리인</title>
   </head>
   <body>
@@ -43,7 +44,9 @@
                   <div class="belongs-phnum">
                     <span class="belongs-bottom-title">건물주 </span>
                     <span class="round-tag-border"><%=manager.hostName%></span>
-                    <span class="round-tag-border" id="phnum">📞 <%=manager.hostTel%></span>
+                    <span class="round-tag-border" id="phnum"
+                      >📞 <span id="phone_num"><%=manager.hostTel%></span></span
+                    >
                   </div>
                   <div class="belongs-bottom">
                     <span class="belongs-addr"> <%=manager.building_addr%> </span>

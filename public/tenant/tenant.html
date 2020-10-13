@@ -3,6 +3,7 @@
   <head>
     <%- include("../partials/header") %>
     <link rel="stylesheet" href="/public/tenant/tenent_style.css" />
+    <script src="/public/common/phoneFormatter.js" defer></script>
     <title>세입자</title>
   </head>
   <body>
@@ -32,7 +33,7 @@
                 ></i>
               </div>
               <div class="hst-info">
-                <span class="round-tag-border">📞 <%=hostTel%></span>
+                <span class="round-tag-border">📞 <span id="phone_num"><%=hostTel%></span></span>
                 <span class="round-tag-border"><%=bank_account%></span>
               </div>
             </div>
@@ -46,7 +47,7 @@
                 ></i>
               </div>
               <div class="info">
-                <span class="round-tag-border">📞 <%=managerTel%></span>
+                <span class="round-tag-border">📞 <span id="phone_num"><%=managerTel%></span></span>
               </div>
             </div>
           </div>
