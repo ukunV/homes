@@ -13,9 +13,13 @@ const getPanda = function (req, res) {
         pandaList.push(element);
       });
       console.log(pandaList);
-      res.render('panda/index.html', {
-        pandaList,
-      });
+      if (pandaList.length > 0) {
+        res.render('panda/index.html', {
+          pandaList,
+        });
+      } else {
+        res.render('panda/index.html', {});
+      }
     } else {
       ('<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.location="/";</script>');
     }
