@@ -55,7 +55,7 @@ const sendPushOfMessage = (receivers, message) => {
 // 유지보수 등록 to 건물주/관리인
 const sendPushOfRepair = (roomId) => {
   const getTokenSql =
-    'SELECT u.token AS host_token, v.token AS mgr_token from user u join buildings b on u.user_id=b.hostID join room r on b.buildingNum = r.buildNum join (select * from user) v on v.user_id=b.managerID WHERE r.roomID = ?;';
+    'SELECT u.token AS host_token, v.token AS mgr_token, building_name, roomNum from user u join buildings b on u.user_id=b.hostID join room r on b.buildingNum = r.buildNum join (select * from user) v on v.user_id=b.managerID WHERE r.roomID = ?;';
   const tokens = [];
 
   mySqlClient.query(getTokenSql, roomId, (err, rows) => {
@@ -63,7 +63,7 @@ const sendPushOfRepair = (roomId) => {
       console.error(err);
     } else {
       if (rows.length > 0) {
-        console.dir(rows);
+        const message = `${rows[0].building_name} ${rows[0].roomNum}호에 유지보수가 등록되었어요.`;
         if (rows[0].host_token === rows[0].mgr_token) {
           tokens.push(rows[0].host_token);
         } else {
@@ -101,6 +101,7 @@ const handlePushTokens = (title, message, savedPushTokens) => {
         console.log(receipts);
       } catch (error) {
         console.error(error);
+        return;
       }
     }
   })();
