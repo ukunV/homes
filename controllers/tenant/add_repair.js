@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
+const sendPushOfRepair = require('../common/token').sendPushOfRepair;
 
 const loadAddRepair = function (req, res) {
   const roomIDSql = 'select roomID from room where tenantID=?';
@@ -38,6 +39,7 @@ const addRepair = function (req, res) {
         '<script type="text/javascript">alert("하자 등록 중 오류가 발생했습니다."); window.history.back();</script>',
       );
     } else {
+      sendPushOfRepair(roomID);
       res.send(
         '<script type="text/javascript">alert("하자 등록이 완료되었습니다."); window.location="/tenant/repair_list";</script>',
       );

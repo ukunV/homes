@@ -47,7 +47,13 @@ const sendPush = function (req, res) {
     }
 
     const push_receivers = params_msg.map((p) => p[0]);
-    const push_message = content.substr(0, 10).concat('..');
+    let push_message;
+
+    if (content.length > 15) {
+      push_message = content.substr(0, 15).concat('..');
+    } else {
+      push_message = content;
+    }
 
     mySqlClient.query(sendMessageSql, [params_msg], function (err, result) {
       if (err) {

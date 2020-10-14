@@ -79,8 +79,7 @@ const sendPushOfRepair = (roomId) => {
 const handlePushTokens = (title, message, savedPushTokens) => {
   let notifications = [];
   for (let pushToken of savedPushTokens) {
-    if (!Expo.isExpoPushToken(pushToken)) {
-      console.error(`Push token ${pushToken} is not a valid Expo push token`);
+    if (pushToken === null || !Expo.isExpoPushToken(pushToken)) {
       continue;
     }
     notifications.push({
