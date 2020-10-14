@@ -2,13 +2,53 @@
 <html lang="en">
   <head>
     <%- include("../partials/header") %>
+    <link rel="stylesheet" href="/public/tenant/register_repair_style.css" />
     <title>Homes | 판다</title>
   </head>
   <body>
     <div class="wrapper">
       <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_panda'}) %>
 
-      <div class="view-main-contents"></div>
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/panda'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
+
+        <div class="repair-wrapper">
+          <div id="repair_head">
+            <span class="title-msg"><%= panda.title %></span>
+            <p class="sub-msg">
+              <span class="round-tag-border"><%= panda.roomNum %>호</span>
+              <span class="round-tag-border"><%= panda.regDate %></span>
+            </p>
+          </div>
+          <img id="imagebox" src="/public/resources/repair_images/<%= panda.pandaId %>.png" />
+          <p class="repair-msg"><%= panda.content %></p>
+          <div class="reg-content">
+            <% if(panda.productState === 0) { %> <% if(isSellor === 0) { %>
+            <input
+              id="submit_content"
+              type="button"
+              value="판매자에게 메시지 보내기"
+              onclick="location.href='/message?user_id=<%= panda.sellor %>'"
+            />
+            <% } else { %>
+            <input
+              id="submit_content"
+              type="button"
+              value="판매 완료로 변경하기"
+              onclick="location.href='/panda/sold/<%= panda.pandaId %>'"
+            /><% } %> <% } else { %>
+            <input
+              id="submit_content"
+              type="button"
+              value="판매가 완료되었어요"
+              style="background: var(--push-color)"
+            />
+            <% } %>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

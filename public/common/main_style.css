@@ -139,6 +139,12 @@ i {
   font-size: 0.625rem;
 }
 
+#nav_panda > i {
+  font-size: 0.85rem;
+  vertical-align: top;
+  margin: 3px 0 0 -7px;
+}
+
 .main-content {
   color: var(--gray-color);
   font-size: 1.25em;
@@ -364,6 +370,7 @@ textarea {
 .white-content {
   display: flex;
   padding: 0 1.3rem;
+  align-items: center;
 }
 
 .big-title {
@@ -372,12 +379,20 @@ textarea {
   font-weight: 700;
 }
 
+.small-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-color);
+}
+
 .content-bt {
+  width: 100%;
   font-size: 1rem;
   font-weight: 500;
   background: var(--point-color);
   color: var(--white-color);
-  padding: 0 0.6rem;
+  padding: 0.3rem 0.6rem;
   border: none;
   border-radius: 5px;
 }
@@ -445,11 +460,11 @@ textarea {
 
 .product-state {
   width: 4rem;
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   text-align: center;
   background: var(--pink-color);
   color: white;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .sell {

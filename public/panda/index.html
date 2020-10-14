@@ -24,7 +24,10 @@
           <div class="white-content-list top-padding" id="sell-list">
             <!--Template Start-->
             <% if(pandaList) { pandaList.forEach(panda => { %> <% if(panda.productState == 0) { %>
-            <div class="white-each-content" onclick="location.href=''">
+            <div
+              class="white-each-content"
+              onclick="location.href='/panda/product/<%= panda.pandaId %>'"
+            >
               <div class="white-content-title-wrapper">
                 <p class="white-content-title"><%=panda.title%></p>
               </div>
@@ -37,7 +40,10 @@
           <% if(pandaList) { pandaList.forEach(panda => { %> <% if(panda.productState == 1) { %>
           <div class="white-content-list" id="sold-list">
             <!--Template Start-->
-            <div class="white-each-content" onclick="location.href=''">
+            <div
+              class="white-each-content"
+              onclick="location.href='/panda/product/<%= panda.pandaId %>'"
+            >
               <div class="white-content-title-wrapper">
                 <p class="white-content-title"><%=panda.title%></p>
               </div>

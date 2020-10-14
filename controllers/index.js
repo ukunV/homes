@@ -50,7 +50,11 @@ const pandaimgUpload = require('./panda/img_upload').imgUpload; // 이미지 업
 const panda = require('./panda/panda');
 router.route('/panda').get(checkLoginAndPush, checkTenant, panda.getPanda);
 router.route('/panda/add').get(checkLoginAndPush, checkTenant, panda.getAddProduct);
-router.route('/panda/add').post(checkLoginAndPush, checkTenant, pandaimgUpload.single('img'), panda.postAddProduct);
+router
+  .route('/panda/add')
+  .post(checkLoginAndPush, checkTenant, pandaimgUpload.single('img'), panda.postAddProduct);
+router.route('/panda/product/:pid').get(checkLoginAndPush, checkTenant, panda.getProduct);
+router.route('/panda/sold/:pid').get(checkLoginAndPush, checkTenant, panda.productSold);
 
 // (건물주/관리인) 기능페이지
 const getFunction = require('./common/function');
