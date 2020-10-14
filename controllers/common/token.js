@@ -28,7 +28,7 @@ const sendPushOfPaymentOk = (bid, rid) => {
     } else {
       if (row.length > 0) {
         console.dir(row);
-        handlePushTokens(message, row[0].token);
+        handlePushTokens(message, [row[0].token]);
       }
     }
   });
@@ -98,7 +98,7 @@ const handlePushTokens = (message, savedPushTokens) => {
   let notifications = [];
   for (let pushToken of savedPushTokens) {
     if (!Expo.isExpoPushToken(pushToken)) {
-      console.error('Push token ${pushToken} is not a valid Expo push token');
+      console.error(`Push token ${pushToken} is not a valid Expo push token`);
       continue;
     }
     notifications.push({
