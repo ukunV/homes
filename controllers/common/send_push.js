@@ -2,6 +2,8 @@ const mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
+const sendPushOfMessage = require('../common/token').sendPushOfMessage;
+
 // 메시지 읽음 처리 라우터
 const readPush = function (req, res) {
   const msgID = req.params.id;
@@ -44,7 +46,8 @@ const sendPush = function (req, res) {
       params_msg.push([receivers, sender, content]);
     }
 
-    console.log(params_msg);
+    const push_receivers = params_msg.map((p) => p[0]);
+    const push_message = content.substr(0, 10).concat('..');
 
     mySqlClient.query(sendMessageSql, [params_msg], function (err, result) {
       if (err) {
@@ -53,6 +56,8 @@ const sendPush = function (req, res) {
           '<script type="text/javascript">alert("전송 중 오류가 발생했습니다."); window.location="/";</script>',
         );
       } else {
+        console.log(push_receivers, push_message);
+        sendPushOfMessage(push_receivers, push_message);
         res.send(
           '<script type="text/javascript">alert("알림을 보냈어요!"); location.href="/";</script>',
         );

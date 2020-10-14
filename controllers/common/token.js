@@ -28,7 +28,7 @@ const sendPushOfPaymentOk = (bid, rid) => {
     } else {
       if (row.length > 0) {
         console.dir(row);
-        handlePushTokens(message, [row[0].token]);
+        handlePushTokens('납부 알림', message, [row[0].token]);
       }
     }
   });
@@ -46,7 +46,7 @@ const sendPushOfMessage = (receivers, message) => {
       if (rows.length > 0) {
         console.dir(rows);
         rows.forEach((r) => tokens.push(r.token));
-        handlePushTokens(message, tokens);
+        handlePushTokens('새로운 메시지', message, tokens);
       }
     }
   });
@@ -70,31 +70,13 @@ const sendPushOfRepair = (roomId) => {
           tokens.push(rows[0].host_token);
           tokens.push(rows[0].mgr_token);
         }
-        handlePushTokens(message, tokens);
+        handlePushTokens('유지보수 알림', message, tokens);
       }
     }
   });
 };
 
-const getUserTokensAndPush = function (message, type) {
-  const selectTokenSql = 'select token from user where type=?';
-  const savedTokens = [];
-  mySqlClient.query(selectTokenSql, type, function (err, rows) {
-    if (err) {
-      console.log('select token err>>' + err);
-    } else {
-      rows.forEach(function (e) {
-        savedTokens.push(e.token);
-      });
-      if (rows) {
-        console.dir(savedTokens);
-        handlePushTokens(message, savedTokens);
-      }
-    }
-  });
-};
-
-const handlePushTokens = (message, savedPushTokens) => {
+const handlePushTokens = (title, message, savedPushTokens) => {
   let notifications = [];
   for (let pushToken of savedPushTokens) {
     if (!Expo.isExpoPushToken(pushToken)) {
@@ -104,7 +86,7 @@ const handlePushTokens = (message, savedPushTokens) => {
     notifications.push({
       to: pushToken,
       sound: 'default',
-      title: 'Homes',
+      title,
       body: message,
       data: {
         message,
@@ -125,10 +107,7 @@ const handlePushTokens = (message, savedPushTokens) => {
   })();
 };
 
-module.exports.sendPush = getUserTokensAndPush;
-module.exports.addToken = token;
 module.exports = {
-  sendPush: getUserTokensAndPush,
   addToken: token,
   sendPushOfMessage,
   sendPushOfPaymentOk,
