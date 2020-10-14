@@ -19,11 +19,9 @@ const postLogin = function (req, res) {
     } else {
       if (row[0]) {
         console.log('login sql - name:' + row[0].name + 'type:' + row[0].type);
-        const id = row[0].id;
         const userType = row[0].type;
         req.session.user = {
-          id: row[0].id,
-          userId: checkId,
+          userId: row[0].user_id,
           userName: row[0].name,
           userType: row[0].type,
         };
@@ -33,12 +31,12 @@ const postLogin = function (req, res) {
           //token값이 다른 사용자에게서 사용되고 있는지 확인
           mySqlClient.query(checkTokenSql, req.cookies.token, function (err, row) {
             if (row[0]) {
-              const makeTokenNullSql = 'update user set token=null where id=?';
-              mySqlClient.query(makeTokenNullSql, row[0].id, function (err, row) {
+              const makeTokenNullSql = 'update user set token=null where user_id=?';
+              mySqlClient.query(makeTokenNullSql, req.session.user.userId, function (err, row) {
                 if (err) {
                   console.log('make token null err>' + err);
                 } else {
-                  if (tokenUpdate(setTokenSql, req.cookies.token, id)) {
+                  if (tokenUpdate(req.cookies.token, req.session.user.userId)) {
                     res.writeHead(200, {
                       'Set-Cookie': 'token=; Max-Age:0',
                     });
@@ -54,7 +52,7 @@ const postLogin = function (req, res) {
                 }
               });
             } else {
-              if (tokenUpdate(setTokenSql, req.cookies.token, id)) {
+              if (tokenUpdate(req.cookies.token, req.session.user.userId)) {
                 res.writeHead(200, {
                   'Set-Cookie': 'token=; Max-Age:0',
                 });
@@ -85,13 +83,14 @@ const postLogin = function (req, res) {
   });
 };
 
-const setTokenSql = 'update user set token = ? where user_id = ?;';
+function tokenUpdate(token, id) {
+  const setTokenSql = 'update `user` set token = ? where user_id = ?;';
 
-function tokenUpdate(setTokenSql, token, id) {
   //Token Update
   mySqlClient.query(setTokenSql, [token, id], function (err, row) {
     if (err) {
-      console.log('update token error>>' + err);
+      console.log(`update token error(token:${token}, user_id:${id}) -> ${err}`);
+      return true;
     } else {
       console.log('토큰 정상 업데이트: ' + token);
       return true;
