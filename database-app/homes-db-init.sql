@@ -67,9 +67,11 @@ CONSTRAINT fk_receiver FOREIGN KEY(receiver) REFERENCES user(user_id)) ENGINE=In
 DROP TABLE IF EXISTS panda;
 CREATE TABLE panda(
 pandaId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+buildingNum INT NOT NULL,
 sellor VARCHAR(30) NOT NULL,
 title VARCHAR(20) NOT NULL,
 content VARCHAR(100) default NULL,
 productState TINYINT(1) default 0, # 0:판매중, 1:거래완료
 regDate datetime default CURRENT_TIMESTAMP,
-CONSTRAINT fk_sellor FOREIGN KEY(sellor) REFERENCES user(user_id)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
+CONSTRAINT fk_sellor FOREIGN KEY(sellor) REFERENCES user(user_id),
+CONSTRAINT fk_buildingNum FOREIGN KEY(buildingNum) REFERENCES buildings(buildingNum)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
