@@ -12,6 +12,7 @@ const getPanda = function (req, res) {
       row.forEach((element) => {
         pandaList.push(element);
       });
+      console.log(pandaList);
       res.render('panda/index.html', {
         pandaList,
       });
