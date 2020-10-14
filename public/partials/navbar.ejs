@@ -6,6 +6,13 @@
     <div class="navbar-item bt nav-menu" id="nav_function">기능</div>
     <% if(type === 'host') { %>
     <div class="navbar-item bt nav-menu" id="nav_management">관리</div>
+    <% } %> <% if(type === 'tenant') { %>
+    <div class="navbar-item bt nav-menu" id="nav_panda">
+      판다<i
+        class="fas fa-paw"
+        style="font-size: 0.85rem; vertical-align: top; margin: 3px 0 0 -7px"
+      ></i>
+    </div>
     <% } %>
   </div>
   <i class="navbar-setapp bt fas fa-cog" id="nav_setting"></i>
@@ -39,6 +46,7 @@
     const navFunction = document.querySelector('#nav_function');
     const navManagement = document.querySelector('#nav_management');
     const navSetting = document.querySelector('#nav_setting');
+    const navPanda = document.querySelector('#nav_panda');
 
     document.getElementById('<%=sel%>').classList.add('selected');
 
@@ -52,5 +60,6 @@
   <% if(type === 'tenant') { %>navHome.addEventListener('click', () => (location.href = '/tenant'));
   navPush.addEventListener('click', () => (location.href = '/push'));
   navFunction.addEventListener('click', () => (location.href = '/tenant/function'));
+  navPanda.addEventListener('click', ()=>(location.href='/panda'));
   <% } %>
 </script>

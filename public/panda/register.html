@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/header") %>
+    <link rel="stylesheet" href="/public/tenant/register_repair_style.css" />
+    <title>Homes | 판다</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_panda'}) %>
+
+      <div class="view-main-contents">
+        <div id="go_back" onclick="window.history.back()">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
+
+        <div id="repair_content">
+          <div id="repair_title">상품 등록</div>
+
+          <form
+            id="repair_form"
+            action="/tenant/function/repair_submit"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div id="repair_title">
+              <p id="title_msg">제목을 입력해주세요.</p>
+              <input
+                id="input_content"
+                type="text"
+                name="title_content"
+                placeholder="ex) 에어프라이기 팔아요!"
+                required
+              />
+            </div>
+            <div id="img_thumbnail">
+              <div id="img_explain">상품의 사진을 등록해주세요!</div>
+            </div>
+            <label for="img_upload">사진 업로드</label>
+            <input
+              type="file"
+              name="img"
+              id="img_upload"
+              accept="image/*; capture=camera"
+              required
+            />
+            <textarea
+              name="repair_detail"
+              placeholder="가격을 포함하여 상품을 설명해주세요! &#13;&#10;나눔도 좋아요 :)"
+            ></textarea>
+
+            <div class="reg-content">
+              <input id="submit_content" type="submit" value="상품 등록하기" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

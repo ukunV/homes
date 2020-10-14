@@ -443,12 +443,29 @@ textarea {
   font-size: 1.3rem;
 }
 
+.product-state {
+  width: 4rem;
+  font-size: 0.95rem;
+  text-align: center;
+  background: var(--pink-color);
+  color: white;
+  border-radius: 3px;
+}
+
+.sell {
+  background: var(--green-color);
+}
+
 .not-solved {
   color: var(--pink-color);
 }
 
 .solved {
   color: var(--green-color);
+}
+
+.top-padding {
+  padding-top: 1.5rem;
 }
 
 .title-msg {

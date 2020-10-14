@@ -45,6 +45,12 @@ router.route('/account/password_submit').post(checkLoginAndPush, account.postCha
 const setting = require('./common/setting');
 router.route('/setting').get(checkLoginAndPush, setting);
 
+// (세입자) 판다
+const panda = require('./panda/panda');
+router.route('/panda').get(checkLoginAndPush, checkTenant, panda.getPanda);
+router.route('/panda/add').get(checkLoginAndPush, checkTenant, panda.getAddProduct);
+router.route('/panda/add').post(checkLoginAndPush, checkTenant, panda.postAddProduct);
+
 // (건물주/관리인) 기능페이지
 const getFunction = require('./common/function');
 router.route('/function').get(checkLoginAndPush, checkHostOrManager, getFunction);
