@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include("../partials/header") %>
+    <title>Homes | 판다</title>
+  </head>
 
-<head>
-  <%- include("../partials/header") %>
-  <title>Homes | 판다</title>
-</head>
+  <body>
+    <div class="wrapper">
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_panda'}) %>
 
-<body>
-  <div class="wrapper">
-    <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_panda'}) %>
-
-    <div class="view-main-contents">
-      <div class="white-content-wrapper">
-        <div class="white-content top-padding">
-          <span class="big-title">우리 건물 장터, 판다</span><button class="content-bt" onclick="location.href='/panda/add'">상품
-            등록</button>
-        </div>
-        <!--판매중-->
-        <div class="white-content-list top-padding" id="sell-list">
-          <!--Template Start-->
-          <% if(pandaList) { pandaList.forEach(panda => { %>
-          <% if(panda.productState == 0) { %>
-          <div class="white-each-content" onclick="location.href=''">
-            <div class="white-content-title-wrapper">
-              <p class="white-content-title"><%=panda.title%></p>
+      <div class="view-main-contents">
+        <div class="white-content-wrapper">
+          <div class="white-content top-padding">
+            <span class="big-title"
+              ><p class="small-title">우리 건물 장터,</p>
+              판다</span
+            >
+            <div>
+              <button class="content-bt" onclick="location.href='/panda/add'">상품 등록하기</button>
             </div>
-            <div class="white-content-state product-state sell">판매중</div>
           </div>
-          <!--Template End-->
-          <% } %>
-          <% } ) } %>
-        </div>
-        <!--판매완료-->
-        <% if(pandaList) { pandaList.forEach(panda => { %>
-          <% if(panda.productState == 1) { %>
-        <div class="white-content-list" id="sold-list">
-          <!--Template Start-->
-          <div class="white-each-content" onclick="location.href=''">
-            <div class="white-content-title-wrapper">
-              <p class="white-content-title"><%=panda.title%></p>
+          <!--판매중-->
+          <div class="white-content-list top-padding" id="sell-list">
+            <!--Template Start-->
+            <% if(pandaList) { pandaList.forEach(panda => { %> <% if(panda.productState == 0) { %>
+            <div class="white-each-content" onclick="location.href=''">
+              <div class="white-content-title-wrapper">
+                <p class="white-content-title"><%=panda.title%></p>
+              </div>
+              <div class="white-content-state product-state sell">판매중</div>
             </div>
-            <div class="white-content-state product-state sold">거래완료</div>
+            <!--Template End-->
+            <% } %> <% } ) } %>
           </div>
-          <!--Template End-->
-          <% } %>
-          <% } ) } %>
+          <!--판매완료-->
+          <% if(pandaList) { pandaList.forEach(panda => { %> <% if(panda.productState == 1) { %>
+          <div class="white-content-list" id="sold-list">
+            <!--Template Start-->
+            <div class="white-each-content" onclick="location.href=''">
+              <div class="white-content-title-wrapper">
+                <p class="white-content-title"><%=panda.title%></p>
+              </div>
+              <div class="white-content-state product-state sold">거래완료</div>
+            </div>
+            <!--Template End-->
+            <% } %> <% } ) } %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
