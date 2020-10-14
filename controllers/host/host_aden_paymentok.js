@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const checkAccessibleBuilding = require('../checkTools').checkAccessibleBuilding;
 const permissionBanMsg = '잘못된 접근입니다.';
+const sendPushOfPaymentOk = require('../common/token').sendPushOfPaymentOk;
 
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
@@ -40,6 +41,7 @@ const changePaymentok = async function (req, res) {
         });
       } else {
         mySqlClient.query(updatePaymentokSql, [1, buildNum, roomNum], function (err) {
+          sendPushOfPaymentOk(bid, rid);
           res.send(
             `<script type="text/javascript">alert("${paymentOkMsg}"); window.location="/host/aden/${buildNum}";</script>`,
           );
