@@ -24,6 +24,7 @@ const sendPushOfPaymentOk = (bid, rid) => {
   mySqlClient.query(getTokenSql, [bid, rid], (err, row) => {
     if (err) {
       console.error(err);
+      return;
     } else {
       if (row.length > 0) {
         console.dir(row);

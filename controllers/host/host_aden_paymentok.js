@@ -41,7 +41,7 @@ const changePaymentok = async function (req, res) {
         });
       } else {
         mySqlClient.query(updatePaymentokSql, [1, buildNum, roomNum], function (err) {
-          sendPushOfPaymentOk(bid, rid);
+          sendPushOfPaymentOk(buildNum, roomNum);
           res.send(
             `<script type="text/javascript">alert("${paymentOkMsg}"); window.location="/host/aden/${buildNum}";</script>`,
           );
