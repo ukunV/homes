@@ -4,7 +4,6 @@ const crypto = require('crypto');
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 const selectPwdSql = 'select * from user where user_id = ? && password=?';
 const checkTokenSql = 'select * from user where token=?';
-const setTokenSql = 'update user set token = ? where id=?;';
 const loginErrMsg = `<script type="text/javascript">alert("아이디 또는 비밀번호를 다시 확인해주세요."); window.history.back();</script>`;
 
 const getLogin = function (req, res) {
@@ -86,13 +85,15 @@ const postLogin = function (req, res) {
   });
 };
 
+const setTokenSql = 'update user set token = ? where user_id = ?;';
+
 function tokenUpdate(setTokenSql, token, id) {
   //Token Update
   mySqlClient.query(setTokenSql, [token, id], function (err, row) {
     if (err) {
       console.log('update token error>>' + err);
     } else {
-      console.log('토큰 정상 업데이트');
+      console.log('토큰 정상 업데이트: ' + token);
       return true;
     }
   });

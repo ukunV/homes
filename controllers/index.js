@@ -29,6 +29,10 @@ router.route('/process/login').post(login.postLogin);
 const logout = require('./user/logout.js');
 router.route('/process/logout').get(checkLoginAndPush, logout);
 
+// FCM 처리 사용자 디바이스 토큰 관리
+const token = require('./common/token.js');
+router.route('/token').post(token.addToken);
+
 // (공통) 계정관리
 const account = require('./user/account.js');
 router.route('/check/password').get(checkLoginAndPush, account.checkPassword);
@@ -73,10 +77,6 @@ router
 router.route('/submit_message/').post(checkLoginAndPush, send_push.sendPush);
 // 알림 읽음 처리
 router.route('/message/read/:id').get(checkLoginAndPush, send_push.readPush);
-
-// FCM 처리 사용자 디바이스 토큰 관리
-const token = require('./common/token.js');
-router.route('/token').post(token.addToken);
 
 // (건물주) 메인
 const host = require('./host/host.js');

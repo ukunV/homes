@@ -15,7 +15,7 @@ const token = function (req, res) {
 };
 
 // Push cases
-// 완납처리 to 세입자 (1명)
+// 완납처리 to 세입자 (1명) in host/host_aden_paymentok
 const sendPushOfPaymentOk = (bid, rid) => {
   const getTokenSql =
     'SELECT token FROM user u, buildings b, room r WHERE u.user_id=r.tenantID AND b.buildingNum=r.buildNum AND buildingNum = ? AND roomNum = ?;';
@@ -126,3 +126,10 @@ const handlePushTokens = (message, savedPushTokens) => {
 
 module.exports.sendPush = getUserTokensAndPush;
 module.exports.addToken = token;
+module.exports = {
+  sendPush: getUserTokensAndPush,
+  addToken: token,
+  sendPushOfMessage,
+  sendPushOfPaymentOk,
+  sendPushOfRepair,
+};
