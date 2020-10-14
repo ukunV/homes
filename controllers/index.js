@@ -46,10 +46,11 @@ const setting = require('./common/setting');
 router.route('/setting').get(checkLoginAndPush, setting);
 
 // (세입자) 판다
+const pandaimgUpload = require('./panda/img_upload').imgUpload; // 이미지 업로드 모듈
 const panda = require('./panda/panda');
 router.route('/panda').get(checkLoginAndPush, checkTenant, panda.getPanda);
 router.route('/panda/add').get(checkLoginAndPush, checkTenant, panda.getAddProduct);
-router.route('/panda/add').post(checkLoginAndPush, checkTenant, panda.postAddProduct);
+router.route('/panda/add').post(checkLoginAndPush, checkTenant, pandaimgUpload.single('img'), panda.postAddProduct);
 
 // (건물주/관리인) 기능페이지
 const getFunction = require('./common/function');
