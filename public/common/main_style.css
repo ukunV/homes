@@ -82,7 +82,7 @@ i {
 }
 
 .wrapper {
-  width: 375px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -540,22 +540,20 @@ textarea {
 
 .form-login {
   display: flex;
-  padding-left: 30px;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-login #login_id,
 .form-login #login_pw {
   font-size: 17px;
-  font-weight: 500;
   width: 170px;
   border: none;
   padding: 7px;
-  border: none;
   border-bottom: 1px solid #999;
 }
 
 .div-login-left-input {
-  margin-left: 40px;
   width: 180px;
 }
 
