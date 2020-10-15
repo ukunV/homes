@@ -554,11 +554,11 @@ textarea {
 }
 
 .div-login-left-input {
-  width: 180px;
+  padding-left: 7%;
 }
 
 .div-login-right-input {
-  width: 65px;
+  padding-left: 2%;
 }
 
 .div-wrapper-input {
@@ -574,7 +574,6 @@ textarea {
   border: none;
   border-radius: 50%; /*make circle*/
   padding: 0px;
-  margin-top: 37%;
 }
 
 .div-join-bt {
