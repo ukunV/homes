@@ -60,7 +60,7 @@
               id="submit_content"
               type="button"
               value="세입자에게 메시지 보내기"
-              onclick="location.href='/message?user_id=<%= repair.tenantID %>'"
+              onclick="location.href='/message?user_id=<%= repair.tenantID %>&reply=<%= repair.title %>'"
             />
           </div>
           <% } %>

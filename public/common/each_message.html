@@ -63,7 +63,9 @@
             <div id="voice_temp"></div>
           </div>
           <div id="msg_content">
-            <textarea name="content" required></textarea>
+            <textarea name="content" required>
+<% if(locals.reply) {%>["<%=reply%>"에 대한 답장]&#13;&#10;<% } %></textarea
+            >
             <button class="bt" id="submit">
               <i class="fab fa-telegram-plane" style="color: white !important"></i>
             </button>

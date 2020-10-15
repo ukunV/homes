@@ -120,10 +120,22 @@ const loadSendList_each = function (req, res) {
     const loadReceiverSql = 'SELECT user_id, name, type from user where user_id=?';
     mySqlClient.query(loadReceiverSql, req.query.user_id, function (err, row) {
       if (row) {
-        res.render('common/each_message.html', {
-          userType: req.session.user.userType,
-          receiver: row[0],
-        });
+        if (req.query.reply) {
+          let reply = req.query.reply;
+          if (reply.length > 10) {
+            reply = reply.substr(0, 10).concat('..');
+          }
+          res.render('common/each_message.html', {
+            userType: req.session.user.userType,
+            receiver: row[0],
+            reply,
+          });
+        } else {
+          res.render('common/each_message.html', {
+            userType: req.session.user.userType,
+            receiver: row[0],
+          });
+        }
       } else {
         res.send(
           '<script type="text/javascript">alert("알림을 보낼 대상이 없습니다."); window.location="/function";</script>',

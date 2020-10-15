@@ -30,7 +30,7 @@
               id="submit_content"
               type="button"
               value="판매자에게 메시지 보내기"
-              onclick="location.href='/message?user_id=<%= panda.sellor %>'"
+              onclick="location.href='/message?user_id=<%= panda.sellor %>&reply=<%= panda.title %>'"
             />
             <% } else { %>
             <input
