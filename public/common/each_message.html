@@ -22,7 +22,10 @@
 
         <div id="message_title">알림 보내기</div>
         <form id="message" action="/submit_message" method="POST">
-          <div class="list-title">수신자 목록</div>
+          <div class="list-title">
+            수신자 목록
+            <p class="small-title">홈즈에 등록된 사용자만 표시됩니다.</p>
+          </div>
           <label>
             <div id="sel_receiver">
               <div id="sel_all"><input id="sel_all_radio" type="checkbox" /> 전체선택</div>

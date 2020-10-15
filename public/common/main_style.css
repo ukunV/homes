@@ -383,7 +383,7 @@ textarea {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--gray-color);
+  color: #888;
 }
 
 .content-bt {
