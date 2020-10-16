@@ -32,7 +32,6 @@ const getEmergency = (req, res) => {
 };
 
 const postEmergency = async (req, res) => {
-  console.log('Emergency SMS');
   const bid = req.body.bid;
   const address = req.body.address.replace(/ /g, '');
   const room = req.body.room.concat('호');

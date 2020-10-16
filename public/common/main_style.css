@@ -759,8 +759,8 @@ textarea {
 
 .report-submit {
   background: var(--push-color);
-  width: 3.7rem;
-  height: 3.7rem;
+  width: 3.85rem;
+  height: 3.85rem;
   font-size: 1.2rem;
   font-weight: 700;
   color: white;

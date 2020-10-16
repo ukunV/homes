@@ -86,7 +86,7 @@ const sendPushOfEmergency = (bid, roomNum) => {
     } else {
       if (rows.length > 0) {
         rows.forEach((r) => tokens.push(r.token));
-        handlePushTokens('화재 경보', `${roomNum}호에서 화재 발생, 신속히 대피바랍니다`, tokens);
+        handlePushTokens('화재 경보!', `${roomNum}에서 화재 발생! 신속히 대피바랍니다`, tokens);
       }
     }
   });
