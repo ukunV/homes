@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/header") %>
+    <link rel="stylesheet" href="/public/tenant/tenant_message_style.css" />
+    <title>Homes | 화재신고</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %>
+
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
+        <div class="report-wrapper">
+          <p class="big-title">화재신고가 완료되었어요!</p>
+          <p class="report-msg">엘리베이터는 절대 이용하지 마세요.</p>
+          <p class="report-msg">방문을 열기 전에 손잡이를 만져보세요.</p>
+          <p class="report-msg">물에 적신 수건으로 몸과 얼굴을 감싸세요.</p>
+          <p class="report-msg">밖으로 나온 경우 절대 들어가지 마세요.</p>
+          <p class="report-msg">아래층 대피가 불가피할 때는 옥상으로 대피해요.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -164,10 +164,14 @@ i {
 
 .header {
   padding: 1.4rem 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-left {
   padding: 0.5rem;
+  flex: 1;
 }
 
 #header_left_name {
@@ -713,4 +717,58 @@ textarea {
 
 .reg-go-back i {
   color: var(--blue-color);
+}
+
+.fire-report {
+  color: var(--push-color) !important;
+  margin-right: 0.5rem;
+}
+
+.fire-report > i {
+  font-size: 2rem;
+}
+
+.fire-report > p {
+  color: var(--push-color);
+}
+
+.report-msg {
+  color: var(--push-color);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.2rem auto;
+}
+
+.report-wrapper {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.fire-form {
+  padding: 0.8rem 0;
+}
+
+.report-sms-info {
+  background: var(--blue-color);
+  color: white;
+  border-radius: 20px;
+  padding: 0.3rem;
+  margin: 0.3rem 4rem;
+  box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
+}
+
+.report-submit {
+  background: var(--push-color);
+  width: 3.7rem;
+  height: 3.7rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
+}
+
+.msg-wrapper {
+  padding: 1rem 0;
 }

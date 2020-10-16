@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/header") %>
+    <link rel="stylesheet" href="/public/tenant/tenant_message_style.css" />
+    <title>Homes | 화재신고</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include ("../partials/navbar", {type: 'tenant', sel:'nav_home'}) %>
+
+      <div class="view-main-contents">
+        <div id="go_back" onclick="location.href='/'">
+          <i class="fas fa-arrow-left bt"></i>
+        </div>
+        <div class="report-wrapper">
+          <div class="big-title">"화재시 대피먼저"</div>
+          <form method="POST" class="fire-form">
+            <input type="hidden" name="address" value="<%=address%>" />
+            <input type="hidden" name="room" value="<%=room%>" />
+            <input type="hidden" name="tel" value="<%=tel%>" />
+            <input type="hidden" name="bid" value="<%=bid%>" />
+            <input type="hidden" name="rid" value="<%=rid%>" />
+            <p class="report-sms-info"><%= address %> <%=room%>호 화재발생. 신고자 <%=tel%></p>
+            <div class="msg-wrapper">
+              <p class="report-msg">위 정보가 119에 전송되며,</p>
+              <p class="report-msg">모든 세입자에게 긴급 알림이 전송됩니다.</p>
+            </div>
+
+            <div class="msg-wrapper">
+              <p class="small-title">허위 신고로 인한 모든 책임은 사용자에게 있으며</p>
+              <p class="small-title">신고 버튼 클릭 시 동의한 것으로 간주됩니다.</p>
+            </div>
+            <button class="report-submit">신고</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

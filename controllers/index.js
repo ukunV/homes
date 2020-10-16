@@ -56,6 +56,12 @@ router
 router.route('/panda/product/:pid').get(checkLoginAndPush, checkTenant, panda.getProduct);
 router.route('/panda/sold/:pid').get(checkLoginAndPush, checkTenant, panda.productSold);
 
+// (세입자) 긴급신고
+const emergency = require('./common/emergency');
+router.route('/emergency/fire').get(checkLoginAndPush, checkTenant, emergency.getEmergency);
+router.route('/emergency/fire').post(checkLoginAndPush, checkTenant, emergency.postEmergency);
+router.route('/emergency/fire/success').get(checkLoginAndPush, checkTenant, emergency.finishReport);
+
 // (건물주/관리인) 기능페이지
 const getFunction = require('./common/function');
 router.route('/function').get(checkLoginAndPush, checkHostOrManager, getFunction);

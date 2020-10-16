@@ -27,7 +27,6 @@ const sendPushOfPaymentOk = (bid, rid) => {
       return;
     } else {
       if (row.length > 0) {
-        console.dir(row);
         handlePushTokens('납부 알림', message, [row[0].token]);
       }
     }
@@ -44,7 +43,6 @@ const sendPushOfMessage = (receivers, message) => {
       console.error(err);
     } else {
       if (rows.length > 0) {
-        console.dir(rows);
         rows.forEach((r) => tokens.push(r.token));
         handlePushTokens('새로운 메시지', message, tokens);
       }
@@ -76,7 +74,25 @@ const sendPushOfRepair = (roomId) => {
   });
 };
 
-const handlePushTokens = (title, message, savedPushTokens) => {
+// 화재 긴급 알림 (전체 세입자)
+const sendPushOfEmergency = (bid, roomNum) => {
+  const getTokenSql =
+    'SELECT token FROM user u, buildings b, room r WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND buildingNum=?';
+  const tokens = [];
+
+  mySqlClient.query(getTokenSql, bid, (err, rows) => {
+    if (err) {
+      console.error(err);
+    } else {
+      if (rows.length > 0) {
+        rows.forEach((r) => tokens.push(r.token));
+        handlePushTokens('화재 경보', `${roomNum}호에서 화재 발생, 신속히 대피바랍니다`, tokens);
+      }
+    }
+  });
+};
+
+const handlePushTokens = (title, message, savedPushTokens, sound = 'default') => {
   let notifications = [];
   for (let pushToken of savedPushTokens) {
     if (pushToken === null || !Expo.isExpoPushToken(pushToken)) {
@@ -84,7 +100,7 @@ const handlePushTokens = (title, message, savedPushTokens) => {
     }
     notifications.push({
       to: pushToken,
-      sound: 'default',
+      sound,
       title,
       body: message,
       data: {
@@ -112,4 +128,5 @@ module.exports = {
   sendPushOfMessage,
   sendPushOfPaymentOk,
   sendPushOfRepair,
+  sendPushOfEmergency,
 };
