@@ -46,7 +46,7 @@
                     >
                     <span
                       class="func-msg"
-                      onclick="location.href='/message?user_id=<%= msg.sender %>&reply=<%= msg.content.substr(msg.content.indexOf(`]`)+1).replace(/(?:\r\n|\r|\n)/g, ``) %>'"
+                      onclick="location.href='/message?user_id=<%= msg.sender %>&reply=<%= msg.content.substr(msg.content.indexOf(`답장]`)+1).replace(/(?:\r\n|\r|\n)/g, ``) %>'"
                       >답장</span
                     >
                   </div>
