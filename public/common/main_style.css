@@ -47,7 +47,8 @@ input[type='button'],
 input[type='submit'],
 button,
 ul,
-div {
+div,
+a {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
