@@ -16,7 +16,7 @@ const ncp = new NCPClient({
 
 const getEmergency = (req, res) => {
   const getInfoSql =
-    'SELECT buildingNum as bid, roomId as rid, building_addr as address, roomNum as room, tel FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND u.user_id=r.tenantID AND user_id=?;';
+    'SELECT buildingNum as bid, building_addr as address, roomNum as room, tel FROM buildings b, room r, user u WHERE b.buildingNum=r.buildNum AND u.user_id=r.tenantID AND user_id=?;';
 
   mySqlClient.query(getInfoSql, req.session.user.userId, (err, row) => {
     if (err) {
@@ -37,21 +37,21 @@ const postEmergency = async (req, res) => {
   const room = req.body.room.concat('호');
   const tel = req.body.tel;
 
-  const to = '01049414921'; //119 번호
+  const to = '01049414921'; // 119 번호
   const content = `${address} ${room} 화재발생. 신고자${tel}(앱신고)`;
 
-  // SMS 전송 부분 (과금되니 테스트 시 주석달고 할 것)
-  const { success, msg, status } = await ncp.sendSMS({
+  // SMS 전송 부분 (과금되니 테스트 시 빼고 할 것)
+  const { success } = await ncp.sendSMS({
     to,
     content,
   });
   if (!success) {
     res.send(failRedirect);
+  } // SMS 전송 완료
+  else {
+    sendPushOfEmergency(bid, room, req.session.user.userId);
+    res.send(successRedirect);
   }
-
-  // SMS 전송 완료
-  sendPushOfEmergency(bid, room);
-  res.send(successRedirect);
 };
 
 const finishReport = (_, res) => {

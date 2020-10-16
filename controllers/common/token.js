@@ -75,9 +75,9 @@ const sendPushOfRepair = (roomId) => {
 };
 
 // 화재 긴급 알림 (전체 세입자)
-const sendPushOfEmergency = (bid, roomNum) => {
+const sendPushOfEmergency = (bid, roomNum, reporter) => {
   const getTokenSql =
-    'SELECT token FROM user u, buildings b, room r WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND buildingNum=?';
+    'SELECT token, user_id FROM user u, buildings b, room r WHERE b.buildingNum=r.buildNum AND r.tenantID=u.user_id AND buildingNum=?';
   const tokens = [];
 
   mySqlClient.query(getTokenSql, bid, (err, rows) => {
@@ -85,7 +85,9 @@ const sendPushOfEmergency = (bid, roomNum) => {
       console.error(err);
     } else {
       if (rows.length > 0) {
-        rows.forEach((r) => tokens.push(r.token));
+        rows.forEach((r) => {
+          if (r.user_id != reporter) tokens.push(r.token);
+        });
         handlePushTokens('화재 경보!', `${roomNum}에서 화재 발생! 신속히 대피바랍니다`, tokens);
       }
     }
