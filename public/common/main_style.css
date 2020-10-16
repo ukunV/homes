@@ -758,15 +758,25 @@ textarea {
 }
 
 .report-submit {
+  margin-top: 1rem;
   background: var(--push-color);
-  width: 4rem;
-  height: 4rem;
+  width: 70px;
+  height: 70px;
   font-size: 1.2rem;
   font-weight: 700;
   color: white;
   border: none;
   border-radius: 50%;
   box-shadow: 0px 3px 4px -0.5px var(--soft-gray-color);
+  -webkit-animation: jumpBt 0.4s infinite linear alternate;
+  animation: jumpBt 0.4s infinite linear alternate;
+}
+
+@-webkit-keyframes jumpBt {
+  to {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
 }
 
 .msg-wrapper {
