@@ -9,6 +9,8 @@ const successRedirect =
   '<script type="text/javascript">location.href="/emergency/fire/success";</script>';
 const failRedirect =
   '<script type="text/javascript">alert("전송 중 오류가 발생했습니다."); window.history.back();</script>';
+const failCountRedirect =
+  '<script type="text/javascript">alert("긴급 신고는 하루 3번으로 제한됩니다."); window.history.back();</script>';
 
 const ncp = new NCPClient({
   ...sensKey,
@@ -31,7 +33,9 @@ const getEmergency = (req, res) => {
   });
 };
 
-const postEmergency = async (req, res) => {
+const postEmergency = (req, res) => {
+  const getSmsCountSql = 'select smsCount from user where user_id=?';
+  const updateSmsCountSql = 'update user set smsCount = ? where user_id=?';
   const bid = req.body.bid;
   const address = req.body.address.replace(/ /g, '');
   const room = req.body.room.concat('호');
@@ -40,18 +44,34 @@ const postEmergency = async (req, res) => {
   const to = '01049414921'; // 119 번호
   const content = `${address} ${room} 화재발생. 신고자${tel}(앱신고)`;
 
-  // SMS 전송 부분 (과금되니 테스트 시 빼고 할 것)
-  const { success } = await ncp.sendSMS({
-    to,
-    content,
+  mySqlClient.query(getSmsCountSql, req.session.user.userId, async (err, row) => {
+    if (err) {
+      res.send(failRedirect);
+    } else {
+      const smsCount = row[0].smsCount;
+      if (smsCount < 3) {
+        const { success } = await ncp.sendSMS({
+          to,
+          content,
+        });
+        if (!success) {
+          res.send(failRedirect);
+        } else {
+          mySqlClient.query(
+            updateSmsCountSql,
+            [smsCount + 1, req.session.user.userId],
+            (err, row) => {
+              // 세입자 Push 전송
+              sendPushOfEmergency(bid, room, req.session.user.userId);
+              res.send(successRedirect);
+            },
+          );
+        }
+      } else {
+        res.send(failCountRedirect);
+      }
+    }
   });
-  if (!success) {
-    res.send(failRedirect);
-  } // SMS 전송 완료
-  else {
-    sendPushOfEmergency(bid, room, req.session.user.userId);
-    res.send(successRedirect);
-  }
 };
 
 const finishReport = (_, res) => {

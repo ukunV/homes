@@ -24,6 +24,7 @@ const postLogin = function (req, res) {
           userId: row[0].user_id,
           userName: row[0].name,
           userType: row[0].type,
+          smsCount: 0,
         };
         console.log(`Token: ${req.cookies.token}`);
 

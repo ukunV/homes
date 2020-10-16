@@ -10,6 +10,7 @@ password VARCHAR(1000) NOT NULL,              # 유저 패스워드
 name VARCHAR(20) NOT NULL,                  # 유저이름
 type VARCHAR(20) NOT NULL,       # 유저 타입 ex) 관리자, 세입자, 건물주
 tel VARCHAR(20) NOT NULL,               # 연락처
+smsCount INT default 0, # SMS 전송 횟수 (1일 3회)
 token VARCHAR(1000) default NULL) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
 
 
