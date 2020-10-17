@@ -722,10 +722,11 @@ textarea {
 .fire-report {
   color: var(--push-color) !important;
   margin-right: 0.5rem;
+  text-align: center;
 }
 
 .fire-report > i {
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 
 .fire-report > p {
@@ -734,7 +735,7 @@ textarea {
 
 .report-msg {
   color: var(--push-color);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin: 0.2rem auto;
 }
