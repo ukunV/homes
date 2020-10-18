@@ -20,8 +20,8 @@
 
 #title_msg {
   margin: 0;
-  color: var(--gray-color);
-  font-weight: 700;
+  color: #666;
+  font-weight: 600;
   text-align: left;
   font-size: 1.1rem;
   padding: 1.4rem 0 0.5rem 0.3rem;
@@ -30,26 +30,26 @@
 #input_content {
   outline: none;
   font-size: 1rem;
-  width: 19.5rem;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #888;
   margin-bottom: 1rem;
 }
 
 #img_thumbnail {
+  display: none;
   width: 100%;
   height: 13rem;
   border-radius: 5px;
-  border: 2px solid #cfd8dc;
+  border: 2px solid #ddd;
 }
 
 #img_explain {
-  font-size: 1.2rem;
-  color: #b0bec5;
+  display: inline-block;
   position: absolute;
-  width: 19rem;
-  margin-top: 4.5rem;
-  margin-left: 0.3rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--soft-gray-color);
 }
 
 img {
@@ -67,10 +67,11 @@ img {
 label {
   display: inline-block;
   padding: 0.3rem 1.5rem;
-  color: var(--point-color);
+  color: var(--blue-color);
   font-size: 1rem;
+  font-weight: 500;
   background-color: var(--white-color);
-  border: 1px solid #cfd8dc;
+  border: 1px solid #ccc;
   border-radius: 5px;
   margin-top: 0.5rem;
 }
@@ -78,7 +79,7 @@ label {
 textarea {
   margin-top: 1rem;
   resize: none;
-  width: 18rem;
+  width: 100%;
   height: 5rem;
   font-size: 1rem;
   padding: 0.5rem;
