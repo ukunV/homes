@@ -7,8 +7,10 @@ const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const successRedirect =
   '<script type="text/javascript">location.href="/emergency/fire/success";</script>';
-const failRedirect =
-  '<script type="text/javascript">alert("전송 중 오류가 발생했습니다."); window.history.back();</script>';
+const failGetCountRedirect =
+  '<script type="text/javascript">alert("SMS 횟수 조회 중 오류가 발생했습니다."); window.history.back();</script>';
+const failSmsRedirect =
+  '<script type="text/javascript">alert("SMS 전송 중 오류가 발생했습니다."); window.history.back();</script>';
 const failCountRedirect =
   '<script type="text/javascript">alert("긴급 신고는 하루 3번으로 제한됩니다."); window.history.back();</script>';
 
@@ -41,12 +43,12 @@ const postEmergency = (req, res) => {
   const room = req.body.room.concat('호');
   const tel = req.body.tel;
 
-  const to = '01049414921'; // 119 번호
+  const to = '01049414921'; // 119 번호 입력
   const content = `${address} ${room} 화재발생. 신고자${tel}(앱신고)`;
 
   mySqlClient.query(getSmsCountSql, req.session.user.userId, async (err, row) => {
     if (err) {
-      res.send(failRedirect);
+      res.send(failGetCountRedirect);
     } else {
       const smsCount = row[0].smsCount;
       if (smsCount < 3) {
@@ -55,7 +57,7 @@ const postEmergency = (req, res) => {
           content,
         });
         if (!success) {
-          res.send(failRedirect);
+          res.send(failSmsRedirect);
         } else {
           mySqlClient.query(
             updateSmsCountSql,
