@@ -50,7 +50,7 @@ const postEmergency = (req, res) => {
     if (err) {
       res.send(failGetCountRedirect);
     } else {
-      const smsCount = row[0].smsCount;
+      const smsCount = row[0].smsCount || 0;
       if (smsCount < 3) {
         const { success } = await ncp.sendSMS({
           to,
