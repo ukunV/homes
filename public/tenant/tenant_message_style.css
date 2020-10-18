@@ -58,7 +58,8 @@
   padding: 0.3rem 1rem;
 }
 
-textarea {
+#msg_content textarea {
+  flex: 1;
   resize: none;
   height: 5rem;
   width: 20.4rem;
