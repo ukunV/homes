@@ -1,8 +1,11 @@
-const NCPClient = require('node-sens').NCPClient;
+const {NCPClient} = require('node-sens');
 const sensKey = require('../../config/ncp_config').sensSecret;
+const ncp = new NCPClient({
+  ...sensKey,
+});
 
 const mysql = require('mysql');
-const { sendPushOfEmergency } = require('./token');
+const {sendPushOfEmergency} = require('./token');
 const mySqlClient = mysql.createConnection(require('../../config/db_config'));
 
 const successRedirect =
@@ -13,10 +16,6 @@ const failSmsRedirect =
   '<script type="text/javascript">alert("SMS 전송 중 오류가 발생했습니다."); window.history.back();</script>';
 const failCountRedirect =
   '<script type="text/javascript">alert("긴급 신고는 하루 3번으로 제한됩니다."); window.history.back();</script>';
-
-const ncp = new NCPClient({
-  ...sensKey,
-});
 
 const getEmergency = (req, res) => {
   const getInfoSql =
@@ -44,7 +43,7 @@ const postEmergency = (req, res) => {
   const tel = req.body.tel;
 
   const to = '01049414921'; // 119 번호 입력
-  const content = `${address} ${room} 화재발생. 신고자${tel}(앱신고)`;
+  const content = `${address} ${room} 화재발생/신고자 ${tel}(앱신고)`;
 
   mySqlClient.query(getSmsCountSql, req.session.user.userId, async (err, row) => {
     if (err) {
@@ -58,8 +57,10 @@ const postEmergency = (req, res) => {
         });
         if (!success) {
           console.log(`node-sens error: ${msg}, Status ${status}`);
+          console.dir(ncp);
           res.send(failSmsRedirect);
         } else {
+          console.log(`node-sens success: ${msg}, Status ${status}`);
           mySqlClient.query(
             updateSmsCountSql,
             [smsCount + 1, req.session.user.userId],
