@@ -1,8 +1,8 @@
 const schedule = require('node-schedule');
 const rule = new schedule.RecurrenceRule();
-rule.hour = 17;
-rule.minute = 47;
-rule.second = 10;
+rule.hour = 23;
+rule.minute = 59;
+rule.second = 59;
 
 const moment = require('moment');
 require('moment-timezone');

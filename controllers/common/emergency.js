@@ -52,11 +52,12 @@ const postEmergency = (req, res) => {
     } else {
       const smsCount = row[0].smsCount || 0;
       if (smsCount < 3) {
-        const { success } = await ncp.sendSMS({
+        const { success, msg, status } = await ncp.sendSMS({
           to,
           content,
         });
         if (!success) {
+          console.log(`node-sens error: ${msg}, Status ${status}`);
           res.send(failSmsRedirect);
         } else {
           mySqlClient.query(
