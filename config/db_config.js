@@ -9,6 +9,7 @@ module.exports = {
   charset: 'utf8mb4',
   debug: false,
   insecureAuth: true,
+  multipleStatements: true,
 };
 
 // 위에 Server용 절대 지우지말것
@@ -24,7 +25,8 @@ module.exports = {
 //   dateStrings: 'date',
 //   charset  : 'utf8',
 //   debug: false,
-//  insecureAuth: true
+//   insecureAuth: true,
+//   multipleStatements: true,
 // };
 
 // //FOR LOCAL TEST - 전진
@@ -38,4 +40,5 @@ module.exports = {
 //   charset: 'utf8',
 //   debug: false,
 //   insecureAuth: true,
+//   multipleStatements: true,
 // };
