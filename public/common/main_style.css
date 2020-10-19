@@ -734,10 +734,11 @@ textarea {
 }
 
 .fire-report > i {
-  font-size: 2.3rem;
+  font-size: 2.4rem;
 }
 
 .fire-report > p {
+  font-size: 0.975rem;
   color: var(--push-color);
 }
 
