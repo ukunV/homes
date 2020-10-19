@@ -1,8 +1,5 @@
 const {NCPClient} = require('node-sens');
 const sensKey = require('../../config/ncp_config').sensSecret;
-const ncp = new NCPClient({
-  ...sensKey,
-});
 
 const mysql = require('mysql');
 const {sendPushOfEmergency} = require('./token');
@@ -51,19 +48,16 @@ const postEmergency = (req, res) => {
     } else {
       const smsCount = row[0].smsCount || 0;
       if (smsCount < 3) {
+        const ncp = new NCPClient({
+        ...sensKey,});
         const { success, msg, status } = await ncp.sendSMS({
           to,
           content,
         });
         if (!success) {
-          console.log(Date.now());
-          console.log(`(ERROR) node-sens error: ${msg}, Status ${status}`);
-          console.dir(ncp);
+          console.log(`(ERROR) node-sens error: ${msg}, Status ${status} Date ${Date.now()}`);
           res.send(failSmsRedirect);
         } else {
-          console.log(Date.now());
-          console.log(`(SUCCESS) node-sens success: ${msg}, Status ${status}`);
-          console.dir(ncp);
           mySqlClient.query(
             updateSmsCountSql,
             [smsCount + 1, req.session.user.userId],
