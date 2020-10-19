@@ -598,7 +598,7 @@ textarea {
 
 .div-title {
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 700;
   color: black;
   text-align: center;
 }
@@ -629,6 +629,14 @@ textarea {
   font-weight: 500;
   padding: 5px;
   margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.div-message {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--blue-color);
 }
 
 .div-login-box {

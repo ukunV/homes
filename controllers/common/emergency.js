@@ -56,10 +56,12 @@ const postEmergency = (req, res) => {
           content,
         });
         if (!success) {
+          console.log(Date.now());
           console.log(`(ERROR) node-sens error: ${msg}, Status ${status}`);
           console.dir(ncp);
           res.send(failSmsRedirect);
         } else {
+          console.log(Date.now());
           console.log(`(SUCCESS) node-sens success: ${msg}, Status ${status}`);
           console.dir(ncp);
           mySqlClient.query(

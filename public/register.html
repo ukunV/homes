@@ -15,6 +15,7 @@
         <div class="div-login-form">
                   <form class="form-reg" name="frm1" method="post">
                     <div class="div-wrapper-input">
+                      <p class="div-message">회원 유형을 선택하세요!</p>
                       <label
                         ><input type="radio" name="type" value="건물주" />
                         <div class="div-type-bt">건물주</div>
@@ -34,11 +35,11 @@
                       <% if(locals.right===0){ %>
                         <input id="reg_id" name="id" placeholder="아이디" value="<%=inputId%>" autocomplete="off" required />
                         <input id="reg_submit_dupBt" type="submit" value="중복확인" onclick='btn_click("duplicate");'>
-                        <span id="msg_id" style="color: var(--push-color)">이미 사용 중인 아이디입니다.</span>
+                        <p class="small-title" style="color: var(--push-color)">이미 사용 중인 아이디입니다.</p>
                       <% } else if(locals.right===1){ %>
                         <input id="reg_id" name="id" placeholder="아이디" readonly value="<%=inputId%>" autocomplete="off" required />
                         <input id="reg_submit_dupBt" type="submit" disabled=true value="중복확인" onclick='btn_click("duplicate");'>
-                        <span id="msg_id" style="color: var(--green-color)">사용할 수 있는 아이디입니다.</span>
+                        <p class="small-title" style="color: var(--green-color)">사용할 수 있는 아이디입니다.</p>
                       <% } else { %>
                         <input id="reg_id" name="id" placeholder="아이디" value="<%=inputId%>" autocomplete="off" required />
                         <input id="reg_submit_dupBt" type="submit" value="중복확인" onclick='btn_click("duplicate");'>
@@ -78,10 +79,10 @@
                         autocomplete="off"
                       />
                     </div>
+                    <% } %>
                     <div class="div-wrapper-submit">
                       <input id="reg_submit_bt" type="submit" value="회원가입" onclick='btn_click("register");'/>
                     </div>
-                    <% } %>
                   </form>
                 </div>
         </div>
