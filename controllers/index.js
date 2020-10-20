@@ -19,6 +19,8 @@ const register = require('./user/register.js');
 router.route('/register').get(register.getRegister);
 router.route('/register').post(register.postRegister);
 router.route('/register/checkId').post(register.checkId);
+// 개인정보처리방침
+router.route('/privacy').get(register.getPrivacy);
 
 // 로그인
 const login = require('./user/login.js');

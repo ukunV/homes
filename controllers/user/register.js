@@ -72,8 +72,13 @@ const checkId = function (req, res) {
   });
 }
 
+const getPrivacy = (req, res) => {
+  res.render('privacy.html')
+}
+
 module.exports = {
   getRegister,
   postRegister,
   checkId,
+  getPrivacy
 };
