@@ -7,7 +7,7 @@ docker_username="heojj97"
 container_name="homes-server"
 image_name="homes-app"
 db_container_name="homes-database"
-version="0.1"
+version="0.2"
 https_port=443
 http_port=80
 
