@@ -19,6 +19,9 @@
               <span class="round-tag-border" onclick="location.href='/message/read/all'"
                 >모두 읽음 처리</span
               >
+              <span class="round-tag-border" onclick="location.href='/message/delete/all'"
+                style="background-color:var(--soft-pink-color)">읽은 알림 삭제</span
+              >
             </div>
             <% if(messages){ messages.forEach(msg => { %>
             <!--Push Template Start-->
@@ -39,6 +42,11 @@
                     msg.sender_type %> <%= msg.sender_name %>님이 메시지를 보냈어요.
                   </div>
                   <div class="push-func">
+                    <span
+                      class="func-msg isDeleteBt"
+                      onclick="location.href='/message/delete/<%= msg.msgID %>'"
+                      style="display: none;">삭제</span
+                    >
                     <span
                       class="func-msg isReadBt"
                       onclick="location.href='/message/read/<%= msg.msgID %>'"
@@ -61,6 +69,12 @@
                       class="func-msg isReadBt"
                       onclick="location.href='/message/read/<%= msg.msgID %>'"
                       >읽음</span
+                    >
+                    <span
+                      class="func-msg isDeleteBt"
+                      onclick="location.href='/message/delete/<%= msg.msgID %>'"
+                      style="display: none;"
+                      >삭제</span
                     >
                     <span class="func-msg" onclick="location.href='/repair_list'">보기</span>
                   </div>
@@ -103,6 +117,7 @@
           if (msg.getAttribute('isread') === '1') {
             msg.classList.add('read');
             msg.querySelector('.isReadBt').style.display = 'none';
+            msg.querySelector('.isDeleteBt').style.display = 'block';
           }
         });
       }

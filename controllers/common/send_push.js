@@ -25,6 +25,26 @@ const readPush = function (req, res) {
   });
 };
 
+// 메시지 삭제 처리 라우터
+const deletePush = function (req, res){
+  const msgID = req.params.id;
+  let updateDeletePushSql = 'delete from messages where msgID=?';
+
+  if (msgID === 'all'){
+    updateDeletePushSql = `delete from messages where receiver='${req.session.user.userId}' and isRead=1;`;
+  }
+  mySqlClient.query(updateDeletePushSql, msgID, function (err, result){
+    if(err){
+      console.log('delete Error>>' + err);
+      res.send(
+        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.location="/push";</script>',
+      );
+    } else {
+      res.send('<script type="text/javascript">location.href="/push";</script>');
+    }
+  });
+};
+
 // POST: 알림 전송 라우터 (+Firebase)
 const sendPush = function (req, res) {
   const receivers = req.body.user_id; // 1명~여러명
@@ -261,4 +281,5 @@ module.exports = {
   sendPush,
   readPush,
   sendPush_repair,
+  deletePush,
 };

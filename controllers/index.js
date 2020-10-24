@@ -96,7 +96,8 @@ router
 router.route('/submit_message/').post(checkLoginAndPush, send_push.sendPush);
 // 알림 읽음 처리
 router.route('/message/read/:id').get(checkLoginAndPush, send_push.readPush);
-
+// 알림 삭제 처리
+router.route('/message/delete/:id').get(checkLoginAndPush, send_push.deletePush);
 // (건물주) 메인
 const host = require('./host/host.js');
 router.route('/host').get(checkLoginAndPush, checkHost, host.host);
