@@ -91,7 +91,23 @@ const mgmt_building_modify = async function (req, res) {
   });
 };
 
+const mgmt_building_delete = function(req, res){
+  const buildingNum = req.params.id;
+  const buildingDeleteSql = 'delete from buildings where buildingNum=?';
+  mySqlClient.query(buildingDeleteSql, buildingNum, function(err, result){
+    if(err){
+      console.log('delete Error>>' + err);
+      res.send(
+        '<script type="text/javascript">alert("잘못된 DB 접근입니다."); window.location="/host/management/modify";</script>',
+      );
+    } else{
+      res.send('<script type="text/javascript">location.href="/host/management/modify";</script>');
+    }
+  });
+};
+
 module.exports = {
   mgmt_building_list,
   mgmt_building_modify,
+  mgmt_building_delete,
 };

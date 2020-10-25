@@ -151,6 +151,7 @@ router
 router
   .route('/host/management/modify/:id')
   .get(checkLoginAndPush, checkHost, mgmt_building.mgmt_building_modify); // 수정할 건물 표시 (modify 화면)
+router.route('/host/management/delete/:id').get(checkLoginAndPush, checkHost, mgmt_building.mgmt_building_delete);
 
 // (건물주) 건물 수정 유형별 POST
 const mgmt_building_modify_submit = require('./host/mgmt_building_modify_submit');

@@ -122,8 +122,8 @@
             </div>
             <!--세대 템플릿 끝-->
             <% }); %>
+            <input id="submit_content" type="button" value="건물 삭제하기" onclick="if(confirm('건물을 삭제할까요?\n삭제 완료 시 복구할 수 없습니다.'))location.href='/host/management/delete/<%= buildingNum %>';else return false;"/>
         </div>
-        <input id="submit_content" type="submit" value="건물 삭제하기" />
       </div>
     </div>
 
