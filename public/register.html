@@ -17,17 +17,17 @@
                     <div class="div-wrapper-input">
                       <p class="div-message">회원 유형을 선택하세요!</p>
                       <label
-                        ><input type="radio" name="type" value="건물주" />
+                        ><input type="radio" id="host" name="type" value="건물주" onclick="cookieType('type','host')"/>
                         <div class="div-type-bt">건물주</div>
                       </label>
       
                       <label
-                        ><input type="radio" name="type" value="관리인" />
+                        ><input type="radio" id="manager" name="type" value="관리인" onclick="cookieType('type', 'manager')"/>
                         <div class="div-type-bt">관리인</div>
                       </label>
       
                       <label
-                        ><input type="radio" name="type" value="세입자" />
+                        ><input type="radio" id="tenant" name="type" value="세입자" onclick="cookieType('type', 'tenant')"/>
                         <div class="div-type-bt">세입자</div>
                       </label>
                     </div>
@@ -81,7 +81,7 @@
                     </div>
                     <% } %>
                     <div class="div-wrapper-submit">
-                      <input id="reg_submit_bt" type="submit" value="회원가입" onclick='btn_click("register");'/>
+                      <input id="reg_submit_bt" type="submit" value="회원가입" disabled style="background-color: #bbb;" onclick='btn_click("register");'/>
                     </div>
                   </form>
                 </div>
@@ -99,14 +99,17 @@
       const typeRadiobox = document.querySelectorAll('input[type="radio"]');
       let pwRight;
 
-      id.addEventListener('keyup', infoRight);
-      name.addEventListener('keyup', infoRight);
-      password.addEventListener('keyup', isPasswordSame);
-      password.addEventListener('keyup', isPasswordValid);
-      passwordAgain.addEventListener('keyup', isPasswordSame);
-      tel.addEventListener('keyup', infoRight);
       typeRadiobox.forEach((b) => b.addEventListener('click', infoRight));
+      id.addEventListener('keyup', infoRight);
 
+      if(name){
+        name.addEventListener('keyup', infoRight);
+        password.addEventListener('keyup', isPasswordSame);
+        password.addEventListener('keyup', isPasswordValid);
+        passwordAgain.addEventListener('keyup', isPasswordSame);
+        tel.addEventListener('keyup', infoRight);
+      }
+      
       submitBt.style.backgroundColor = '#bbb';
 
       function isPasswordValid() {
@@ -167,6 +170,28 @@
           return false;
         }
       }
+
+      function cookieType(name, value){
+        if(value=='host'){
+          document.cookie = name+"="+value+";path=/";
+        } else if(value=='manager'){
+          document.cookie = name+"="+value+";path=/";
+        } else if(value=='tenant'){
+          document.cookie = name+"="+value+";path=/";
+        }
+      }
+
+      function checkType(){
+        let type = document.cookie.split(';');
+        if(type[1]==" type=host"){
+          document.getElementById('host').checked=true;
+        } else if(type[1]==" type=manager"){
+          document.getElementById('manager').checked=true;
+        } else if(type[1]==" type=tenant"){
+          document.getElementById('tenant').checked=true;
+        }
+      }
+      checkType();
     </script>
   </body>
 </html>
