@@ -28,31 +28,21 @@ const postRegister = function (req, res) {
     type,
   };
 
-  const checkIdSql = 'SELECT * FROM user WHERE user_id = ?;';
-  mySqlClient.query(checkIdSql, params.user_id, function (err, rows) {
+  const insertSql = 'INSERT INTO user SET ?;';
+  mySqlClient.query(insertSql, params, function (err) {
     if (err) {
-      console.error('Search Error>>' + err);
+      console.error('Insert Error>>' + err);
       res.send(
         `<script type="text/javascript">alert("${alertMsgDb}"); window.history.back();</script>`,
       );
     } else {
-        var insertSql = 'INSERT INTO user SET ?;';
-        mySqlClient.query(insertSql, params, function (err) {
-          if (err) {
-            console.error('Insert Error>>' + err);
-            res.send(
-              `<script type="text/javascript">alert("${alertMsgDb}"); window.history.back();</script>`,
-            );
-          } else {
-            res.send(
-              `<script type="text/javascript">alert("${alertMsgSuccess}"); location.href='/';</script>`,
-            );
-          }
-        });
-      }
+      res.send(
+        `<script type="text/javascript">alert("${alertMsgSuccess}"); location.href='/';</script>`,
+      );
+    }
   });
-
 };
+
 const checkId = function (req, res) {
   const user_id = req.body.id;
   const checkIdSql = 'select id from user where user_id = ?;';
@@ -61,7 +51,7 @@ const checkId = function (req, res) {
     if (row.length > 0) {
       res.render('register.html', {
         inputId: user_id,
-        right: 0
+        right: 0,
       });
     } else {
       res.render('register.html', {
@@ -70,15 +60,15 @@ const checkId = function (req, res) {
       });
     }
   });
-}
+};
 
 const getPrivacy = (req, res) => {
-  res.render('privacy.html')
-}
+  res.render('privacy.html');
+};
 
 module.exports = {
   getRegister,
   postRegister,
   checkId,
-  getPrivacy
+  getPrivacy,
 };

@@ -17,17 +17,17 @@
                     <div class="div-wrapper-input">
                       <p class="div-message">회원 유형을 선택하세요!</p>
                       <label
-                        ><input type="radio" id="host" name="type" value="건물주" onclick="cookieType('type','host')"/>
+                        ><input type="radio" id="host" name="type" value="건물주" onclick="setCookieType('type','host')"/>
                         <div class="div-type-bt">건물주</div>
                       </label>
       
                       <label
-                        ><input type="radio" id="manager" name="type" value="관리인" onclick="cookieType('type', 'manager')"/>
+                        ><input type="radio" id="manager" name="type" value="관리인" onclick="setCookieType('type', 'manager')"/>
                         <div class="div-type-bt">관리인</div>
                       </label>
       
                       <label
-                        ><input type="radio" id="tenant" name="type" value="세입자" onclick="cookieType('type', 'tenant')"/>
+                        ><input type="radio" id="tenant" name="type" value="세입자" onclick="setCookieType('type', 'tenant')"/>
                         <div class="div-type-bt">세입자</div>
                       </label>
                     </div>
@@ -171,7 +171,7 @@
         }
       }
 
-      function cookieType(name, value){
+      function setCookieType(name, value){
         if(value=='host'){
           document.cookie = name+"="+value+";path=/";
         } else if(value=='manager'){
@@ -182,12 +182,26 @@
       }
 
       function checkType(){
-        let type = document.cookie.split(';');
-        if(type[1]==" type=host"){
+        function getCookie(cookie_name) {
+            let x, y;
+            const val = document.cookie.split(';');
+
+            for (var i = 0; i < val.length; i++) {
+                x = val[i].substr(0, val[i].indexOf('='));
+                y = val[i].substr(val[i].indexOf('=') + 1);
+                x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+                if (x == cookie_name) {
+                    return unescape(y); // unescape로 디코딩 후 값 리턴
+                }
+            }
+        }
+
+        let type = getCookie("type");
+        if(type=="host"){
           document.getElementById('host').checked=true;
-        } else if(type[1]==" type=manager"){
+        } else if(type=="manager"){
           document.getElementById('manager').checked=true;
-        } else if(type[1]==" type=tenant"){
+        } else if(type=="tenant"){
           document.getElementById('tenant').checked=true;
         }
       }
