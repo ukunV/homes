@@ -1,5 +1,5 @@
-# homes-app
-통합 주택관리 Homes
+# homes
+통합 주택관리시스템 Homes
 
 ## ⛳ Motivation and Core Function
 - 통합적인 관리가 이루어지는 아파트 단지와 달리 대학가, 주택가 등 일반 임대형 주택에서는 건물에 대한 관리가 이루어지기 힘들고, 건물주와 세입자와의 소통이 어려움
