@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 #* text=auto
 public/**/*.html linguist-generated
+*.html linguist-detectable=false
