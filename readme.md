@@ -1,6 +1,8 @@
 # homes
 통합 주택관리시스템 홈즈
 
+[구글 플레이스토어 Homes](https://play.google.com/store/apps/details?id=com.nemobros.homes)
+
 <p align="center">
 <img src="./.github/logo.png" alt="logo" width="120" />
 <img src="./.github/homes.png" alt="homes" />
@@ -21,7 +23,7 @@
     - 세입자 통합 알림 (분리수거, 소방점검 등)
     - 관리 건물 유지보수 통합 관리
 
-## Start
+## Usage
 
 1. You need to install basic tools and Docker (If you already have all requirements, skip this step)
     ```bash
