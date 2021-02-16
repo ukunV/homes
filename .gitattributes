@@ -2,3 +2,4 @@
 #* text=auto
 public/**/*.html linguist-generated
 *.html linguist-detectable=false
+*.css linguist-detectable=false
