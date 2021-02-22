@@ -31,7 +31,7 @@
 - Frontend - `HTML/CSS/JS` `EJS`
 - Database - `MySQL` `Firebase`
 - Application - `React Native` `Expo`
-- Infra - `Docker` `shell-script`
+- Infra - `Docker` `shell-script` `NHN ToastCloud` `NCP SENS`
 
 ## ⛳ Motivation and Core Functions
 - 통합적인 관리가 이루어지는 아파트 단지와 달리 대학가, 주택가 등 일반 임대형 주택에서는 건물에 대한 관리가 이루어지기 힘들고, 건물주와 세입자와의 소통이 어려움
