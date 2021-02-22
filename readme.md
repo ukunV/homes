@@ -1,14 +1,35 @@
 # homes
-통합 주택관리시스템 홈즈
+통합 주택관리시스템 홈즈 (캡스톤 프로젝트)
 
 [구글 플레이스토어 Homes](https://play.google.com/store/apps/details?id=com.nemobros.homes)
+
+
+[실무중심산학프로젝트 결과보고서](./.github/report.pdf)
 
 <p align="center">
 <img src="./.github/logo.png" alt="logo" width="120" />
 <img src="./.github/homes.png" alt="homes" />
 </p>
 
-## ⛳ Motivation and Core Function
+## 👨‍👨‍👦‍👦 Team Members
+팀 네모난형제들(NemoBros)
+- 허전진 [@zinirun](https://github.com/zinirun)
+  - Leader (PM, DevOps, Infra)
+- 조정민 [@Jeongm1n](https://github.com/Jeongm1n)
+  - Backend (Node.js)
+- 이건욱 [@ukunV](https://github.com/ukunV)
+  - Frontend (HTML/CSS/JS)
+- 김승준 [@jason4181](https://github.com/jason4181)
+  - Database (MySQL)
+
+## 📚 Stacks
+- Backend - `Node.js`
+- Frontend - `HTML/CSS/JS` `EJS`
+- Database - `MySQL` `Firebase`
+- Application - `React Native` `Expo`
+- Infra - `Docker` `shell-script`
+
+## ⛳ Motivation and Core Functions
 - 통합적인 관리가 이루어지는 아파트 단지와 달리 대학가, 주택가 등 일반 임대형 주택에서는 건물에 대한 관리가 이루어지기 힘들고, 건물주와 세입자와의 소통이 어려움
 - **건물주**
     - 소유 건물 입주현황 관리
