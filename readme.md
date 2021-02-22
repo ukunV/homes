@@ -3,8 +3,12 @@
 
 [구글 플레이스토어 Homes](https://play.google.com/store/apps/details?id=com.nemobros.homes)
 
-
 [실무중심산학프로젝트 결과보고서](./.github/report.pdf)
+
+
+- 최종 App 시연 영상
+
+<video src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/45795d3a-c2fa-4f6a-8522-611c1c8d992a/vllo.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210222%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210222T133017Z&X-Amz-Expires=86400&X-Amz-Signature=3f4da966d9ed68cfae6a90f9b24af876ad1286e26ad2a8abd231d7d69c740e90&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22vllo.mp4%22" width="500"></video>
 
 <p align="center">
 <img src="./.github/logo.png" alt="logo" width="120" />
